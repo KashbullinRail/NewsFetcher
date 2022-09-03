@@ -16,7 +16,8 @@ class ArticlesAdapter : RecyclerView.Adapter<ArticlesAdapter.ViewHolder>() {
 
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val textView: TextView = view.findViewById(R.id.tvTitle)
+        val tvTitle: TextView = view.findViewById(R.id.tvTitle)
+        val tvData: TextView = view.findViewById(R.id.tvData)
     }
 
     // Create new views (invoked by the layout manager)
@@ -33,7 +34,8 @@ class ArticlesAdapter : RecyclerView.Adapter<ArticlesAdapter.ViewHolder>() {
 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-        viewHolder.textView.text = articlesData[position].title
+        viewHolder.tvTitle.text = articlesData[position].title
+        viewHolder.tvData.text = articlesData[position].publishedAt
     }
 
     // Return the size of your dataset (invoked by the layout manager)
