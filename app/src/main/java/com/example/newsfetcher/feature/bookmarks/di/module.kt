@@ -4,7 +4,7 @@ import com.example.newsfetcher.feature.bookmarks.data.local.BookmarksLocalSource
 import com.example.newsfetcher.feature.bookmarks.data.local.BookmarksRepository
 import com.example.newsfetcher.feature.bookmarks.data.local.BookmarksRepositoryImpl
 import com.example.newsfetcher.feature.bookmarks.domian.BookmarksInteractor
-import com.example.newsfetcher.feature.bookmarks.ui.BoolmarksScreenViewModel
+import com.example.newsfetcher.feature.bookmarks.ui.BookmarksScreenViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -25,7 +25,7 @@ val bookmarksModule = module {
     }
 
     viewModel {
-        BoolmarksScreenViewModel(interactor =  get())
+        BookmarksScreenViewModel(interactor =  get())
     }
 
 

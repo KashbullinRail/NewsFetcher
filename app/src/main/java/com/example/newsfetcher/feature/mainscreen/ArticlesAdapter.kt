@@ -10,13 +10,14 @@ import com.example.newsfetcher.R
 import com.example.newsfetcher.feature.domian.ArticleModel
 
 
-class ArticlesAdapter : RecyclerView.Adapter<ArticlesAdapter.ViewHolder>() {
+class ArticlesAdapter(val onItemClicked: (Int) -> Unit) : RecyclerView.Adapter<ArticlesAdapter.ViewHolder>() {
 
     private var articlesData: List<ArticleModel> = emptyList()
 
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val textView: TextView = view.findViewById(R.id.tvTitle)
+        val tvTitle: TextView = view.findViewById(R.id.tvTitle)
+        val tvData: TextView = view.findViewById(R.id.tvData)
     }
 
     // Create new views (invoked by the layout manager)
@@ -31,9 +32,14 @@ class ArticlesAdapter : RecyclerView.Adapter<ArticlesAdapter.ViewHolder>() {
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
 
+        viewHolder.itemView.setOnClickListener{
+            onItemClicked.invoke(position)
+        }
+
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-        viewHolder.textView.text = articlesData[position].title
+        viewHolder.tvTitle.text = articlesData[position].title
+        viewHolder.tvData.text = articlesData[position].publishedAt
     }
 
     // Return the size of your dataset (invoked by the layout manager)
