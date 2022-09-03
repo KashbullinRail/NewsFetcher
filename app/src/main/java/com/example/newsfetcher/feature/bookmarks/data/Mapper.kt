@@ -19,4 +19,5 @@ fun ArticleModel.toEntity() = BookmarkEntity(
     url = url,
     urlToImage = urlToImage
 
+
 )
