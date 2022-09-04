@@ -14,4 +14,5 @@ class BookmarksFragment: Fragment(R.layout.fragment_bookmarks) {
         super.onViewCreated(view, savedInstanceState)
         viewModel
     }
+
 }
