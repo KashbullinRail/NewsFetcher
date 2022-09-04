@@ -13,6 +13,7 @@ data class ViewState(
 sealed class UIEvent: Event{
     data class OnArticleClicked(val index: Int): UIEvent()
     object OnSearchButtonCliked : UIEvent()
+    data class OnSearchEdit(val text: String): UIEvent()
 }
 
 sealed class DateEvent: Event{

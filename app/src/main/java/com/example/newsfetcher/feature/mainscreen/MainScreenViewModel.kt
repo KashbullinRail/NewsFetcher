@@ -53,7 +53,14 @@ class MainScreenViewModel(
                 return null
             }
             is UIEvent.OnSearchButtonCliked -> {
-                return previousState.copy(isSearchEnabled = !previousState.isSearchEnabled)
+                return previousState.copy(articlesShown = if(!previousState.isSearchEnabled) previousState.articlesList else previousState.articlesShown ,isSearchEnabled = !previousState.isSearchEnabled)
+            }
+            is UIEvent.OnSearchEdit -> {
+                return previousState.copy(articlesShown = previousState.articlesList.filter {
+                    it.title.contains(
+                        event.text
+                    )
+                })
             }
 
             else -> return null
