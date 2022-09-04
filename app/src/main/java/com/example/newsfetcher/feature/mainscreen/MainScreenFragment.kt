@@ -39,12 +39,7 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
         }
 
         etSearch.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(
-                text: CharSequence?,
-                start: Int,
-                count: Int,
-                after: Int
-            ) {
+            override fun beforeTextChanged(text: CharSequence?, start: Int, count: Int, after: Int) {
             }
 
             override fun onTextChanged(text: CharSequence?, start: Int, before: Int, count: Int) {
@@ -59,19 +54,9 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
     }
 
     private fun render(viewState: ViewState) {
-        when (viewState.state) {
-            State.Load -> {
 
-            }
-            State.Content -> {
-                tvTitle.isVisible = !viewState.isSearchEnabled
-                etSearch.isVisible = viewState.isSearchEnabled
-                adapter.setData(viewState.articlesShown)
-            }
-            State.Error -> {
-
-            }
-        }
-
+        tvTitle.isVisible = !viewState.isSearchEnabled
+        etSearch.isVisible = viewState.isSearchEnabled
+        adapter.setData(viewState.articlesShown)
     }
 }
