@@ -62,7 +62,6 @@ class MainScreenViewModel(
                     )
                 })
             }
-
             else -> return null
         }
 
