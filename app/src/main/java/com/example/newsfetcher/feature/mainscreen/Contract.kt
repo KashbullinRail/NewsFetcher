@@ -5,11 +5,14 @@ import com.example.newsfetcher.base.Event
 import com.example.newsfetcher.feature.domian.ArticleModel
 
 data class ViewState(
-    val articles: List<ArticleModel>
+    val isSearchEnabled: Boolean,
+    val articlesShown: List<ArticleModel>,
+    val articlesList: List<ArticleModel>
 )
 
 sealed class UIEvent: Event{
     data class OnArticleClicked(val index: Int): UIEvent()
+    object OnSearchButtonCliked : UIEvent()
 }
 
 sealed class DateEvent: Event{
