@@ -32,7 +32,7 @@ val networkModule = module {
             .Builder()
             .addInterceptor(get<HttpLoggingInterceptor>())
             .addNetworkInterceptor(HeaderIntercepter())
-            .callTimeout(10000L, TimeUnit.MILLISECONDS)
+            .callTimeout(20000L, TimeUnit.MILLISECONDS)
             .build()
     }
 
