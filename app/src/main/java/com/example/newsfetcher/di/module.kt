@@ -4,6 +4,7 @@ package com.example.newsfetcher.di
 import android.util.Log
 import androidx.room.Room
 import com.example.newsfetcher.AppDataBase
+import com.example.newsfetcher.base.HeaderIntercepter
 import okhttp3.OkHttpClient
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -29,6 +30,7 @@ val networkModule = module {
         OkHttpClient
             .Builder()
             .addInterceptor(get<HttpLoggingInterceptor>())
+            .addNetworkInterceptor(HeaderIntercepter())
             .build()
     }
 
