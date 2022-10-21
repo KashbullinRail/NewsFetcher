@@ -45,7 +45,7 @@ class MainScreenViewModel(
                 return previousState.copy(
                     articlesList = event.articles,
                     articlesShown = event.articles,
-//                    state = State.Content
+                    state = State.Content
                 )
             }
             is UIEvent.OnArticleClicked -> {

@@ -13,8 +13,8 @@ interface NewsAPI {
         @Query("country") country :String = "ru"
     ): ArticlesRemoteModel
 
-//    @POST("v2/top-headlines")
-//    suspend fun postArticles(
-//        @Body sampleModel:SampleModel = SampleModel("ru", 5, listOf("4343", "35573"))
-//    ): ArticlesRemoteModel
+    @POST("v2/top-headlines")
+    suspend fun postArticles(
+        @Body sampleModel:SampleModel = SampleModel("ru", 5, listOf("4343", "35573"))
+    ): ArticlesRemoteModel
 }
