@@ -1,5 +1,6 @@
 package com.example.newsfetcher.di
 
+
 import android.util.Log
 import androidx.room.Room
 import com.example.newsfetcher.AppDataBase

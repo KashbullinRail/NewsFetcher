@@ -8,11 +8,9 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.view.isVisible
-import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newsfetcher.R
-import com.example.newsfetcher.base.Event
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {

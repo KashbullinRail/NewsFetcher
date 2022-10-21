@@ -19,6 +19,7 @@ class MainScreenViewModel(
     }
 
     override fun initialViewState() = ViewState(
+        state = State.Load,
         articlesList = emptyList(),
         articlesShown = emptyList(),
         isSearchEnabled = false
@@ -33,7 +34,7 @@ class MainScreenViewModel(
                             Log.e("ERROR", it.localizedMessage)
                         },
                         onSuccess = {
-                            processDataEvent(DateEvent.OnLoadArticlesSucceed(it))
+                            processDataEvent(DateEvent. OnLoadArticlesSucceed(it))
                         }
                     )
 
