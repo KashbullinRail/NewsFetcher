@@ -11,6 +11,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
+import java.util.concurrent.TimeUnit
 
 private const val BASE_URL = "https://newsapi.org/"
 const val API_KEY: String = "8d8a631cc60f433ab84de75d98294065"
@@ -31,6 +32,7 @@ val networkModule = module {
             .Builder()
             .addInterceptor(get<HttpLoggingInterceptor>())
             .addNetworkInterceptor(HeaderIntercepter())
+            .callTimeout(10000L, TimeUnit.MILLISECONDS)
             .build()
     }
 
