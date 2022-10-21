@@ -1,5 +1,6 @@
 package com.example.newsfetcher.feature.data
 
+import com.example.newsfetcher.SampleModel
 import com.example.newsfetcher.di.API_KEY
 import com.example.newsfetcher.feature.data.model.ArticleRemoteModel
 import com.example.newsfetcher.feature.data.model.ArticlesRemoteModel
@@ -12,9 +13,8 @@ interface NewsAPI {
         @Query("country") country :String = "ru"
     ): ArticlesRemoteModel
 
-    @FormUrlEncoded
     @POST("v2/top-headlines")
     suspend fun postArticles(
-        @Field("country") country :String = "ru"
+        @Body sampleModel:SampleModel = SampleModel("ru", 5, listOf("e4r", "efew"))
     ): ArticlesRemoteModel
 }
