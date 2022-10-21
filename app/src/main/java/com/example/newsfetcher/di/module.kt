@@ -17,16 +17,18 @@ const val APP_DATABASE = "APP_DATABASE"
 
 val networkModule = module {
 
+    single<HttpLoggingInterceptor> {
+        HttpLoggingInterceptor { message ->
+            Log.d("OkHttp", message)
+        }.apply {
+            setLevel(HttpLoggingInterceptor.Level.BODY)
+        }
+    }
+
     single<OkHttpClient> {
         OkHttpClient
             .Builder()
-            .addInterceptor(
-                HttpLoggingInterceptor { message ->
-                    Log.d("OkHttp", message)
-                }.apply {
-                    setLevel(HttpLoggingInterceptor.Level.BODY)
-                }
-            )
+            .addInterceptor(get<HttpLoggingInterceptor>())
             .build()
     }
 
