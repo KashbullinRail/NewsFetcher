@@ -53,23 +53,6 @@ class ArticlesInteractor(private val repository: ArticlesRepository) {
         Log.e("TAG", jsonModel.toString())
 
 
-
-//        val response2 = "{«id»: «6212577f0095c22f40b1a78a»,\n" +
-//                "«email»: «fields_tyson@manglo.degree»,\n" +
-//                "«roles»: [\n" +
-//                "«owner»,\n" +
-//                "«guest»\n" +
-//                "]}"
-//        val model2 = gson.fromJson(response2, MyJson::class.java)
-//        Log.e("TAG_DZ", model2.toString())
-//
-//        val myJson: MyJson = Json.parse()
-//        Log.e("TAG_DZ", myJson.toString())
-
-//        val myJsonText = ""
-//        val myJson: MyJson = Json.parse(MyJso, myJsonText)
-//        val myThingInJsonText: String = Json.stringify(MyThing.serializer(), myThing)
-
         repository.getArticles()
 
     }
