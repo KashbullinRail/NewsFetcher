@@ -1,5 +1,6 @@
 package com.example.newsfetcher.feature.data
 
+import com.example.newsfetcher.MyJson
 import com.example.newsfetcher.SampleModel
 import com.example.newsfetcher.di.API_KEY
 import com.example.newsfetcher.feature.data.model.ArticleRemoteModel
@@ -15,6 +16,12 @@ interface NewsAPI {
 
     @POST("v2/top-headlines")
     suspend fun postArticles(
-        @Body sampleModel:SampleModel = SampleModel("ru", 5, listOf("4343", "35573"))
+        @Body sampleModel:SampleModel = SampleModel("ru", 5, listOf("35573"))
     ): ArticlesRemoteModel
+
+    @POST("v2/top-headlines")
+    suspend fun post2Articles(
+        @Body myJson: MyJson
+    ): ArticlesRemoteModel
+
 }
