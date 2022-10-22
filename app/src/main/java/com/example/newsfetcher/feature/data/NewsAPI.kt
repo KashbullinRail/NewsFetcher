@@ -36,5 +36,4 @@ interface NewsAPI {
             "10.12.2013T14:53:16.548Z",
             "fields89")
         ): ArticlesRemoteModel
-
 }
