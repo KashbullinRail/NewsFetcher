@@ -7,8 +7,8 @@ import com.example.newsfetcher.feature.domian.ArticleModel
 
 class ArticlesRemoteRepositoryImpl(private val source: ArticlesRemoteSource) : ArticlesRepository {
     override suspend fun getArticles(): List<ArticleModel> {
-       return source.getArticles().articlesList.map {
-           it.toDomian()
-       }
+        return source.getArticles().articlesList.map {
+            it.toDomian()
+        }
     }
 }
