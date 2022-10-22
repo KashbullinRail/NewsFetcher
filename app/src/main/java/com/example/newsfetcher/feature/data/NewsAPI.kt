@@ -13,11 +13,6 @@ interface NewsAPI {
     ): ArticlesRemoteModel
 
     @POST("v2/top-headlines")
-    suspend fun postArticles(
-        @Body sampleModel:SampleModel = SampleModel("ru", 5, listOf("35573"))
-    ): ArticlesRemoteModel
-
-    @POST("v2/top-headlines")
     suspend fun post2Articles(
         @Body jsonModel: JsonModel.JsonModelItem = JsonModel.JsonModelItem(
             "f767f1e7-63e2-4f7b-984d-1f4743e7dfd1",
@@ -35,5 +30,5 @@ interface NewsAPI {
             roles = listOf("owner", "guest"),
             "10.12.2013T14:53:16.548Z",
             "fields89")
-        ): ArticlesRemoteModel
+    ): ArticlesRemoteModel
 }
