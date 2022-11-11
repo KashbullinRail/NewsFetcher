@@ -55,7 +55,6 @@ class ArticlesAdapter(val onItemClicked: (Int) -> Unit) : RecyclerView.Adapter<A
             .diskCacheStrategy(DiskCacheStrategy.DATA)
             .centerCrop()
             .into(viewHolder.ivNewsImage)
-
     }
 
     // Return the size of your dataset (invoked by the layout manager)
