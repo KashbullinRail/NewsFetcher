@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.*
 import com.example.newsfetcher.base.BaseViewModel
 import com.example.newsfetcher.base.Event
-import com.example.newsfetcher.feature.bookmarks.di.bookmarksModule
+
 import com.example.newsfetcher.feature.bookmarks.domian.BookmarksInteractor
 import com.example.newsfetcher.feature.domian.ArticlesInteractor
 import kotlinx.coroutines.launch

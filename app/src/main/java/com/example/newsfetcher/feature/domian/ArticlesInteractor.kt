@@ -9,8 +9,12 @@ import com.google.gson.Gson
 import com.google.gson.JsonObject
 
 class ArticlesInteractor(private val repository: ArticlesRepository) {
-    suspend fun getArticles() = attempt {
 
+    suspend fun getArticles() = attempt {
+        repository.getArticles()
+    }
+
+}
 
 //        val gson = Gson()
 //        val request = gson.toJson(JsonObject().apply {
@@ -53,8 +57,3 @@ class ArticlesInteractor(private val repository: ArticlesRepository) {
 //        Log.e("TAG", jsonModel.toString())
 
 
-        repository.getArticles()
-
-    }
-
-}
