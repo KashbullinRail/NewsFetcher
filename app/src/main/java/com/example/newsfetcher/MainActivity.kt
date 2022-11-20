@@ -1,5 +1,6 @@
 package com.example.newsfetcher
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -28,6 +29,8 @@ class MainActivity : AppCompatActivity() {
             true
         }
         bottomNavigationMenu.selectedItemId = R.id.itemMain
+
+
     }
     private fun selectTab(fragment: Fragment){
         supportFragmentManager.beginTransaction().replace(R.id.container, fragment).commit()
