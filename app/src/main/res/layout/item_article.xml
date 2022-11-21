@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="220dp"
     android:layout_margin="10dp">
 
     <ImageView
         android:id="@+id/ivNewsImage"
         android:layout_width="match_parent"
-        android:layout_height="160dp"/>
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="18dp"
+        android:layout_height="180dp"/>
 
     <TextView
         android:id="@+id/tvTitle"
-        android:layout_margin="8dp"
-        android:background="@color/black_100"
-        android:textColor="@color/white_100"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_margin="0dp"
+        android:background="@color/dark_400"
+        android:textColor="@color/black_100" />
 
     <TextView
         android:id="@+id/tvData"

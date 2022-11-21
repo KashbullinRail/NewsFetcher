@@ -34,7 +34,7 @@ class MainScreenViewModel(
                             Log.e("ERROR", it.localizedMessage)
                         },
                         onSuccess = {
-                            processDataEvent(DateEvent. OnLoadArticlesSucceed(it))
+                            processDataEvent(DateEvent.OnLoadArticlesSucceed(it))
                         }
                     )
 
@@ -56,7 +56,8 @@ class MainScreenViewModel(
             }
             is UIEvent.OnSearchButtonCliked -> {
                 return previousState.copy(
-                    articlesShown = if (!previousState.isSearchEnabled) previousState.articlesList else previousState.articlesShown,
+                    articlesShown = if (!previousState.isSearchEnabled) previousState.articlesList
+                    else previousState.articlesShown,
                     isSearchEnabled = !previousState.isSearchEnabled
                 )
             }
