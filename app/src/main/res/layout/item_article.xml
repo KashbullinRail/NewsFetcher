@@ -8,6 +8,7 @@
         android:id="@+id/ivNewsImage"
         android:layout_width="match_parent"
         android:layout_marginTop="25dp"
+        android:background="?android:attr/colorBackground"
         android:layout_marginBottom="18dp"
         android:layout_height="180dp"/>
 
@@ -16,13 +17,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="0dp"
-        android:background="@color/dark_400"
+        android:background="?android:attr/colorPrimary"
         android:textColor="@color/black_100" />
 
     <TextView
         android:id="@+id/tvData"
         android:layout_gravity="bottom"
-        android:background="@color/black_100"
+        android:background="?android:attr/colorPrimary"
         android:textColor="@color/white_100"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
