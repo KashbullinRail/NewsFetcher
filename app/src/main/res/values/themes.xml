@@ -9,7 +9,7 @@
 
     <style name="BaseTheme.Light">
 
-        <item name="colorPrimary">@color/background_medium</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorSecondary">@color/colorPrimary</item>
         <item name="colorOnPrimary">@color/white_100</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -19,7 +19,7 @@
         <item name="colorSurfaceNative">@color/grey_400</item>
         <item name="colorSurfaceVariant">@color/white_100</item>
 
-        <item name="android:colorBackground">@color/white_100</item>
+        <item name="android:colorBackground">@color/grey_900</item>
         <item name="colorBackground">?android:colorBackground</item>
         <item name="colorAccented">@color/black_100</item>
 
