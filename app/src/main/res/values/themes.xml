@@ -32,6 +32,17 @@
 
         <item name="colorSurface">?attr/colorSurfaceMain</item>
 
-
     </style>
+
+    <style name="CustomStyle">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/grey_800</item>
+        <item name="fontFamily">casual</item>
+        <item name="android:textStyle">italic</item>
+        <item name="android:gravity">center</item>
+        <item name="android:lines">2</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+
 </resources>
