@@ -2,6 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="140dp"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_margin="10dp"
     android:backgroundTint="@color/colorPrimary">
 
@@ -10,7 +11,8 @@
         android:layout_width="160dp"
         android:layout_height="120dp"
         android:layout_gravity="top|start"
-        android:backgroundTint="@color/colorPrimary"/>
+        android:backgroundTint="@color/colorPrimary"
+        tools:src = "@tools:sample/avatars"/>
 
     <TextView
         android:id="@+id/tvTitle"
@@ -19,7 +21,8 @@
         android:layout_gravity="end|top"
         android:lines="6"
         android:background="?android:attr/colorPrimary"
-        android:textColor="@color/black_100" />
+        android:textColor="@color/black_100"
+        tools:text = "@tools:sample/lorem/random"/>
 
     <TextView
         android:id="@+id/tvData"
@@ -28,7 +31,8 @@
         android:layout_gravity="bottom|end"
         android:hint="non text"
         android:background="?android:attr/colorPrimary"
-        android:textColor="@color/white_100" />
+        android:textColor="@color/white_100"
+        tools:text = "@tools:sample/date/ddmmyy"/>
 
 
 </androidx.cardview.widget.CardView>
