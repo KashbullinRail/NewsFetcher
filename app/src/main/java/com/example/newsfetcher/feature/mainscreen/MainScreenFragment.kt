@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.newsfetcher.R
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+
 class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
 
     private val viewModel: MainScreenViewModel by viewModel()
@@ -70,9 +71,8 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
 
             }
 
-
         }
 
-
     }
+
 }
