@@ -1,6 +1,7 @@
 package com.example.newsfetcher
 
 class JsonModel : ArrayList<JsonModel.JsonModelItem>(){
+
     data class JsonModelItem(
         val apiKey: String,
         val createdAt: String,
@@ -25,4 +26,5 @@ class JsonModel : ArrayList<JsonModel.JsonModelItem>(){
             )
         }
     }
+
 }
