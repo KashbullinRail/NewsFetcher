@@ -1,5 +1,7 @@
-package com.example.newsfetcher.feature.bookmarks.data.local
+package com.example.newsfetcher.feature.bookmarks.data.model
 
+import com.example.newsfetcher.feature.bookmarks.data.BookmarksLocalSource
+import com.example.newsfetcher.feature.bookmarks.data.BookmarksRepository
 import com.example.newsfetcher.feature.bookmarks.data.toDomain
 import com.example.newsfetcher.feature.bookmarks.data.toEntity
 import com.example.newsfetcher.feature.main_screen.domian.ArticleModel

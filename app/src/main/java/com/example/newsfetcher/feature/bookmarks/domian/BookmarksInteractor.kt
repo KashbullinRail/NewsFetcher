@@ -2,7 +2,7 @@ package com.example.newsfetcher.feature.bookmarks.domian
 
 import com.example.newsfetcher.base.Either
 import com.example.newsfetcher.base.attempt
-import com.example.newsfetcher.feature.bookmarks.data.local.BookmarksRepository
+import com.example.newsfetcher.feature.bookmarks.data.BookmarksRepository
 import com.example.newsfetcher.feature.main_screen.domian.ArticleModel
 
 

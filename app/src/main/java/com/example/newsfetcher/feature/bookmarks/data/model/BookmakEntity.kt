@@ -1,4 +1,4 @@
-package com.example.newsfetcher.feature.bookmarks.data.local.model
+package com.example.newsfetcher.feature.bookmarks.data.model
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

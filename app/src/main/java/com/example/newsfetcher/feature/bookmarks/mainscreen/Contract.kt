@@ -4,11 +4,20 @@ import com.example.newsfetcher.base.Event
 import com.example.newsfetcher.feature.main_screen.domian.ArticleModel
 
 
+enum class State {
+    Load,
+    Content,
+    Error
+}
+
 data class ViewState(
+    val state: State,
     val bookmarksArticle: List<ArticleModel>
 )
 
-sealed class UIEvent()
+sealed class UIEvent: Event {
+    data class OnArticleClicked(val index: Int): UIEvent()
+}
 
 sealed class DataEvent() : Event {
 

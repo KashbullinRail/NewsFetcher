@@ -1,4 +1,4 @@
-package com.example.newsfetcher.feature.bookmarks.data.local
+package com.example.newsfetcher.feature.bookmarks.data
 
 import com.example.newsfetcher.feature.main_screen.domian.ArticleModel
 

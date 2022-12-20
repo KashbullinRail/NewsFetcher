@@ -15,7 +15,11 @@ class BookmarksScreenViewModel(private val interactor: BookmarksInteractor) :
         processDataEvent(DataEvent.LoadBookmarks)
     }
 
-    override fun initialViewState(): ViewState = ViewState(bookmarksArticle = emptyList())
+    override fun initialViewState(): ViewState =
+        ViewState(
+            state = State.Load,
+            bookmarksArticle = emptyList()
+        )
 
     override fun reduce(event: Event, previousState: ViewState): ViewState? {
 
@@ -33,7 +37,10 @@ class BookmarksScreenViewModel(private val interactor: BookmarksInteractor) :
             }
             is DataEvent.OnSuccessBookmarksLoaded -> {
                 Log.d("Room", "articleBookmark = ${event.bookmarksArticle}")
-                return previousState.copy(bookmarksArticle = event.bookmarksArticle)
+                return previousState.copy(
+                    bookmarksArticle = event.bookmarksArticle,
+                    state = State.Content
+                )
             }
             else -> return null
         }

@@ -1,7 +1,7 @@
-package com.example.newsfetcher.feature.bookmarks.data.local
+package com.example.newsfetcher.feature.bookmarks.data.model
 
 import androidx.room.*
-import com.example.newsfetcher.feature.bookmarks.data.local.model.BookmarkEntity
+import com.example.newsfetcher.feature.bookmarks.data.model.BookmarkEntity
 import com.example.newsfetcher.feature.bookmarks.di.BOOKMARKS_TABLE
 
 
