@@ -8,6 +8,7 @@ import com.example.newsfetcher.feature.bookmarks.mainscreen.BookmarksScreenViewM
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
+
 const val BOOKMARKS_TABLE = "BOOKMARKS_TABLE"
 
 val bookmarksModule = module {
@@ -17,16 +18,15 @@ val bookmarksModule = module {
     }
 
     single<BookmarksRepository> {
-        BookmarksRepositoryImpl(bookmarksLocalSource =  get())
+        BookmarksRepositoryImpl(bookmarksLocalSource = get())
     }
 
     single {
-        BookmarksInteractor(bookmarksRepository =  get())
+        BookmarksInteractor(bookmarksRepository = get())
     }
 
     viewModel {
-        BookmarksScreenViewModel(interactor =  get())
+        BookmarksScreenViewModel(interactor = get())
     }
-
 
 }

@@ -21,5 +21,4 @@ data class BookmarkEntity(
     val urlToImage: String,
     @ColumnInfo(name = "publishedAt")
     val publishedAt: String
-
 )

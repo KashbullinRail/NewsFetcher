@@ -5,7 +5,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -14,10 +13,10 @@ import com.example.newsfetcher.R
 import com.example.newsfetcher.feature.main_screen.domian.ArticleModel
 
 
-class ArticlesAdapter(val onItemClicked: (Int) -> Unit) : RecyclerView.Adapter<ArticlesAdapter.ViewHolder>() {
+class ArticlesAdapter(val onItemClicked: (Int) -> Unit) :
+    RecyclerView.Adapter<ArticlesAdapter.ViewHolder>() {
 
     private var articlesData: List<ArticleModel> = emptyList()
-
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val tvTitle: TextView = view.findViewById(R.id.tvTitle)
@@ -37,7 +36,7 @@ class ArticlesAdapter(val onItemClicked: (Int) -> Unit) : RecyclerView.Adapter<A
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
 
-        viewHolder.itemView.setOnClickListener{
+        viewHolder.itemView.setOnClickListener {
             onItemClicked.invoke(position)
         }
 
@@ -60,7 +59,7 @@ class ArticlesAdapter(val onItemClicked: (Int) -> Unit) : RecyclerView.Adapter<A
     // Return the size of your dataset (invoked by the layout manager)
     override fun getItemCount() = articlesData.size
 
-    fun setData(articles: List<ArticleModel>){
+    fun setData(articles: List<ArticleModel>) {
         articlesData = articles
         notifyDataSetChanged()
     }

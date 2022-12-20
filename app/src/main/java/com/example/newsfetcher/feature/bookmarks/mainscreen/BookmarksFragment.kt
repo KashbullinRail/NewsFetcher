@@ -6,7 +6,8 @@ import androidx.fragment.app.Fragment
 import com.example.newsfetcher.R
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class BookmarksFragment: Fragment(R.layout.fragment_bookmarks) {
+
+class BookmarksFragment : Fragment(R.layout.fragment_bookmarks) {
 
     private val viewModel: BookmarksScreenViewModel by viewModel()
 

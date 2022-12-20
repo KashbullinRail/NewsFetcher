@@ -1,6 +1,7 @@
 package com.example.newsfetcher.canbedeleted
 
-class JsonModel : ArrayList<JsonModel.JsonModelItem>(){
+class JsonModel : ArrayList<JsonModel.JsonModelItem>() {
+
 
     data class JsonModelItem(
         val apiKey: String,

@@ -3,11 +3,13 @@ package com.example.newsfetcher.feature.main_screen.data
 import com.example.newsfetcher.feature.main_screen.data.model.ArticlesRemoteModel
 import retrofit2.http.*
 
+
 interface NewsAPI {
+
     @GET("v2/top-headlines")
     suspend fun getArticles(
 //        @Query("apiKey") apiKey: String = API_KEY,
-        @Query("country") country :String = "ru"
+        @Query("country") country: String = "ru"
     ): ArticlesRemoteModel
 
 //    @POST("v2/top-headlines")
@@ -29,4 +31,5 @@ interface NewsAPI {
 //            "10.12.2013T14:53:16.548Z",
 //            "fields89")
 //    ): ArticlesRemoteModel
+
 }

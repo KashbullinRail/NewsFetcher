@@ -1,6 +1,5 @@
 package com.example.newsfetcher.feature.main_screen.domian
 
-import com.google.gson.annotations.SerializedName
 
 data class ArticleModel(
     val author: String,

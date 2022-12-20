@@ -10,7 +10,9 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
 
+
 val mainScreenModule = module {
+
     single<NewsAPI> {
         get<Retrofit>().create(NewsAPI::class.java)
     }
@@ -30,6 +32,5 @@ val mainScreenModule = module {
     viewModel {
         MainScreenViewModel(interactor = get(), bookmarksInteractor = get())
     }
-
 
 }

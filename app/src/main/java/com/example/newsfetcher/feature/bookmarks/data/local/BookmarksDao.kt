@@ -4,6 +4,7 @@ import androidx.room.*
 import com.example.newsfetcher.feature.bookmarks.data.local.model.BookmarkEntity
 import com.example.newsfetcher.feature.bookmarks.di.BOOKMARKS_TABLE
 
+
 @Dao
 interface BookmarksDao {
 
@@ -18,6 +19,5 @@ interface BookmarksDao {
 
     @Delete
     suspend fun delete(entity: BookmarkEntity)
-
 
 }

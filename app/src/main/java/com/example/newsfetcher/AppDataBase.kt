@@ -7,7 +7,7 @@ import com.example.newsfetcher.feature.bookmarks.data.local.model.BookmarkEntity
 
 
 @Database(entities = [BookmarkEntity::class], version = 1)
-abstract class AppDataBase: RoomDatabase() {
+abstract class AppDataBase : RoomDatabase() {
 
     abstract fun bookmarksDao(): BookmarksDao
 
