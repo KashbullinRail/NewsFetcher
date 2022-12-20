@@ -64,6 +64,7 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
             State.Content -> {
                 tvTitle.isVisible = !viewState.isSearchEnabled
                 etSearch.isVisible = viewState.isSearchEnabled
+                if (!etSearch.isVisible) etSearch.setText("")
                 adapter.setData(viewState.articlesShown)
             }
             State.Error -> {
