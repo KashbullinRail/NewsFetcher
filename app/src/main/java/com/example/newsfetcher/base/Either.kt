@@ -1,5 +1,6 @@
 package com.example.newsfetcher.base
 
+
 sealed class Either<out LEFT, out RIGHT> {
 
     class Left<LEFT>(val value: LEFT) : Either<LEFT, Nothing>()
@@ -26,6 +27,7 @@ sealed class Either<out LEFT, out RIGHT> {
         is Left -> Left(transform(value))
         is Right -> Right(this.value)
     }
+
 }
 
 inline fun <TYPE, LEFT, RIGHT> Either<LEFT, RIGHT>.flatMap(
