@@ -1,9 +1,8 @@
-package com.example.newsfetcher.feature.mainscreen
+package com.example.newsfetcher.feature.main_screen.mainscreen
 
 
 import com.example.newsfetcher.base.Event
-import com.example.newsfetcher.feature.bookmarks.ui.DataEvent
-import com.example.newsfetcher.feature.domian.ArticleModel
+import com.example.newsfetcher.feature.main_screen.domian.ArticleModel
 
 enum class State {
     Load,

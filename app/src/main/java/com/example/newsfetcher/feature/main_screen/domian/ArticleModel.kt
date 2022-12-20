@@ -1,4 +1,4 @@
-package com.example.newsfetcher.feature.domian
+package com.example.newsfetcher.feature.main_screen.domian
 
 import com.google.gson.annotations.SerializedName
 

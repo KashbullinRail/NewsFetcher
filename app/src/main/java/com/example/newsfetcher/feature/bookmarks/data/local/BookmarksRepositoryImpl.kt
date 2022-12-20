@@ -2,9 +2,10 @@ package com.example.newsfetcher.feature.bookmarks.data.local
 
 import com.example.newsfetcher.feature.bookmarks.data.toDomain
 import com.example.newsfetcher.feature.bookmarks.data.toEntity
-import com.example.newsfetcher.feature.domian.ArticleModel
+import com.example.newsfetcher.feature.main_screen.domian.ArticleModel
 
-class BookmarksRepositoryImpl(private val bookmarksLocalSource: BookmarksLocalSource): BookmarksRepository {
+class BookmarksRepositoryImpl(private val bookmarksLocalSource: BookmarksLocalSource):
+    BookmarksRepository {
     override suspend fun create(model: ArticleModel) {
         bookmarksLocalSource.create(model.toEntity())
     }

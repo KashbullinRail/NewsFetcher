@@ -1,11 +1,10 @@
 package com.example.newsfetcher
 
-import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import com.example.newsfetcher.feature.bookmarks.ui.BookmarksFragment
-import com.example.newsfetcher.feature.mainscreen.MainScreenFragment
+import com.example.newsfetcher.feature.bookmarks.mainscreen.BookmarksFragment
+import com.example.newsfetcher.feature.main_screen.mainscreen.MainScreenFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {

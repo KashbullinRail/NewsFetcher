@@ -1,4 +1,4 @@
-package com.example.newsfetcher.feature.mainscreen
+package com.example.newsfetcher.feature.main_screen.mainscreen
 
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.example.newsfetcher.R
-import com.example.newsfetcher.feature.domian.ArticleModel
+import com.example.newsfetcher.feature.main_screen.domian.ArticleModel
 
 
 class ArticlesAdapter(val onItemClicked: (Int) -> Unit) : RecyclerView.Adapter<ArticlesAdapter.ViewHolder>() {

@@ -1,4 +1,4 @@
-package com.example.newsfetcher.feature.data.model
+package com.example.newsfetcher.feature.main_screen.data.model
 
 import com.google.gson.annotations.SerializedName
 

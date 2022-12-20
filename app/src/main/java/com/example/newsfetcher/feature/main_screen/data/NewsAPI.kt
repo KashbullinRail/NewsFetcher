@@ -1,8 +1,6 @@
-package com.example.newsfetcher.feature.data
+package com.example.newsfetcher.feature.main_screen.data
 
-import com.example.newsfetcher.JsonModel
-import com.example.newsfetcher.SampleModel
-import com.example.newsfetcher.feature.data.model.ArticlesRemoteModel
+import com.example.newsfetcher.feature.main_screen.data.model.ArticlesRemoteModel
 import retrofit2.http.*
 
 interface NewsAPI {

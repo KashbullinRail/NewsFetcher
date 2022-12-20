@@ -1,4 +1,4 @@
-package com.example.newsfetcher
+package com.example.newsfetcher.canbedeleted
 
 import com.google.gson.annotations.SerializedName
 

@@ -1,12 +1,7 @@
-package com.example.newsfetcher.feature.domian
+package com.example.newsfetcher.feature.main_screen.domian
 
-import android.util.Log
-import com.example.newsfetcher.JsonModel
-import com.example.newsfetcher.SampleModel
 import com.example.newsfetcher.base.attempt
-import com.example.newsfetcher.feature.data.ArticlesRepository
-import com.google.gson.Gson
-import com.google.gson.JsonObject
+import com.example.newsfetcher.feature.main_screen.data.ArticlesRepository
 
 class ArticlesInteractor(private val repository: ArticlesRepository) {
 

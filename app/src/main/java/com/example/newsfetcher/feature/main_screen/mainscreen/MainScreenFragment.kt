@@ -1,4 +1,4 @@
-package com.example.newsfetcher.feature.mainscreen
+package com.example.newsfetcher.feature.main_screen.mainscreen
 
 import android.os.Bundle
 import android.text.Editable

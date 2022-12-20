@@ -1,7 +1,6 @@
-package com.example.newsfetcher.feature.bookmarks.ui
+package com.example.newsfetcher.feature.bookmarks.mainscreen
 
 import android.util.Log
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.newsfetcher.base.BaseViewModel
 import com.example.newsfetcher.base.Event
