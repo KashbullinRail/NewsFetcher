@@ -12,7 +12,8 @@ enum class State {
 
 data class ViewState(
     val state: State,
-    val bookmarksArticle: List<ArticleModel>
+    val bookmarksArticle: List<ArticleModel>,
+    val articleDetail: ArticleModel
 )
 
 sealed class UIEvent: Event {

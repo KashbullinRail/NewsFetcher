@@ -5,6 +5,8 @@ import androidx.lifecycle.viewModelScope
 import com.example.newsfetcher.base.BaseViewModel
 import com.example.newsfetcher.base.Event
 import com.example.newsfetcher.feature.bookmarks.domian.BookmarksInteractor
+import com.example.newsfetcher.feature.main_screen.domian.ArticleModel
+import com.example.newsfetcher.feature.main_screen.presentation.UIEvent
 import kotlinx.coroutines.launch
 
 
@@ -18,7 +20,10 @@ class BookmarksScreenViewModel(private val interactor: BookmarksInteractor) :
     override fun initialViewState(): ViewState =
         ViewState(
             state = State.Load,
-            bookmarksArticle = emptyList()
+            bookmarksArticle = emptyList(),
+            articleDetail = ArticleModel(
+                "", "", "", "", "", ""
+            )
         )
 
     override fun reduce(event: Event, previousState: ViewState): ViewState? {
@@ -41,6 +46,13 @@ class BookmarksScreenViewModel(private val interactor: BookmarksInteractor) :
                     bookmarksArticle = event.bookmarksArticle,
                     state = State.Content
                 )
+            }
+            is UIEvent.OnArticleClicked -> {
+                viewModelScope.launch {
+                   val bookmarksItem = interactor.read()
+                }
+
+                return previousState.copy(articleDetail = previousState.bookmarksArticle[event.index])
             }
             else -> return null
         }
