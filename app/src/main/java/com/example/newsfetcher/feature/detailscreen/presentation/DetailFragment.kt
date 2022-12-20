@@ -1,4 +1,4 @@
-package com.example.newsfetcher.feature.detailscreen
+package com.example.newsfetcher.feature.detailscreen.presentation
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

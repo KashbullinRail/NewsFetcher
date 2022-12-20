@@ -3,9 +3,9 @@ package com.example.newsfetcher
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import com.example.newsfetcher.feature.bookmarks.mainscreen.BookmarksFragment
-import com.example.newsfetcher.feature.detailscreen.DetailFragment
-import com.example.newsfetcher.feature.main_screen.mainscreen.MainScreenFragment
+import com.example.newsfetcher.feature.bookmarks.presentation.BookmarksFragment
+import com.example.newsfetcher.feature.detailscreen.presentation.DetailFragment
+import com.example.newsfetcher.feature.main_screen.presentation.MainScreenFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 

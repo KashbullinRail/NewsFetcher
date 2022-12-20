@@ -1,4 +1,4 @@
-package com.example.newsfetcher.feature.bookmarks.mainscreen
+package com.example.newsfetcher.feature.bookmarks.presentation
 
 import android.util.Log
 import androidx.lifecycle.viewModelScope
