@@ -14,8 +14,7 @@ import kotlinx.coroutines.launch
 class BookmarksScreenViewModel(
     private val interactor: BookmarksInteractor,
     private val detailInteractor: DetailInteractor
-) :
-    BaseViewModel<ViewState>() {
+) : BaseViewModel<ViewState>() {
 
     init {
         processDataEvent(DataEvent.LoadBookmarks)
@@ -60,7 +59,6 @@ class BookmarksScreenViewModel(
             }
             else -> return null
         }
-
 
     }
 

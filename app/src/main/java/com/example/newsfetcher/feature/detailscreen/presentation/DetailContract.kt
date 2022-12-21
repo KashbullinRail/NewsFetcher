@@ -20,7 +20,7 @@ sealed class UIEvent: Event {
 }
 
 sealed class DataEvent(): Event {
-    object LoadBookmarks : DataEvent()
+    object LoadDetail : DataEvent()
     data class OnSuccessDetailsLoaded(val articleDetailList: List<ArticleModel>) : DataEvent()
     data class OnFailedBookmarksLoaded(val throwable: Throwable) : DataEvent()
     data class OnSuccesDetailLoad(val articleDetail: ArticleModel): DataEvent()

@@ -17,25 +17,27 @@ class DetailScreenViewModel(
     BaseViewModel<ViewState>() {
 
     init {
-        processDataEvent(DataEvent.LoadBookmarks)
+        processDataEvent(DataEvent.LoadDetail)
     }
 
     override fun initialViewState(): ViewState =
         ViewState(
             state = State.Load,
+            articleDetailList = emptyList(),
             articleDetail = ArticleModel(
                 "2", "2", "2", "2", "2", "2"
-            ),
-            articleDetailList = emptyList()
+            )
         )
 
     override fun reduce(event: Event, previousState: ViewState): ViewState? {
 
         when (event) {
-            is DataEvent.LoadBookmarks -> {
+            is DataEvent.LoadDetail -> {
                 viewModelScope.launch {
                     interactor.read().fold(
-                        onError = {},
+                        onError = {
+                            Log.e("ERROR", it.localizedMessage)
+                        },
                         onSuccess = {
                             processDataEvent(DataEvent.OnSuccessDetailsLoaded(it))
                         }
