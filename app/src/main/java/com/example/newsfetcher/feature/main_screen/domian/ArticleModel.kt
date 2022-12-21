@@ -10,4 +10,4 @@ data class ArticleModel(
     val url: String,
     val urlToImage: String,
     val publishedAt: String
-):Serializable
+)

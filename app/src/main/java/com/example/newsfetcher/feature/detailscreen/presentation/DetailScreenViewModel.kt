@@ -4,11 +4,16 @@ import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.example.newsfetcher.base.BaseViewModel
 import com.example.newsfetcher.base.Event
+import com.example.newsfetcher.feature.bookmarks.domian.BookmarksInteractor
 import com.example.newsfetcher.feature.detailscreen.domain.DetailInteractor
+import com.example.newsfetcher.feature.main_screen.domian.ArticleModel
 import kotlinx.coroutines.launch
 
 
-class DetailScreenViewModel(private val interactor: DetailInteractor) :
+class DetailScreenViewModel(
+    private val interactor: DetailInteractor,
+    private val bookmarksInteractor: BookmarksInteractor
+) :
     BaseViewModel<ViewState>() {
 
     init {
@@ -18,13 +23,12 @@ class DetailScreenViewModel(private val interactor: DetailInteractor) :
     override fun initialViewState(): ViewState =
         ViewState(
             state = State.Load,
-            bookmarksArticle = emptyList(),
             articleDetail = ArticleModel(
                 "2", "2", "2", "2", "2", "2"
             )
         )
 
-    override fun reduce(event: Event, previousState: com.example.newsfetcher.feature.bookmarks.presentation.ViewState): com.example.newsfetcher.feature.bookmarks.presentation.ViewState? {
+    override fun reduce(event: Event, previousState: ViewState): ViewState? {
 
         when (event) {
             is DataEvent.LoadBookmarks -> {
@@ -41,23 +45,10 @@ class DetailScreenViewModel(private val interactor: DetailInteractor) :
             is DataEvent.OnSuccessBookmarksLoaded -> {
                 Log.d("Room", "articleBookmark = ${event.bookmarksArticle}")
                 return previousState.copy(
-                    bookmarksArticle = event.bookmarksArticle,
                     state = State.Content
                 )
             }
-            is UIEvent.OnArticleClicked -> {
-                return previousState.copy(
-                    articleDetail = previousState.bookmarksArticle[event.index],
-                    state = State.LoadDetail
-                )
-            }
-//            is DataEvent.OnSuccesDetailLoad -> {
-//                Log.d("TAGG8", "Articles book ${liveDataDetail.value}")
-//                return previousState.copy(
-//                    articleDetail = event.articleDetail,
-//                    state = State.LoadDetail
-//                )
-//            }
+
             else -> return null
         }
 

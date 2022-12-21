@@ -26,7 +26,7 @@ val detailModule = module {
     }
 
     viewModel {
-        DetailScreenViewModel(interactor = get())
+        DetailScreenViewModel(interactor = get(), bookmarksInteractor = get())
     }
 
 }
