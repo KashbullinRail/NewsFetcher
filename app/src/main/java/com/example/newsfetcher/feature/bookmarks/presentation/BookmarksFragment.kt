@@ -26,6 +26,7 @@ class BookmarksFragment : Fragment(R.layout.fragment_bookmarks) {
     private val fabDeleteBookmarks: FloatingActionButton by lazy {
         requireActivity().findViewById(R.id.fabDeleteBookmarks) }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -45,8 +46,7 @@ class BookmarksFragment : Fragment(R.layout.fragment_bookmarks) {
             State.Load -> {
             }
             State.Content -> {
-                adapter.setData(viewState.bookmarksArticleShown)
-                Log.d("TAGG1", " book3")
+                adapter.setData(viewState.bookmarksArticle)
             }
             State.Error -> {
             }

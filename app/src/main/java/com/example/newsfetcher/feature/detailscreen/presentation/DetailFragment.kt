@@ -1,7 +1,6 @@
 package com.example.newsfetcher.feature.detailscreen.presentation
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.ProgressBar
@@ -10,10 +9,10 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.example.newsfetcher.R
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.CollapsingToolbarLayout
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.math.abs
 
@@ -29,6 +28,9 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
     private val newsDetailAppBar:
             AppBarLayout by lazy { requireActivity().findViewById(R.id.newsDetailAppBar) }
     private val ivNewsDetail: ImageView by lazy { requireActivity().findViewById(R.id.ivNewsDetail) }
+    private val fabDeleteDetailItem: FloatingActionButton by lazy {
+        requireActivity().findViewById(R.id.fabDeleteDetailItem)
+    }
 
     private val viewModel: DetailScreenViewModel by viewModel()
 
@@ -40,11 +42,15 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
 
         newsDetailAppBar.addOnOffsetChangedListener(
             AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
-            val percent = (abs(appBarLayout.totalScrollRange + verticalOffset)
+                val percent = (abs(appBarLayout.totalScrollRange + verticalOffset)
                     .toFloat() / appBarLayout.totalScrollRange)
-            tvDescription.alpha = percent
-            tvTitleDetail.alpha = percent
-        })
+                tvDescription.alpha = percent
+                tvTitleDetail.alpha = percent
+            })
+
+        fabDeleteDetailItem.setOnClickListener {
+            viewModel.processUIEvent(UIEvent.OnDeleteClicked)
+        }
 
     }
 

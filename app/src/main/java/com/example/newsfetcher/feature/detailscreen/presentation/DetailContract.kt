@@ -16,12 +16,11 @@ data class ViewState(
     val articleDetailList: List<ArticleModel>
 )
 
-sealed class UIEvent: Event {
+sealed class UIEvent : Event {
+    object OnDeleteClicked : UIEvent()
 }
 
-sealed class DataEvent(): Event {
+sealed class DataEvent() : Event {
     object LoadDetail : DataEvent()
     data class OnSuccessDetailsLoaded(val articleDetailList: List<ArticleModel>) : DataEvent()
-    data class OnFailedBookmarksLoaded(val throwable: Throwable) : DataEvent()
-    data class OnSuccesDetailLoad(val articleDetail: ArticleModel): DataEvent()
 }

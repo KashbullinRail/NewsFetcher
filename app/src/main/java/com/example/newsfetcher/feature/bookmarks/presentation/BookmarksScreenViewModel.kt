@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 
 
 class BookmarksScreenViewModel(
-    private val interactor: BookmarksInteractor,
+    private val bookmarksInteractor: BookmarksInteractor,
     private val detailInteractor: DetailInteractor
 ) : BaseViewModel<ViewState>() {
 
@@ -24,7 +24,6 @@ class BookmarksScreenViewModel(
         ViewState(
             state = State.Load,
             bookmarksArticle = emptyList(),
-            bookmarksArticleShown = emptyList(),
             articleDetail = ArticleModel(
                 "", "", "", "", "", ""
             )
@@ -35,8 +34,10 @@ class BookmarksScreenViewModel(
         when (event) {
             is DataEvent.LoadBookmarks -> {
                 viewModelScope.launch {
-                    interactor.read().fold(
-                        onError = {},
+                    bookmarksInteractor.read().fold(
+                        onError = {
+                            Log.e("ERROR", it.localizedMessage!!)
+                        },
                         onSuccess = {
                             processDataEvent(DataEvent.OnSuccessBookmarksLoaded(it))
                         }
@@ -45,30 +46,32 @@ class BookmarksScreenViewModel(
                 return null
             }
             is DataEvent.OnSuccessBookmarksLoaded -> {
-                Log.d("Room", "articleBookmark = ${event.bookmarksArticle}")
                 return previousState.copy(
                     bookmarksArticle = event.bookmarksArticle,
-                    bookmarksArticleShown = event.bookmarksArticle,
                     state = State.Content
                 )
             }
             is OnArticleClicked -> {
                 viewModelScope.launch {
                     detailInteractor.create(previousState.bookmarksArticle[event.index])
-                    Log.d("TAGG", "OnArticleClicked ${previousState.bookmarksArticle[event.index]}")
                 }
                 return null
             }
             is OnDeleteClicked -> {
                 viewModelScope.launch {
-                    val articleModel = previousState.bookmarksArticle.last()
-                    interactor.delete(articleModel)
-                    interactor.read().fold(
-                        onError = {},
-                        onSuccess = {
-                            processDataEvent(DataEvent.OnSuccessBookmarksLoaded(it))
-                        }
-                    )
+                    if (previousState.bookmarksArticle.isNotEmpty()) {
+                        val articleModel = previousState.bookmarksArticle.last()
+                        bookmarksInteractor.delete(articleModel)
+                        bookmarksInteractor.read().fold(
+                            onError = {
+                                Log.e("ERROR", it.localizedMessage!!)
+                            },
+                            onSuccess = {
+                                processDataEvent(DataEvent.OnSuccessBookmarksLoaded(it))
+                            }
+                        )
+                    }
+
                 }
                 return null
             }
