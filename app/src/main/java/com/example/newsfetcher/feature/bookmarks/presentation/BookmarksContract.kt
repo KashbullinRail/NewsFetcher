@@ -18,11 +18,10 @@ data class ViewState(
 
 sealed class UIEvent: Event {
     data class OnArticleClicked(val index: Int): UIEvent()
+    object OnDeleteClicked: UIEvent()
 }
 
 sealed class DataEvent() : Event {
     object LoadBookmarks : DataEvent()
     data class OnSuccessBookmarksLoaded(val bookmarksArticle: List<ArticleModel>) : DataEvent()
-    data class OnFailedBookmarksLoaded(val throwable: Throwable) : DataEvent()
-    data class OnSuccesDetailLoad(val articleDetail: ArticleModel): DataEvent()
 }

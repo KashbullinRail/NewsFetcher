@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newsfetcher.R
 import com.example.newsfetcher.feature.main_screen.presentation.ArticlesAdapter
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -23,6 +23,9 @@ class BookmarksFragment : Fragment(R.layout.fragment_bookmarks) {
             viewModel.processUIEvent(UIEvent.OnArticleClicked(index))
         }
     }
+    private val fabDeleteBookmarks: FloatingActionButton by lazy {
+        requireActivity().findViewById(R.id.fabDeleteBookmarks) }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -31,6 +34,9 @@ class BookmarksFragment : Fragment(R.layout.fragment_bookmarks) {
 
         recyclerView.adapter = adapter
 
+        fabDeleteBookmarks.setOnClickListener {
+            viewModel.processUIEvent(UIEvent.OnDeleteClicked)
+        }
 
     }
 
@@ -41,7 +47,6 @@ class BookmarksFragment : Fragment(R.layout.fragment_bookmarks) {
             }
             State.Content -> {
                 adapter.setData(viewState.bookmarksArticle)
-                Log.d("TAGG1", " book3")
             }
             State.Error -> {
             }

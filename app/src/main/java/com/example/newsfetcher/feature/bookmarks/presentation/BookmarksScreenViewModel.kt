@@ -12,10 +12,9 @@ import kotlinx.coroutines.launch
 
 
 class BookmarksScreenViewModel(
-    private val interactor: BookmarksInteractor,
+    private val bookmarksInteractor: BookmarksInteractor,
     private val detailInteractor: DetailInteractor
-) :
-    BaseViewModel<ViewState>() {
+) : BaseViewModel<ViewState>() {
 
     init {
         processDataEvent(DataEvent.LoadBookmarks)
@@ -26,7 +25,7 @@ class BookmarksScreenViewModel(
             state = State.Load,
             bookmarksArticle = emptyList(),
             articleDetail = ArticleModel(
-                "2", "2", "2", "2", "2", "2"
+                "", "", "", "", "", ""
             )
         )
 
@@ -35,8 +34,10 @@ class BookmarksScreenViewModel(
         when (event) {
             is DataEvent.LoadBookmarks -> {
                 viewModelScope.launch {
-                    interactor.read().fold(
-                        onError = {},
+                    bookmarksInteractor.read().fold(
+                        onError = {
+                            Log.e("ERROR", it.localizedMessage!!)
+                        },
                         onSuccess = {
                             processDataEvent(DataEvent.OnSuccessBookmarksLoaded(it))
                         }
@@ -45,7 +46,6 @@ class BookmarksScreenViewModel(
                 return null
             }
             is DataEvent.OnSuccessBookmarksLoaded -> {
-                Log.d("Room", "articleBookmark = ${event.bookmarksArticle}")
                 return previousState.copy(
                     bookmarksArticle = event.bookmarksArticle,
                     state = State.Content
@@ -54,13 +54,29 @@ class BookmarksScreenViewModel(
             is OnArticleClicked -> {
                 viewModelScope.launch {
                     detailInteractor.create(previousState.bookmarksArticle[event.index])
-                    Log.d("TAGG", "OnArticleClicked ${previousState.bookmarksArticle[event.index]}")
+                }
+                return null
+            }
+            is OnDeleteClicked -> {
+                viewModelScope.launch {
+                    if (previousState.bookmarksArticle.isNotEmpty()) {
+                        val articleModel = previousState.bookmarksArticle.last()
+                        bookmarksInteractor.delete(articleModel)
+                        bookmarksInteractor.read().fold(
+                            onError = {
+                                Log.e("ERROR", it.localizedMessage!!)
+                            },
+                            onSuccess = {
+                                processDataEvent(DataEvent.OnSuccessBookmarksLoaded(it))
+                            }
+                        )
+                    }
+
                 }
                 return null
             }
             else -> return null
         }
-
 
     }
 

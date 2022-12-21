@@ -26,7 +26,7 @@ val bookmarksModule = module {
     }
 
     viewModel {
-        BookmarksScreenViewModel(interactor = get(), detailInteractor = get())
+        BookmarksScreenViewModel(bookmarksInteractor = get(), detailInteractor = get())
     }
 
 }

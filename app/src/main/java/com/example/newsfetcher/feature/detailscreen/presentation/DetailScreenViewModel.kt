@@ -11,31 +11,32 @@ import kotlinx.coroutines.launch
 
 
 class DetailScreenViewModel(
-    private val interactor: DetailInteractor,
+    private val detailInteractor: DetailInteractor,
     private val bookmarksInteractor: BookmarksInteractor
-) :
-    BaseViewModel<ViewState>() {
+) : BaseViewModel<ViewState>() {
 
     init {
-        processDataEvent(DataEvent.LoadBookmarks)
+        processDataEvent(DataEvent.LoadDetail)
     }
 
     override fun initialViewState(): ViewState =
         ViewState(
             state = State.Load,
+            articleDetailList = emptyList(),
             articleDetail = ArticleModel(
-                "2", "2", "2", "2", "2", "2"
+                "", "", "", "", "", ""
             ),
-            articleDetailList = emptyList()
         )
 
     override fun reduce(event: Event, previousState: ViewState): ViewState? {
 
         when (event) {
-            is DataEvent.LoadBookmarks -> {
+            is DataEvent.LoadDetail -> {
                 viewModelScope.launch {
-                    interactor.read().fold(
-                        onError = {},
+                    detailInteractor.read().fold(
+                        onError = {
+                            Log.e("ERROR", it.localizedMessage)
+                        },
                         onSuccess = {
                             processDataEvent(DataEvent.OnSuccessDetailsLoaded(it))
                         }
@@ -44,13 +45,32 @@ class DetailScreenViewModel(
                 return null
             }
             is DataEvent.OnSuccessDetailsLoaded -> {
-                Log.d("Room2", "articleBookmark = ${event.articleDetailList}")
+                Log.d("RoomDetail", "articleBookmark = ${event.articleDetailList}")
                 val articleDetail = event.articleDetailList.last()
                 return previousState.copy(
                     articleDetail = articleDetail,
                     state = State.Content
                 )
             }
+//            is UIEvent.OnDeleteClicked -> {
+//                viewModelScope.launch {
+//                    val articleModel = previousState.articleDetailList.last()
+//                    Log.e("ERROR", "$articleModel")
+//                    interactor.delete(articleModel)
+//                    Log.e("ERROR", "after deleted")
+//                    interactor.read().fold(
+//                        onError = {
+//                            Log.e("ERROR", it.localizedMessage)
+//                            Log.e("ERROR", "after onError")
+//                        },
+//                        onSuccess = {
+//                            Log.e("ERROR", "after onSuccess")
+//                            processDataEvent(DataEvent.OnSuccessDetailsLoaded(it))
+//                        }
+//                    )
+//                }
+//                return null
+//            }
 
             else -> return null
         }
