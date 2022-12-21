@@ -67,5 +67,4 @@
         app:layout_constraintVertical_bias="1.0"
         tools:listitem="@layout/item_article" />
 
-
 </androidx.constraintlayout.widget.ConstraintLayout>
