@@ -45,9 +45,6 @@ class BookmarksFragment : Fragment(R.layout.fragment_bookmarks) {
             }
             State.Error -> {
             }
-            State.LoadDetail -> {
-
-            }
         }
 
     }

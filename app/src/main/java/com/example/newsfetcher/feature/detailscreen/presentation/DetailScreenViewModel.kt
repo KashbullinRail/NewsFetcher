@@ -25,7 +25,8 @@ class DetailScreenViewModel(
             state = State.Load,
             articleDetail = ArticleModel(
                 "2", "2", "2", "2", "2", "2"
-            )
+            ),
+            articleDetailList = emptyList()
         )
 
     override fun reduce(event: Event, previousState: ViewState): ViewState? {
@@ -36,15 +37,17 @@ class DetailScreenViewModel(
                     interactor.read().fold(
                         onError = {},
                         onSuccess = {
-                            processDataEvent(DataEvent.OnSuccessBookmarksLoaded(it))
+                            processDataEvent(DataEvent.OnSuccessDetailsLoaded(it))
                         }
                     )
                 }
                 return null
             }
-            is DataEvent.OnSuccessBookmarksLoaded -> {
-                Log.d("Room", "articleBookmark = ${event.bookmarksArticle}")
+            is DataEvent.OnSuccessDetailsLoaded -> {
+                Log.d("Room2", "articleBookmark = ${event.articleDetailList}")
+                val articleDetail = event.articleDetailList.last()
                 return previousState.copy(
+                    articleDetail = articleDetail,
                     state = State.Content
                 )
             }

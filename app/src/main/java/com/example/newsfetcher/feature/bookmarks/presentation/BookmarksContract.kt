@@ -7,8 +7,7 @@ import com.example.newsfetcher.feature.main_screen.domian.ArticleModel
 enum class State {
     Load,
     Content,
-    Error,
-    LoadDetail
+    Error
 }
 
 data class ViewState(
