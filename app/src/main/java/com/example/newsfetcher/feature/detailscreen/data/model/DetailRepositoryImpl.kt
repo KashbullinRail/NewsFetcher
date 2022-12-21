@@ -7,23 +7,23 @@ import com.example.newsfetcher.feature.detailscreen.data.DetailRepository
 import com.example.newsfetcher.feature.main_screen.domian.ArticleModel
 
 
-class DetailRepositoryImpl(private val bookmarksLocalSource: DetailLocalSource) :
+class DetailRepositoryImpl(private val detailLocalSource: DetailLocalSource) :
     DetailRepository {
 
     override suspend fun create(model: ArticleModel) {
-        bookmarksLocalSource.create(model.toEntity())
+        detailLocalSource.create(model.toEntity())
     }
 
     override suspend fun read(): List<ArticleModel> {
-        return bookmarksLocalSource.read().map { it.toDomain() }
+        return detailLocalSource.read().map { it.toDomain() }
     }
 
     override suspend fun update(model: ArticleModel) {
-        bookmarksLocalSource.update(model.toEntity())
+        detailLocalSource.update(model.toEntity())
     }
 
     override suspend fun delete(model: ArticleModel) {
-        bookmarksLocalSource.delete(model.toEntity())
+        detailLocalSource.delete(model.toEntity())
     }
 
 }

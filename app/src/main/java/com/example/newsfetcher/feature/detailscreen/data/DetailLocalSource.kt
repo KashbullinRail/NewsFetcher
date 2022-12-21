@@ -2,24 +2,26 @@ package com.example.newsfetcher.feature.detailscreen.data
 
 import com.example.newsfetcher.feature.bookmarks.data.model.BookmarksDao
 import com.example.newsfetcher.feature.bookmarks.data.model.BookmarkEntity
+import com.example.newsfetcher.feature.detailscreen.data.model.DetailDao
+import com.example.newsfetcher.feature.detailscreen.data.model.DetailEntity
 
 
-class DetailLocalSource(private val bookmarksDao: BookmarksDao) {
+class DetailLocalSource(private val detailDao: DetailDao) {
 
-    suspend fun create(entity: BookmarkEntity) {
-        bookmarksDao.create(entity)
+    suspend fun create(entity: DetailEntity) {
+        detailDao.create(entity)
     }
 
-    suspend fun read(): List<BookmarkEntity> {
-        return bookmarksDao.read()
+    suspend fun read(): List<DetailEntity> {
+        return detailDao.read()
     }
 
-    suspend fun update(entity: BookmarkEntity) {
-        bookmarksDao.update(entity)
+    suspend fun update(entity: DetailEntity) {
+        detailDao.update(entity)
     }
 
-    suspend fun delete(entity: BookmarkEntity) {
-        bookmarksDao.delete(entity)
+    suspend fun delete(entity: DetailEntity) {
+        detailDao.delete(entity)
     }
 
 }

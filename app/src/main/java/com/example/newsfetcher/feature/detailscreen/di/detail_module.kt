@@ -9,20 +9,20 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 
-const val BOOKMARKS_TABLE = "BOOKMARKS_TABLE"
+const val DETAIL_TABLE = "DETAIL_TABLE"
 
 val detailModule = module {
 
     single {
-        DetailLocalSource(bookmarksDao = get())
+        DetailLocalSource(detailDao = get())
     }
 
     single<DetailRepository> {
-        DetailRepositoryImpl(bookmarksLocalSource = get())
+        DetailRepositoryImpl(detailLocalSource = get())
     }
 
     single {
-        DetailInteractor(bookmarksRepository = get())
+        DetailInteractor(detailRepository = get())
     }
 
     viewModel {

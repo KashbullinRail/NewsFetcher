@@ -1,8 +1,6 @@
 package com.example.newsfetcher.feature.bookmarks.presentation
 
-import android.os.Bundle
 import android.util.Log
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.newsfetcher.base.BaseViewModel
 import com.example.newsfetcher.base.Event
@@ -13,9 +11,6 @@ import kotlinx.coroutines.launch
 
 class BookmarksScreenViewModel(private val interactor: BookmarksInteractor) :
     BaseViewModel<ViewState>() {
-
-    private var liveDataDetail = MutableLiveData<ArticleModel>()
-    val liviDataDetailImmutable = liveDataDetail
 
     init {
         processDataEvent(DataEvent.LoadBookmarks)
@@ -52,11 +47,8 @@ class BookmarksScreenViewModel(private val interactor: BookmarksInteractor) :
                 )
             }
             is UIEvent.OnArticleClicked -> {
-                liveDataDetail.value = previousState.bookmarksArticle[event.index]
-                Log.d("TAGG6", "Articles book ${liviDataDetailImmutable.value}")
-
                 return previousState.copy(
-//                    articleDetail = previousState.bookmarksArticle[event.index],
+                    articleDetail = previousState.bookmarksArticle[event.index],
                     state = State.LoadDetail
                 )
             }
