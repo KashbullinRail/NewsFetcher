@@ -7,24 +7,25 @@
     android:layout_height="match_parent">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/weatherAppBar"
-        android:layout_width="match_parent"
+        android:id="@+id/newsDetailAppBar"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="top">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/collapsingToolbar"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:scrollbarSize="60dp"
             app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/weatherPreviewImageView"
+                android:id="@+id/ivNewsDetail"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
-                android:src="@drawable/ic_launcher_background"
-                android:scaleType="centerCrop" />
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_launcher_background" />
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -34,7 +35,7 @@
                 app:contentInsetStart="0dp"
                 app:contentInsetStartWithNavigation="0dp"
                 app:layout_collapseMode="pin"
-                app:layout_scrollFlags = "scroll|enterAlways"/>
+                app:layout_scrollFlags="scroll|enterAlways" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
@@ -45,7 +46,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fillViewport="true"
-        app:behavior_overlapTop = "46dp"
+        app:behavior_overlapTop="0dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -63,32 +64,35 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tVHello"
+                android:id="@+id/tvTitleDetail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hello"
-                android:textSize="25sp"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:text="@string/loadloadload"
+                android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tV"
+                android:id="@+id/tvDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="HelloHelloHelloHello"
-                android:textSize="24sp"
-                app:layout_constraintEnd_toEndOf="@+id/tVHello"
-                app:layout_constraintStart_toStartOf="@+id/tVHello"
-                app:layout_constraintTop_toBottomOf="@+id/tVHello" />
+                android:text="@string/loadloadload"
+                android:layout_marginTop="5dp"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="@+id/progressBar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitleDetail" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabWeatherFetch"
+        android:id="@+id/fabDeleteDetailItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
