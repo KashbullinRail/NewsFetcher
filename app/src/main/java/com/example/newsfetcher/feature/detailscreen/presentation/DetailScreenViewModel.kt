@@ -1,14 +1,19 @@
-package com.example.newsfetcher.feature.bookmarks.mainscreen
+package com.example.newsfetcher.feature.detailscreen.presentation
 
 import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.example.newsfetcher.base.BaseViewModel
 import com.example.newsfetcher.base.Event
 import com.example.newsfetcher.feature.bookmarks.domian.BookmarksInteractor
+import com.example.newsfetcher.feature.detailscreen.domain.DetailInteractor
+import com.example.newsfetcher.feature.main_screen.domian.ArticleModel
 import kotlinx.coroutines.launch
 
 
-class BookmarksScreenViewModel(private val interactor: BookmarksInteractor) :
+class DetailScreenViewModel(
+    private val interactor: DetailInteractor,
+    private val bookmarksInteractor: BookmarksInteractor
+) :
     BaseViewModel<ViewState>() {
 
     init {
@@ -18,7 +23,10 @@ class BookmarksScreenViewModel(private val interactor: BookmarksInteractor) :
     override fun initialViewState(): ViewState =
         ViewState(
             state = State.Load,
-            bookmarksArticle = emptyList()
+            articleDetail = ArticleModel(
+                "2", "2", "2", "2", "2", "2"
+            ),
+            articleDetailList = emptyList()
         )
 
     override fun reduce(event: Event, previousState: ViewState): ViewState? {
@@ -29,19 +37,21 @@ class BookmarksScreenViewModel(private val interactor: BookmarksInteractor) :
                     interactor.read().fold(
                         onError = {},
                         onSuccess = {
-                            processDataEvent(DataEvent.OnSuccessBookmarksLoaded(it))
+                            processDataEvent(DataEvent.OnSuccessDetailsLoaded(it))
                         }
                     )
                 }
                 return null
             }
-            is DataEvent.OnSuccessBookmarksLoaded -> {
-                Log.d("Room", "articleBookmark = ${event.bookmarksArticle}")
+            is DataEvent.OnSuccessDetailsLoaded -> {
+                Log.d("Room2", "articleBookmark = ${event.articleDetailList}")
+                val articleDetail = event.articleDetailList.last()
                 return previousState.copy(
-                    bookmarksArticle = event.bookmarksArticle,
+                    articleDetail = articleDetail,
                     state = State.Content
                 )
             }
+
             else -> return null
         }
 

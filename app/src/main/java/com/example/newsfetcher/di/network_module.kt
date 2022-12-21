@@ -3,6 +3,7 @@ package com.example.newsfetcher.di
 import android.util.Log
 import androidx.room.Room
 import com.example.newsfetcher.AppDataBase
+import com.example.newsfetcher.AppDataBaseDetail
 import com.example.newsfetcher.base.HeaderIntercepter
 import okhttp3.OkHttpClient
 import org.koin.dsl.module
@@ -16,6 +17,8 @@ import java.util.concurrent.TimeUnit
 private const val BASE_URL = "https://newsapi.org/"
 const val API_KEY: String = "8d8a631cc60f433ab84de75d98294065"
 const val APP_DATABASE = "APP_DATABASE"
+const val APP_DATABASEDET = "APP_DATABASEDET"
+
 
 val networkModule = module {
 
@@ -56,6 +59,16 @@ val databaseModule = module {
     }
     single {
         get<AppDataBase>().bookmarksDao()
+    }
+
+    single {
+        Room
+            .databaseBuilder(androidContext(), AppDataBaseDetail::class.java, APP_DATABASEDET)
+            .fallbackToDestructiveMigration()
+            .build()
+    }
+    single {
+        get<AppDataBaseDetail>().detailDao()
     }
 
 }

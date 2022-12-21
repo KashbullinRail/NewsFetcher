@@ -1,5 +1,7 @@
 package com.example.newsfetcher.feature.main_screen.domian
 
+import java.io.Serializable
+
 
 data class ArticleModel(
     val author: String,

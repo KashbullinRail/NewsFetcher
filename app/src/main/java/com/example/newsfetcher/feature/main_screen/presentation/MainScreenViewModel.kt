@@ -1,4 +1,4 @@
-package com.example.newsfetcher.feature.main_screen.mainscreen
+package com.example.newsfetcher.feature.main_screen.presentation
 
 import android.util.Log
 import androidx.lifecycle.*
