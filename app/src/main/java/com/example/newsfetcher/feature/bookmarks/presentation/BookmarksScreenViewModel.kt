@@ -24,8 +24,9 @@ class BookmarksScreenViewModel(
         ViewState(
             state = State.Load,
             bookmarksArticle = emptyList(),
+            bookmarksArticleShown = emptyList(),
             articleDetail = ArticleModel(
-                "2", "2", "2", "2", "2", "2"
+                "", "", "", "", "", ""
             )
         )
 
@@ -47,6 +48,7 @@ class BookmarksScreenViewModel(
                 Log.d("Room", "articleBookmark = ${event.bookmarksArticle}")
                 return previousState.copy(
                     bookmarksArticle = event.bookmarksArticle,
+                    bookmarksArticleShown = event.bookmarksArticle,
                     state = State.Content
                 )
             }
@@ -54,6 +56,19 @@ class BookmarksScreenViewModel(
                 viewModelScope.launch {
                     detailInteractor.create(previousState.bookmarksArticle[event.index])
                     Log.d("TAGG", "OnArticleClicked ${previousState.bookmarksArticle[event.index]}")
+                }
+                return null
+            }
+            is OnDeleteClicked -> {
+                viewModelScope.launch {
+                    val articleModel = previousState.bookmarksArticle.last()
+                    interactor.delete(articleModel)
+                    interactor.read().fold(
+                        onError = {},
+                        onSuccess = {
+                            processDataEvent(DataEvent.OnSuccessBookmarksLoaded(it))
+                        }
+                    )
                 }
                 return null
             }

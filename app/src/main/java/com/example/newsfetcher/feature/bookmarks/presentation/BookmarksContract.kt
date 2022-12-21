@@ -13,11 +13,13 @@ enum class State {
 data class ViewState(
     val state: State,
     val bookmarksArticle: List<ArticleModel>,
+    val bookmarksArticleShown: List<ArticleModel>,
     val articleDetail: ArticleModel
 )
 
 sealed class UIEvent: Event {
     data class OnArticleClicked(val index: Int): UIEvent()
+    object OnDeleteClicked: UIEvent()
 }
 
 sealed class DataEvent() : Event {
