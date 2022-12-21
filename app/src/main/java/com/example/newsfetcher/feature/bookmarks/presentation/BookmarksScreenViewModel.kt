@@ -1,17 +1,21 @@
 package com.example.newsfetcher.feature.bookmarks.presentation
 
+import android.os.Bundle
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.newsfetcher.base.BaseViewModel
 import com.example.newsfetcher.base.Event
 import com.example.newsfetcher.feature.bookmarks.domian.BookmarksInteractor
 import com.example.newsfetcher.feature.main_screen.domian.ArticleModel
-import com.example.newsfetcher.feature.main_screen.presentation.UIEvent
 import kotlinx.coroutines.launch
 
 
 class BookmarksScreenViewModel(private val interactor: BookmarksInteractor) :
     BaseViewModel<ViewState>() {
+
+    private var liveDataDetail = MutableLiveData<ArticleModel>()
+    val liviDataDetailImmutable = liveDataDetail
 
     init {
         processDataEvent(DataEvent.LoadBookmarks)
@@ -22,7 +26,7 @@ class BookmarksScreenViewModel(private val interactor: BookmarksInteractor) :
             state = State.Load,
             bookmarksArticle = emptyList(),
             articleDetail = ArticleModel(
-                "", "", "", "", "", ""
+                "2", "2", "2", "2", "2", "2"
             )
         )
 
@@ -48,12 +52,21 @@ class BookmarksScreenViewModel(private val interactor: BookmarksInteractor) :
                 )
             }
             is UIEvent.OnArticleClicked -> {
-                viewModelScope.launch {
-                   val bookmarksItem = interactor.read()
-                }
+                liveDataDetail.value = previousState.bookmarksArticle[event.index]
+                Log.d("TAGG6", "Articles book ${liviDataDetailImmutable.value}")
 
-                return previousState.copy(articleDetail = previousState.bookmarksArticle[event.index])
+                return previousState.copy(
+//                    articleDetail = previousState.bookmarksArticle[event.index],
+                    state = State.LoadDetail
+                )
             }
+//            is DataEvent.OnSuccesDetailLoad -> {
+//                Log.d("TAGG8", "Articles book ${liveDataDetail.value}")
+//                return previousState.copy(
+//                    articleDetail = event.articleDetail,
+//                    state = State.LoadDetail
+//                )
+//            }
             else -> return null
         }
 

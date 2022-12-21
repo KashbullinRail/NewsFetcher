@@ -7,7 +7,7 @@
     <item android:id="@+id/itemBookmarks"
         android:icon="@drawable/ic_baseline_bookmark_border_24"
         android:title="@string/favorite"/>
-    <item android:id="@+id/itemDetails"
+    <item android:id="@+id/itemDetail"
         android:icon="@drawable/ic_baseline_zoom_out_map_24"
         android:title="@string/detail"/>
 
