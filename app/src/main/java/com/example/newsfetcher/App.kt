@@ -23,6 +23,7 @@ class App : Application() {
 
         // Для использования темной темы приложением
 //        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+
     }
 
 }
