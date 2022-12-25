@@ -13,11 +13,11 @@
         <item name="colorSurfaceMain">@color/dark_700</item>
         <item name="colorSurfaceAccent">@color/dark_600</item>
         <item name="colorSurfaceNative">@color/dark_700</item>
-        <item name="colorSurfaceVariant">@color/dark_600</item>
+        <item name="colorSurfaceVariant">@color/dark_400</item>
 
         <item name="android:colorBackground">@color/background_dark_night</item>
         <item name="colorBackground">?android:colorBackground</item>
-        <item name="colorAccented">@color/white_100</item>
+        <item name="colorAccented">@color/grey_600</item>
 
         <item name="elevationOverlayEnabled">false</item>
 
