@@ -46,11 +46,16 @@ class DetailScreenViewModel(
             }
             is DataEvent.OnSuccessDetailsLoaded -> {
                 Log.d("RoomDetail", "articleBookmark = ${event.articleDetailList}")
-                val articleDetail = event.articleDetailList.last()
-                return previousState.copy(
-                    articleDetail = articleDetail,
-                    state = State.Content
-                )
+                return if (event.articleDetailList.isNotEmpty()) {
+                    previousState.copy(
+                        articleDetail = event.articleDetailList.last(),
+                        state = State.Content
+                    )
+                } else {
+                    previousState.copy(
+                        state = State.Content
+                    )
+                }
             }
 //            is UIEvent.OnDeleteClicked -> {
 //                viewModelScope.launch {

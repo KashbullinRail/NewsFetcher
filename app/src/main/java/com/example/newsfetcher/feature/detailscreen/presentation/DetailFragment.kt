@@ -7,6 +7,7 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.newsfetcher.R
@@ -37,6 +38,10 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+//        lifecycleScope.launchWhenStarted {
+//            viewModel.viewState.collect { state -> state?.let { this@DetailFragment::render } }
+//        }
 
         viewModel.viewState.observe(viewLifecycleOwner, ::render)
 

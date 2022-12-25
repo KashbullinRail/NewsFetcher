@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newsfetcher.R
 import com.example.newsfetcher.feature.main_screen.presentation.ArticlesAdapter
@@ -29,6 +30,10 @@ class BookmarksFragment : Fragment(R.layout.fragment_bookmarks) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+//        lifecycleScope.launchWhenStarted {
+//            viewModel.viewState.collect { state -> state?.let { this@BookmarksFragment::render } }
+//        }
 
         viewModel.viewState.observe(viewLifecycleOwner, ::render)
 

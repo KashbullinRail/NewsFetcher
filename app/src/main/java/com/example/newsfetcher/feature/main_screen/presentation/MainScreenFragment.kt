@@ -9,9 +9,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newsfetcher.R
+import kotlinx.coroutines.flow.collect
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.util.Observer
 
 
 class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
@@ -30,7 +33,12 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+//        lifecycleScope.launchWhenStarted {
+//            viewModel.viewState.collect { state -> state?.let { this@MainScreenFragment::render } }
+//        }
+
         viewModel.viewState.observe(viewLifecycleOwner, ::render)
+
         recyclerView.adapter = adapter
 
         ivSearch.setOnClickListener {
