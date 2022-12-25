@@ -9,7 +9,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:navGraph = "@navigation/nav_graph"
-        android:background="@color/color_edit_text_background"
+        android:background="?attr/colorSurfaceNative"
         app:layout_constraintBottom_toTopOf="@+id/bnvBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
