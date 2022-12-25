@@ -91,13 +91,4 @@
 
     </androidx.core.widget.NestedScrollView>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabDeleteDetailItem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:layout_marginStart="20dp"
-        android:layout_gravity="bottom|start"
-        android:src="@drawable/ic_baseline_delete_24"/>
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

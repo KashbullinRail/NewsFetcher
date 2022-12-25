@@ -29,9 +29,6 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
     private val newsDetailAppBar:
             AppBarLayout by lazy { requireActivity().findViewById(R.id.newsDetailAppBar) }
     private val ivNewsDetail: ImageView by lazy { requireActivity().findViewById(R.id.ivNewsDetail) }
-    private val fabDeleteDetailItem: FloatingActionButton by lazy {
-        requireActivity().findViewById(R.id.fabDeleteDetailItem)
-    }
 
     private val viewModel: DetailScreenViewModel by viewModel()
 
@@ -52,10 +49,6 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
                 tvDescription.alpha = percent
                 tvTitleDetail.alpha = percent
             })
-
-        fabDeleteDetailItem.setOnClickListener {
-            viewModel.processUIEvent(UIEvent.OnDeleteClicked)
-        }
 
     }
 

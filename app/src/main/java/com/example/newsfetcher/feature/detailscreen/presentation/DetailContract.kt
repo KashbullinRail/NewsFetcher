@@ -17,7 +17,6 @@ data class ViewState(
 )
 
 sealed class UIEvent : Event {
-    object OnDeleteClicked : UIEvent()
 }
 
 sealed class DataEvent() : Event {

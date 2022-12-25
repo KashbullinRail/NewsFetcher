@@ -57,27 +57,8 @@ class DetailScreenViewModel(
                     )
                 }
             }
-//            is UIEvent.OnDeleteClicked -> {
-//                viewModelScope.launch {
-//                    val articleModel = previousState.articleDetailList.last()
-//                    Log.e("ERROR", "$articleModel")
-//                    interactor.delete(articleModel)
-//                    Log.e("ERROR", "after deleted")
-//                    interactor.read().fold(
-//                        onError = {
-//                            Log.e("ERROR", it.localizedMessage)
-//                            Log.e("ERROR", "after onError")
-//                        },
-//                        onSuccess = {
-//                            Log.e("ERROR", "after onSuccess")
-//                            processDataEvent(DataEvent.OnSuccessDetailsLoaded(it))
-//                        }
-//                    )
-//                }
-//                return null
-//            }
-
             else -> return null
+
         }
 
     }
