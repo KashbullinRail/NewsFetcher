@@ -19,6 +19,8 @@
         android:id="@+id/bnvBar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:itemTextColor="@color/colorPrimary"
+        android:elevation="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
