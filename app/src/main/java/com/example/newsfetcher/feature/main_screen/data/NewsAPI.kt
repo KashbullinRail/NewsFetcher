@@ -12,30 +12,32 @@ interface NewsAPI {
 //    suspend fun getArticles(
 //        @Query("country") country: String = "ru",
 //        @Query("language") language: String = "ru",
-//        @Query("category") category: String = "general",
+//        @Query("category") category: String = "general", // business, entertainment, general, health, science, sports, technology
 //        @Query("sources") sources: String = "",
 //        @Query("q") query: String = "канделаки",
-//        @Query("pageSize") pageSize: String = "",
-//        @Query("page") page: String = ""
+//        @Query("pageSize") pageSize: String = "100", // 1..100
+//        @Query("page") page: String = "" // 1
 //    ): ArticlesRemoteModel
 
     @GET("v2/everything")
     suspend fun getArticles(
         @Query("q") query: String = "москвич",
-//        @Query("sources") sources: String = "",
-//        @Query("domains") domain: String = "",
-//        @Query("from") from: String = "",
-//        @Query("to") to: String = "",
-//        @Query("language") language: String = "ru",
-//        @Query("sortBy") sortBy: String = "",
-//        @Query("pageSize") pageSize: String = "",
-//        @Query("page") page: String = ""
+        @Query("searchIn") searchIn: String = "title", // title, description, content
+//        @Query("sources") sources: String = "ru",  // tr, us
+//        @Query("domains") domain: String = "", //eg bbc.co.uk,
+        @Query("from") from: String = "2022-12-20",
+        @Query("to") to: String = "2022-12-18",
+//        @Query("language") language: String = "ru", // en
+//        @Query("sortBy") sortBy: String = "popularity", // relevancy, popularity, publishedAt
+//        @Query("pageSize") pageSize: String = "100", // 1..100
+//        @Query("page") page: String = "" // 1
     ): ArticlesRemoteModel
 
 
-//    @GET("v2/source")
+   // This endpoint returns the subset of news publishers that top headlines
+//    @GET("v2/top-headlines/source")
 //    suspend fun getArticles(
-//        @Query("category") category: String = "канделаки",
+//        @Query("category") category: String = "", // business, entertainment, general, health, science, sports, technology
 //        @Query("language") language: String = "ru",
 //        @Query("country") country: String = "ru"
 //    ): ArticlesRemoteModel
