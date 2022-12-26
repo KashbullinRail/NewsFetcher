@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:backgroundTint="?attr/colorSurfaceVariant">
+
+    <ImageView
+        android:id="@+id/ivNewsImageBookmarks"
+        android:layout_width="0dp"
+        android:layout_height="400dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/tvTitleBookmarks"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvTitleBookmarks"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:lines="6"
+        android:textColor="?attr/colorAccented"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivNewsImageBookmarks"
+        app:layout_constraintBottom_toTopOf="@+id/tvDataBookmarks"
+        tools:text="@tools:sample/lorem/random" />
+
+    <TextView
+        android:id="@+id/tvDataBookmarks"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/non_text"
+        android:textColor="?attr/colorAccented"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleBookmarks"
+        tools:text="@tools:sample/date/ddmmyy" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

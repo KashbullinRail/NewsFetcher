@@ -1,4 +1,4 @@
-package com.example.newsfetcher.feature.main_screen.presentation
+package com.example.newsfetcher.feature.bookmarks.presentation
 
 import android.view.LayoutInflater
 import android.view.View
@@ -13,8 +13,8 @@ import com.example.newsfetcher.R
 import com.example.newsfetcher.feature.main_screen.domian.ArticleModel
 
 
-class ArticlesAdapter(val onItemClicked: (Int) -> Unit) :
-    RecyclerView.Adapter<ArticlesAdapter.ViewHolder>() {
+class BookmarksAdapter(val onItemClicked: (Int) -> Unit) :
+    RecyclerView.Adapter<BookmarksAdapter.ViewHolder>() {
 
     private var articlesData: List<ArticleModel> = emptyList()
 
@@ -28,7 +28,7 @@ class ArticlesAdapter(val onItemClicked: (Int) -> Unit) :
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         // Create a new view, which defines the UI of the list item
         val view = LayoutInflater.from(viewGroup.context)
-            .inflate(R.layout.item_article_adapter, viewGroup, false)
+            .inflate(R.layout.item_bookmarks_adapter, viewGroup, false)
 
         return ViewHolder(view)
     }
