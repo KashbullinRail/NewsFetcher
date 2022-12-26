@@ -9,6 +9,10 @@ import com.example.newsfetcher.feature.detailscreen.di.DETAIL_TABLE
 @Entity(tableName = DETAIL_TABLE)
 data class DetailEntity(
     @PrimaryKey
+//    @ColumnInfo(name = "id")
+//    val id:String,
+//    @ColumnInfo(name = "name")
+//    val name: String,
     @ColumnInfo(name = "url")
     val url: String,
     @ColumnInfo(name = "title")
@@ -20,5 +24,7 @@ data class DetailEntity(
     @ColumnInfo(name = "urlToImage")
     val urlToImage: String,
     @ColumnInfo(name = "publishedAt")
-    val publishedAt: String
+    val publishedAt: String,
+    @ColumnInfo(name = "content")
+    val content: String
 )

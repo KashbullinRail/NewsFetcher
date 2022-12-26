@@ -7,14 +7,14 @@
     android:backgroundTint="?attr/colorSurfaceVariant">
 
     <ImageView
-        android:id="@+id/ivNewsImage"
+        android:id="@+id/ivNewsImageBookmarks"
         android:layout_width="160dp"
         android:layout_height="120dp"
         android:layout_gravity="top|start"
         tools:src = "@tools:sample/avatars"/>
 
     <TextView
-        android:id="@+id/tvTitle"
+        android:id="@+id/tvTitleBookmarks"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="end|top"
@@ -23,7 +23,7 @@
         tools:text = "@tools:sample/lorem/random"/>
 
     <TextView
-        android:id="@+id/tvData"
+        android:id="@+id/tvDataBookmarks"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"

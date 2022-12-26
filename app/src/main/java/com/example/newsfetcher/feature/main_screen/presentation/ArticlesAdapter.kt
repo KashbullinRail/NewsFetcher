@@ -28,7 +28,7 @@ class ArticlesAdapter(val onItemClicked: (Int) -> Unit) :
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         // Create a new view, which defines the UI of the list item
         val view = LayoutInflater.from(viewGroup.context)
-            .inflate(R.layout.item_article_adapter, viewGroup, false)
+            .inflate(R.layout.item_bookmarks_adapter, viewGroup, false)
 
         return ViewHolder(view)
     }

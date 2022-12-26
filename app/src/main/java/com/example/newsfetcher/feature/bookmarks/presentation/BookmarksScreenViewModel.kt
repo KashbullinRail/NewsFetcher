@@ -5,7 +5,6 @@ import androidx.lifecycle.viewModelScope
 import com.example.newsfetcher.base.BaseViewModel
 import com.example.newsfetcher.base.Event
 import com.example.newsfetcher.feature.bookmarks.domian.BookmarksInteractor
-import com.example.newsfetcher.feature.bookmarks.presentation.UIEvent.*
 import com.example.newsfetcher.feature.detailscreen.domain.DetailInteractor
 import com.example.newsfetcher.feature.main_screen.domian.ArticleModel
 import kotlinx.coroutines.launch
@@ -25,7 +24,7 @@ class BookmarksScreenViewModel(
             state = State.Load,
             bookmarksArticle = emptyList(),
             articleDetail = ArticleModel(
-                "", "", "", "", "", ""
+                "", "", "", "", "", "", ""
             )
         )
 
@@ -51,7 +50,7 @@ class BookmarksScreenViewModel(
                     state = State.Content
                 )
             }
-            is OnArticleClicked -> {
+            is UIEvent.OnArticleClicked -> {
                 viewModelScope.launch {
                     detailInteractor.create(previousState.bookmarksArticle[event.index])
                 }
@@ -59,7 +58,7 @@ class BookmarksScreenViewModel(
                     state = State.DetailLoad
                 )
             }
-            is OnDeleteClicked -> {
+            is UIEvent.OnDeleteClicked -> {
                 viewModelScope.launch {
                     if (previousState.bookmarksArticle.isNotEmpty()) {
                         val articleModel = previousState.bookmarksArticle.last()

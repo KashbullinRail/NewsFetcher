@@ -9,4 +9,5 @@
     <string name="loadloadload">LoadLoadLoad</string>
     <string name="non_text">non text</string>
     <string name="input_key_word">Ключевое слово для поиска</string>
+    <string name="name_source">Name source</string>
 </resources>
