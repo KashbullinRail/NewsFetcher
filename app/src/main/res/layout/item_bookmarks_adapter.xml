@@ -4,13 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="5dp"
+    android:layout_marginTop="10dp"
     android:backgroundTint="?attr/colorSurfaceVariant">
 
     <TextView
         android:id="@+id/tvNameBookmarks"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textColor="@color/black_100"
         android:text="@string/name_source"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -49,7 +51,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/tvDataBookmarks"
         app:layout_constraintTop_toBottomOf="@+id/tvTitleBookmarks"
-        tools:text="@tools:sample/lorem/random"
+        tools:text="content....."
         />
 
     <TextView

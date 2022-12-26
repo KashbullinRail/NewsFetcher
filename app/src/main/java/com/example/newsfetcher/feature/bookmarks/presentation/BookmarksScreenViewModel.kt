@@ -24,7 +24,7 @@ class BookmarksScreenViewModel(
             state = State.Load,
             bookmarksArticle = emptyList(),
             articleDetail = ArticleModel(
-                "", "", "", "", "", "", ""
+                "", "", "", "", "", "", "", "", ""
             )
         )
 

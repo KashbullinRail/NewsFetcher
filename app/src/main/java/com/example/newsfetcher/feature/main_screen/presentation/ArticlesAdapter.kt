@@ -22,6 +22,7 @@ class ArticlesAdapter(val onItemClicked: (Int) -> Unit) :
         val tvTitle: TextView = view.findViewById(R.id.tvTitleBookmarks)
         val tvData: TextView = view.findViewById(R.id.tvDataBookmarks)
         val ivNewsImage: ImageView = view.findViewById(R.id.ivNewsImageBookmarks)
+        val tvNameBookmarks: TextView = view.findViewById(R.id.tvNameBookmarks)
     }
 
     // Create new views (invoked by the layout manager)
@@ -44,6 +45,7 @@ class ArticlesAdapter(val onItemClicked: (Int) -> Unit) :
         // contents of the view with that element
         viewHolder.tvTitle.text = articlesData[position].title
         viewHolder.tvData.text = articlesData[position].publishedAt
+        viewHolder.tvNameBookmarks.text = articlesData[position].name
 
         Glide
             .with(viewHolder.itemView.context)

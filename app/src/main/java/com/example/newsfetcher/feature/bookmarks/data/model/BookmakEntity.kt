@@ -9,10 +9,10 @@ import com.example.newsfetcher.feature.bookmarks.di.BOOKMARKS_TABLE
 @Entity(tableName = BOOKMARKS_TABLE)
 data class BookmarkEntity(
     @PrimaryKey
-//    @ColumnInfo(name = "id")
-//    val id:String,
-//    @ColumnInfo(name = "name")
-//    val name: String,
+    @ColumnInfo(name = "id")
+    val id:String,
+    @ColumnInfo(name = "name")
+    val name: String,
     @ColumnInfo(name = "url")
     val url: String,
     @ColumnInfo(name = "title")

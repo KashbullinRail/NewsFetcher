@@ -6,8 +6,8 @@ import com.example.newsfetcher.feature.main_screen.domian.ArticleModel
 
 
 fun DetailEntity.toDomain() = ArticleModel(
-//    id = id,
-//    name = name,
+    id = id,
+    name = name,
     author = author,
     title = title,
     description = description,
@@ -18,8 +18,8 @@ fun DetailEntity.toDomain() = ArticleModel(
 )
 
 fun ArticleModel.toEntity() = DetailEntity(
-//    id = id,
-//    name = name,
+    id = id,
+    name = name,
     author = author,
     title = title,
     description = description,
