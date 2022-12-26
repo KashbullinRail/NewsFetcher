@@ -1,12 +1,13 @@
 package com.example.newsfetcher.feature.bookmarks.presentation
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newsfetcher.R
+import com.example.newsfetcher.feature.detailscreen.presentation.DetailFragment
 import com.example.newsfetcher.feature.main_screen.presentation.ArticlesAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -22,6 +23,7 @@ class BookmarksFragment : Fragment(R.layout.fragment_bookmarks) {
     private val adapter: ArticlesAdapter by lazy {
         ArticlesAdapter { index ->
             viewModel.processUIEvent(UIEvent.OnArticleClicked(index))
+
         }
     }
     private val fabDeleteBookmarks: FloatingActionButton by lazy {
@@ -35,6 +37,8 @@ class BookmarksFragment : Fragment(R.layout.fragment_bookmarks) {
 //            viewModel.viewState.collect { state -> state?.let { this@BookmarksFragment::render } }
 //        }
 
+
+
         viewModel.viewState.observe(viewLifecycleOwner, ::render)
 
         recyclerView.adapter = adapter
@@ -45,6 +49,7 @@ class BookmarksFragment : Fragment(R.layout.fragment_bookmarks) {
 
     }
 
+    @SuppressLint("ResourceType")
     private fun render(viewState: ViewState) {
 
         when (viewState.state) {
@@ -54,6 +59,10 @@ class BookmarksFragment : Fragment(R.layout.fragment_bookmarks) {
                 adapter.setData(viewState.bookmarksArticle)
             }
             State.Error -> {
+            }
+            State.DetailLoad -> {
+                requireActivity().supportFragmentManager.beginTransaction().replace(R.id.container, DetailFragment()).commit()
+                Log.d("TAGG", "DerailLoad")
             }
         }
 

@@ -55,7 +55,9 @@ class BookmarksScreenViewModel(
                 viewModelScope.launch {
                     detailInteractor.create(previousState.bookmarksArticle[event.index])
                 }
-                return null
+                return previousState.copy(
+                    state = State.DetailLoad
+                )
             }
             is OnDeleteClicked -> {
                 viewModelScope.launch {
