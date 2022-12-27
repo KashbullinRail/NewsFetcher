@@ -12,4 +12,6 @@
     <string name="name_source">Name source</string>
     <string name="title_link_to_source_Detail">Ссылка на источник</string>
     <string name="link_to_source_Detail">http//........</string>
+    <string name="_2022">2022....</string>
+    <string name="author_published">Автор статьи</string>
 </resources>

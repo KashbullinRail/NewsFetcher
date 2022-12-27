@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/newsDetailAppBarCollaps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsingToolbarCollaps"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:scrollbarSize="60dp"
+            app:contentScrim="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivNewsDetailCollaps"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="250dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_launcher_background" />
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbarCollaps"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:contentInsetLeft="0dp"
+                app:contentInsetStart="0dp"
+                app:contentInsetStartWithNavigation="0dp"
+                app:layout_collapseMode="pin"
+                app:layout_scrollFlags="scroll|enterAlways" />
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollCollaps"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        app:behavior_overlapTop="0dp"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:id="@+id/llDetailCollaps"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvNameDetailCollaps"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/name_source"
+                android:textSize="18sp"
+                android:textColor="@color/black_100"
+                android:layout_margin="3dp"/>
+
+            <TextView
+                android:id="@+id/tvTitleDetailCollaps"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/loadloadload"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:id="@+id/tvDescriptionCollaps"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/loadloadload"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/tvDataBookmarksCollaps"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/non_text"
+                android:textColor="?attr/colorAccented"
+                tools:text="@tools:sample/date/ddmmyy" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="@string/title_link_to_source_Detail"/>
+
+            <TextView
+                android:id="@+id/tvLinkToSourceDetailCollaps"
+                android:text="@string/link_to_source_Detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/tvContentDetailCollaps"
+                android:layout_marginTop="15dp"
+                tools:text="@tools:sample/lorem/random"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
