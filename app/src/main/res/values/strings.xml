@@ -4,14 +4,15 @@
     <string name="favorite">Избранное</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="detail">Detail</string>
+    <string name="weather">Weather</string>
     <string name="loading">Loading</string>
     <string name="loadloadload">LoadLoadLoad</string>
     <string name="non_text">non text</string>
-    <string name="input_key_word">Ключевое слово для поиска</string>
+    <string name="popularity_title">Самые популярные заголовки</string>
     <string name="name_source">Name source</string>
     <string name="title_link_to_source_Detail">Ссылка на источник</string>
     <string name="link_to_source_Detail">http//........</string>
     <string name="_2022">2022....</string>
     <string name="author_published">Автор статьи</string>
+    <string name="input_key_word_for_search">поиск по ключевому слову</string>
 </resources>

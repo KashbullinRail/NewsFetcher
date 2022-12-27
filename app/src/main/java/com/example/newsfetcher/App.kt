@@ -21,7 +21,7 @@ class App : Application() {
             modules(networkModule, mainScreenModule, bookmarksModule, databaseModule, detailModule)
         }
 
-        // Для использования темной темы приложением
+        // Для принудительного использования темной темы приложением
 //        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
     }
 

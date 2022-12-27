@@ -7,10 +7,13 @@ import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.activity.addCallback
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newsfetcher.R
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -18,6 +21,7 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
 
     private val viewModel: MainScreenViewModel by viewModel()
 
+    private val bottomNavigationMenu: BottomNavigationView by lazy { requireActivity().findViewById(R.id.bnvBar) }
     private val recyclerView: RecyclerView by lazy { requireActivity().findViewById(R.id.rvArticles) }
     private val ivSearch: ImageView by lazy { requireActivity().findViewById(R.id.ivSearch) }
     private val tvTitle: TextView by lazy { requireActivity().findViewById(R.id.tvTitleBookmarks) }
@@ -31,9 +35,20 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        lifecycleScope.launchWhenStarted {
-//            viewModel.viewState.collect { state -> state?.let { this@MainScreenFragment::render } }
-//        }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            findNavController().navigate(R.id.bookmarksFragment)
+        }
+
+        bottomNavigationMenu.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.itemBookmarks -> {
+                    findNavController().navigate(R.id.bookmarksFragment)
+                }
+                else -> {}
+            }
+            true
+        }
+        bottomNavigationMenu.selectedItemId = R.id.itemMain
 
         viewModel.viewState.observe(viewLifecycleOwner, ::render)
 
@@ -74,6 +89,8 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
                 adapter.setData(viewState.articlesShown)
             }
             State.Error -> {
+            }
+            State.DetailLoad -> {
             }
         }
 

@@ -2,7 +2,6 @@ package com.example.newsfetcher.base
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
 
 
 abstract class BaseViewModel<VIEW_STATE> : ViewModel() {

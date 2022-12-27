@@ -50,8 +50,8 @@ class ArticlesAdapter(val onItemClicked: (Int) -> Unit) :
         Glide
             .with(viewHolder.itemView.context)
             .load(articlesData[position].urlToImage)
-            .placeholder(R.drawable.ic_baseline_image_24)
-            .error(R.drawable.ic_baseline_image_not_supported_24)
+            .placeholder(R.drawable.ic_image)
+            .error(R.drawable.ic_image_not_supported)
             .transition(DrawableTransitionOptions.withCrossFade())
             .diskCacheStrategy(DiskCacheStrategy.DATA)
             .centerCrop()
