@@ -20,8 +20,8 @@ class BookmarksFragment : Fragment(R.layout.fragment_bookmarks) {
     private val recyclerView: RecyclerView by lazy {
         requireActivity().findViewById(R.id.rvBookmarkedArticles)
     }
-    private val adapter: BookmarksAdapter by lazy {
-        BookmarksAdapter { index ->
+    private val adapter: ArticlesAdapter by lazy {
+        ArticlesAdapter { index ->
             viewModel.processUIEvent(UIEvent.OnArticleClicked(index))
 
         }
@@ -49,7 +49,6 @@ class BookmarksFragment : Fragment(R.layout.fragment_bookmarks) {
 
     }
 
-    @SuppressLint("ResourceType")
     private fun render(viewState: ViewState) {
 
         when (viewState.state) {

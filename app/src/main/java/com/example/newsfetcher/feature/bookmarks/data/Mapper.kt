@@ -5,7 +5,7 @@ import com.example.newsfetcher.feature.main_screen.domian.ArticleModel
 
 
 fun BookmarkEntity.toDomain() = ArticleModel(
-    id = id,
+//    id = idD,
     name = name,
     author = author,
     title = title,
@@ -17,7 +17,7 @@ fun BookmarkEntity.toDomain() = ArticleModel(
 )
 
 fun ArticleModel.toEntity() = BookmarkEntity(
-    id = id,
+//    idD = id,
     name = name,
     author = author,
     title = title,

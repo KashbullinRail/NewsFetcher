@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:orientation="vertical"
     android:layout_marginTop="10dp"
     android:backgroundTint="?attr/colorSurfaceVariant">
 
@@ -13,19 +14,13 @@
         android:layout_height="wrap_content"
         android:textStyle="bold"
         android:textColor="@color/black_100"
-        android:text="@string/name_source"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="@string/name_source"/>
 
     <ImageView
         android:id="@+id/ivNewsImageBookmarks"
-        android:layout_width="0dp"
-        android:layout_height="200dp"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
         android:layout_marginTop="3dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/tvTitleBookmarks"
-        app:layout_constraintTop_toBottomOf="@id/tvNameBookmarks"
         tools:src="@tools:sample/avatars" />
 
     <TextView
@@ -34,11 +29,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
         android:textColor="?attr/colorAccented"
-        app:layout_constraintBottom_toTopOf="@+id/tvContentBookmarks"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivNewsImageBookmarks"
         tools:text="@tools:sample/lorem/random" />
 
     <TextView
@@ -47,12 +37,7 @@
         android:layout_height="wrap_content"
         android:textColor="?attr/colorAccented"
         android:layout_marginTop="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/tvDataBookmarks"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitleBookmarks"
-        tools:text="content....."
-        />
+        tools:text="content....." />
 
     <TextView
         android:id="@+id/tvDataBookmarks"
@@ -60,10 +45,6 @@
         android:layout_height="wrap_content"
         android:hint="@string/non_text"
         android:textColor="?attr/colorAccented"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvContentBookmarks"
         tools:text="@tools:sample/date/ddmmyy" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

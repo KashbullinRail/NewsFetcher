@@ -22,13 +22,14 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
 
     private val tvTitleDetail: TextView by lazy { requireActivity().findViewById(R.id.tvTitleDetail) }
     private val tvDescription: TextView by lazy { requireActivity().findViewById(R.id.tvDescription) }
-    private val progressBar:
-            ProgressBar by lazy { requireActivity().findViewById(R.id.progressBar) }
+    private val tvNameDetail: TextView by lazy { requireActivity().findViewById(R.id.tvNameDetail) }
+    private val tvLinkToSourceDetail: TextView by lazy { requireActivity().findViewById(R.id.tvLinkToSourceDetail) }
+    private val tvContentDetail: TextView by lazy { requireActivity().findViewById(R.id.tvContentDetail) }
+    private val ivNewsDetail: ImageView by lazy { requireActivity().findViewById(R.id.ivNewsDetail) }
     private val collapsingToolbar:
             CollapsingToolbarLayout by lazy { requireActivity().findViewById(R.id.collapsingToolbar) }
     private val newsDetailAppBar:
             AppBarLayout by lazy { requireActivity().findViewById(R.id.newsDetailAppBar) }
-    private val ivNewsDetail: ImageView by lazy { requireActivity().findViewById(R.id.ivNewsDetail) }
 
     private val viewModel: DetailScreenViewModel by viewModel()
 
@@ -56,13 +57,15 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
 
         when (viewState.state) {
             State.Load -> {
-                progressBar.isVisible = true
+
             }
             State.Content -> {
-                progressBar.isVisible = false
                 tvTitleDetail.text = viewState.articleDetail.title
                 collapsingToolbar.title = viewState.articleDetail.title
                 tvDescription.text = viewState.articleDetail.description
+                tvContentDetail.text = viewState.articleDetail.content
+                tvNameDetail.text = viewState.articleDetail.name
+                tvLinkToSourceDetail.text = viewState.articleDetail.url
                 Glide
                     .with(this@DetailFragment)
                     .load(viewState.articleDetail.urlToImage)

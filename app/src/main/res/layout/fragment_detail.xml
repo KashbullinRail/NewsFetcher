@@ -23,7 +23,8 @@
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ivNewsDetail"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="wrap_content"
+                android:minHeight="250dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/ic_launcher_background" />
 
@@ -49,45 +50,66 @@
         app:behavior_overlapTop="0dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
+            android:id="@+id/llDetail"
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ProgressBar
-                android:id="@+id/progressBar"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/tvNameDetail"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="200dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:text="@string/name_source"
+                android:textSize="18sp"
+                android:textColor="@color/black_100"
+                android:layout_margin="3dp"/>
 
             <TextView
                 android:id="@+id/tvTitleDetail"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/loadloadload"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:textSize="18sp"/>
 
             <TextView
                 android:id="@+id/tvDescription"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/loadloadload"
                 android:layout_marginTop="5dp"
-                android:textSize="15sp"
-                app:layout_constraintBottom_toBottomOf="@+id/progressBar"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvTitleDetail" />
+                android:text="@string/loadloadload"
+                android:textSize="16sp"/>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/tvDataBookmarks"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/non_text"
+                android:textColor="?attr/colorAccented"
+                tools:text="@tools:sample/date/ddmmyy" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="@string/title_link_to_source_Detail"/>
+
+            <TextView
+                android:id="@+id/tvLinkToSourceDetail"
+                android:text="@string/link_to_source_Detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/tvContentDetail"
+                android:layout_marginTop="15dp"
+                tools:text="@tools:sample/lorem/random"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+
+        </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
 

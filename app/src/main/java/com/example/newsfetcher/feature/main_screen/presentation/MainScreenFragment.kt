@@ -17,6 +17,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
 
     private val viewModel: MainScreenViewModel by viewModel()
+
     private val recyclerView: RecyclerView by lazy { requireActivity().findViewById(R.id.rvArticles) }
     private val ivSearch: ImageView by lazy { requireActivity().findViewById(R.id.ivSearch) }
     private val tvTitle: TextView by lazy { requireActivity().findViewById(R.id.tvTitleBookmarks) }
