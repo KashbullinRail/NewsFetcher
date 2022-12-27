@@ -61,7 +61,6 @@ class BookmarksFragment : Fragment(R.layout.fragment_bookmarks) {
             }
             State.DetailLoad -> {
                 requireActivity().supportFragmentManager.beginTransaction().replace(R.id.container, DetailFragment()).commit()
-                Log.d("TAGG", "DerailLoad")
             }
         }
 
