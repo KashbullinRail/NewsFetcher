@@ -37,8 +37,6 @@ class BookmarksFragment : Fragment(R.layout.fragment_bookmarks) {
 //            viewModel.viewState.collect { state -> state?.let { this@BookmarksFragment::render } }
 //        }
 
-
-
         viewModel.viewState.observe(viewLifecycleOwner, ::render)
 
         recyclerView.adapter = adapter

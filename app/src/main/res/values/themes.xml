@@ -17,7 +17,7 @@
         <item name="colorSurfaceMain">@color/white_100</item>
         <item name="colorSurfaceAccent">@color/grey_200</item>
         <item name="colorSurfaceNative">@color/grey_400</item>
-        <item name="colorSurfaceVariant">@color/white_100</item>
+        <item name="colorSurfaceVariant">@color/grey_300</item>
 
         <item name="android:colorBackground">@color/grey_400</item>
         <item name="colorBackground">@color/grey_400</item>
