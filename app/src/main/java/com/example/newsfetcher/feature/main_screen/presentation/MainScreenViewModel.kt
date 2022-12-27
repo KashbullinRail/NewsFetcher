@@ -54,6 +54,7 @@ class MainScreenViewModel(
             is UIEvent.OnArticleClicked -> {
                 viewModelScope.launch {
                     bookmarksInteractor.create(previousState.articlesShown[event.index])
+                    State.DetailLoad
                 }
                 return null
             }

@@ -4,11 +4,14 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newsfetcher.R
 import com.example.newsfetcher.feature.detailscreen.presentation.DetailFragment
 import com.example.newsfetcher.feature.main_screen.presentation.ArticlesAdapter
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -28,6 +31,7 @@ class BookmarksFragment : Fragment(R.layout.fragment_bookmarks) {
     }
     private val fabDeleteBookmarks: FloatingActionButton by lazy {
         requireActivity().findViewById(R.id.fabDeleteBookmarks) }
+    private val bottomNavigationMenu: BottomNavigationView by lazy { requireActivity().findViewById(R.id.bnvBarBookmarks) }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -36,6 +40,22 @@ class BookmarksFragment : Fragment(R.layout.fragment_bookmarks) {
 //        lifecycleScope.launchWhenStarted {
 //            viewModel.viewState.collect { state -> state?.let { this@BookmarksFragment::render } }
 //        }
+
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            findNavController().navigate(R.id.mainScreenFragment)
+        }
+
+        bottomNavigationMenu.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.itemMain -> {
+                    findNavController().navigate(R.id.mainScreenFragment)
+                }
+                else -> {}
+            }
+            true
+        }
+
+        bottomNavigationMenu.selectedItemId = R.id.itemBookmarks
 
         viewModel.viewState.observe(viewLifecycleOwner, ::render)
 
@@ -58,7 +78,7 @@ class BookmarksFragment : Fragment(R.layout.fragment_bookmarks) {
             State.Error -> {
             }
             State.DetailLoad -> {
-                requireActivity().supportFragmentManager.beginTransaction().replace(R.id.container, DetailFragment()).commit()
+                findNavController().navigate(R.id.detailFragment)
             }
         }
 

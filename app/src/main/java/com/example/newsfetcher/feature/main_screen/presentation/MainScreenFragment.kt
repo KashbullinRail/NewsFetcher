@@ -7,8 +7,10 @@ import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.activity.addCallback
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newsfetcher.R
 import com.example.newsfetcher.feature.bookmarks.presentation.BookmarksFragment
@@ -35,27 +37,20 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        lifecycleScope.launchWhenStarted {
-//            viewModel.viewState.collect { state -> state?.let { this@MainScreenFragment::render } }
-//        }
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            findNavController().navigate(R.id.mainScreenFragment)
+        }
 
-
-//        bottomNavigationMenu.setOnItemSelectedListener {
-//            when (it.itemId) {
-//                R.id.itemMain -> {
-//                    selectTab(MainScreenFragment())
-//                }
-//                R.id.itemBookmarks -> {
-//                    selectTab(BookmarksFragment())
-//                }
-//                R.id.itemDetail -> {
-//                    selectTab(DetailFragment())
-//                }
-//                else -> {}
-//            }
-//            true
-//        }
-//        bottomNavigationMenu.selectedItemId = R.id.itemMain
+        bottomNavigationMenu.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.itemBookmarks -> {
+                    findNavController().navigate(R.id.bookmarksFragment)
+                }
+                else -> {}
+            }
+            true
+        }
+        bottomNavigationMenu.selectedItemId = R.id.itemMain
 
         viewModel.viewState.observe(viewLifecycleOwner, ::render)
 
@@ -85,10 +80,6 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
 
     }
 
-    private fun selectTab(fragment: Fragment) {
-//        requireActivity().supportFragmentManager.beginTransaction().replace(R.id.container, fragment).commit()
-    }
-
     private fun render(viewState: ViewState) {
         when (viewState.state) {
             State.Load -> {
@@ -100,6 +91,8 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
                 adapter.setData(viewState.articlesShown)
             }
             State.Error -> {
+            }
+            State.DetailLoad -> {
             }
         }
 

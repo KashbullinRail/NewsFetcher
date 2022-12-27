@@ -4,12 +4,15 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.newsfetcher.R
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.CollapsingToolbarLayout
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.math.abs
 
@@ -23,10 +26,9 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
     private val tvAuthorDetail: TextView by lazy { requireActivity().findViewById(R.id.tvAuthorDetail) }
     private val tvDataDetail: TextView by lazy { requireActivity().findViewById(R.id.tvDataDetail) }
     private val ivNewsDetail: ImageView by lazy { requireActivity().findViewById(R.id.ivNewsDetail) }
-
+    private val fabGoToMainFragment: FloatingActionButton by lazy { requireActivity().findViewById(R.id.fabGoToMainFragment) }
 
     private val viewModel: DetailScreenViewModel by viewModel()
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -34,6 +36,15 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
 //        lifecycleScope.launchWhenStarted {
 //            viewModel.viewState.collect { state -> state?.let { this@DetailFragment::render } }
 //        }
+
+        fabGoToMainFragment.setOnClickListener {
+            findNavController().navigate(R.id.mainScreenFragment)
+        }
+
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            findNavController().navigate(R.id.mainScreenFragment)
+        }
+
 
         viewModel.viewState.observe(viewLifecycleOwner, ::render)
 
