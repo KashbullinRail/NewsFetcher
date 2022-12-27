@@ -22,7 +22,7 @@
         android:layout_width="34dp"
         android:layout_height="34dp"
         android:layout_marginStart="10dp"
-        android:src="@drawable/ic_baseline_filter_alt_24"
+        android:src="@drawable/ic_searchmenu_filter"
         app:layout_constraintBottom_toBottomOf="@id/tvTitleBookmarks"
         app:layout_constraintStart_toStartOf="@id/ivToolbar"
         app:layout_constraintTop_toTopOf="@id/tvTitleBookmarks"/>
@@ -62,7 +62,7 @@
         android:layout_width="34dp"
         android:layout_height="34dp"
         android:layout_marginEnd="10dp"
-        android:src="@drawable/ic_baseline_search_24"
+        android:src="@drawable/ic_searchmenu_search"
         app:layout_constraintBottom_toBottomOf="@id/ivToolbar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

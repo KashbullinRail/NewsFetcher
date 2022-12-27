@@ -10,11 +10,8 @@ import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.newsfetcher.R
-import com.google.android.material.appbar.AppBarLayout
-import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import kotlin.math.abs
 
 
 class DetailFragment : Fragment(R.layout.fragment_detail) {
@@ -74,8 +71,8 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
                 Glide
                     .with(this@DetailFragment)
                     .load(viewState.articleDetail.urlToImage)
-                    .placeholder(R.drawable.ic_baseline_image_24)
-                    .error(R.drawable.ic_baseline_image_not_supported_24)
+                    .placeholder(R.drawable.ic_image)
+                    .error(R.drawable.ic_image_not_supported)
                     .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                     .centerCrop()
                     .into(ivNewsDetail)

@@ -2,13 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:id="@+id/itemMain"
-        android:icon="@drawable/ic_baseline_home_24"
+        android:icon="@drawable/ic_bnvbar_home"
         android:title="@string/main"/>
     <item android:id="@+id/itemBookmarks"
-        android:icon="@drawable/ic_baseline_bookmark_24"
+        android:icon="@drawable/ic_bnvbar_bookmark"
         android:title="@string/favorite"/>
     <item android:id="@+id/itemDetail"
-        android:icon="@drawable/ic_baseline_zoom_out_map_24"
-        android:title="@string/detail"/>
+        android:icon="@drawable/ic_bnvbar_cloud"
+        android:title="@string/weather"/>
 
 </menu>

@@ -83,6 +83,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:layout_gravity="bottom|center"
-        android:src="@drawable/ic_baseline_home_24" />
+        android:src="@drawable/ic_bnvbar_home" />
 
 </LinearLayout>
