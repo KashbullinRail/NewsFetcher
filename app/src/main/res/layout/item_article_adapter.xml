@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="220dp"
+    android:layout_marginTop="10dp"
+    android:orientation="vertical"
+    android:backgroundTint="?attr/colorSurfaceVariant">
+
+
+    <TextView
+        android:id="@+id/tvNameMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black_100"
+        android:textStyle="bold"
+        android:hint="@string/name_source"/>
+
+    <ImageView
+        android:id="@+id/ivNewsImageMain"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvTitleMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lines="2"
+        android:ellipsize="end"
+        android:textColor="?attr/colorAccented"
+        tools:text="@tools:sample/lorem/random" />
+
+    <TextView
+        android:id="@+id/tvDataMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/non_text"
+        android:textColor="?attr/colorAccented"
+        tools:text="@tools:sample/date/ddmmyy" />
+
+
+</LinearLayout>

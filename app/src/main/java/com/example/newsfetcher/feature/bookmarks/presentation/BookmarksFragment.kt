@@ -49,7 +49,6 @@ class BookmarksFragment : Fragment(R.layout.fragment_bookmarks) {
 
     }
 
-    @SuppressLint("ResourceType")
     private fun render(viewState: ViewState) {
 
         when (viewState.state) {

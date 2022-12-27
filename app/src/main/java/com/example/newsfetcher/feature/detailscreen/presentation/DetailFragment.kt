@@ -3,17 +3,13 @@ package com.example.newsfetcher.feature.detailscreen.presentation
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
-import android.widget.ProgressBar
 import android.widget.TextView
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.newsfetcher.R
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.CollapsingToolbarLayout
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.math.abs
 
@@ -21,14 +17,13 @@ import kotlin.math.abs
 class DetailFragment : Fragment(R.layout.fragment_detail) {
 
     private val tvTitleDetail: TextView by lazy { requireActivity().findViewById(R.id.tvTitleDetail) }
-    private val tvDescription: TextView by lazy { requireActivity().findViewById(R.id.tvDescription) }
-    private val progressBar:
-            ProgressBar by lazy { requireActivity().findViewById(R.id.progressBar) }
-    private val collapsingToolbar:
-            CollapsingToolbarLayout by lazy { requireActivity().findViewById(R.id.collapsingToolbar) }
-    private val newsDetailAppBar:
-            AppBarLayout by lazy { requireActivity().findViewById(R.id.newsDetailAppBar) }
+    private val tvDescription: TextView by lazy { requireActivity().findViewById(R.id.tvDescriptionDetail) }
+    private val tvNameDetail: TextView by lazy { requireActivity().findViewById(R.id.tvNameDetail) }
+    private val tvLinkToSourceDetail: TextView by lazy { requireActivity().findViewById(R.id.tvLinkToSourceDetail) }
+    private val tvAuthorDetail: TextView by lazy { requireActivity().findViewById(R.id.tvAuthorDetail) }
+    private val tvDataDetail: TextView by lazy { requireActivity().findViewById(R.id.tvDataDetail) }
     private val ivNewsDetail: ImageView by lazy { requireActivity().findViewById(R.id.ivNewsDetail) }
+
 
     private val viewModel: DetailScreenViewModel by viewModel()
 
@@ -42,13 +37,13 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
 
         viewModel.viewState.observe(viewLifecycleOwner, ::render)
 
-        newsDetailAppBar.addOnOffsetChangedListener(
-            AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
-                val percent = (abs(appBarLayout.totalScrollRange + verticalOffset)
-                    .toFloat() / appBarLayout.totalScrollRange)
-                tvDescription.alpha = percent
-                tvTitleDetail.alpha = percent
-            })
+//        newsDetailAppBar.addOnOffsetChangedListener(
+//            AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
+//                val percent = (abs(appBarLayout.totalScrollRange + verticalOffset)
+//                    .toFloat() / appBarLayout.totalScrollRange)
+//                tvDescription.alpha = percent
+//                tvTitleDetail.alpha = percent
+//            })
 
     }
 
@@ -56,13 +51,15 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
 
         when (viewState.state) {
             State.Load -> {
-                progressBar.isVisible = true
+
             }
             State.Content -> {
-                progressBar.isVisible = false
                 tvTitleDetail.text = viewState.articleDetail.title
-                collapsingToolbar.title = viewState.articleDetail.title
                 tvDescription.text = viewState.articleDetail.description
+                tvAuthorDetail.text = viewState.articleDetail.author
+                tvNameDetail.text = viewState.articleDetail.name
+                tvDataDetail.text = viewState.articleDetail.publishedAt
+                tvLinkToSourceDetail.text = viewState.articleDetail.url
                 Glide
                     .with(this@DetailFragment)
                     .load(viewState.articleDetail.urlToImage)

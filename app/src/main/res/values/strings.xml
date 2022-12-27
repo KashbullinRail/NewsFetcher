@@ -9,4 +9,9 @@
     <string name="loadloadload">LoadLoadLoad</string>
     <string name="non_text">non text</string>
     <string name="input_key_word">Ключевое слово для поиска</string>
+    <string name="name_source">Name source</string>
+    <string name="title_link_to_source_Detail">Ссылка на источник</string>
+    <string name="link_to_source_Detail">http//........</string>
+    <string name="_2022">2022....</string>
+    <string name="author_published">Автор статьи</string>
 </resources>

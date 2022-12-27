@@ -1,35 +1,45 @@
 package com.example.newsfetcher.feature.main_screen.data
 
 import com.example.newsfetcher.feature.main_screen.data.model.ArticlesRemoteModel
+import org.intellij.lang.annotations.Language
 import retrofit2.http.*
+import java.security.ProtectionDomain
 
 
 interface NewsAPI {
 
     @GET("v2/top-headlines")
     suspend fun getArticles(
-//        @Query("apiKey") apiKey: String = API_KEY,
-        @Query("country") country: String = "ru"
+        @Query("country") country: String = "ru",
+//        @Query("language") language: String = "ru",
+//        @Query("category") category: String = "general", // business, entertainment, general, health, science, sports, technology
+//        @Query("sources") sources: String = "",
+//        @Query("q") query: String = "Путин",
+//        @Query("pageSize") pageSize: String = "100", // 1..100
+//        @Query("page") page: String = "" // 1
     ): ArticlesRemoteModel
 
-//    @POST("v2/top-headlines")
-//    suspend fun post2Articles(
-//        @Body jsonModel: JsonModel.JsonModelItem = JsonModel.JsonModelItem(
-//            "f767f1e7-63e2-4f7b-984d-1f4743e7dfd1",
-//            "09.12.2013T14:53:16.548Z",
-//            "fields_tyson@manglo.degree",
-//            "6212577f0095c22f40b1a78a",
-//            profile = JsonModel.JsonModelItem.Profile(
-//                "Quis labore commodo culpa aliquip cillum deserunt culpa non pariatur minim ullamco reprehenderit nulla esse. Ullamco aliquip do commodo cillum.",
-//                "59 Menahan Street, Loretto, Washington",
-//                "Manglo",
-//                "17.02.1989",
-//                location = JsonModel.JsonModelItem.Profile.Location(56.740646, -60.715809),
-//                "Fields Tyson"
-//            ),
-//            roles = listOf("owner", "guest"),
-//            "10.12.2013T14:53:16.548Z",
-//            "fields89")
+//    @GET("v2/everything")
+//    suspend fun getArticles(
+//        @Query("q") query: String = "россия",
+//        @Query("searchIn") searchIn: String = "title", // title, description, content
+////        @Query("sources") sources: String = "ru",  // tr, us
+////        @Query("domains") domain: String = "", //eg bbc.co.uk,
+//        @Query("from") from: String = "2022-12-20",
+//        @Query("to") to: String = "2022-12-18",
+////        @Query("language") language: String = "ru", // en
+////        @Query("sortBy") sortBy: String = "popularity", // relevancy, popularity, publishedAt
+////        @Query("pageSize") pageSize: String = "100", // 1..100
+////        @Query("page") page: String = "" // 1
+//    ): ArticlesRemoteModel
+
+
+   // This endpoint returns the subset of news publishers that top headlines
+//    @GET("v2/top-headlines/source")
+//    suspend fun getArticles(
+//        @Query("category") category: String = "", // business, entertainment, general, health, science, sports, technology
+//        @Query("language") language: String = "ru",
+//        @Query("country") country: String = "ru"
 //    ): ArticlesRemoteModel
 
 }

@@ -5,6 +5,8 @@ import androidx.lifecycle.*
 import com.example.newsfetcher.base.BaseViewModel
 import com.example.newsfetcher.base.Event
 import com.example.newsfetcher.feature.bookmarks.domian.BookmarksInteractor
+import com.example.newsfetcher.feature.bookmarks.presentation.DataEvent
+import com.example.newsfetcher.feature.main_screen.domian.ArticleModel
 import com.example.newsfetcher.feature.main_screen.domian.ArticlesInteractor
 import kotlinx.coroutines.launch
 
@@ -42,6 +44,7 @@ class MainScreenViewModel(
                 return null
             }
             is DateEvent.OnLoadArticlesSucceed -> {
+
                 return previousState.copy(
                     articlesList = event.articles,
                     articlesShown = event.articles,
