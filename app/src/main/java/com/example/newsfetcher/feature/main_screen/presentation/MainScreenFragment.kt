@@ -13,8 +13,6 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newsfetcher.R
-import com.example.newsfetcher.feature.bookmarks.presentation.BookmarksFragment
-import com.example.newsfetcher.feature.detailscreen.presentation.DetailFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -38,7 +36,7 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
         super.onViewCreated(view, savedInstanceState)
 
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
-            findNavController().navigate(R.id.mainScreenFragment)
+            findNavController().navigate(R.id.bookmarksFragment)
         }
 
         bottomNavigationMenu.setOnItemSelectedListener {

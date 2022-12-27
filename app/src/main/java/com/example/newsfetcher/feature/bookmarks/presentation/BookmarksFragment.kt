@@ -1,15 +1,12 @@
 package com.example.newsfetcher.feature.bookmarks.presentation
 
-import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newsfetcher.R
-import com.example.newsfetcher.feature.detailscreen.presentation.DetailFragment
 import com.example.newsfetcher.feature.main_screen.presentation.ArticlesAdapter
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.floatingactionbutton.FloatingActionButton

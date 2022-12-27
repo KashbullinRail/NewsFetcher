@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="?attr/colorSurfaceVariant"
-        app:layout_constraintBottom_toTopOf="@+id/rvArticles"
+        app:layout_constraintBottom_toTopOf="@+id/ivSeparatorLine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,7 +25,7 @@
         android:src="@drawable/ic_searchmenu_filter"
         app:layout_constraintBottom_toBottomOf="@id/tvTitleBookmarks"
         app:layout_constraintStart_toStartOf="@id/ivToolbar"
-        app:layout_constraintTop_toTopOf="@id/tvTitleBookmarks"/>
+        app:layout_constraintTop_toTopOf="@id/tvTitleBookmarks" />
 
     <TextView
         android:id="@+id/tvTitleBookmarks"
@@ -33,9 +33,9 @@
         android:layout_height="0dp"
         android:layout_marginHorizontal="5dp"
         android:background="?attr/colorSurfaceNative"
+        android:gravity="center"
         android:text="@string/popularity_title"
         android:textColor="?attr/colorAccented"
-        android:gravity="center"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@id/ivSearch"
         app:layout_constraintEnd_toStartOf="@id/ivSearch"
@@ -48,10 +48,10 @@
         android:layout_height="0dp"
         android:layout_marginHorizontal="5dp"
         android:background="?attr/colorSurfaceNative"
-        android:visibility="gone"
         android:gravity="center"
-        android:textSize="16sp"
         android:hint="@string/input_key_word_for_search"
+        android:textSize="16sp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@id/ivSearch"
         app:layout_constraintEnd_toStartOf="@id/ivSearch"
         app:layout_constraintStart_toEndOf="@+id/ivFilter"
@@ -67,6 +67,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/ivSeparatorLine"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="?attr/colorPrimary"
+        app:layout_constraintBottom_toTopOf="@+id/rvArticles"
+        app:layout_constraintTop_toBottomOf="@+id/ivToolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvArticles"
@@ -77,7 +86,7 @@
         app:layout_constraintBottom_toTopOf="@id/bnvBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivToolbar"
+        app:layout_constraintTop_toBottomOf="@+id/ivSeparatorLine"
         tools:listitem="@layout/item_article_adapter" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

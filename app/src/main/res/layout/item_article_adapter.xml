@@ -7,6 +7,10 @@
     android:orientation="vertical"
     android:backgroundTint="?attr/colorSurfaceVariant">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="?attr/colorPrimary"/>
 
     <TextView
         android:id="@+id/tvNameMain"
@@ -38,6 +42,5 @@
         android:hint="@string/non_text"
         android:textColor="?attr/colorAccented"
         tools:text="@tools:sample/date/ddmmyy" />
-
 
 </LinearLayout>
