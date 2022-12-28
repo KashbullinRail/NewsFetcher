@@ -5,7 +5,6 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import androidx.activity.addCallback
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -50,7 +49,9 @@ class SearchScreenFragment : Fragment(R.layout.fragment_news_search) {
             bnvBarSearch.selectedItemId = R.id.itemSearch
 
             ivSearchBotton.setOnClickListener {
-                viewModel.processUIEvent(UIEvent.OnSearchButtonCliked)
+
+//                viewModel.processUIEvent(UIEvent.OnSearchEdit(etTitleSearch.text.toString()))
+                viewModel.processUIEvent(UIEvent.OnSearchButtonClicked(etTitleSearch.text.toString()))
             }
         }
 
@@ -83,10 +84,10 @@ class SearchScreenFragment : Fragment(R.layout.fragment_news_search) {
             State.Load -> {
             }
             State.Content -> {
-                with(binding) {
-                    etTitleSearch.isVisible = viewState.isSearchEnabled
-                    if (!etTitleSearch.isVisible) etTitleSearch.setText("")
-                }
+//                with(binding) {
+////                    etTitleSearch.isVisible = viewState.isSearchEnabled
+////                    if (!etTitleSearch.isVisible) etTitleSearch.setText("")
+//                }
 
                 adapter.setData(viewState.articlesShown)
             }

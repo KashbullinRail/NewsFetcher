@@ -5,13 +5,18 @@ import androidx.lifecycle.viewModelScope
 import com.example.newsfetcher.base.BaseViewModel
 import com.example.newsfetcher.base.Event
 import com.example.newsfetcher.feature.bookmarks_screen.domian.BookmarksInteractor
+import com.example.newsfetcher.feature.main_screen.data.model.ArticlesRemoteModel
+import com.example.newsfetcher.feature.search_screen.data.SearchNewsAPI
 import com.example.newsfetcher.feature.search_screen.domain.SearchInteractor
 import kotlinx.coroutines.launch
+
 
 class SearchScreenViewModel(
     private val searchInteractor: SearchInteractor,
     private val bookmarksInteractor: BookmarksInteractor
 ) : BaseViewModel<ViewState>() {
+
+
 
     init {
         processDataEvent(DateEvent.LoadArticles)
@@ -41,7 +46,6 @@ class SearchScreenViewModel(
                 return null
             }
             is DateEvent.OnLoadArticlesSucceed -> {
-
                 return previousState.copy(
                     articlesList = event.articles,
                     articlesShown = event.articles,
@@ -55,7 +59,8 @@ class SearchScreenViewModel(
                 }
                 return null
             }
-            is UIEvent.OnSearchButtonCliked -> {
+            is UIEvent.OnSearchButtonClicked -> {
+
                 return previousState.copy(
                     articlesShown = if (!previousState.isSearchEnabled) previousState.articlesList
                     else previousState.articlesShown,
@@ -67,11 +72,11 @@ class SearchScreenViewModel(
                     it.title.contains(
                         event.text
                     )
-                }
-                )
+                })
             }
             else -> return null
         }
 
     }
+
 }
