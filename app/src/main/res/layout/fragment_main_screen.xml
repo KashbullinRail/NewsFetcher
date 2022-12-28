@@ -5,93 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-    <ImageView
-        android:id="@+id/ivToolbar"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="?attr/colorSurfaceVariant"
-        app:layout_constraintBottom_toTopOf="@+id/ivSeparatorLine"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <ImageView
-        android:id="@+id/ivFilter"
-        android:layout_width="34dp"
-        android:layout_height="34dp"
-        android:layout_marginStart="10dp"
-        android:visibility="gone"
-        android:src="@drawable/ic_searchmenu_filter"
-        app:layout_constraintBottom_toBottomOf="@id/tvTitleBookmarks"
-        app:layout_constraintStart_toStartOf="@id/ivToolbar"
-        app:layout_constraintTop_toTopOf="@id/tvTitleBookmarks" />
-
-    <TextView
-        android:id="@+id/tvTitleBookmarks"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginHorizontal="5dp"
-        android:background="?attr/colorSurfaceNative"
-        android:gravity="center"
-        android:text="@string/popularity_title"
-        android:textColor="?attr/colorAccented"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@id/ivSearch"
-        app:layout_constraintEnd_toStartOf="@id/ivSearch"
-        app:layout_constraintStart_toEndOf="@+id/ivFilter"
-        app:layout_constraintTop_toTopOf="@id/ivSearch" />
-
-    <EditText
-        android:id="@+id/etSearch"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginHorizontal="5dp"
-        android:background="?attr/colorSurfaceNative"
-        android:gravity="center"
-        android:hint="@string/input_key_word_for_search"
-        android:textSize="16sp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@id/ivSearch"
-        app:layout_constraintEnd_toStartOf="@id/ivSearch"
-        app:layout_constraintStart_toEndOf="@+id/ivFilter"
-        app:layout_constraintTop_toTopOf="@id/ivSearch" />
-
-    <ImageView
-        android:id="@+id/ivSearch"
-        android:layout_width="34dp"
-        android:layout_height="34dp"
-        android:layout_marginEnd="10dp"
-        android:src="@drawable/ic_searchmenu_search"
-        app:layout_constraintBottom_toBottomOf="@id/ivToolbar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/ivSeparatorLine"
-        android:layout_width="match_parent"
-        android:layout_height="4dp"
-        android:background="?attr/colorPrimary"
-        app:layout_constraintBottom_toTopOf="@+id/rvArticles"
-        app:layout_constraintTop_toBottomOf="@+id/ivToolbar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvArticles"
+        android:id="@+id/rvArticlesMain"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toTopOf="@id/bnvBar"
+        app:layout_constraintBottom_toTopOf="@id/bnvBarMain"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivSeparatorLine"
+        app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/item_article_adapter" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bnvBar"
+        android:id="@+id/bnvBarMain"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:elevation="10dp"
