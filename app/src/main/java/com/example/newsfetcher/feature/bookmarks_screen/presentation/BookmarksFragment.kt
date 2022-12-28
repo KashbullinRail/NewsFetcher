@@ -47,6 +47,9 @@ class BookmarksFragment : Fragment(R.layout.fragment_bookmarks) {
                 R.id.itemMain -> {
                     findNavController().navigate(R.id.mainScreenFragment)
                 }
+                R.id.itemSearch -> {
+                    findNavController().navigate(R.id.searchScreenFragment)
+                }
                 else -> {}
             }
             true

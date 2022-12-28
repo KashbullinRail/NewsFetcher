@@ -22,6 +22,7 @@
         android:layout_width="34dp"
         android:layout_height="34dp"
         android:layout_marginStart="10dp"
+        android:visibility="gone"
         android:src="@drawable/ic_searchmenu_filter"
         app:layout_constraintBottom_toBottomOf="@id/tvTitleBookmarks"
         app:layout_constraintStart_toStartOf="@id/ivToolbar"

@@ -5,10 +5,6 @@ import androidx.lifecycle.viewModelScope
 import com.example.newsfetcher.base.BaseViewModel
 import com.example.newsfetcher.base.Event
 import com.example.newsfetcher.feature.bookmarks_screen.domian.BookmarksInteractor
-import com.example.newsfetcher.feature.main_screen.presentation.DateEvent
-import com.example.newsfetcher.feature.main_screen.presentation.State
-import com.example.newsfetcher.feature.main_screen.presentation.UIEvent
-import com.example.newsfetcher.feature.main_screen.presentation.ViewState
 import com.example.newsfetcher.feature.search_screen.domain.SearchInteractor
 import kotlinx.coroutines.launch
 

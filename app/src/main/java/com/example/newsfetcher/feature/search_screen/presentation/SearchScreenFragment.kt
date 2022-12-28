@@ -1,4 +1,4 @@
-package com.example.newsfetcher.feature.main_screen.presentation
+package com.example.newsfetcher.feature.search_screen.presentation
 
 import android.os.Bundle
 import android.text.Editable
@@ -6,26 +6,25 @@ import android.text.TextWatcher
 import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.activity.addCallback
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newsfetcher.R
+import com.example.newsfetcher.feature.main_screen.presentation.ArticlesAdapter
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
+class SearchScreenFragment : Fragment(R.layout.fragment_news_search) {
 
-    private val viewModel: MainScreenViewModel by viewModel()
+    private val viewModel: SearchScreenViewModel by viewModel()
 
-    private val bottomNavigationMenu: BottomNavigationView by lazy { requireActivity().findViewById(R.id.bnvBar) }
-    private val recyclerView: RecyclerView by lazy { requireActivity().findViewById(R.id.rvArticles) }
-    private val ivSearch: ImageView by lazy { requireActivity().findViewById(R.id.ivSearch) }
-    private val tvTitle: TextView by lazy { requireActivity().findViewById(R.id.tvTitleBookmarks) }
-    private val etSearch: EditText by lazy { requireActivity().findViewById(R.id.etSearch) }
+    private val bottomNavigationMenu: BottomNavigationView by lazy { requireActivity().findViewById(R.id.bnvBarSearch) }
+    private val recyclerView: RecyclerView by lazy { requireActivity().findViewById(R.id.rvArticlesSearch) }
+    private val ivSearch: ImageView by lazy { requireActivity().findViewById(R.id.ivSearchBotton) }
+    private val etTitleSearch: EditText by lazy { requireActivity().findViewById(R.id.etTitleSearch) }
     private val adapter: ArticlesAdapter by lazy {
         ArticlesAdapter { index ->
             viewModel.processUIEvent(UIEvent.OnArticleClicked(index))
@@ -44,14 +43,15 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
                 R.id.itemBookmarks -> {
                     findNavController().navigate(R.id.bookmarksFragment)
                 }
-                R.id.itemSearch -> {
-                    findNavController().navigate(R.id.searchScreenFragment)
+                R.id.itemMain -> {
+                    findNavController().navigate(R.id.mainScreenFragment)
                 }
                 else -> {}
             }
             true
         }
-        bottomNavigationMenu.selectedItemId = R.id.itemMain
+
+        bottomNavigationMenu.selectedItemId = R.id.itemSearch
 
         viewModel.viewState.observe(viewLifecycleOwner, ::render)
 
@@ -61,7 +61,7 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
             viewModel.processUIEvent(UIEvent.OnSearchButtonCliked)
         }
 
-        etSearch.addTextChangedListener(object : TextWatcher {
+        etTitleSearch.addTextChangedListener(object : TextWatcher {
 
             override fun beforeTextChanged(
                 text: CharSequence?,
@@ -86,9 +86,8 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
             State.Load -> {
             }
             State.Content -> {
-                tvTitle.isVisible = !viewState.isSearchEnabled
-                etSearch.isVisible = viewState.isSearchEnabled
-                if (!etSearch.isVisible) etSearch.setText("")
+                etTitleSearch.isVisible = viewState.isSearchEnabled
+                if (!etTitleSearch.isVisible) etTitleSearch.setText("")
                 adapter.setData(viewState.articlesShown)
             }
             State.Error -> {
