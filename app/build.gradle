@@ -53,6 +53,8 @@ dependencies {
     def junit_version = "4.13.2"
     def ext_junit_version = "1.1.4"
     def espresso_core_version = "3.5.0"
+    def viewbinding_propertydelegate = "1.5.6"
+
 
     implementation "androidx.appcompat:appcompat:$appcompat_version"
     implementation "com.google.android.material:material:$material_version"
@@ -61,6 +63,8 @@ dependencies {
     implementation "androidx.activity:activity-ktx:$activity_ktx_version"
     implementation "androidx.fragment:fragment-ktx:$fragment_ktx_version"
     implementation "androidx.core:core-ktx:$core_ktx_version"
+    // reflection-free flavor
+    implementation "com.github.kirich1409:viewbindingpropertydelegate-noreflection:$viewbinding_propertydelegate"
     // ViewModel
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_ktx_version"
     // LiveData
@@ -94,6 +98,5 @@ dependencies {
     testImplementation "junit:junit:$junit_version"
     androidTestImplementation "androidx.test.ext:junit:$ext_junit_version"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_core_version"
-
 
 }
