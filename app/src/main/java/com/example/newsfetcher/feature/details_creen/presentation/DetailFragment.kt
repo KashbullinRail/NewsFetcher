@@ -7,23 +7,18 @@ import android.widget.TextView
 import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.newsfetcher.R
+import com.example.newsfetcher.databinding.FragmentDetailBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class DetailFragment : Fragment(R.layout.fragment_detail) {
 
-    private val tvTitleDetail: TextView by lazy { requireActivity().findViewById(R.id.tvTitleDetail) }
-    private val tvDescription: TextView by lazy { requireActivity().findViewById(R.id.tvDescriptionDetail) }
-    private val tvNameDetail: TextView by lazy { requireActivity().findViewById(R.id.tvNameDetail) }
-    private val tvLinkToSourceDetail: TextView by lazy { requireActivity().findViewById(R.id.tvLinkToSourceDetail) }
-    private val tvAuthorDetail: TextView by lazy { requireActivity().findViewById(R.id.tvAuthorDetail) }
-    private val tvDataDetail: TextView by lazy { requireActivity().findViewById(R.id.tvDataDetail) }
-    private val ivNewsDetail: ImageView by lazy { requireActivity().findViewById(R.id.ivNewsDetail) }
-    private val fabGoToMainFragment: FloatingActionButton by lazy { requireActivity().findViewById(R.id.fabGoToMainFragment) }
+    private val binding by viewBinding(FragmentDetailBinding::bind)
 
     private val viewModel: DetailScreenViewModel by viewModel()
 
@@ -34,7 +29,7 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
 //            viewModel.viewState.collect { state -> state?.let { this@DetailFragment::render } }
 //        }
 
-        fabGoToMainFragment.setOnClickListener {
+            binding.fabDetailGoToMain.setOnClickListener {
             findNavController().navigate(R.id.mainScreenFragment)
         }
 
@@ -62,20 +57,23 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
 
             }
             State.Content -> {
-                tvTitleDetail.text = viewState.articleDetail.title
-                tvDescription.text = viewState.articleDetail.description
-                tvAuthorDetail.text = viewState.articleDetail.author
-                tvNameDetail.text = viewState.articleDetail.name
-                tvDataDetail.text = viewState.articleDetail.publishedAt
-                tvLinkToSourceDetail.text = viewState.articleDetail.url
-                Glide
-                    .with(this@DetailFragment)
-                    .load(viewState.articleDetail.urlToImage)
-                    .placeholder(R.drawable.ic_image)
-                    .error(R.drawable.ic_image_not_supported)
-                    .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
-                    .centerCrop()
-                    .into(ivNewsDetail)
+                with(binding) {
+                    tvTitleDetail.text = viewState.articleDetail.title
+                    tvDescriptionDetail.text = viewState.articleDetail.description
+                    tvAuthorDetail.text = viewState.articleDetail.author
+                    tvNameDetail.text = viewState.articleDetail.name
+                    tvDataDetail.text = viewState.articleDetail.publishedAt
+                    tvLinkToSourceDetail.text = viewState.articleDetail.url
+                    Glide
+                        .with(this@DetailFragment)
+                        .load(viewState.articleDetail.urlToImage)
+                        .placeholder(R.drawable.ic_image)
+                        .error(R.drawable.ic_image_not_supported)
+                        .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+                        .centerCrop()
+                        .into(ivNewsDetail)
+                }
+
             }
             State.Error -> {
             }
