@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/bookmarksFragment"
-        android:name="com.example.newsfetcher.feature.bookmarks.presentation.BookmarksFragment"
+        android:name="com.example.newsfetcher.feature.bookmarks_screen.presentation.BookmarksFragment"
         android:label="BookmarksFragment" >
         <action
             android:id="@+id/action_bookmarksFragment_to_mainScreenFragment"
@@ -29,7 +29,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.example.newsfetcher.feature.detailscreen.presentation.DetailFragment"
+        android:name="com.example.newsfetcher.feature.details_creen.presentation.DetailFragment"
         android:label="DetailFragment" >
         <action
             android:id="@+id/action_detailFragment_to_mainScreenFragment"

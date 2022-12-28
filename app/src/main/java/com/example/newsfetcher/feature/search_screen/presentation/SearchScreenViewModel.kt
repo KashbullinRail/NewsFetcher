@@ -1,16 +1,19 @@
-package com.example.newsfetcher.feature.main_screen.presentation
+package com.example.newsfetcher.feature.search_screen.presentation
 
 import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.example.newsfetcher.base.BaseViewModel
 import com.example.newsfetcher.base.Event
 import com.example.newsfetcher.feature.bookmarks_screen.domian.BookmarksInteractor
-import com.example.newsfetcher.feature.main_screen.domian.ArticlesInteractor
+import com.example.newsfetcher.feature.main_screen.presentation.DateEvent
+import com.example.newsfetcher.feature.main_screen.presentation.State
+import com.example.newsfetcher.feature.main_screen.presentation.UIEvent
+import com.example.newsfetcher.feature.main_screen.presentation.ViewState
+import com.example.newsfetcher.feature.search_screen.domain.SearchInteractor
 import kotlinx.coroutines.launch
 
-
-class MainScreenViewModel(
-    private val interactor: ArticlesInteractor,
+class SearchScreenViewModel(
+    private val searchInteractor: SearchInteractor,
     private val bookmarksInteractor: BookmarksInteractor
 ) : BaseViewModel<ViewState>() {
 
@@ -30,7 +33,7 @@ class MainScreenViewModel(
         when (event) {
             is DateEvent.LoadArticles -> {
                 viewModelScope.launch {
-                    interactor.getArticles().fold(
+                    searchInteractor.getArticles().fold(
                         onError = {
                             Log.e("ERROR", it.localizedMessage)
                         },
@@ -75,5 +78,4 @@ class MainScreenViewModel(
         }
 
     }
-
 }
