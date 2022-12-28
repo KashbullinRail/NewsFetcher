@@ -5,70 +5,60 @@ import android.view.View
 import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.RecyclerView
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.newsfetcher.R
+import com.example.newsfetcher.databinding.FragmentBookmarksBinding
 import com.example.newsfetcher.feature.main_screen.presentation.ArticlesAdapter
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class BookmarksFragment : Fragment(R.layout.fragment_bookmarks) {
 
+    private val binding by viewBinding(FragmentBookmarksBinding::bind)
+
     private val viewModel: BookmarksScreenViewModel by viewModel()
 
-    private val recyclerView: RecyclerView by lazy {
-        requireActivity().findViewById(R.id.rvBookmarkedArticles)
-    }
     private val adapter: ArticlesAdapter by lazy {
         ArticlesAdapter { index ->
             viewModel.processUIEvent(UIEvent.OnArticleClicked(index))
 
         }
     }
-    private val fabDeleteBookmarks: FloatingActionButton by lazy {
-        requireActivity().findViewById(R.id.fabDeleteBookmarks) }
-    private val bottomNavigationMenu: BottomNavigationView by lazy { requireActivity().findViewById(R.id.bnvBarBookmarks) }
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        lifecycleScope.launchWhenStarted {
-//            viewModel.viewState.collect { state -> state?.let { this@BookmarksFragment::render } }
-//        }
+        viewModel.viewState.observe(viewLifecycleOwner, ::render)
+
+        with(binding) {
+            rvBookmarkedArticles.adapter = adapter
+
+            bnvBarBookmarks.setOnItemSelectedListener {
+                when (it.itemId) {
+                    R.id.itemMain -> {
+                        findNavController().navigate(R.id.mainScreenFragment)
+                    }
+                    R.id.itemSearch -> {
+                        findNavController().navigate(R.id.searchScreenFragment)
+                    }
+                    else -> {}
+                }
+                true
+            }
+            bnvBarBookmarks.selectedItemId = R.id.itemBookmarks
+
+            fabDeleteBookmarks.setOnClickListener {
+                viewModel.processUIEvent(UIEvent.OnDeleteClicked)
+            }
+        }
 
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
             findNavController().navigate(R.id.mainScreenFragment)
         }
 
-        bottomNavigationMenu.setOnItemSelectedListener {
-            when (it.itemId) {
-                R.id.itemMain -> {
-                    findNavController().navigate(R.id.mainScreenFragment)
-                }
-                R.id.itemSearch -> {
-                    findNavController().navigate(R.id.searchScreenFragment)
-                }
-                else -> {}
-            }
-            true
-        }
-
-        bottomNavigationMenu.selectedItemId = R.id.itemBookmarks
-
-        viewModel.viewState.observe(viewLifecycleOwner, ::render)
-
-        recyclerView.adapter = adapter
-
-        fabDeleteBookmarks.setOnClickListener {
-            viewModel.processUIEvent(UIEvent.OnDeleteClicked)
-        }
-
     }
 
     private fun render(viewState: ViewState) {
-
         when (viewState.state) {
             State.Load -> {
             }
@@ -81,7 +71,6 @@ class BookmarksFragment : Fragment(R.layout.fragment_bookmarks) {
                 findNavController().navigate(R.id.detailFragment)
             }
         }
-
     }
 
 }
