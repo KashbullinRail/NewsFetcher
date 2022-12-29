@@ -5,8 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.newsfetcher.base.BaseViewModel
 import com.example.newsfetcher.base.Event
 import com.example.newsfetcher.feature.bookmarks_screen.domian.BookmarksInteractor
-import com.example.newsfetcher.feature.main_screen.data.model.ArticlesRemoteModel
-import com.example.newsfetcher.feature.search_screen.data.SearchNewsAPI
+import com.example.newsfetcher.feature.search_screen.data.SearchArticlesRemoteSource
 import com.example.newsfetcher.feature.search_screen.domain.SearchInteractor
 import kotlinx.coroutines.launch
 
@@ -19,14 +18,15 @@ class SearchScreenViewModel(
 
 
     init {
-        processDataEvent(DateEvent.LoadArticles)
+        processDataEvent(DateEvent.LoadArticles(""))
     }
 
     override fun initialViewState() = ViewState(
         state = State.Load,
         articlesList = emptyList(),
         articlesShown = emptyList(),
-        isSearchEnabled = false
+        isSearchEnabled = false,
+        searchText = ""
     )
 
     override fun reduce(event: Event, previousState: ViewState): ViewState? {
@@ -60,13 +60,23 @@ class SearchScreenViewModel(
                 return null
             }
             is UIEvent.OnSearchButtonClicked -> {
-
-                return previousState.copy(
-                    articlesShown = if (!previousState.isSearchEnabled) previousState.articlesList
-                    else previousState.articlesShown,
-                    isSearchEnabled = !previousState.isSearchEnabled
-                )
+                SearchArticlesRemoteSource.qqq = event.searchText
+                viewModelScope.launch {
+                    searchInteractor.getArticles().fold(
+                        onError = {
+                            Log.e("ERROR", it.localizedMessage)
+                        },
+                        onSuccess = {
+                            processDataEvent(DateEvent.OnLoadArticlesSucceed(it))
+                        }
+                    )
+                }
+                State.Content
+                return previousState.copy(searchText = event.searchText)
             }
+
+
+
             is UIEvent.OnSearchEdit -> {
                 return previousState.copy(articlesShown = previousState.articlesList.filter {
                     it.title.contains(

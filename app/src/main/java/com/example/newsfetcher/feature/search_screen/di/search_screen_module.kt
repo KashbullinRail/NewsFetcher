@@ -1,10 +1,6 @@
 package com.example.newsfetcher.feature.search_screen.di
 
-import com.example.newsfetcher.feature.main_screen.data.ArticlesRepository
-import com.example.newsfetcher.feature.main_screen.data.model.ArticlesRemoteRepositoryImpl
-import com.example.newsfetcher.feature.search_screen.data.ArticlesSearchRepository
-import com.example.newsfetcher.feature.search_screen.data.SearchArticlesRemoteSource
-import com.example.newsfetcher.feature.search_screen.data.SearchNewsAPI
+import com.example.newsfetcher.feature.search_screen.data.*
 import com.example.newsfetcher.feature.search_screen.data.model.ArticlesSearchRemoteRepositoryImpl
 import com.example.newsfetcher.feature.search_screen.domain.SearchInteractor
 import com.example.newsfetcher.feature.search_screen.presentation.SearchScreenViewModel

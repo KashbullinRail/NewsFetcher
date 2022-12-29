@@ -1,6 +1,5 @@
 package com.example.newsfetcher.feature.search_screen.data.model
 
-import com.example.newsfetcher.feature.main_screen.data.ArticlesRepository
 import com.example.newsfetcher.feature.main_screen.data.toDomian
 import com.example.newsfetcher.feature.main_screen.domian.ArticleModel
 import com.example.newsfetcher.feature.search_screen.data.ArticlesSearchRepository
