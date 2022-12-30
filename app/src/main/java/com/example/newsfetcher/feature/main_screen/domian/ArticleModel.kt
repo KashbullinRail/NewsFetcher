@@ -1,7 +1,6 @@
 package com.example.newsfetcher.feature.main_screen.domian
 
 
-
 data class ArticleModel(
     val name: String,
     val author: String,

@@ -46,19 +46,21 @@
 
     <ImageView
         android:id="@+id/iv_bookmarks_full"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:visibility="gone"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:layout_gravity="end"
-        android:layout_marginEnd="15dp"
+        android:padding="15dp"
+        android:layout_marginEnd="5dp"
+        android:visibility="gone"
         android:src="@drawable/ic_bookmark"/>
 
     <ImageView
         android:id="@+id/iv_bookmarks_empty"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:layout_gravity="end"
-        android:layout_marginEnd="15dp"
+        android:padding="15dp"
+        android:layout_marginEnd="5dp"
         android:src="@drawable/ic_bookmark_border"/>
 
 </LinearLayout>
