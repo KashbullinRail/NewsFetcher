@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.newsfetcher.base.BaseViewModel
 import com.example.newsfetcher.base.Event
 import com.example.newsfetcher.feature.bookmarks_screen.domian.BookmarksInteractor
+import com.example.newsfetcher.feature.main_screen.domian.ArticleModel
 import com.example.newsfetcher.feature.main_screen.domian.ArticlesInteractor
 import kotlinx.coroutines.launch
 
@@ -22,7 +23,11 @@ class MainScreenViewModel(
         state = State.Load,
         articlesList = emptyList(),
         articlesShown = emptyList(),
-        isSearchEnabled = false
+        articleDetail = ArticleModel(
+            "", "", "", "", "", "", "", "", false
+        ),
+        isSearchEnabled = false,
+        isBookmarkVisible = false
     )
 
     override fun reduce(event: Event, previousState: ViewState): ViewState? {
@@ -50,9 +55,28 @@ class MainScreenViewModel(
                 )
             }
             is UIEvent.OnArticleClicked -> {
-                viewModelScope.launch {
-                    bookmarksInteractor.create(previousState.articlesShown[event.index])
-                    State.DetailLoad
+                if (event.type == "item") {
+                    return previousState.copy(
+                        articleDetail = previousState.articlesShown[event.index],
+                        state = State.DetailLoad
+                    )
+                }
+                if (event.type == "bookmarks") {
+                    viewModelScope.launch {
+                        bookmarksInteractor.create(previousState.articlesShown[event.index])
+                    }
+                    Log.d("TAGG", "UIEvent visible 1 ${previousState.articlesShown[event.index].selectedBookmark}")
+                    previousState.articlesShown[event.index].selectedBookmark = !previousState.isBookmarkVisible
+                    Log.d("TAGG", "UIEvent visible 2 ${previousState.articlesShown[event.index].selectedBookmark}")
+                    viewModelScope.launch {
+                        bookmarksInteractor.update(previousState.articlesShown[event.index])
+                    }
+                    Log.d("TAGG", "UIEvent visible 3 ${previousState.articlesShown[event.index].selectedBookmark}")
+                    return previousState.copy(
+                        articleDetail = previousState.articlesShown[event.index],
+                        isBookmarkVisible = !previousState.isBookmarkVisible,
+                        state = State.AddBookmarks
+                    )
                 }
                 return null
             }

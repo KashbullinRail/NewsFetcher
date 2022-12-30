@@ -14,12 +14,13 @@ import com.example.newsfetcher.feature.main_screen.domian.ArticleModel
 
 interface UserActionListener {
     fun onUserMove(user: ArticleModel, moveBy: Int)
-    fun onUserDelete(user: ArticleModel)
+    fun onUserDelete(users: List<ArticleModel>)
     fun onUserDetails(user: ArticleModel)
 }
 
 class UsersAdapter(
-    private val actionListener: UserActionListener
+//    private val actionListener: UserActionListener,
+    val onItemClicked: (Int, String) -> Unit
 ) : RecyclerView.Adapter<UsersAdapter.UsersViewHolder>(), View.OnClickListener {
 
     class UsersViewHolder(
@@ -33,32 +34,27 @@ class UsersAdapter(
             notifyDataSetChanged()
         }
 
-    override fun onClick(v: View) {
-        val user = v.tag as ArticleModel
-        when (v.id) {
-            R.id.ivBookmarksBorder -> {
-                Log.d("TAGG", "ivMore")
-            }
-            else -> {
-                Log.d("TAGG", "else")
-//                actionListener.onUserDetails(user)
-            }
-        }
-    }
-
     override fun getItemCount(): Int = users.size
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UsersViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemArticleAdapterBinding.inflate(inflater, parent, false)
-//        return UsersViewHolder(binding)
 
         binding.root.setOnClickListener(this)
         binding.ivBookmarksBorder.setOnClickListener(this)
+
         return UsersViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: UsersViewHolder, position: Int) {
+
+        holder.itemView.setOnClickListener {
+            onItemClicked.invoke(position, "item")
+        }
+        holder.binding.ivBookmarksBorder.setOnClickListener {
+            onItemClicked.invoke(position, "bookmarks")
+        }
+
 
         val user = users[position]
         with(holder.binding) {
@@ -67,6 +63,8 @@ class UsersAdapter(
             tvNameMain.text = user.name
             tvTitleMain.text = user.title
             tvDataMain.text = user.publishedAt
+
+
 
             Glide
                 .with(ivNewsImageMain.context)
@@ -79,12 +77,33 @@ class UsersAdapter(
                 .into(ivNewsImageMain)
 
         }
+
+
     }
 
-//    fun setData(articles: List<ArticleModel>) {
-//        users = articles
-//        notifyDataSetChanged()
-//    }
+    override fun onClick(v: View) {
+        val user = v.tag as ArticleModel
+        when (v.id) {
+            R.id.ivBookmarksBorder -> {
+                Log.d("TAGG", "ivMore")
+
+//                actionListener.onUserDelete(user[position])
+            }
+            else -> {
+                Log.d("TAGG", "else")
+//                actionListener.onUserDetails(user)
+            }
+        }
+    }
+
+    fun setData(articles: List<ArticleModel>) {
+        users = articles
+        notifyDataSetChanged()
+    }
+
+    fun www(index: Int) {
+        users[index]
+    }
 
 
 }

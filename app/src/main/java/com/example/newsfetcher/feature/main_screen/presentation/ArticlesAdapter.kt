@@ -66,4 +66,6 @@ class ArticlesAdapter(val onItemClicked: (Int) -> Unit) :
         notifyDataSetChanged()
     }
 
+
+
 }

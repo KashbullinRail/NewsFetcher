@@ -24,5 +24,7 @@ data class DetailEntity(
     @ColumnInfo(name = "publishedAt")
     val publishedAt: String,
     @ColumnInfo(name = "content")
-    val content: String
+    val content: String,
+    @ColumnInfo(name = "bookmarkVisible")
+    val selectedBookmark: Boolean
 )

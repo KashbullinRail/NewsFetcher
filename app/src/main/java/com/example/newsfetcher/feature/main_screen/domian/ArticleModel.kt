@@ -1,6 +1,7 @@
 package com.example.newsfetcher.feature.main_screen.domian
 
 
+
 data class ArticleModel(
     val name: String,
     val author: String,
@@ -9,5 +10,6 @@ data class ArticleModel(
     val url: String,
     val urlToImage: String,
     val publishedAt: String,
-    val content: String
-)
+    val content: String,
+    var selectedBookmark: Boolean
+) : java.io.Serializable

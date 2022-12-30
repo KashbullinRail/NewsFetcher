@@ -49,6 +49,9 @@
         android:name="com.example.newsfetcher.feature.details_creen.presentation.DetailFragment"
         android:label="DetailFragment"
         tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="MyArgsNav"
+            app:argType="com.example.newsfetcher.feature.main_screen.domian.ArticleModel" />
         <action
             android:id="@+id/action_detailFragment_to_mainScreenFragment"
             app:destination="@id/mainScreenFragment" />
