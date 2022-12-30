@@ -45,7 +45,7 @@
         tools:text="@tools:sample/date/ddmmyy" />
 
     <ImageView
-        android:id="@+id/ivBookmarksFill"
+        android:id="@+id/iv_bookmarks_full"
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:visibility="gone"
@@ -54,7 +54,7 @@
         android:src="@drawable/ic_bookmark"/>
 
     <ImageView
-        android:id="@+id/ivBookmarksBorder"
+        android:id="@+id/iv_bookmarks_empty"
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:layout_gravity="end"

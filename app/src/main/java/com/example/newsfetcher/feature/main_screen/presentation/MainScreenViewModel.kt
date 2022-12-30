@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 
 
 class MainScreenViewModel(
-    private val interactor: ArticlesInteractor,
+    private val articleInteractor: ArticlesInteractor,
     private val bookmarksInteractor: BookmarksInteractor
 ) : BaseViewModel<ViewState>() {
 
@@ -24,10 +24,9 @@ class MainScreenViewModel(
         articlesList = emptyList(),
         articlesShown = emptyList(),
         articleDetail = ArticleModel(
-            "", "", "", "", "", "", "", ""
-        ),
-        isSearchEnabled = false,
-        isBookmarkVisible = false
+            "", "", "", "", "",
+            "", "", "", false
+        )
     )
 
     override fun reduce(event: Event, previousState: ViewState): ViewState? {
@@ -35,7 +34,7 @@ class MainScreenViewModel(
         when (event) {
             is DateEvent.LoadArticles -> {
                 viewModelScope.launch {
-                    interactor.getArticles().fold(
+                    articleInteractor.getArticles().fold(
                         onError = {
                             Log.e("ERROR", it.localizedMessage)
                         },
@@ -47,7 +46,6 @@ class MainScreenViewModel(
                 return null
             }
             is DateEvent.OnLoadArticlesSucceed -> {
-
                 return previousState.copy(
                     articlesList = event.articles,
                     articlesShown = event.articles,
@@ -55,38 +53,35 @@ class MainScreenViewModel(
                 )
             }
             is UIEvent.OnArticleClicked -> {
-                if (event.type == "item") {
-                    return previousState.copy(
-                        articleDetail = previousState.articlesShown[event.index],
-                        state = State.DetailLoad
-                    )
-                }
-                if (event.type == "bookmarks") {
-                    viewModelScope.launch {
-                        bookmarksInteractor.create(previousState.articlesShown[event.index])
+                when (event.type) {
+                    ARTICLE_ITEM -> {
+                        return previousState.copy(
+                            articleDetail = previousState.articlesShown[event.index],
+                            state = State.DetailLoad
+                        )
                     }
-                    return previousState.copy(
-                        articleDetail = previousState.articlesShown[event.index],
-                        isBookmarkVisible = !previousState.isBookmarkVisible,
-                        state = State.AddBookmarks
-                    )
+                    BOOKMARK_EMPTY -> {
+                        viewModelScope.launch {
+                            bookmarksInteractor.create(previousState.articlesShown[event.index])
+                        }
+                        return previousState.copy(
+                            articlesList = previousState.articlesList,
+                            articlesShown = previousState.articlesShown,
+                            state = State.Content
+                        )
+                    }
+                    BOOKMARK_FULL -> {
+                        viewModelScope.launch {
+                            bookmarksInteractor.delete(previousState.articlesShown[event.index])
+                        }
+                        return previousState.copy(
+                            articlesList = previousState.articlesList,
+                            articlesShown = previousState.articlesShown,
+                            state = State.Content
+                        )
+                    }
                 }
                 return null
-            }
-            is UIEvent.OnSearchButtonCliked -> {
-                return previousState.copy(
-                    articlesShown = if (!previousState.isSearchEnabled) previousState.articlesList
-                    else previousState.articlesShown,
-                    isSearchEnabled = !previousState.isSearchEnabled
-                )
-            }
-            is UIEvent.OnSearchEdit -> {
-                return previousState.copy(articlesShown = previousState.articlesList.filter {
-                    it.title.contains(
-                        event.text
-                    )
-                }
-                )
             }
             else -> return null
         }

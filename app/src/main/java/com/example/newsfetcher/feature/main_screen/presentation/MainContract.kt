@@ -8,26 +8,21 @@ enum class State {
     Load,
     Content,
     DetailLoad,
-    AddBookmarks,
     Error
 }
 
 data class ViewState(
     val state: State,
-    val isSearchEnabled: Boolean,
-    val isBookmarkVisible: Boolean,
     val articlesShown: List<ArticleModel>,
     val articlesList: List<ArticleModel>,
     val articleDetail: ArticleModel
 )
 
-sealed class UIEvent: Event{
-    data class OnArticleClicked(val index: Int, val type: String): UIEvent()
-    object OnSearchButtonCliked : UIEvent()
-    data class OnSearchEdit(val text: String): UIEvent()
+sealed class UIEvent : Event {
+    data class OnArticleClicked(val index: Int, val type: String) : UIEvent()
 }
 
-sealed class DateEvent: Event{
-    object LoadArticles: DateEvent()
-    data class OnLoadArticlesSucceed(val articles: List<ArticleModel>): DateEvent()
+sealed class DateEvent : Event {
+    object LoadArticles : DateEvent()
+    data class OnLoadArticlesSucceed(val articles: List<ArticleModel>) : DateEvent()
 }

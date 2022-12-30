@@ -8,7 +8,7 @@ import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.newsfetcher.R
 import com.example.newsfetcher.databinding.FragmentNewsSearchBinding
-import com.example.newsfetcher.feature.main_screen.presentation.ArticlesAdapter
+import com.example.newsfetcher.feature.main_screen.di.ArticlesAdapter
 import com.example.newsfetcher.feature.search_screen.data.SearchArticlesRemoteSource
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

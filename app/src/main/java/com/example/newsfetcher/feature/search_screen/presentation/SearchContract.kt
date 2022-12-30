@@ -11,10 +11,6 @@ enum class State {
     Error
 }
 
-data class StateSetting(
-    val aaaaa: String
-)
-
 data class ViewState(
     val state: State,
     val isSearchEnabled: Boolean,

@@ -18,23 +18,11 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
 
     private val viewModel: MainScreenViewModel by viewModel()
 
-//    private lateinit var adapter: UsersAdapter
-
-    private val adapter: UsersAdapter by lazy {
-        UsersAdapter { index, type ->
+    private val adapter: MainArticleAdapter by lazy {
+        MainArticleAdapter { index, type ->
             viewModel.processUIEvent(UIEvent.OnArticleClicked(index, type))
         }
     }
-
-
-//    private val adapter: ArticlesAdapter by lazy {
-//        ArticlesAdapter { index ->
-//            viewModel.processUIEvent(UIEvent.OnArticleClicked(index))
-//        }
-//    }
-
-
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -43,27 +31,7 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
 
         with(binding) {
 
-
-//            adapter = UsersAdapter(object : UserActionListener {
-//                override fun onUserMove(user: ArticleModel, moveBy: Int) {
-//
-//                }
-//
-//                override fun onUserDelete(user: ArticleModel) {
-//                    Log.d("TAGG", "${user.name} delete")
-//                    viewModel.processUIEvent(UIEvent.OnArticleClicked(user))
-//                }
-//
-//                override fun onUserDetails(user: ArticleModel) {
-//                    Log.d("TAGG", "${user.title}")
-//                }
-//            })
-
             rvArticlesMain.adapter = adapter
-
-
-
-
 
             bnvBarMain.setOnItemSelectedListener {
                 when (it.itemId) {
@@ -87,6 +55,7 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
     }
 
     private fun render(viewState: ViewState) {
+
         when (viewState.state) {
             State.Load -> {
             }
@@ -96,16 +65,15 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
             State.Error -> {
             }
             State.DetailLoad -> {
-               val articleDetail = viewState.articleDetail
+                val articleDetail = viewState.articleDetail
                 Log.d("TAGG", "UIEvent load = ${viewState.articleDetail}")
-                val action = MainScreenFragmentDirections.actionMainScreenFragmentToDetailFragment(articleDetail)
+                val action = MainScreenFragmentDirections.actionMainScreenFragmentToDetailFragment(
+                    articleDetail
+                )
                 findNavController().navigate(action)
             }
-            State.AddBookmarks -> {
-                viewState.articleDetail
-                Log.d("TAGG", "UIEvent bookmarks = ${viewState.articleDetail}")
-            }
         }
+
     }
 
 

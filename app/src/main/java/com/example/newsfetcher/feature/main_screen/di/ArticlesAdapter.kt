@@ -1,4 +1,4 @@
-package com.example.newsfetcher.feature.main_screen.presentation
+package com.example.newsfetcher.feature.main_screen.di
 
 import android.view.LayoutInflater
 import android.view.View
