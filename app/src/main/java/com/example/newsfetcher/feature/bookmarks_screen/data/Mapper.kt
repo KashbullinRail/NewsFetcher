@@ -13,8 +13,7 @@ fun BookmarkEntity.toDomain() = ArticleModel(
     url = url,
     urlToImage = urlToImage,
     publishedAt = publishedAt,
-    content = content,
-    selectedBookmark = selectedBookmark
+    content = content
 )
 
 fun ArticleModel.toEntity() = BookmarkEntity(
@@ -26,6 +25,5 @@ fun ArticleModel.toEntity() = BookmarkEntity(
     url = url,
     urlToImage = urlToImage,
     publishedAt = publishedAt,
-    content = content,
-    selectedBookmark = selectedBookmark
+    content = content
 )

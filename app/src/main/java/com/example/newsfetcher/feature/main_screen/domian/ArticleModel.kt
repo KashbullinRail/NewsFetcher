@@ -10,6 +10,5 @@ data class ArticleModel(
     val url: String,
     val urlToImage: String,
     val publishedAt: String,
-    val content: String,
-    var selectedBookmark: Boolean
+    val content: String
 ) : java.io.Serializable

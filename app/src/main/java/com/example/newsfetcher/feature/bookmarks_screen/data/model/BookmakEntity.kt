@@ -25,6 +25,4 @@ data class BookmarkEntity(
     val publishedAt: String,
     @ColumnInfo(name = "content")
     val content: String,
-    @ColumnInfo(name = "bookmarkVisible")
-    val selectedBookmark: Boolean
 )

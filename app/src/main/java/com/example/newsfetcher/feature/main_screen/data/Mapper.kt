@@ -12,6 +12,5 @@ fun ArticleRemoteModel.toDomian() = ArticleModel(
     url = url ?: "",
     urlToImage = urlToImage ?: "",
     publishedAt = publishedAt ?: "",
-    content = content ?: "",
-    selectedBookmark = false
+    content = content ?: ""
 )

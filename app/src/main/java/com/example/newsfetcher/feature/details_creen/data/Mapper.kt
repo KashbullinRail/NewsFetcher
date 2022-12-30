@@ -12,8 +12,7 @@ fun DetailEntity.toDomain() = ArticleModel(
     url = url,
     urlToImage = urlToImage,
     publishedAt = publishedAt,
-    content = content,
-    selectedBookmark = selectedBookmark
+    content = content
 )
 
 fun ArticleModel.toEntity() = DetailEntity(
@@ -24,6 +23,5 @@ fun ArticleModel.toEntity() = DetailEntity(
     url = url,
     urlToImage = urlToImage,
     publishedAt = publishedAt,
-    content = content,
-    selectedBookmark = selectedBookmark
+    content = content
 )

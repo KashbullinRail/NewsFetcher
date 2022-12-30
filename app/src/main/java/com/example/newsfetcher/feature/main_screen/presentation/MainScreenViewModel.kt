@@ -24,7 +24,7 @@ class MainScreenViewModel(
         articlesList = emptyList(),
         articlesShown = emptyList(),
         articleDetail = ArticleModel(
-            "", "", "", "", "", "", "", "", false
+            "", "", "", "", "", "", "", ""
         ),
         isSearchEnabled = false,
         isBookmarkVisible = false
@@ -65,13 +65,6 @@ class MainScreenViewModel(
                     viewModelScope.launch {
                         bookmarksInteractor.create(previousState.articlesShown[event.index])
                     }
-                    Log.d("TAGG", "UIEvent visible 1 ${previousState.articlesShown[event.index].selectedBookmark}")
-                    previousState.articlesShown[event.index].selectedBookmark = !previousState.isBookmarkVisible
-                    Log.d("TAGG", "UIEvent visible 2 ${previousState.articlesShown[event.index].selectedBookmark}")
-                    viewModelScope.launch {
-                        bookmarksInteractor.update(previousState.articlesShown[event.index])
-                    }
-                    Log.d("TAGG", "UIEvent visible 3 ${previousState.articlesShown[event.index].selectedBookmark}")
                     return previousState.copy(
                         articleDetail = previousState.articlesShown[event.index],
                         isBookmarkVisible = !previousState.isBookmarkVisible,
