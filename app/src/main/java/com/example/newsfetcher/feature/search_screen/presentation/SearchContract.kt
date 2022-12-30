@@ -13,16 +13,15 @@ enum class State {
 
 data class ViewState(
     val state: State,
-    val isSearchEnabled: Boolean,
     val articlesShown: List<ArticleModel>,
     val articlesList: List<ArticleModel>,
+    val articleDetail: ArticleModel,
     val searchText: String,
 )
 
 sealed class UIEvent : Event {
-    data class OnArticleClicked(val index: Int) : UIEvent()
+    data class OnArticleClicked(val index: Int, val type: String) : UIEvent()
     data class OnSearchButtonClicked(val searchText: String) : UIEvent()
-    data class OnSearchEdit(val text: String) : UIEvent()
 }
 
 sealed class DateEvent : Event {
