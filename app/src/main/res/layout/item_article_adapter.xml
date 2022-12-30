@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="220dp"
+    android:layout_height="270dp"
     android:layout_marginTop="10dp"
     android:orientation="vertical"
     android:backgroundTint="?attr/colorSurfaceVariant">
@@ -30,7 +31,7 @@
         android:id="@+id/tvTitleMain"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:lines="2"
+        android:maxLines="2"
         android:ellipsize="end"
         android:textColor="?attr/colorAccented"
         tools:text="@tools:sample/lorem/random" />
@@ -42,5 +43,22 @@
         android:hint="@string/non_text"
         android:textColor="?attr/colorAccented"
         tools:text="@tools:sample/date/ddmmyy" />
+
+    <ImageView
+        android:id="@+id/ivBookmarksFill"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:visibility="gone"
+        android:layout_gravity="end"
+        android:layout_marginEnd="15dp"
+        android:src="@drawable/ic_bookmark"/>
+
+    <ImageView
+        android:id="@+id/ivBookmarksBorder"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_gravity="end"
+        android:layout_marginEnd="15dp"
+        android:src="@drawable/ic_bookmark_border"/>
 
 </LinearLayout>
