@@ -25,8 +25,8 @@ class SearchScreenViewModel(
 
     override fun initialViewState() = ViewState(
         state = State.Load,
-        articlesList = emptyList(),
-        articlesShown = emptyList(),
+        articlesSearchList = emptyList(),
+        articlesSearchShown = emptyList(),
         articleDetail = ArticleModel(
             "", "", "", "", "",
             "", "", "", false
@@ -52,8 +52,8 @@ class SearchScreenViewModel(
             }
             is DateEvent.OnLoadArticlesSucceed -> {
                 return previousState.copy(
-                    articlesList = event.articles,
-                    articlesShown = event.articles,
+                    articlesSearchList = event.articlesSearched,
+                    articlesSearchShown = event.articlesSearched,
                     state = State.Content
                 )
             }
@@ -61,27 +61,27 @@ class SearchScreenViewModel(
                 when (event.type) {
                     ARTICLE_ITEM -> {
                         return previousState.copy(
-                            articleDetail = previousState.articlesShown[event.index],
+                            articleDetail = previousState.articlesSearchShown[event.index],
                             state = State.DetailLoad
                         )
                     }
                     BOOKMARK_EMPTY -> {
                         viewModelScope.launch {
-                            bookmarksInteractor.create(previousState.articlesShown[event.index])
+                            bookmarksInteractor.create(previousState.articlesSearchShown[event.index])
                         }
                         return previousState.copy(
-                            articlesList = previousState.articlesList,
-                            articlesShown = previousState.articlesShown,
+                            articlesSearchList = previousState.articlesSearchList,
+                            articlesSearchShown = previousState.articlesSearchShown,
                             state = State.Content
                         )
                     }
                     BOOKMARK_FULL -> {
                         viewModelScope.launch {
-                            bookmarksInteractor.delete(previousState.articlesShown[event.index])
+                            bookmarksInteractor.delete(previousState.articlesSearchShown[event.index])
                         }
                         return previousState.copy(
-                            articlesList = previousState.articlesList,
-                            articlesShown = previousState.articlesShown,
+                            articlesSearchList = previousState.articlesSearchList,
+                            articlesSearchShown = previousState.articlesSearchShown,
                             state = State.Content
                         )
                     }

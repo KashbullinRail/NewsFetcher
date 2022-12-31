@@ -83,7 +83,7 @@ class SearchScreenFragment : Fragment(R.layout.fragment_news_search){
             State.Load -> {
             }
             State.Content -> {
-                adapter.setData(viewState.articlesShown)
+                adapter.setData(viewState.articlesSearchShown)
             }
             State.Error -> {
             }
