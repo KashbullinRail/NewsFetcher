@@ -5,6 +5,7 @@ import com.example.newsfetcher.feature.main_screen.domian.ArticleModel
 
 
 fun DetailEntity.toDomain() = ArticleModel(
+    id = "detail",
     name = name,
     author = author,
     title = title,

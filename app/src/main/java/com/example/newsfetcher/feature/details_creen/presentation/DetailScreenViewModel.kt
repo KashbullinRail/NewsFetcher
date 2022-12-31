@@ -24,7 +24,8 @@ class DetailScreenViewModel(
             state = State.Load,
             articleDetailList = emptyList(),
             articleDetail = ArticleModel(
-                "", "", "", "", "", "", "", "", false
+                "","", "", "", "", "",
+                "", "", "", false
             ),
         )
 

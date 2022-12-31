@@ -28,7 +28,7 @@ class SearchScreenViewModel(
         articlesSearchList = emptyList(),
         articlesSearchShown = emptyList(),
         articleDetail = ArticleModel(
-            "", "", "", "", "",
+            "","", "", "", "", "",
             "", "", "", false
         ),
         searchText = ""
