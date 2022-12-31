@@ -24,7 +24,8 @@ class BookmarksScreenViewModel(
             state = State.Load,
             bookmarksArticle = emptyList(),
             articleDetail = ArticleModel(
-                "", "", "", "", "", "", "", "", false
+                "", "", "", "", "",
+                "", "", "", false
             )
         )
 
@@ -51,28 +52,34 @@ class BookmarksScreenViewModel(
                 )
             }
             is UIEvent.OnArticleClicked -> {
-                viewModelScope.launch {
-                    detailInteractor.create(previousState.bookmarksArticle[event.index])
-                }
-                return previousState.copy(
-                    state = State.DetailLoad
-                )
-            }
-            is UIEvent.OnDeleteClicked -> {
-                viewModelScope.launch {
-                    if (previousState.bookmarksArticle.isNotEmpty()) {
-                        val articleModel = previousState.bookmarksArticle.last()
-                        bookmarksInteractor.delete(articleModel)
-                        bookmarksInteractor.read().fold(
-                            onError = {
-                                Log.e("ERROR", it.localizedMessage!!)
-                            },
-                            onSuccess = {
-                                processDataEvent(DataEvent.OnSuccessBookmarksLoaded(it))
-                            }
+                when (event.type) {
+                    BOOKMARK_ITEM -> {
+                        viewModelScope.launch {
+                            detailInteractor.create(previousState.bookmarksArticle[event.index])
+                        }
+                        return previousState.copy(
+                            state = State.DetailLoad
                         )
                     }
-
+                    BOOKMARK_DELETE -> {
+                        viewModelScope.launch {
+                            bookmarksInteractor.delete(previousState.bookmarksArticle[event.index])
+                        }
+                        viewModelScope.launch {
+                            bookmarksInteractor.read().fold(
+                                onError = {
+                                    Log.e("ERROR", it.localizedMessage!!)
+                                },
+                                onSuccess = {
+                                    processDataEvent(DataEvent.OnSuccessBookmarksLoaded(it))
+                                }
+                            )
+                        }
+                        return previousState.copy(
+                            bookmarksArticle = previousState.bookmarksArticle,
+                            state = State.Content
+                        )
+                    }
                 }
                 return null
             }

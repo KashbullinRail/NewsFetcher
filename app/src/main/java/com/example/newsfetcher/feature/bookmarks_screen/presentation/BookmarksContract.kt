@@ -18,8 +18,7 @@ data class ViewState(
 )
 
 sealed class UIEvent: Event {
-    data class OnArticleClicked(val index: Int): UIEvent()
-    object OnDeleteClicked: UIEvent()
+    data class OnArticleClicked(val index: Int, val type: String): UIEvent()
 }
 
 sealed class DataEvent() : Event {

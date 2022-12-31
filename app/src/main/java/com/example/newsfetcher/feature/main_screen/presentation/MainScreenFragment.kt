@@ -67,9 +67,8 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
             State.DetailLoad -> {
                 val articleDetail = viewState.articleDetail
                 Log.d("TAGG", "UIEvent load = ${viewState.articleDetail}")
-                val action = MainScreenFragmentDirections.actionMainScreenFragmentToDetailFragment(
-                    articleDetail
-                )
+                val action = MainScreenFragmentDirections
+                    .actionMainScreenFragmentToDetailFragment(articleDetail)
                 findNavController().navigate(action)
             }
         }

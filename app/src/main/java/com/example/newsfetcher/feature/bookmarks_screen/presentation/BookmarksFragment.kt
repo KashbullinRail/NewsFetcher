@@ -1,6 +1,7 @@
 package com.example.newsfetcher.feature.bookmarks_screen.presentation
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
@@ -8,7 +9,6 @@ import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.newsfetcher.R
 import com.example.newsfetcher.databinding.FragmentBookmarksBinding
-import com.example.newsfetcher.feature.main_screen.di.ArticlesAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -18,10 +18,9 @@ class BookmarksFragment : Fragment(R.layout.fragment_bookmarks) {
 
     private val viewModel: BookmarksScreenViewModel by viewModel()
 
-    private val adapter: ArticlesAdapter by lazy {
-        ArticlesAdapter { index ->
-            viewModel.processUIEvent(UIEvent.OnArticleClicked(index))
-
+    private val adapter: BookmarksAdapter by lazy {
+        BookmarksAdapter { index, type ->
+            viewModel.processUIEvent(UIEvent.OnArticleClicked(index, type))
         }
     }
 
@@ -31,6 +30,7 @@ class BookmarksFragment : Fragment(R.layout.fragment_bookmarks) {
         viewModel.viewState.observe(viewLifecycleOwner, ::render)
 
         with(binding) {
+
             rvBookmarkedArticles.adapter = adapter
 
             bnvBarBookmarks.setOnItemSelectedListener {
@@ -47,9 +47,6 @@ class BookmarksFragment : Fragment(R.layout.fragment_bookmarks) {
             }
             bnvBarBookmarks.selectedItemId = R.id.itemBookmarks
 
-            fabDeleteBookmarks.setOnClickListener {
-                viewModel.processUIEvent(UIEvent.OnDeleteClicked)
-            }
         }
 
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
@@ -68,7 +65,11 @@ class BookmarksFragment : Fragment(R.layout.fragment_bookmarks) {
             State.Error -> {
             }
             State.DetailLoad -> {
-                findNavController().navigate(R.id.detailFragment)
+                val articleDetail = viewState.articleDetail
+                Log.d("TAGG", "UIEvent load = ${viewState.articleDetail}")
+                val action = BookmarksFragmentDirections
+                    .actionBookmarksFragmentToDetailFragment(articleDetail)
+                findNavController().navigate(action)
             }
         }
     }

@@ -41,6 +41,7 @@ class MainArticleAdapter(
 
     override fun onBindViewHolder(holder: MainArticleViewHolder, position: Int) {
 
+        //handle pressing the open detail item
         holder.itemView.setOnClickListener {
             onItemClicked.invoke(position, ARTICLE_ITEM)
         }
@@ -48,6 +49,7 @@ class MainArticleAdapter(
         val article = articles[position]
         with(holder.binding) {
 
+            //handle pressing the delete item
             ivBookmarksEmpty.setOnClickListener {
                 articles[position].selectedBookmark = !articles[position].selectedBookmark
                 holder.binding.ivBookmarksEmpty.isVisible = !articles[position].selectedBookmark
@@ -55,6 +57,7 @@ class MainArticleAdapter(
                 onItemClicked.invoke(position, BOOKMARK_EMPTY)
             }
 
+            //handle pressing the add bookmark item
             ivBookmarksFull.setOnClickListener {
                 articles[position].selectedBookmark = !articles[position].selectedBookmark
                 holder.binding.ivBookmarksEmpty.isVisible = !articles[position].selectedBookmark
@@ -62,6 +65,7 @@ class MainArticleAdapter(
                 onItemClicked.invoke(position, BOOKMARK_FULL)
             }
 
+            //update variables
             holder.itemView.tag = article
             tvNameMain.text = article.name
             tvTitleMain.text = article.title
@@ -83,6 +87,7 @@ class MainArticleAdapter(
 
     }
 
+    //redrawing UI
     @SuppressLint("NotifyDataSetChanged")
     fun setData(articles: List<ArticleModel>) {
         this.articles = articles
