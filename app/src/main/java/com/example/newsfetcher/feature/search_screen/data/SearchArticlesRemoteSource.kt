@@ -7,7 +7,7 @@ import com.example.newsfetcher.feature.search_screen.presentation.ViewState
 class SearchArticlesRemoteSource(private val api: SearchNewsAPI) {
 
     companion object {
-        var qqq = ""
+        var qqq = "" //TODO implement via interface
     }
 
     suspend fun getArticles(): ArticlesRemoteModel {

@@ -89,7 +89,7 @@ class SearchScreenViewModel(
                 return null
             }
             is UIEvent.OnSearchButtonClicked -> {
-                SearchArticlesRemoteSource.qqq = event.searchText
+                SearchArticlesRemoteSource.qqq = event.searchText //TODO implement via interface
                 viewModelScope.launch {
                     searchInteractor.getArticles().fold(
                         onError = {

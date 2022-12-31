@@ -3,11 +3,14 @@ package com.example.newsfetcher.feature.search_screen.presentation
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.inputmethod.EditorInfo
 import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.newsfetcher.R
+import com.example.newsfetcher.base.focusAndShowKeyboard
+import com.example.newsfetcher.base.hideKeyboard
 import com.example.newsfetcher.databinding.FragmentNewsSearchBinding
 import com.example.newsfetcher.feature.main_screen.presentation.MainArticleAdapter
 import com.example.newsfetcher.feature.search_screen.data.SearchArticlesRemoteSource
@@ -33,6 +36,8 @@ class SearchScreenFragment : Fragment(R.layout.fragment_news_search){
 
         with(binding) {
 
+            etTitleSearch.focusAndShowKeyboard()
+
             rvArticlesSearch.adapter = adapter
 
             bnvBarSearch.setOnItemSelectedListener {
@@ -49,8 +54,18 @@ class SearchScreenFragment : Fragment(R.layout.fragment_news_search){
             }
             bnvBarSearch.selectedItemId = R.id.itemSearch
 
+            etTitleSearch.setOnEditorActionListener { _, actionId, _ ->
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    requireActivity().hideKeyboard()
+                    SearchArticlesRemoteSource.qqq = etTitleSearch.text.toString() //TODO implement via interface
+                    viewModel.processUIEvent(UIEvent.OnSearchButtonClicked(etTitleSearch.text.toString()))
+                }
+                true
+            }
+
             ivSearchBotton.setOnClickListener {
-               SearchArticlesRemoteSource.qqq = etTitleSearch.text.toString()
+                requireActivity().hideKeyboard()
+               SearchArticlesRemoteSource.qqq = etTitleSearch.text.toString() //TODO implement via interface
                 viewModel.processUIEvent(UIEvent.OnSearchButtonClicked(etTitleSearch.text.toString()))
             }
         }

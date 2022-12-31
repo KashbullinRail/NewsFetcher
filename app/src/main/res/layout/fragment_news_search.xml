@@ -37,6 +37,8 @@
         android:gravity="center"
         android:hint="@string/input_key_word_for_search"
         android:textSize="16sp"
+        android:inputType="text|textAutoCorrect"
+        android:imeOptions="actionDone"
         app:layout_constraintBottom_toBottomOf="@id/ivSearchBotton"
         app:layout_constraintEnd_toStartOf="@id/ivSearchBotton"
         app:layout_constraintStart_toEndOf="@+id/ivFilterSearch"
