@@ -1,4 +1,4 @@
-package com.example.newsfetcher.feature.details_creen.presentation
+package com.example.newsfetcher.feature.detail_screen.presentation
 
 import android.os.Bundle
 import android.view.View

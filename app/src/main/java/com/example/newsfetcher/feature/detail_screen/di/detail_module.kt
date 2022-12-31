@@ -1,6 +1,6 @@
-package com.example.newsfetcher.feature.details_creen.di
+package com.example.newsfetcher.feature.detail_screen.di
 
-import com.example.newsfetcher.feature.details_creen.presentation.DetailScreenViewModel
+import com.example.newsfetcher.feature.detail_screen.presentation.DetailScreenViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 

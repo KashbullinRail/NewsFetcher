@@ -46,7 +46,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.example.newsfetcher.feature.details_creen.presentation.DetailFragment"
+        android:name="com.example.newsfetcher.feature.detail_screen.presentation.DetailFragment"
         android:label="DetailFragment"
         tools:layout="@layout/fragment_detail">
         <argument
