@@ -50,7 +50,7 @@
         android:label="DetailFragment"
         tools:layout="@layout/fragment_detail">
         <argument
-            android:name="MyArgsNav"
+            android:name="DetailArgsNav"
             app:argType="com.example.newsfetcher.feature.main_screen.domian.ArticleModel" />
         <action
             android:id="@+id/action_detailFragment_to_mainScreenFragment"

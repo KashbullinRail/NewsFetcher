@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.activity.addCallback
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -66,10 +67,10 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
             }
             State.DetailLoad -> {
                 val articleDetail = viewState.articleDetail
-                Log.d("TAGG", "UIEvent load = ${viewState.articleDetail}")
-                val action = MainScreenFragmentDirections
-                    .actionMainScreenFragmentToDetailFragment(articleDetail)
-                findNavController().navigate(action)
+                Log.d("TAGG", "Detail MainScreenFragment = ${viewState.articleDetail}")
+                //TODO redirect data transfer to safeArgs
+                val bundle = bundleOf(MAIN_PUT_TO_DETAIL to articleDetail)
+                findNavController().navigate(R.id.detailFragment, bundle)
             }
         }
 

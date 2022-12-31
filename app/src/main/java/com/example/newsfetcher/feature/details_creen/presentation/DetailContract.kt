@@ -13,10 +13,11 @@ enum class State {
 data class ViewState(
     val state: State,
     val articleDetail: ArticleModel,
-    val articleDetailList: List<ArticleModel>
+//    val articleDetailList: List<ArticleModel>
 )
 
 sealed class UIEvent : Event {
+    data class OnDetailArticleGet(val detailArticle: ArticleModel) : UIEvent()
 }
 
 sealed class DataEvent() : Event {

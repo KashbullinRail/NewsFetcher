@@ -22,9 +22,9 @@ class DetailScreenViewModel(
     override fun initialViewState(): ViewState =
         ViewState(
             state = State.Load,
-            articleDetailList = emptyList(),
+//            articleDetailList = emptyList(),
             articleDetail = ArticleModel(
-                "","", "", "", "", "",
+                "", "", "", "", "", "",
                 "", "", "", false
             ),
         )
@@ -32,31 +32,37 @@ class DetailScreenViewModel(
     override fun reduce(event: Event, previousState: ViewState): ViewState? {
 
         when (event) {
-            is DataEvent.LoadDetail -> {
-                viewModelScope.launch {
-                    detailInteractor.read().fold(
-                        onError = {
-                            Log.e("ERROR", it.localizedMessage)
-                        },
-                        onSuccess = {
-                            processDataEvent(DataEvent.OnSuccessDetailsLoaded(it))
-                        }
-                    )
-                }
-                return null
-            }
-            is DataEvent.OnSuccessDetailsLoaded -> {
-                Log.d("RoomDetail", "articleBookmark = ${event.articleDetailList}")
-                return if (event.articleDetailList.isNotEmpty()) {
-                    previousState.copy(
-                        articleDetail = event.articleDetailList.last(),
-                        state = State.Content
-                    )
-                } else {
-                    previousState.copy(
-                        state = State.Content
-                    )
-                }
+//            is DataEvent.LoadDetail -> {
+//                viewModelScope.launch {
+//                    detailInteractor.read().fold(
+//                        onError = {
+//                            Log.e("ERROR", it.localizedMessage)
+//                        },
+//                        onSuccess = {
+//                            processDataEvent(DataEvent.OnSuccessDetailsLoaded(it))
+//                        }
+//                    )
+//                }
+//                return null
+//            }
+//            is DataEvent.OnSuccessDetailsLoaded -> {
+//                Log.d("RoomDetail", "articleBookmark = ${event.articleDetailList}")
+//                return if (event.articleDetailList.isNotEmpty()) {
+//                    previousState.copy(
+//                        articleDetail = event.articleDetailList.last(),
+//                        state = State.Content
+//                    )
+//                } else {
+//                    previousState.copy(
+//                        state = State.Content
+//                    )
+//                }
+//            }
+            is UIEvent.OnDetailArticleGet -> {
+                return previousState.copy(
+                    articleDetail = event.detailArticle,
+                    state = State.Content
+                )
             }
             else -> return null
 

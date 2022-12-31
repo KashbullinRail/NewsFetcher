@@ -13,10 +13,6 @@ import com.example.newsfetcher.databinding.ItemArticleAdapterBinding
 import com.example.newsfetcher.feature.main_screen.domian.ArticleModel
 
 
-const val BOOKMARK_EMPTY = "BOOKMARK_EMPTY"
-const val BOOKMARK_FULL = "BOOKMARK_FULL"
-const val ARTICLE_ITEM = "ARTICLE_ITEM"
-
 class MainArticleAdapter(
     val onItemClicked: (Int, String) -> Unit
 ) : RecyclerView.Adapter<MainArticleAdapter.MainArticleViewHolder>() {

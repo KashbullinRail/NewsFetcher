@@ -7,6 +7,8 @@ import com.example.newsfetcher.base.Event
 import com.example.newsfetcher.feature.bookmarks_screen.domian.BookmarksInteractor
 import com.example.newsfetcher.feature.details_creen.domain.DetailInteractor
 import com.example.newsfetcher.feature.main_screen.domian.ArticleModel
+import com.example.newsfetcher.feature.main_screen.presentation.BOOKMARK_DELETE
+import com.example.newsfetcher.feature.main_screen.presentation.BOOKMARK_ITEM
 import kotlinx.coroutines.launch
 
 
@@ -54,10 +56,8 @@ class BookmarksScreenViewModel(
             is UIEvent.OnArticleClicked -> {
                 when (event.type) {
                     BOOKMARK_ITEM -> {
-                        viewModelScope.launch {
-                            detailInteractor.create(previousState.bookmarksArticle[event.index])
-                        }
                         return previousState.copy(
+                            articleDetail = previousState.bookmarksArticle[event.index],
                             state = State.DetailLoad
                         )
                     }

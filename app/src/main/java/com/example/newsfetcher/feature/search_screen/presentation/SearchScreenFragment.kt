@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import androidx.activity.addCallback
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -12,6 +13,7 @@ import com.example.newsfetcher.R
 import com.example.newsfetcher.base.focusAndShowKeyboard
 import com.example.newsfetcher.base.hideKeyboard
 import com.example.newsfetcher.databinding.FragmentNewsSearchBinding
+import com.example.newsfetcher.feature.main_screen.presentation.MAIN_PUT_TO_DETAIL
 import com.example.newsfetcher.feature.main_screen.presentation.MainArticleAdapter
 import com.example.newsfetcher.feature.search_screen.data.SearchArticlesRemoteSource
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -89,11 +91,10 @@ class SearchScreenFragment : Fragment(R.layout.fragment_news_search){
             }
             State.DetailLoad -> {
                 val articleDetail = viewState.articleDetail
-                Log.d("TAGG", "UIEvent load = ${viewState.articleDetail}")
-                val action = SearchScreenFragmentDirections.actionSearchScreenFragmentToDetailFragment(
-                    articleDetail
-                )
-                findNavController().navigate(action)
+                Log.d("TAGG", "Detail SearchScreenFragment = ${viewState.articleDetail}")
+                //TODO redirect data transfer to safeArgs
+                val bundle = bundleOf(MAIN_PUT_TO_DETAIL to articleDetail)
+                findNavController().navigate(R.id.detailFragment, bundle)
             }
         }
 

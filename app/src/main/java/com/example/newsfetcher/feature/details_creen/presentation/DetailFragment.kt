@@ -10,6 +10,8 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.newsfetcher.R
 import com.example.newsfetcher.databinding.FragmentDetailBinding
+import com.example.newsfetcher.feature.main_screen.domian.ArticleModel
+import com.example.newsfetcher.feature.main_screen.presentation.MAIN_PUT_TO_DETAIL
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -30,7 +32,6 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
             findNavController().navigate(R.id.mainScreenFragment)
         }
 
-
         viewModel.viewState.observe(viewLifecycleOwner, ::render)
 
 //        newsDetailAppBar.addOnOffsetChangedListener(
@@ -40,6 +41,10 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
 //                tvDescription.alpha = percent
 //                tvTitleDetail.alpha = percent
 //            })
+
+
+       val detailArticle =  arguments?.getSerializable(MAIN_PUT_TO_DETAIL)
+        viewModel.processUIEvent(UIEvent.OnDetailArticleGet(detailArticle as ArticleModel))
 
     }
 
