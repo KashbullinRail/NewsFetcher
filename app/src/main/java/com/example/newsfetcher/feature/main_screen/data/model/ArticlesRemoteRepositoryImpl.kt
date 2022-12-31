@@ -1,6 +1,5 @@
 package com.example.newsfetcher.feature.main_screen.data.model
 
-import android.util.Log
 import com.example.newsfetcher.feature.main_screen.data.ArticlesRemoteSource
 import com.example.newsfetcher.feature.main_screen.data.ArticlesRepository
 import com.example.newsfetcher.feature.main_screen.data.toDomian

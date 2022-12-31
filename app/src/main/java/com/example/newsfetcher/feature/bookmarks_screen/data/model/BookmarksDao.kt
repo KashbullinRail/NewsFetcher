@@ -1,7 +1,6 @@
 package com.example.newsfetcher.feature.bookmarks_screen.data.model
 
 import androidx.room.*
-import com.example.newsfetcher.feature.bookmarks_screen.di.BOOKMARKS_TABLE
 
 
 @Dao

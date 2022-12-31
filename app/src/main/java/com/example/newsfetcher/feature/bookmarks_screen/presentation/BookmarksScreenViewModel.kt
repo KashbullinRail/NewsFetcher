@@ -5,16 +5,12 @@ import androidx.lifecycle.viewModelScope
 import com.example.newsfetcher.base.BaseViewModel
 import com.example.newsfetcher.base.Event
 import com.example.newsfetcher.feature.bookmarks_screen.domian.BookmarksInteractor
-import com.example.newsfetcher.feature.details_creen.domain.DetailInteractor
 import com.example.newsfetcher.feature.main_screen.domian.ArticleModel
-import com.example.newsfetcher.feature.main_screen.presentation.BOOKMARK_DELETE
-import com.example.newsfetcher.feature.main_screen.presentation.BOOKMARK_ITEM
 import kotlinx.coroutines.launch
 
 
 class BookmarksScreenViewModel(
-    private val bookmarksInteractor: BookmarksInteractor,
-    private val detailInteractor: DetailInteractor
+    private val bookmarksInteractor: BookmarksInteractor
 ) : BaseViewModel<ViewState>() {
 
     init {

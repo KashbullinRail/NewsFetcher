@@ -1,9 +1,7 @@
 package com.example.newsfetcher.feature.main_screen.data
 
 import com.example.newsfetcher.feature.main_screen.data.model.ArticlesRemoteModel
-import org.intellij.lang.annotations.Language
 import retrofit2.http.*
-import java.security.ProtectionDomain
 
 
 interface NewsAPI {

@@ -10,8 +10,10 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.example.newsfetcher.R
 import com.example.newsfetcher.databinding.ItemBookmarkAdapterBinding
 import com.example.newsfetcher.feature.main_screen.domian.ArticleModel
-import com.example.newsfetcher.feature.main_screen.presentation.BOOKMARK_DELETE
-import com.example.newsfetcher.feature.main_screen.presentation.BOOKMARK_ITEM
+
+
+const val BOOKMARK_DELETE = "BOOKMARK_DELETE"
+const val BOOKMARK_ITEM = "ARTICLE_ITEM"
 
 
 class BookmarksAdapter(

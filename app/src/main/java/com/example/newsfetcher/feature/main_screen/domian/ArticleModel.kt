@@ -1,7 +1,5 @@
 package com.example.newsfetcher.feature.main_screen.domian
 
-import android.os.Parcelable
-
 
 data class ArticleModel(
     val id: String,

@@ -3,7 +3,9 @@ package com.example.newsfetcher.feature.bookmarks_screen.data.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.newsfetcher.feature.bookmarks_screen.di.BOOKMARKS_TABLE
+
+
+const val BOOKMARKS_TABLE = "BOOKMARKS_TABLE"
 
 
 @Entity(tableName = BOOKMARKS_TABLE)

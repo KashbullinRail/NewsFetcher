@@ -24,7 +24,7 @@ class MainScreenViewModel(
         articlesList = emptyList(),
         articlesShown = emptyList(),
         articleDetail = ArticleModel(
-            "","", "", "", "", "",
+            "", "", "", "", "", "",
             "", "", "", false
         )
     )

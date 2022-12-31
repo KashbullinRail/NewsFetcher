@@ -69,7 +69,7 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
                 val articleDetail = viewState.articleDetail
                 Log.d("TAGG", "Detail MainScreenFragment = ${viewState.articleDetail}")
                 //TODO redirect data transfer to safeArgs
-                val bundle = bundleOf(MAIN_PUT_TO_DETAIL to articleDetail)
+                val bundle = bundleOf(PUT_TO_DETAIL_FRAGMENT to articleDetail)
                 findNavController().navigate(R.id.detailFragment, bundle)
             }
         }

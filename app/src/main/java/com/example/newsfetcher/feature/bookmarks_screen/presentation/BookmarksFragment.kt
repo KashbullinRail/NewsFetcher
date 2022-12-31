@@ -10,7 +10,7 @@ import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.newsfetcher.R
 import com.example.newsfetcher.databinding.FragmentBookmarksBinding
-import com.example.newsfetcher.feature.main_screen.presentation.MAIN_PUT_TO_DETAIL
+import com.example.newsfetcher.feature.main_screen.presentation.PUT_TO_DETAIL_FRAGMENT
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -70,7 +70,7 @@ class BookmarksFragment : Fragment(R.layout.fragment_bookmarks) {
                 val articleDetail = viewState.articleDetail
                 Log.d("TAGG", "Detail BookmarksFragment = ${viewState.articleDetail}")
                 //TODO redirect data transfer to safeArgs
-                val bundle = bundleOf(MAIN_PUT_TO_DETAIL to articleDetail)
+                val bundle = bundleOf(PUT_TO_DETAIL_FRAGMENT to articleDetail)
                 findNavController().navigate(R.id.detailFragment, bundle)
             }
         }

@@ -3,21 +3,19 @@ package com.example.newsfetcher.di
 import android.util.Log
 import androidx.room.Room
 import com.example.newsfetcher.AppDataBase
-import com.example.newsfetcher.AppDataBaseDetail
 import com.example.newsfetcher.base.HeaderIntercepter
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import okhttp3.logging.HttpLoggingInterceptor
-import org.koin.android.ext.koin.androidContext
 import java.util.concurrent.TimeUnit
 
 
-private const val BASE_URL = "https://newsapi.org/"
-const val API_KEY: String = "8d8a631cc60f433ab84de75d98294065"
+const val BASE_URL_NEWS_API = "https://newsapi.org/"
+const val API_KEY_TO_NEWS_API: String = "8d8a631cc60f433ab84de75d98294065"
 const val APP_DATABASE = "APP_DATABASE"
-const val APP_DATABASEDETAIL = "APP_DATABASEDETAIL"
 
 
 val networkModule = module {
@@ -41,7 +39,7 @@ val networkModule = module {
 
     single<Retrofit> {
         Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl(BASE_URL_NEWS_API)
             .addConverterFactory(GsonConverterFactory.create())
             .client(get<OkHttpClient>())
             .build()
@@ -59,16 +57,6 @@ val databaseModule = module {
     }
     single {
         get<AppDataBase>().bookmarksDao()
-    }
-
-    single {
-        Room
-            .databaseBuilder(androidContext(), AppDataBaseDetail::class.java, APP_DATABASEDETAIL)
-            .fallbackToDestructiveMigration()
-            .build()
-    }
-    single {
-        get<AppDataBaseDetail>().detailDao()
     }
 
 }

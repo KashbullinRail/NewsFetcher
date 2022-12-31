@@ -11,7 +11,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.newsfetcher.R
 import com.example.newsfetcher.databinding.FragmentDetailBinding
 import com.example.newsfetcher.feature.main_screen.domian.ArticleModel
-import com.example.newsfetcher.feature.main_screen.presentation.MAIN_PUT_TO_DETAIL
+import com.example.newsfetcher.feature.main_screen.presentation.PUT_TO_DETAIL_FRAGMENT
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -24,7 +24,7 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-            binding.fabDetailGoToMain.setOnClickListener {
+        binding.fabDetailGoToMain.setOnClickListener {
             findNavController().navigate(R.id.mainScreenFragment)
         }
 
@@ -34,6 +34,7 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
 
         viewModel.viewState.observe(viewLifecycleOwner, ::render)
 
+        //for the development of the project in the future
 //        newsDetailAppBar.addOnOffsetChangedListener(
 //            AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
 //                val percent = (abs(appBarLayout.totalScrollRange + verticalOffset)
@@ -42,8 +43,7 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
 //                tvTitleDetail.alpha = percent
 //            })
 
-
-       val detailArticle =  arguments?.getSerializable(MAIN_PUT_TO_DETAIL)
+        val detailArticle = arguments?.getSerializable(PUT_TO_DETAIL_FRAGMENT)
         viewModel.processUIEvent(UIEvent.OnDetailArticleGet(detailArticle as ArticleModel))
 
     }
@@ -51,8 +51,7 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
     private fun render(viewState: ViewState) {
 
         when (viewState.state) {
-            State.Load -> {
-            }
+            State.Load -> {}
             State.Content -> {
                 with(binding) {
                     tvTitleDetail.text = viewState.articleDetail.title
@@ -71,8 +70,7 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
                         .into(ivNewsDetail)
                 }
             }
-            State.Error -> {
-            }
+            State.Error -> {}
         }
 
     }

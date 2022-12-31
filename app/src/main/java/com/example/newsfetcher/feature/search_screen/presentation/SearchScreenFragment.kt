@@ -13,7 +13,7 @@ import com.example.newsfetcher.R
 import com.example.newsfetcher.base.focusAndShowKeyboard
 import com.example.newsfetcher.base.hideKeyboard
 import com.example.newsfetcher.databinding.FragmentNewsSearchBinding
-import com.example.newsfetcher.feature.main_screen.presentation.MAIN_PUT_TO_DETAIL
+import com.example.newsfetcher.feature.main_screen.presentation.PUT_TO_DETAIL_FRAGMENT
 import com.example.newsfetcher.feature.main_screen.presentation.MainArticleAdapter
 import com.example.newsfetcher.feature.search_screen.data.SearchArticlesRemoteSource
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -93,7 +93,7 @@ class SearchScreenFragment : Fragment(R.layout.fragment_news_search){
                 val articleDetail = viewState.articleDetail
                 Log.d("TAGG", "Detail SearchScreenFragment = ${viewState.articleDetail}")
                 //TODO redirect data transfer to safeArgs
-                val bundle = bundleOf(MAIN_PUT_TO_DETAIL to articleDetail)
+                val bundle = bundleOf(PUT_TO_DETAIL_FRAGMENT to articleDetail)
                 findNavController().navigate(R.id.detailFragment, bundle)
             }
         }
