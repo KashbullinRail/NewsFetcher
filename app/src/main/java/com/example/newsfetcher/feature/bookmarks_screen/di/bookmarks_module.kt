@@ -9,8 +9,6 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 
-const val BOOKMARKS_TABLE = "BOOKMARKS_TABLE"
-
 val bookmarksModule = module {
 
     single {
@@ -26,7 +24,7 @@ val bookmarksModule = module {
     }
 
     viewModel {
-        BookmarksScreenViewModel(bookmarksInteractor = get(), detailInteractor = get())
+        BookmarksScreenViewModel(bookmarksInteractor = get())
     }
 
 }

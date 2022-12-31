@@ -4,11 +4,13 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.activity.addCallback
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.newsfetcher.R
 import com.example.newsfetcher.databinding.FragmentBookmarksBinding
+import com.example.newsfetcher.feature.main_screen.presentation.PUT_TO_DETAIL_FRAGMENT
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -66,10 +68,10 @@ class BookmarksFragment : Fragment(R.layout.fragment_bookmarks) {
             }
             State.DetailLoad -> {
                 val articleDetail = viewState.articleDetail
-                Log.d("TAGG", "UIEvent load = ${viewState.articleDetail}")
-                val action = BookmarksFragmentDirections
-                    .actionBookmarksFragmentToDetailFragment(articleDetail)
-                findNavController().navigate(action)
+                Log.d("TAGG", "Detail BookmarksFragment = ${viewState.articleDetail}")
+                //TODO redirect data transfer to safeArgs
+                val bundle = bundleOf(PUT_TO_DETAIL_FRAGMENT to articleDetail)
+                findNavController().navigate(R.id.detailFragment, bundle)
             }
         }
     }

@@ -4,8 +4,6 @@ import com.example.newsfetcher.feature.main_screen.data.model.ArticlesRemoteMode
 import retrofit2.http.*
 
 
-
-
 interface SearchNewsAPI {
 
     @GET("v2/everything")
