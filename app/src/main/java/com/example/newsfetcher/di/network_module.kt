@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit
 private const val BASE_URL = "https://newsapi.org/"
 const val API_KEY: String = "8d8a631cc60f433ab84de75d98294065"
 const val APP_DATABASE = "APP_DATABASE"
-const val APP_DATABASEDET = "APP_DATABASEDET"
+const val APP_DATABASEDETAIL = "APP_DATABASEDETAIL"
 
 
 val networkModule = module {
@@ -63,7 +63,7 @@ val databaseModule = module {
 
     single {
         Room
-            .databaseBuilder(androidContext(), AppDataBaseDetail::class.java, APP_DATABASEDET)
+            .databaseBuilder(androidContext(), AppDataBaseDetail::class.java, APP_DATABASEDETAIL)
             .fallbackToDestructiveMigration()
             .build()
     }

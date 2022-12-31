@@ -7,7 +7,7 @@
     <item android:id="@+id/itemBookmarks"
         android:icon="@drawable/ic_bnvbar_bookmark"
         android:title="@string/favorite"/>
-    <item android:id="@+id/itemDetail"
+    <item android:id="@+id/itemSearch"
         android:icon="@drawable/ic_bnvbar_cloud"
         android:title="@string/weather"/>
 

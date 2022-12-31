@@ -2,10 +2,10 @@ package com.example.newsfetcher
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.example.newsfetcher.feature.bookmarks.data.model.BookmarksDao
-import com.example.newsfetcher.feature.bookmarks.data.model.BookmarkEntity
-import com.example.newsfetcher.feature.detailscreen.data.model.DetailDao
-import com.example.newsfetcher.feature.detailscreen.data.model.DetailEntity
+import com.example.newsfetcher.feature.bookmarks_screen.data.model.BookmarksDao
+import com.example.newsfetcher.feature.bookmarks_screen.data.model.BookmarkEntity
+import com.example.newsfetcher.feature.details_creen.data.model.DetailDao
+import com.example.newsfetcher.feature.details_creen.data.model.DetailEntity
 
 
 @Database(entities = [BookmarkEntity::class], version = 1)
