@@ -60,16 +60,18 @@ class SearchScreenFragment : Fragment(R.layout.fragment_news_search){
             etTitleSearch.setOnEditorActionListener { _, actionId, _ ->
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
                     requireActivity().hideKeyboard()
-                    SearchArticlesRemoteSource.qqq = etTitleSearch.text.toString() //TODO implement via interface
-                    viewModel.processUIEvent(UIEvent.OnSearchButtonClicked(etTitleSearch.text.toString()))
+                    val text = etTitleSearch.text.toString().trim()
+                    SearchArticlesRemoteSource.qqq = text //TODO implement via interface
+                    viewModel.processUIEvent(UIEvent.OnSearchButtonClicked(text))
                 }
                 true
             }
 
             ivSearchBotton.setOnClickListener {
                 requireActivity().hideKeyboard()
-               SearchArticlesRemoteSource.qqq = etTitleSearch.text.toString() //TODO implement via interface
-                viewModel.processUIEvent(UIEvent.OnSearchButtonClicked(etTitleSearch.text.toString()))
+                val text = etTitleSearch.text.toString().trim()
+               SearchArticlesRemoteSource.qqq = text //TODO implement via interface
+                viewModel.processUIEvent(UIEvent.OnSearchButtonClicked(text))
             }
         }
 
