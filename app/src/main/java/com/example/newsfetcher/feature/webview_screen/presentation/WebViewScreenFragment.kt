@@ -2,10 +2,11 @@ package com.example.newsfetcher.feature.webview_screen.presentation
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.webkit.WebViewClient
-import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.newsfetcher.R
 import com.example.newsfetcher.databinding.FragmentWebviewScreenBinding
@@ -21,13 +22,18 @@ class WebViewScreenFragment : Fragment(R.layout.fragment_webview_screen) {
 
         val webViewLink = arguments?.getString(PUT_TO_WEBVIEW_FRAGMENT).toString()
 
-        if (!webViewLink.isBlank()) {
-            webViewStart(webViewLink)
+        webViewStart(webViewLink)
+
+        with(binding) {
+            fabWebViewGoBack.setOnClickListener {
+                wvWeb.goBack()
+            }
+
+            fabWebViewGoDetail.setOnClickListener {
+                findNavController().navigate(R.id.mainScreenFragment)
+            }
         }
 
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
-            if (binding.wvWeb.canGoBack()) binding.wvWeb.goBack()
-        }
 
     }
 

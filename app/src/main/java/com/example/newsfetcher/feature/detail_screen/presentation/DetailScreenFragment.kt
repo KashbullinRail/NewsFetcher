@@ -1,6 +1,7 @@
 package com.example.newsfetcher.feature.detail_screen.presentation
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.activity.addCallback
 import androidx.core.os.bundleOf
@@ -94,9 +95,12 @@ class DetailScreenFragment : Fragment(R.layout.fragment_detail_screen) {
             }
             State.LoadWebView -> {
                 val webViewLink = viewState.webViewLink
-                //TODO redirect data transfer to safeArgs
-                val bundle = bundleOf(PUT_TO_WEBVIEW_FRAGMENT to webViewLink)
-                findNavController().navigate(R.id.webViewFragment, bundle)
+                if (!webViewLink.isBlank()) {
+                    //TODO redirect data transfer to safeArgs
+                    val bundle = bundleOf(PUT_TO_WEBVIEW_FRAGMENT to webViewLink)
+                    findNavController().navigate(R.id.webViewFragment, bundle)
+                }
+
             }
             State.Error -> {}
         }

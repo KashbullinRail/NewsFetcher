@@ -61,7 +61,7 @@
     </fragment>
     <fragment
         android:id="@+id/webViewFragment"
-        android:name="com.example.newsfetcher.WebViewFragment"
+        android:name="com.example.newsfetcher.feature.webview_screen.presentation.WebViewScreenFragment"
         android:label="fragment_web_view"
         tools:layout="@layout/fragment_webview_screen" >
         <action

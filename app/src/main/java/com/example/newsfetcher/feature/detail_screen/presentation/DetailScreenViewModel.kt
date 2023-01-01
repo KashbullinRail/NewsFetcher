@@ -31,6 +31,7 @@ class DetailScreenViewModel : BaseViewModel<ViewState>() {
             }
             is UIEvent.OnWebViewLink -> {
                 return previousState.copy(
+                    webViewLink = event.webViewLink,
                     state = State.LoadWebView
                 )
             }
