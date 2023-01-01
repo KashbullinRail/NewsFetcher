@@ -1,23 +1,26 @@
 package com.example.newsfetcher.feature.detail_screen.presentation
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.activity.addCallback
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.newsfetcher.R
-import com.example.newsfetcher.databinding.FragmentDetailBinding
+import com.example.newsfetcher.databinding.FragmentDetailScreenBinding
 import com.example.newsfetcher.feature.main_screen.domian.ArticleModel
 import com.example.newsfetcher.feature.main_screen.presentation.PUT_TO_DETAIL_FRAGMENT
+import com.example.newsfetcher.feature.main_screen.presentation.PUT_TO_WEBVIEW_FRAGMENT
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class DetailFragment : Fragment(R.layout.fragment_detail) {
+class DetailScreenFragment : Fragment(R.layout.fragment_detail_screen) {
 
-    private val binding by viewBinding(FragmentDetailBinding::bind)
+    private val binding by viewBinding(FragmentDetailScreenBinding::bind)
 
     private val viewModel: DetailScreenViewModel by viewModel()
 
@@ -51,6 +54,10 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
                 true
             }
 
+            tvLinkToSourceDetail.setOnClickListener {
+                viewModel.processUIEvent(UIEvent.OnWebViewLink(tvLinkToSourceDetail.toString()))
+            }
+
         }
 
         //for the development of the project in the future
@@ -70,21 +77,28 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
             State.Load -> {}
             State.Content -> {
                 with(binding) {
-                    tvTitleDetail.text = viewState.articleDetail.title
-                    tvDescriptionDetail.text = viewState.articleDetail.description
-                    tvAuthorDetail.text = viewState.articleDetail.author
-                    tvNameDetail.text = viewState.articleDetail.name
-                    tvDataDetail.text = viewState.articleDetail.publishedAt
-                    tvLinkToSourceDetail.text = viewState.articleDetail.url
+                    tvTitleDetail.text = viewState.detailArticle.title
+                    tvDescriptionDetail.text = viewState.detailArticle.description
+                    tvAuthorDetail.text = viewState.detailArticle.author
+                    tvNameDetail.text = viewState.detailArticle.name
+                    tvDataDetail.text = viewState.detailArticle.publishedAt
+                    tvLinkToSourceDetail.text = viewState.detailArticle.url
                     Glide
-                        .with(this@DetailFragment)
-                        .load(viewState.articleDetail.urlToImage)
+                        .with(this@DetailScreenFragment)
+                        .load(viewState.detailArticle.urlToImage)
                         .placeholder(R.drawable.ic_image)
                         .error(R.drawable.ic_image_not_supported)
                         .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                         .centerCrop()
                         .into(ivNewsDetail)
                 }
+            }
+            State.LoadWebView -> {
+                val webViewLink = viewState.webViewLink
+                Log.d("TAGG", "Detail SearchScreenFragment = ${viewState.detailArticle}")
+                //TODO redirect data transfer to safeArgs
+                val bundle = bundleOf(PUT_TO_WEBVIEW_FRAGMENT to webViewLink)
+                findNavController().navigate(R.id.webViewFragment, bundle)
             }
             State.Error -> {}
         }

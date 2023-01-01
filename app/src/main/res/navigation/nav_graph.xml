@@ -36,7 +36,7 @@
         android:id="@+id/searchScreenFragment"
         android:name="com.example.newsfetcher.feature.search_screen.presentation.SearchScreenFragment"
         android:label="fragment_news_search"
-        tools:layout="@layout/fragment_news_search" >
+        tools:layout="@layout/fragment_search_screen" >
         <action
             android:id="@+id/action_searchScreenFragment_to_mainScreenFragment"
             app:destination="@id/mainScreenFragment" />
@@ -46,14 +46,26 @@
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.example.newsfetcher.feature.detail_screen.presentation.DetailFragment"
+        android:name="com.example.newsfetcher.feature.detail_screen.presentation.DetailScreenFragment"
         android:label="DetailFragment"
-        tools:layout="@layout/fragment_detail">
+        tools:layout="@layout/fragment_detail_screen">
         <argument
             android:name="DetailArgsNav"
             app:argType="com.example.newsfetcher.feature.main_screen.domian.ArticleModel" />
         <action
             android:id="@+id/action_detailFragment_to_mainScreenFragment"
             app:destination="@id/mainScreenFragment" />
+        <action
+            android:id="@+id/action_detailFragment_to_webViewFragment"
+            app:destination="@id/webViewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/webViewFragment"
+        android:name="com.example.newsfetcher.WebViewFragment"
+        android:label="fragment_web_view"
+        tools:layout="@layout/fragment_webview_screen" >
+        <action
+            android:id="@+id/action_webViewFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
     </fragment>
 </navigation>

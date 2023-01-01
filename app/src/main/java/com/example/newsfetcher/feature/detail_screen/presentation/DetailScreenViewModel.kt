@@ -14,18 +14,24 @@ class DetailScreenViewModel : BaseViewModel<ViewState>() {
     override fun initialViewState(): ViewState =
         ViewState(
             state = State.Load,
-            articleDetail = ArticleModel(
+            detailArticle = ArticleModel(
                 "", "", "", "", "", "",
                 "", "", "", false
             ),
+            webViewLink = ""
         )
 
     override fun reduce(event: Event, previousState: ViewState): ViewState? {
         when (event) {
             is UIEvent.OnDetailArticleGet -> {
                 return previousState.copy(
-                    articleDetail = event.detailArticle,
+                    detailArticle = event.detailArticle,
                     state = State.Content
+                )
+            }
+            is UIEvent.OnWebViewLink -> {
+                return previousState.copy(
+                    state = State.LoadWebView
                 )
             }
             else -> return null
