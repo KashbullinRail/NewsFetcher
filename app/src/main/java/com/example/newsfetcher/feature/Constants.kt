@@ -7,4 +7,3 @@ const val PUT_TO_DETAIL_FRAGMENT = "PUT_TO_DETAIL_FRAGMENT"
 
 
 
-

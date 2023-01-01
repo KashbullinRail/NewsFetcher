@@ -17,6 +17,7 @@ import com.example.newsfetcher.feature.main_screen.presentation.PUT_TO_DETAIL_FR
 import com.example.newsfetcher.feature.main_screen.presentation.MainArticleAdapter
 import com.example.newsfetcher.feature.search_screen.data.SearchArticlesRemoteSource
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.util.Objects
 
 
 class SearchScreenFragment : Fragment(R.layout.fragment_news_search){
