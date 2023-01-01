@@ -24,15 +24,34 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.fabDetailGoToMain.setOnClickListener {
-            findNavController().navigate(R.id.mainScreenFragment)
-        }
-
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
             findNavController().navigate(R.id.mainScreenFragment)
         }
 
         viewModel.viewState.observe(viewLifecycleOwner, ::render)
+
+        val detailArticle = arguments?.getSerializable(PUT_TO_DETAIL_FRAGMENT)
+        viewModel.processUIEvent(UIEvent.OnDetailArticleGet(detailArticle as ArticleModel))
+
+        with(binding) {
+
+            bnvBarDetail.setOnItemSelectedListener {
+                when (it.itemId) {
+                    R.id.itemMain -> {
+                        findNavController().navigate(R.id.mainScreenFragment)
+                    }
+                    R.id.itemBookmarks -> {
+                        findNavController().navigate(R.id.bookmarksFragment)
+                    }
+                    R.id.itemSearch -> {
+                        findNavController().navigate(R.id.searchScreenFragment)
+                    }
+                    else -> {}
+                }
+                true
+            }
+
+        }
 
         //for the development of the project in the future
 //        newsDetailAppBar.addOnOffsetChangedListener(
@@ -42,9 +61,6 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
 //                tvDescription.alpha = percent
 //                tvTitleDetail.alpha = percent
 //            })
-
-        val detailArticle = arguments?.getSerializable(PUT_TO_DETAIL_FRAGMENT)
-        viewModel.processUIEvent(UIEvent.OnDetailArticleGet(detailArticle as ArticleModel))
 
     }
 
