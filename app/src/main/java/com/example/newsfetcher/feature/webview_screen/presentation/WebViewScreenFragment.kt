@@ -11,6 +11,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.newsfetcher.R
 import com.example.newsfetcher.databinding.FragmentWebviewScreenBinding
 import com.example.newsfetcher.feature.main_screen.presentation.PUT_TO_WEBVIEW_FRAGMENT
+import com.google.android.material.snackbar.Snackbar
 
 
 class WebViewScreenFragment : Fragment(R.layout.fragment_webview_screen) {
@@ -22,7 +23,14 @@ class WebViewScreenFragment : Fragment(R.layout.fragment_webview_screen) {
 
         val webViewLink = arguments?.getString(PUT_TO_WEBVIEW_FRAGMENT).toString()
 
-        webViewStart(webViewLink)
+        if (webViewLink.startsWith("http")) {
+            webViewStart(webViewLink)
+            Snackbar.make(view, requireActivity().getString(R.string.loadSite), Snackbar.LENGTH_LONG)
+                .show()
+        } else {
+            Snackbar.make(view, requireActivity().getString(R.string.failUrl), Snackbar.LENGTH_LONG)
+                .show()
+        }
 
         with(binding) {
             fabWebViewGoBack.setOnClickListener {
@@ -33,7 +41,6 @@ class WebViewScreenFragment : Fragment(R.layout.fragment_webview_screen) {
                 findNavController().navigate(R.id.mainScreenFragment)
             }
         }
-
 
     }
 
