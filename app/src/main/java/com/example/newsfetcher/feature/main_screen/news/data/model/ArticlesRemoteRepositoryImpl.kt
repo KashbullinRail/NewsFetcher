@@ -3,7 +3,7 @@ package com.example.newsfetcher.feature.main_screen.news.data.model
 import com.example.newsfetcher.feature.main_screen.news.data.ArticlesRemoteSource
 import com.example.newsfetcher.feature.main_screen.news.data.ArticlesRepository
 import com.example.newsfetcher.feature.main_screen.news.data.toDomian
-import com.example.newsfetcher.feature.main_screen.news.domian.ArticleModel
+import com.example.newsfetcher.feature.main_screen.news.data.ArticleModel
 
 
 class ArticlesRemoteRepositoryImpl(private val source: ArticlesRemoteSource) : ArticlesRepository {
