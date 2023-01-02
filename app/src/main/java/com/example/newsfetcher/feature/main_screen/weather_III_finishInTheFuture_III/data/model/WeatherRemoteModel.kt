@@ -1,4 +1,4 @@
-package com.example.newsfetcher.feature.main_screen.weather.data.model
+package com.example.newsfetcher.feature.main_screen.weather_III_finishInTheFuture_III.data.model
 
 import com.google.gson.annotations.SerializedName
 
@@ -10,5 +10,4 @@ data class WeatherRemoteModel(
     val pressure: String,
     @SerializedName("humidity")
     val humidity: String
-
 )
