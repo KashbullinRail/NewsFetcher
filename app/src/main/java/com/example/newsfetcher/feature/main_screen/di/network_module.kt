@@ -3,7 +3,7 @@ package com.example.newsfetcher.di
 import android.util.Log
 import androidx.room.Room
 import com.example.newsfetcher.AppDataBase
-import com.example.newsfetcher.base.HeaderIntercepter
+import com.example.newsfetcher.feature.main_screen.di.HeaderIntercepter
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
