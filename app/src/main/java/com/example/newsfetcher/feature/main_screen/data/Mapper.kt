@@ -13,7 +13,7 @@ fun ArticleRemoteModel.toDomian() = ArticleModel(
     description = description ?: "",
     url = url ?: "",
     urlToImage = urlToImage ?: "",
-    publishedAt = publishedAt ?: "",
+    publishedAt = publishedAt.replaceFirst("T", " ").removeSuffix("Z") ?: "",
     content = content ?: "",
     selectedBookmark = false
 )
