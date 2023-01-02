@@ -1,12 +1,9 @@
 package com.example.newsfetcher.di
 
 import android.util.Log
-import androidx.room.Room
-import com.example.newsfetcher.AppDataBase
 import com.example.newsfetcher.feature.main_screen.di.HeaderIntercepter
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -15,7 +12,6 @@ import java.util.concurrent.TimeUnit
 
 const val BASE_URL_NEWS_API = "https://newsapi.org/"
 const val API_KEY_TO_NEWS_API: String = "8d8a631cc60f433ab84de75d98294065"
-const val APP_DATABASE = "APP_DATABASE"
 
 
 val networkModule = module {
@@ -47,16 +43,18 @@ val networkModule = module {
 
 }
 
-val databaseModule = module {
-
-    single {
-        Room
-            .databaseBuilder(androidContext(), AppDataBase::class.java, APP_DATABASE)
-            .fallbackToDestructiveMigration()
-            .build()
-    }
-    single {
-        get<AppDataBase>().bookmarksDao()
-    }
-
-}
+//const val APP_DATABASE = "APP_DATABASE"
+//
+//val databaseModule = module {
+//
+//    single {
+//        Room
+//            .databaseBuilder(androidContext(), AppDataBase::class.java, APP_DATABASE)
+//            .fallbackToDestructiveMigration()
+//            .build()
+//    }
+//    single {
+//        get<AppDataBase>().bookmarksDao()
+//    }
+//
+//}
