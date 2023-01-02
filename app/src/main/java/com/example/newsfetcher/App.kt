@@ -5,7 +5,7 @@ import com.example.newsfetcher.di.databaseModule
 import com.example.newsfetcher.di.networkModule
 import com.example.newsfetcher.feature.bookmarks_screen.di.bookmarksModule
 import com.example.newsfetcher.feature.detail_screen.di.detailModule
-import com.example.newsfetcher.feature.main_screen.di.mainScreenModule
+import com.example.newsfetcher.feature.main_screen.news.di.mainScreenModule
 import com.example.newsfetcher.feature.search_screen.di.searchScreenModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger

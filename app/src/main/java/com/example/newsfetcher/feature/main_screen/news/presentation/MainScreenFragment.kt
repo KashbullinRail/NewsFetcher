@@ -1,4 +1,4 @@
-package com.example.newsfetcher.feature.main_screen.presentation
+package com.example.newsfetcher.feature.main_screen.news.presentation
 
 import android.os.Bundle
 import android.util.Log
@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.newsfetcher.R
 import com.example.newsfetcher.databinding.FragmentMainScreenBinding
+import com.example.newsfetcher.feature.main_screen.presentation.PUT_TO_DETAIL_FRAGMENT
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 

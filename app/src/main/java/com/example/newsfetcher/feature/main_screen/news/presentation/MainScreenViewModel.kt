@@ -1,12 +1,12 @@
-package com.example.newsfetcher.feature.main_screen.presentation
+package com.example.newsfetcher.feature.main_screen.news.presentation
 
 import android.util.Log
 import androidx.lifecycle.viewModelScope
 import com.example.newsfetcher.base.BaseViewModel
 import com.example.newsfetcher.base.Event
 import com.example.newsfetcher.feature.bookmarks_screen.domian.BookmarksInteractor
-import com.example.newsfetcher.feature.main_screen.domian.ArticleModel
-import com.example.newsfetcher.feature.main_screen.domian.ArticlesInteractor
+import com.example.newsfetcher.feature.main_screen.news.domian.ArticleModel
+import com.example.newsfetcher.feature.main_screen.news.domian.ArticlesInteractor
 import kotlinx.coroutines.launch
 
 

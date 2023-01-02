@@ -1,11 +1,11 @@
-package com.example.newsfetcher.feature.main_screen.di
+package com.example.newsfetcher.feature.main_screen.news.di
 
-import com.example.newsfetcher.feature.main_screen.data.ArticlesRemoteSource
-import com.example.newsfetcher.feature.main_screen.data.ArticlesRepository
-import com.example.newsfetcher.feature.main_screen.data.NewsAPI
-import com.example.newsfetcher.feature.main_screen.data.model.ArticlesRemoteRepositoryImpl
-import com.example.newsfetcher.feature.main_screen.domian.ArticlesInteractor
-import com.example.newsfetcher.feature.main_screen.presentation.MainScreenViewModel
+import com.example.newsfetcher.feature.main_screen.news.data.ArticlesRemoteSource
+import com.example.newsfetcher.feature.main_screen.news.data.ArticlesRepository
+import com.example.newsfetcher.feature.main_screen.news.data.NewsAPI
+import com.example.newsfetcher.feature.main_screen.news.data.model.ArticlesRemoteRepositoryImpl
+import com.example.newsfetcher.feature.main_screen.news.domian.ArticlesInteractor
+import com.example.newsfetcher.feature.main_screen.news.presentation.MainScreenViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit

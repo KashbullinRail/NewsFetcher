@@ -1,4 +1,4 @@
-package com.example.newsfetcher.feature.main_screen.presentation
+package com.example.newsfetcher.feature.main_screen.news.presentation
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -10,7 +10,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.example.newsfetcher.R
 import com.example.newsfetcher.databinding.ItemArticleAdapterBinding
-import com.example.newsfetcher.feature.main_screen.domian.ArticleModel
+import com.example.newsfetcher.feature.main_screen.news.domian.ArticleModel
 
 
 const val BOOKMARK_EMPTY = "BOOKMARK_EMPTY"

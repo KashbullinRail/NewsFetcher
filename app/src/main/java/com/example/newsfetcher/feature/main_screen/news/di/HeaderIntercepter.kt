@@ -1,4 +1,4 @@
-package com.example.newsfetcher.feature.main_screen.di
+package com.example.newsfetcher.feature.main_screen.news.di
 
 import com.example.newsfetcher.di.API_KEY_TO_NEWS_API
 import okhttp3.Interceptor

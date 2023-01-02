@@ -15,7 +15,7 @@ import com.example.newsfetcher.base.hideKeyboard
 import com.example.newsfetcher.databinding.FragmentMainScreenBinding
 import com.example.newsfetcher.databinding.FragmentSearchScreenBinding
 import com.example.newsfetcher.feature.main_screen.presentation.PUT_TO_DETAIL_FRAGMENT
-import com.example.newsfetcher.feature.main_screen.presentation.MainArticleAdapter
+import com.example.newsfetcher.feature.main_screen.news.presentation.MainArticleAdapter
 import com.example.newsfetcher.feature.search_screen.data.SearchArticlesRemoteSource
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

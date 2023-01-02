@@ -4,7 +4,7 @@ import com.example.newsfetcher.feature.bookmarks_screen.data.BookmarksLocalSourc
 import com.example.newsfetcher.feature.bookmarks_screen.data.BookmarksRepository
 import com.example.newsfetcher.feature.bookmarks_screen.data.toDomain
 import com.example.newsfetcher.feature.bookmarks_screen.data.toEntity
-import com.example.newsfetcher.feature.main_screen.domian.ArticleModel
+import com.example.newsfetcher.feature.main_screen.news.domian.ArticleModel
 
 
 class BookmarksRepositoryImpl(private val bookmarksLocalSource: BookmarksLocalSource) :

@@ -1,7 +1,7 @@
-package com.example.newsfetcher.feature.main_screen.data
+package com.example.newsfetcher.feature.main_screen.news.data
 
-import com.example.newsfetcher.feature.main_screen.data.model.ArticleRemoteModel
-import com.example.newsfetcher.feature.main_screen.domian.ArticleModel
+import com.example.newsfetcher.feature.main_screen.news.data.model.ArticleRemoteModel
+import com.example.newsfetcher.feature.main_screen.news.domian.ArticleModel
 import java.util.UUID
 
 
