@@ -43,18 +43,3 @@ val networkModule = module {
 
 }
 
-//const val APP_DATABASE = "APP_DATABASE"
-//
-//val databaseModule = module {
-//
-//    single {
-//        Room
-//            .databaseBuilder(androidContext(), AppDataBase::class.java, APP_DATABASE)
-//            .fallbackToDestructiveMigration()
-//            .build()
-//    }
-//    single {
-//        get<AppDataBase>().bookmarksDao()
-//    }
-//
-//}
