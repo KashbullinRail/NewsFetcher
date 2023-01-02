@@ -2,7 +2,7 @@ package com.example.newsfetcher.feature.main_screen.weather.data
 
 
 
-interface WeatherRepository {
+interface WeathersRepository {
 
     suspend fun getTemperature(): WeatherModel
     suspend fun getPressure(): WeatherModel
