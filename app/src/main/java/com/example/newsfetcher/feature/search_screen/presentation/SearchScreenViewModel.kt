@@ -5,7 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.newsfetcher.base.BaseViewModel
 import com.example.newsfetcher.base.Event
 import com.example.newsfetcher.feature.bookmarks_screen.domian.BookmarksInteractor
-import com.example.newsfetcher.feature.main_screen.news.data.ArticleModel
+import com.example.newsfetcher.feature.main_screen.news.domian.ArticleModel
 import com.example.newsfetcher.feature.main_screen.news.presentation.ARTICLE_ITEM
 import com.example.newsfetcher.feature.main_screen.news.presentation.BOOKMARK_EMPTY
 import com.example.newsfetcher.feature.main_screen.news.presentation.BOOKMARK_FULL

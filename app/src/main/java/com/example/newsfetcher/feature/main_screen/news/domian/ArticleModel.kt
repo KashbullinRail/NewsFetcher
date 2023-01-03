@@ -1,4 +1,4 @@
-package com.example.newsfetcher.feature.main_screen.news.data
+package com.example.newsfetcher.feature.main_screen.news.domian
 
 
 data class ArticleModel(

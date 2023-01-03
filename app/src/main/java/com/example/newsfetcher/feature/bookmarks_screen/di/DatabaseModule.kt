@@ -2,11 +2,9 @@ package com.example.newsfetcher.di
 
 import androidx.room.Room
 import com.example.newsfetcher.AppDataBase
+import com.example.newsfetcher.feature.bookmarks_screen.di.APP_DATABASE
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
-
-
-const val APP_DATABASE = "APP_DATABASE"
 
 
 val databaseModule = module {

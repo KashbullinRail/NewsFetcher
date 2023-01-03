@@ -1,6 +1,7 @@
 package com.example.newsfetcher.di
 
 import android.util.Log
+import com.example.newsfetcher.feature.main_screen.news.di.BASE_URL_NEWS_API
 import com.example.newsfetcher.feature.main_screen.news.di.HeaderIntercepter
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -8,11 +9,6 @@ import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
-
-
-const val BASE_URL_NEWS_API = "https://newsapi.org/"
-const val API_KEY_TO_NEWS_API: String = "8d8a631cc60f433ab84de75d98294065"
-
 
 val networkModule = module {
 

@@ -9,7 +9,7 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 
-val bookmarksModule = module {
+val bookmarksScreenModule = module {
 
     single {
         BookmarksLocalSource(bookmarksDao = get())

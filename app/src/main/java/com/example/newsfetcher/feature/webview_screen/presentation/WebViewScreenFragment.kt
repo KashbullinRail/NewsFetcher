@@ -2,7 +2,6 @@ package com.example.newsfetcher.feature.webview_screen.presentation
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.webkit.WebViewClient
 import androidx.fragment.app.Fragment
