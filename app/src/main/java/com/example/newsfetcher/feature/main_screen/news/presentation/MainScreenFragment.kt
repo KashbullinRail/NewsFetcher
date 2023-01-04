@@ -48,6 +48,8 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
                 true
             }
             bnvBarMain.selectedItemId = R.id.itemMain
+            bnvBarMain.selectedItemId = R.id.itemMain
+
         }
 
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {

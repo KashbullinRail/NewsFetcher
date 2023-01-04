@@ -6,7 +6,8 @@ import java.util.UUID
 
 
 fun ArticleRemoteModel.toDomian() = ArticleModel(
-    id = UUID.randomUUID().toString(),
+//    id = UUID.randomUUID().toString(), //duplication occurs when the network is re-requested
+    id = title.hashCode().toString(),
     name = source.name ?: "",
     title = title ?: "",
     author = author ?: "",
