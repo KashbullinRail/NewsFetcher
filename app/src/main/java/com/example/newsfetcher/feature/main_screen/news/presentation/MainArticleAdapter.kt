@@ -2,6 +2,7 @@ package com.example.newsfetcher.feature.main_screen.news.presentation
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnimationSet
 import android.view.animation.ScaleAnimation
@@ -71,18 +72,20 @@ class MainArticleAdapter(
 
             //handle pressing the delete item
             ivBookmarksEmpty.setOnClickListener {
-                articles[position].selectedBookmark = !articles[position].selectedBookmark
-                ivBookmarksEmpty.isVisible = !articles[position].selectedBookmark
-                ivBookmarksFull.isVisible = articles[position].selectedBookmark
+                val select = articles[position].selectedBookmark
+                articles[position].selectedBookmark = !select
+                ivBookmarksEmpty.isVisible = select
+                ivBookmarksFull.isVisible = !select
                 ivBookmarksFull.startAnimation(animationBookmark)
                 onItemClicked.invoke(position, BOOKMARK_EMPTY)
             }
 
             //handle pressing the add bookmark item
             ivBookmarksFull.setOnClickListener {
-                articles[position].selectedBookmark = !articles[position].selectedBookmark
-                ivBookmarksEmpty.isVisible = !articles[position].selectedBookmark
-                ivBookmarksFull.isVisible = articles[position].selectedBookmark
+                val select = articles[position].selectedBookmark
+                articles[position].selectedBookmark = !select
+                ivBookmarksEmpty.isVisible = select
+                ivBookmarksFull.isVisible = !select
                 onItemClicked.invoke(position, BOOKMARK_FULL)
             }
 
@@ -93,7 +96,6 @@ class MainArticleAdapter(
             tvDataMain.text = article.publishedAt
             ivBookmarksEmpty.isVisible = !articles[position].selectedBookmark
             ivBookmarksFull.isVisible = articles[position].selectedBookmark
-
             Glide
                 .with(ivNewsImageMain.context)
                 .load(article.urlToImage)
