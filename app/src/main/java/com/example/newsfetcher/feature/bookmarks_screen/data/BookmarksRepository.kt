@@ -1,6 +1,6 @@
 package com.example.newsfetcher.feature.bookmarks_screen.data
 
-import com.example.newsfetcher.feature.main_screen.domian.ArticleModel
+import com.example.newsfetcher.feature.main_screen.news.domian.ArticleModel
 
 
 interface BookmarksRepository {

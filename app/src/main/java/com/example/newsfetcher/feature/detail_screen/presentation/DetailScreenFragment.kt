@@ -1,7 +1,6 @@
 package com.example.newsfetcher.feature.detail_screen.presentation
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.activity.addCallback
 import androidx.core.os.bundleOf
@@ -12,7 +11,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.example.newsfetcher.R
 import com.example.newsfetcher.databinding.FragmentDetailScreenBinding
-import com.example.newsfetcher.feature.main_screen.domian.ArticleModel
+import com.example.newsfetcher.feature.main_screen.news.domian.ArticleModel
 import com.example.newsfetcher.feature.main_screen.presentation.PUT_TO_DETAIL_FRAGMENT
 import com.example.newsfetcher.feature.main_screen.presentation.PUT_TO_WEBVIEW_FRAGMENT
 import org.koin.androidx.viewmodel.ext.android.viewModel

@@ -3,7 +3,7 @@ package com.example.newsfetcher.feature.bookmarks_screen.domian
 import com.example.newsfetcher.base.Either
 import com.example.newsfetcher.base.attempt
 import com.example.newsfetcher.feature.bookmarks_screen.data.BookmarksRepository
-import com.example.newsfetcher.feature.main_screen.domian.ArticleModel
+import com.example.newsfetcher.feature.main_screen.news.domian.ArticleModel
 
 
 class BookmarksInteractor(private val bookmarksRepository: BookmarksRepository) {
