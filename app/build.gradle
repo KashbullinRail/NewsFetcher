@@ -57,6 +57,7 @@ dependencies {
     def ext_junit_version = "1.1.4"
     def espresso_core_version = "3.5.0"
     def viewbinding_propertydelegate = "1.5.6"
+    def splash_screen_version = "1.0.0"
 
 
     implementation "androidx.appcompat:appcompat:$appcompat_version"
@@ -97,6 +98,8 @@ dependencies {
     // Glide
     implementation "com.github.bumptech.glide:glide:$glide_version"
     kapt "com.github.bumptech.glide:compiler:$glide_version"
+    //SplashScreen API
+    implementation "androidx.core:core-splashscreen:$splash_screen_version"
     // Tested libs
     testImplementation "junit:junit:$junit_version"
     androidTestImplementation "androidx.test.ext:junit:$ext_junit_version"
