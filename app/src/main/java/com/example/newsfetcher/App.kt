@@ -29,8 +29,6 @@ class App : Application() {
             )
         }
 
-        // Для принудительного использования темной темы приложением
-//        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
     }
 
 }
