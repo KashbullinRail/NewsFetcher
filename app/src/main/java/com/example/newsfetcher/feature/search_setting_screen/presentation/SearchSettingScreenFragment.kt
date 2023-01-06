@@ -1,4 +1,4 @@
-package com.example.newsfetcher.feature.setting_screen.presentation
+package com.example.newsfetcher.feature.search_setting_screen.presentation
 
 import android.os.Bundle
 import android.view.View
@@ -8,7 +8,7 @@ import com.example.newsfetcher.R
 import com.example.newsfetcher.databinding.FragmentSettingScreenBinding
 
 
-class SettingScreenFragment : DialogFragment(R.layout.fragment_setting_screen) {
+class SearchSettingScreenFragment : DialogFragment(R.layout.fragment_setting_screen) {
 
     private val binding by viewBinding(FragmentSettingScreenBinding::bind)
 

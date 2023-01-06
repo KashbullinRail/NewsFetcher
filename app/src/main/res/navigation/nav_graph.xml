@@ -76,7 +76,7 @@
     </fragment>
     <fragment
         android:id="@+id/settingScreenFragment"
-        android:name="com.example.newsfetcher.feature.setting_screen.presentation.SettingScreenFragment"
+        android:name="com.example.newsfetcher.feature.search_setting_screen.presentation.SearchSettingScreenFragment"
         android:label="fragment_setting"
         tools:layout="@layout/fragment_setting_screen" />
 </navigation>

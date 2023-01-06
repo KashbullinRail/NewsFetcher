@@ -14,7 +14,7 @@ interface SearchNewsAPI {
 //        @Query("domains") domain: String = "", //eg bbc.co.uk,
 //        @Query("from") from: String = "2022-12-26",
 //        @Query("to") to: String = "2022-12-18",
-//        @Query("language") language: String = "ru", // en
+//        @Query("language") language: String = "ru", // en, tr
 //        @Query("sortBy") sortBy: String = "popularity", // relevancy, popularity, publishedAt
 //        @Query("pageSize") pageSize: String = "100", // 1..100
 //        @Query("page") page: String = "" // 1

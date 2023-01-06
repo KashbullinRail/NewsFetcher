@@ -17,7 +17,7 @@ import com.example.newsfetcher.databinding.FragmentSearchScreenBinding
 import com.example.newsfetcher.feature.main_screen.news.presentation.MainArticleAdapter
 import com.example.newsfetcher.feature.main_screen.presentation.PUT_TO_DETAIL_FRAGMENT
 import com.example.newsfetcher.feature.search_screen.data.SearchArticlesRemoteSource
-import com.example.newsfetcher.feature.setting_screen.presentation.SettingScreenFragment
+import com.example.newsfetcher.feature.search_setting_screen.presentation.SearchSettingScreenFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -59,7 +59,7 @@ class SearchScreenFragment : Fragment(R.layout.fragment_search_screen) {
             bnvBarSearch.selectedItemId = R.id.itemSearch
 
             ivFilterSearch.setOnClickListener {
-                val showSettingScreen = SettingScreenFragment()
+                val showSettingScreen = SearchSettingScreenFragment()
                 showSettingScreen.show(requireActivity().supportFragmentManager, "showPopUp")
             }
 
