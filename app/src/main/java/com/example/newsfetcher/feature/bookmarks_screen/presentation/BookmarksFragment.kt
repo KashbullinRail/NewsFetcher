@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.View
 import androidx.activity.addCallback
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -60,13 +61,16 @@ class BookmarksFragment : Fragment(R.layout.fragment_bookmarks) {
     private fun render(viewState: ViewState) {
         when (viewState.state) {
             State.Load -> {
+                binding.pbBookmarksScreen.isVisible = true
             }
             State.Content -> {
+                binding.pbBookmarksScreen.isVisible = false
                 adapter.setData(viewState.bookmarksArticle)
             }
             State.Error -> {
             }
             State.DetailLoad -> {
+                binding.pbBookmarksScreen.isVisible = false
                 val articleDetail = viewState.articleDetail
                 Log.d("TAGG", "Detail BookmarksFragment = ${viewState.articleDetail}")
                 //TODO redirect data transfer to safeArgs

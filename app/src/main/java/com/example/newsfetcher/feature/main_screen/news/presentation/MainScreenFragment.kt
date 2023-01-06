@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.View
 import androidx.activity.addCallback
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -48,6 +49,8 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
                 true
             }
             bnvBarMain.selectedItemId = R.id.itemMain
+            bnvBarMain.selectedItemId = R.id.itemMain
+
         }
 
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
@@ -60,13 +63,16 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
 
         when (viewState.state) {
             State.Load -> {
+                binding.pbMainScreen.isVisible = true
             }
             State.Content -> {
+                binding.pbMainScreen.isVisible = false
                 adapter.setData(viewState.articlesShown)
             }
             State.Error -> {
             }
             State.DetailLoad -> {
+                binding.pbMainScreen.isVisible = false
                 val articleDetail = viewState.articleDetail
                 Log.d("TAGG", "Detail MainScreenFragment = ${viewState.articleDetail}")
                 //TODO redirect data transfer to safeArgs

@@ -24,7 +24,7 @@ class BookmarksScreenViewModel(
             articleDetail = ArticleModel(
                 "", "", "", "", "", "",
                 "", "", "", false
-            )
+            ),
         )
 
     override fun reduce(event: Event, previousState: ViewState): ViewState? {
@@ -34,7 +34,7 @@ class BookmarksScreenViewModel(
                 viewModelScope.launch {
                     bookmarksInteractor.read().fold(
                         onError = {
-                            Log.e("ERROR", it.localizedMessage!!)
+                            Log.e("ERROR", it.localizedMessage)
                         },
                         onSuccess = {
                             processDataEvent(DataEvent.OnSuccessBookmarksLoaded(it))
@@ -64,17 +64,13 @@ class BookmarksScreenViewModel(
                         viewModelScope.launch {
                             bookmarksInteractor.read().fold(
                                 onError = {
-                                    Log.e("ERROR", it.localizedMessage!!)
+                                    Log.e("ERROR", it.localizedMessage)
                                 },
                                 onSuccess = {
                                     processDataEvent(DataEvent.OnSuccessBookmarksLoaded(it))
                                 }
                             )
                         }
-                        return previousState.copy(
-                            bookmarksArticle = previousState.bookmarksArticle,
-                            state = State.Content
-                        )
                     }
                 }
                 return null

@@ -2,7 +2,10 @@ package com.example.newsfetcher.feature.main_screen.news.presentation
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationSet
+import android.view.animation.ScaleAnimation
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -50,30 +53,49 @@ class MainArticleAdapter(
         val article = articles[position]
         with(holder.binding) {
 
+            //bookmark click animation
+            val animationBookmark by lazy(LazyThreadSafetyMode.NONE) {
+                val toSmall = ScaleAnimation(1f, 0.75f, 1f, 0.75f)
+                val smallToLarge = ScaleAnimation(1f, 1.8f, 1f, 1.8f)
+                val largeToNormal = ScaleAnimation(1f, 0.75f, 1f, 0.75f)
+                val anim = AnimationSet(true).apply {
+                    addAnimation(toSmall)
+                    addAnimation(smallToLarge)
+                    addAnimation(largeToNormal)
+                }
+                anim.animations.forEach { animation ->
+                    animation.duration = 200L
+                    animation.startOffset = 100L
+                }
+                anim
+            }
+
             //handle pressing the delete item
             ivBookmarksEmpty.setOnClickListener {
-                articles[position].selectedBookmark = !articles[position].selectedBookmark
-                holder.binding.ivBookmarksEmpty.isVisible = !articles[position].selectedBookmark
-                holder.binding.ivBookmarksFull.isVisible = articles[position].selectedBookmark
+                val select = articles[position].selectedBookmark
+                articles[position].selectedBookmark = !select
+                ivBookmarksEmpty.isVisible = select
+                ivBookmarksFull.isVisible = !select
+                ivBookmarksFull.startAnimation(animationBookmark)
                 onItemClicked.invoke(position, BOOKMARK_EMPTY)
             }
 
             //handle pressing the add bookmark item
             ivBookmarksFull.setOnClickListener {
-                articles[position].selectedBookmark = !articles[position].selectedBookmark
-                holder.binding.ivBookmarksEmpty.isVisible = !articles[position].selectedBookmark
-                holder.binding.ivBookmarksFull.isVisible = articles[position].selectedBookmark
+                val select = articles[position].selectedBookmark
+                articles[position].selectedBookmark = !select
+                ivBookmarksEmpty.isVisible = select
+                ivBookmarksFull.isVisible = !select
                 onItemClicked.invoke(position, BOOKMARK_FULL)
             }
 
-            //update variables
+            //setting variables
             holder.itemView.tag = article
             tvNameMain.text = article.name
             tvTitleMain.text = article.title
             tvDataMain.text = article.publishedAt
-            holder.binding.ivBookmarksEmpty.isVisible = !articles[position].selectedBookmark
-            holder.binding.ivBookmarksFull.isVisible = articles[position].selectedBookmark
-
+            ivBookmarksEmpty.isVisible = !articles[position].selectedBookmark
+            ivBookmarksFull.isVisible = articles[position].selectedBookmark
             Glide
                 .with(ivNewsImageMain.context)
                 .load(article.urlToImage)

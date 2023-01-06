@@ -17,5 +17,5 @@
     <string name="link_to_source_Detail">http//........</string>
     <string name="_2022">2022....</string>
     <string name="author_published">Автор статьи</string>
-    <string name="input_key_word_for_search">поиск по ключевому слову</string>
+    <string name="input_key_word_for_search">введите слово для поиска</string>
 </resources>

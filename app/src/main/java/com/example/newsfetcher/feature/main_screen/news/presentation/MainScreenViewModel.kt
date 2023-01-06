@@ -61,6 +61,7 @@ class MainScreenViewModel(
                         )
                     }
                     BOOKMARK_EMPTY -> {
+                        event.type
                         viewModelScope.launch {
                             bookmarksInteractor.create(previousState.articlesShown[event.index])
                         }
