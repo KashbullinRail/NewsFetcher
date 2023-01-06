@@ -3,6 +3,7 @@ package com.example.newsfetcher.feature.bookmarks_screen.presentation
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -16,6 +17,30 @@ const val BOOKMARK_DELETE = "BOOKMARK_DELETE"
 const val BOOKMARK_ITEM = "ARTICLE_ITEM"
 
 
+class BookmarksDiffCallback(
+    private val oldList: List<ArticleModel>,
+    private val newList: List<ArticleModel>
+) : DiffUtil.Callback() {
+
+    override fun getOldListSize(): Int = oldList.size
+
+    override fun getNewListSize(): Int = newList.size
+
+    override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+        val oldBookmark = oldList[oldItemPosition]
+        val newBookmark = newList[newItemPosition]
+        return oldBookmark.id == newBookmark.id
+    }
+
+    override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
+        val oldBookmark = oldList[oldItemPosition]
+        val newBookmark = newList[newItemPosition]
+        return oldBookmark.id == newBookmark.id &&
+                oldBookmark.description == newBookmark.description
+    }
+
+}
+
 class BookmarksAdapter(
     val onItemClicked: (Int, String) -> Unit
 ) : RecyclerView.Adapter<BookmarksAdapter.BookmarksViewHolder>() {
@@ -26,8 +51,10 @@ class BookmarksAdapter(
 
     var bookmarks: List<ArticleModel> = emptyList()
         set(newValue) {
+            val diffCallback = BookmarksDiffCallback(field, newValue)
+            val diffResult = DiffUtil.calculateDiff(diffCallback)
             field = newValue
-            notifyDataSetChanged()
+            diffResult.dispatchUpdatesTo(this)
         }
 
     override fun getItemCount(): Int = bookmarks.size
@@ -51,6 +78,8 @@ class BookmarksAdapter(
             //handle pressing the delete item
             ivBookmarksDelete.setOnClickListener {
                 onItemClicked.invoke(position, BOOKMARK_DELETE)
+                notifyItemRemoved(position)
+
             }
 
             //update variables
