@@ -43,7 +43,7 @@ class DetailScreenFragment : Fragment(R.layout.fragment_detail_screen) {
                         findNavController().navigate(R.id.mainScreenFragment)
                     }
                     R.id.itemBookmarks -> {
-                        findNavController().navigate(R.id.bookmarksFragment)
+                        findNavController().navigate(R.id.bookmarksScreenFragment)
                     }
                     R.id.itemSearch -> {
                         findNavController().navigate(R.id.searchScreenFragment)

@@ -12,6 +12,7 @@
         <attr name="colorSurfaceNative" format="color|reference"/>
         <attr name="colorSurfaceAccent" format="color|reference"/>
         <attr name="colorSurfaceVariant" format="color|reference"/>
+        <attr name="colorSurface" format="color|reference"/>
 
         <attr name="colorOnSurfaceFirstPriority" format="color"/>
         <attr name="colorOnSurfaceHighEmphasis" format="color"/>

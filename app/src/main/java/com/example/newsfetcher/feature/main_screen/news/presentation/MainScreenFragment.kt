@@ -39,7 +39,7 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
             bnvBarMain.setOnItemSelectedListener {
                 when (it.itemId) {
                     R.id.itemBookmarks -> {
-                        findNavController().navigate(R.id.bookmarksFragment)
+                        findNavController().navigate(R.id.bookmarksScreenFragment)
                     }
                     R.id.itemSearch -> {
                         findNavController().navigate(R.id.searchScreenFragment)
@@ -54,7 +54,7 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
         }
 
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
-            findNavController().navigate(R.id.bookmarksFragment)
+            findNavController().navigate(R.id.bookmarksScreenFragment)
         }
 
     }
