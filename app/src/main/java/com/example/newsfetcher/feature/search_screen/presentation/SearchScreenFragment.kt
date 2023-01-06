@@ -5,7 +5,9 @@ import android.util.Log
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import androidx.activity.addCallback
+import androidx.core.graphics.drawable.toDrawable
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -85,13 +87,16 @@ class SearchScreenFragment : Fragment(R.layout.fragment_search_screen){
 
         when (viewState.state) {
             State.Load -> {
+                binding.pbSearchScreen.isVisible = true
             }
             State.Content -> {
+                binding.pbSearchScreen.isVisible = false
                 adapter.setData(viewState.articlesSearchShown)
             }
             State.Error -> {
             }
             State.DetailLoad -> {
+                binding.pbSearchScreen.isVisible = false
                 val articleDetail = viewState.articleDetail
                 Log.d("TAGG", "Detail SearchScreenFragment = ${viewState.articleDetail}")
                 //TODO redirect data transfer to safeArgs
