@@ -2,7 +2,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/popupLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -80,7 +79,6 @@
         android:layout_marginTop="20dp"
         android:background="?attr/colorPrimary"
         app:layout_constraintEnd_toEndOf="@+id/tvTitleDatePeriod"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="@+id/tvTitleDatePeriod"
         app:layout_constraintTop_toBottomOf="@+id/tvAllSearchIn" />
 
@@ -90,7 +88,6 @@
         android:layout_height="wrap_content"
         android:text="@string/search_period"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivSeparatorLineSearchSetting3" />
 
@@ -109,8 +106,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="3dp"
-        android:text="@string/data_from"
         android:background="?attr/colorSurface"
+        android:text="@string/data_from"
         app:layout_constraintEnd_toStartOf="@+id/tvDataToText"
         app:layout_constraintStart_toEndOf="@+id/tvFromDataText"
         app:layout_constraintTop_toBottomOf="@+id/tvTitleDatePeriod"/>
@@ -157,35 +154,59 @@
         app:layout_constraintTop_toBottomOf="@+id/ivSeparatorLineSearchSetting5" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/tvRelevancy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="20dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="@+id/textView7"
-        app:layout_constraintEnd_toStartOf="@+id/textView7"
-        app:layout_constraintTop_toTopOf="@+id/textView7"
-        app:layout_constraintVertical_bias="0.0" />
+        android:layout_marginEnd="10dp"
+        android:padding="3dp"
+        android:background="?attr/colorSurface"
+        android:text="@string/relevancy"
+        app:layout_constraintBottom_toBottomOf="@+id/tvPublishedAt"
+        app:layout_constraintEnd_toStartOf="@+id/tvPublishedAt"
+        app:layout_constraintTop_toTopOf="@+id/tvPublishedAt"/>
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/tvPopularity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:layout_marginStart="10dp"
+        android:padding="3dp"
+        android:background="?attr/colorSurface"
+        android:text="@string/popularity"
+        app:layout_constraintBottom_toBottomOf="@+id/tvPublishedAt"
+        app:layout_constraintStart_toEndOf="@+id/tvPublishedAt"
+        app:layout_constraintTop_toTopOf="@+id/tvPublishedAt"/>
+
+    <TextView
+        android:id="@+id/tvPublishedAt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:padding="3dp"
+        android:background="?attr/colorSurface"
+        android:text="@string/publishedAt"
         app:layout_constraintEnd_toEndOf="@+id/tvSortBy"
         app:layout_constraintStart_toStartOf="@+id/tvSortBy"
         app:layout_constraintTop_toBottomOf="@+id/tvSortBy" />
 
-    <TextView
-        android:id="@+id/textView8"
+    <Button
+        android:id="@+id/btnSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="@+id/textView7"
-        app:layout_constraintStart_toEndOf="@+id/textView7"
-        app:layout_constraintTop_toTopOf="@+id/textView7"
-        app:layout_constraintVertical_bias="0.0" />
+        android:layout_marginTop="50dp"
+        android:text="@string/save"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnCancel"
+        app:layout_constraintTop_toBottomOf="@+id/tvPublishedAt" />
 
+    <Button
+        android:id="@+id/btnCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cancel"
+        app:layout_constraintEnd_toStartOf="@+id/btnSave"
+        app:layout_constraintBottom_toBottomOf="@+id/btnSave"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnSave"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -45,5 +45,10 @@
     <string name="tr">TR</string>
     <string name="en">EN</string>
     <string name="search_in_all_content">искать по всему содержимому</string>
+    <string name="relevancy">по релевантности</string>
+    <string name="popularity">по популярности</string>
+    <string name="publishedAt">по дате</string>
+    <string name="cancel">Отмена</string>
+    <string name="save">Сохранить</string>
 
 </resources>
