@@ -1,4 +1,4 @@
-package com.example.newsfetcher.feature.search_setting_screen.presentation.data_set_screen
+package com.example.newsfetcher.feature.search_setting_screen.presentation.date_set_screen
 
 
 // for Date Picker Dialog

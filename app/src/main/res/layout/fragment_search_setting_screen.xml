@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/popupLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp">
+    android:padding="20dp">
 
     <TextView
         android:id="@+id/tvTitleSearchSetting"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
         android:gravity="center"
         android:text="@string/search_setting_menu_title"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,124 +20,74 @@
 
     <ImageView
         android:id="@+id/ivSeparatorLineSearchSetting"
-        android:layout_width="match_parent"
-        android:layout_height="4dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.473"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="300dp"
+        android:layout_height="3dp"
+        android:layout_marginTop="20dp"
+        android:background="?attr/colorPrimary"
+        app:layout_constraintEnd_toEndOf="@+id/tvSearchIn"
+        app:layout_constraintStart_toStartOf="@+id/tvSearchIn"
         app:layout_constraintTop_toBottomOf="@+id/tvTitleSearchSetting" />
 
+
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/tvSearchIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="TextView"
+        android:text="@string/search_in"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivSeparatorLineSearchSetting" />
 
-
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tvTitleSearchIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="48dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="@+id/textView2"
-        app:layout_constraintEnd_toStartOf="@+id/textView2"
-        app:layout_constraintTop_toTopOf="@+id/textView2" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="@+id/textView8"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView8"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="@+id/textView2"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toTopOf="@+id/textView2" />
-
-    <ImageView
-        android:id="@+id/ivSeparatorLineSearchSetting2"
-        android:layout_width="match_parent"
-        android:layout_height="4dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.473"
+        android:background="?attr/colorSurface"
+        android:padding="3dp"
+        android:text="@string/in_titles"
+        app:layout_constraintBottom_toBottomOf="@+id/tvDescriptionSearchIn"
+        app:layout_constraintEnd_toStartOf="@+id/tvDescriptionSearchIn"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toTopOf="@+id/tvDescriptionSearchIn" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/tvDescriptionSearchIn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="TextView"
+        android:background="?attr/colorSurface"
+        android:padding="3dp"
+        android:text="@string/in_descriptions"
+        app:layout_constraintStart_toEndOf="@+id/tvTitleSearchIn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSearchIn" />
+
+    <TextView
+        android:id="@+id/tvAllSearchIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorSurface"
+        android:padding="3dp"
+        android:layout_marginTop="3dp"
+        android:text="@string/search_in_all_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivSeparatorLineSearchSetting2" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="52dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="@+id/textView5"
-        app:layout_constraintEnd_toStartOf="@+id/textView5"
-        app:layout_constraintTop_toTopOf="@+id/textView5"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="TextView"
-        app:layout_constraintEnd_toEndOf="@+id/textView7"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView7"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="@+id/textView5"
-        app:layout_constraintStart_toEndOf="@+id/textView5"
-        app:layout_constraintTop_toTopOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/tvDescriptionSearchIn" />
 
     <ImageView
         android:id="@+id/ivSeparatorLineSearchSetting3"
-        android:layout_width="match_parent"
-        android:layout_height="4dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.473"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        android:layout_width="300dp"
+        android:layout_height="3dp"
+        android:layout_marginTop="20dp"
+        android:background="?attr/colorPrimary"
+        app:layout_constraintEnd_toEndOf="@+id/tvTitleDatePeriod"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="@+id/tvTitleDatePeriod"
+        app:layout_constraintTop_toBottomOf="@+id/tvAllSearchIn" />
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/tvTitleDatePeriod"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
         android:text="@string/search_period"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -158,34 +108,84 @@
         android:id="@+id/tvDataFrom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="128dp"
+        android:padding="3dp"
         android:text="@string/data_from"
+        android:background="?attr/colorSurface"
         app:layout_constraintEnd_toStartOf="@+id/tvDataToText"
         app:layout_constraintStart_toEndOf="@+id/tvFromDataText"
-        app:layout_constraintTop_toBottomOf="@+id/textView12"
-        tools:layout_editor_absoluteX="38dp" />
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleDatePeriod"/>
 
     <TextView
         android:id="@+id/tvDataToText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
         android:text="@string/DataToText"
+        app:layout_constraintBottom_toBottomOf="@+id/tvDataTo"
         app:layout_constraintEnd_toStartOf="@+id/tvDataTo"
-        app:layout_constraintBottom_toBottomOf="@+id/tvDataFrom"
         app:layout_constraintStart_toEndOf="@+id/tvDataFrom"
-        app:layout_constraintTop_toTopOf="@+id/tvDataFrom"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="@+id/tvDataTo" />
 
     <TextView
         android:id="@+id/tvDataTo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:background="?attr/colorSurface"
+        android:padding="3dp"
         android:text="@string/data_to"
-        app:layout_constraintBottom_toBottomOf="@+id/tvDataToText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tvDataToText"
-        app:layout_constraintTop_toTopOf="@+id/tvDataToText"/>
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleDatePeriod" />
+
+    <ImageView
+        android:id="@+id/ivSeparatorLineSearchSetting5"
+        android:layout_width="300dp"
+        android:layout_height="3dp"
+        android:layout_marginTop="20dp"
+        android:background="?attr/colorPrimary"
+        app:layout_constraintEnd_toEndOf="@+id/tvSortBy"
+        app:layout_constraintStart_toStartOf="@+id/tvSortBy"
+        app:layout_constraintTop_toBottomOf="@+id/tvDataToText" />
+
+    <TextView
+        android:id="@+id/tvSortBy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/how_to_sort"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivSeparatorLineSearchSetting5" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/textView7"
+        app:layout_constraintEnd_toStartOf="@+id/textView7"
+        app:layout_constraintTop_toTopOf="@+id/textView7"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="@+id/tvSortBy"
+        app:layout_constraintStart_toStartOf="@+id/tvSortBy"
+        app:layout_constraintTop_toBottomOf="@+id/tvSortBy" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/textView7"
+        app:layout_constraintStart_toEndOf="@+id/textView7"
+        app:layout_constraintTop_toTopOf="@+id/textView7"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,10 +9,10 @@ import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.newsfetcher.R
 import com.example.newsfetcher.databinding.FragmentSearchSettingScreenBinding
-import com.example.newsfetcher.feature.search_setting_screen.presentation.data_set_screen.DataFromSetFragment
-import com.example.newsfetcher.feature.search_setting_screen.presentation.data_set_screen.DataToSetFragment
-import com.example.newsfetcher.feature.search_setting_screen.presentation.data_set_screen.REQUEST_DATE_FROM
-import com.example.newsfetcher.feature.search_setting_screen.presentation.data_set_screen.REQUEST_DATE_TO
+import com.example.newsfetcher.feature.search_setting_screen.presentation.date_set_screen.DateFromSetFragment
+import com.example.newsfetcher.feature.search_setting_screen.presentation.date_set_screen.DateToSetFragment
+import com.example.newsfetcher.feature.search_setting_screen.presentation.date_set_screen.REQUEST_DATE_FROM
+import com.example.newsfetcher.feature.search_setting_screen.presentation.date_set_screen.REQUEST_DATE_TO
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
 
@@ -33,14 +33,14 @@ class SearchSettingScreenFragment : DialogFragment(R.layout.fragment_search_sett
 
         binding.tvDataFrom.setOnClickListener {
             childFragmentManager.setFragmentResultListener(REQUEST_DATE_FROM, viewLifecycleOwner,this)
-            DataFromSetFragment
+            DateFromSetFragment
                 .newInstance(dateSet, REQUEST_DATE_FROM.toInt())
                 .show(childFragmentManager, REQUEST_DATE_FROM)
         }
 
         binding.tvDataTo.setOnClickListener {
             childFragmentManager.setFragmentResultListener(REQUEST_DATE_TO, viewLifecycleOwner, this)
-            DataToSetFragment
+            DateToSetFragment
                 .newInstance(dateSet, REQUEST_DATE_TO.toInt())
                 .show(childFragmentManager, REQUEST_DATE_TO)
         }

@@ -1,4 +1,4 @@
-package com.example.newsfetcher.feature.search_setting_screen.presentation.data_set_screen
+package com.example.newsfetcher.feature.search_setting_screen.presentation.date_set_screen
 
 import android.app.DatePickerDialog
 import android.app.Dialog
@@ -9,7 +9,7 @@ import androidx.fragment.app.setFragmentResult
 import java.util.*
 
 
-class DataToSetFragment : DialogFragment() {
+class DateFromSetFragment : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
 
@@ -19,7 +19,7 @@ class DataToSetFragment : DialogFragment() {
             val result = Bundle().apply {
                 putSerializable(RESULT_DATE_KEY, date)
             }
-            setFragmentResult(REQUEST_DATE_TO, result)
+            setFragmentResult(REQUEST_DATE_FROM, result)
         }
 
         val calendar = Calendar.getInstance()
@@ -37,13 +37,13 @@ class DataToSetFragment : DialogFragment() {
     }
 
     companion object {
-        fun newInstance(date: Date, requestKey: Int): DataToSetFragment {
+        fun newInstance(date: Date, requestKey: Int): DateFromSetFragment {
             val args = Bundle().apply {
                 putSerializable(ARG_DATE, date)
                 putSerializable(ARG_REQUEST_CODE, requestKey)
             }
             Log.d("TAGG", "dateSet = $args  $requestKey")
-            return DataToSetFragment().apply {
+            return DateFromSetFragment().apply {
                 arguments = args
             }
         }
