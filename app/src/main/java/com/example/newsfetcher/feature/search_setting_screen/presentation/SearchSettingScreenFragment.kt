@@ -14,7 +14,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
 
 
-const val REQUEST_DATE = "1234"
+const val REQUEST_DATE_FROM = "123"
+const val REQUEST_DATE_TO = "321"
 
 
 class SearchSettingScreenFragment : DialogFragment(R.layout.fragment_search_setting_screen), FragmentResultListener {
@@ -31,12 +32,12 @@ class SearchSettingScreenFragment : DialogFragment(R.layout.fragment_search_sett
 
         dateSet = Date()
 
-        parentFragmentManager.setFragmentResultListener(REQUEST_DATE, viewLifecycleOwner,this)
+        childFragmentManager.setFragmentResultListener(REQUEST_DATE_FROM, viewLifecycleOwner,this)
 
         binding.tvFromData.setOnClickListener {
             DataSetFragment
-                .newInstance(dateSet, REQUEST_DATE.toInt())
-                .show(parentFragmentManager, REQUEST_DATE)
+                .newInstance(dateSet, REQUEST_DATE_FROM.toInt())
+                .show(childFragmentManager, REQUEST_DATE_FROM)
         }
 
     }
@@ -56,13 +57,15 @@ class SearchSettingScreenFragment : DialogFragment(R.layout.fragment_search_sett
     }
 
     override fun onFragmentResult(requestCode: String, result: Bundle) {
-        Log.d("TAGG", "dateSet onFragmentResult = $requestCode   $result")
         when(requestCode) {
-            REQUEST_DATE -> {
-                val res =  result
-//               val date = DataSetFragment.getSelectedDate(res)
-                Log.d("TAGG", "dateSet when = $result")
-                binding.tvFromData.text = result.toString()
+            REQUEST_DATE_FROM -> {
+                val index = result.toString().indexOf("=")
+                val date = result.toString().removeRange(0..index).removeSuffix("}]")
+                Log.d("TAGG", "dateSet when = $date")
+                binding.tvFromData.text = date
+            }
+            REQUEST_DATE_TO -> {
+
             }
         }
     }

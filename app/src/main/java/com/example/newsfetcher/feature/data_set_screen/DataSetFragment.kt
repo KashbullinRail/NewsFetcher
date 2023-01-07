@@ -6,23 +6,26 @@ import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.setFragmentResult
-import com.example.newsfetcher.feature.search_setting_screen.presentation.REQUEST_DATE
+import com.example.newsfetcher.feature.search_setting_screen.presentation.REQUEST_DATE_FROM
 import java.util.*
+
 
 const val ARG_REQUEST_CODE = "ARG_REQUEST_CODE"
 const val RESULT_DATE_KEY = "RESULT_DATE_KEY"
 const val ARG_DATE = "ARG_DATE"
+
 
 class DataSetFragment : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
 
         val dataListener = DatePickerDialog.OnDateSetListener { _, year, month, day ->
-            val resultDate: Date = GregorianCalendar(year, month, day).time
+            val date = (year.toString() + "-" + (month+1) + "-" + day.toString())
+            Log.d("TAGG", "date = $date")
             val result = Bundle().apply {
-                putSerializable(RESULT_DATE_KEY, resultDate)
+                putSerializable(RESULT_DATE_KEY, date)
             }
-            setFragmentResult(REQUEST_DATE, result)
+            setFragmentResult(REQUEST_DATE_FROM, result)
         }
 
         val calendar = Calendar.getInstance()
@@ -49,7 +52,6 @@ class DataSetFragment : DialogFragment() {
                 arguments = args
             }
         }
-        fun getSelectedDate(result: Bundle) = result.getSerializable(REQUEST_DATE) as Date
     }
 
 }
