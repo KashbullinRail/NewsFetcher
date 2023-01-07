@@ -31,9 +31,6 @@
         <action
             android:id="@+id/action_mainScreenFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
-        <action
-            android:id="@+id/action_mainScreenFragment_to_settingFragment"
-            app:destination="@id/settingScreenFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchScreenFragment"
@@ -66,27 +63,10 @@
         android:id="@+id/webViewFragment"
         android:name="com.example.newsfetcher.feature.webview_screen.presentation.WebViewScreenFragment"
         android:label="fragment_web_view"
-        tools:layout="@layout/fragment_webview_screen" >
-        <action
-            android:id="@+id/action_webViewFragment_to_detailFragment"
-            app:destination="@id/detailFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_webview_screen" />
     <fragment
         android:id="@+id/settingScreenFragment"
         android:name="com.example.newsfetcher.feature.search_setting_screen.presentation.SearchSettingScreenFragment"
         android:label="fragment_setting"
-        tools:layout="@layout/fragment_search_setting_screen" >
-        <action
-            android:id="@+id/action_settingScreenFragment_to_dataPickerFragment"
-            app:destination="@id/dataPickerFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/dataPickerFragment"
-        android:name="com.example.newsfetcher.feature.data_set_screen.DataSetFragment"
-        android:label="fragment_data_picker"
-        tools:layout="@layout/fragment_data_picker" >
-        <action
-            android:id="@+id/action_dataPickerFragment_to_settingScreenFragment"
-            app:destination="@id/settingScreenFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_search_setting_screen" />
 </navigation>

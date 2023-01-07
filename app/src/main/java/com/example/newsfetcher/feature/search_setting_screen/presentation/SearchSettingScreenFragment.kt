@@ -9,13 +9,12 @@ import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.newsfetcher.R
 import com.example.newsfetcher.databinding.FragmentSearchSettingScreenBinding
-import com.example.newsfetcher.feature.data_set_screen.DataSetFragment
+import com.example.newsfetcher.feature.search_setting_screen.presentation.data_set_screen.DataFromSetFragment
+import com.example.newsfetcher.feature.search_setting_screen.presentation.data_set_screen.DataToSetFragment
+import com.example.newsfetcher.feature.search_setting_screen.presentation.data_set_screen.REQUEST_DATE_FROM
+import com.example.newsfetcher.feature.search_setting_screen.presentation.data_set_screen.REQUEST_DATE_TO
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
-
-
-const val REQUEST_DATE_FROM = "123"
-const val REQUEST_DATE_TO = "321"
 
 
 class SearchSettingScreenFragment : DialogFragment(R.layout.fragment_search_setting_screen), FragmentResultListener {
@@ -32,12 +31,18 @@ class SearchSettingScreenFragment : DialogFragment(R.layout.fragment_search_sett
 
         dateSet = Date()
 
-        childFragmentManager.setFragmentResultListener(REQUEST_DATE_FROM, viewLifecycleOwner,this)
-
-        binding.tvFromData.setOnClickListener {
-            DataSetFragment
+        binding.tvDataFrom.setOnClickListener {
+            childFragmentManager.setFragmentResultListener(REQUEST_DATE_FROM, viewLifecycleOwner,this)
+            DataFromSetFragment
                 .newInstance(dateSet, REQUEST_DATE_FROM.toInt())
                 .show(childFragmentManager, REQUEST_DATE_FROM)
+        }
+
+        binding.tvDataTo.setOnClickListener {
+            childFragmentManager.setFragmentResultListener(REQUEST_DATE_TO, viewLifecycleOwner, this)
+            DataToSetFragment
+                .newInstance(dateSet, REQUEST_DATE_TO.toInt())
+                .show(childFragmentManager, REQUEST_DATE_TO)
         }
 
     }
@@ -61,11 +66,14 @@ class SearchSettingScreenFragment : DialogFragment(R.layout.fragment_search_sett
             REQUEST_DATE_FROM -> {
                 val index = result.toString().indexOf("=")
                 val date = result.toString().removeRange(0..index).removeSuffix("}]")
-                Log.d("TAGG", "dateSet when = $date")
-                binding.tvFromData.text = date
+                Log.d("TAGG", "dateSet when 1 = $date")
+                binding.tvDataFrom.text = date
             }
             REQUEST_DATE_TO -> {
-
+                val index = result.toString().indexOf("=")
+                val date = result.toString().removeRange(0..index).removeSuffix("}]")
+                Log.d("TAGG", "dateSet when 2 = $date")
+                binding.tvDataTo.text = date
             }
         }
     }
