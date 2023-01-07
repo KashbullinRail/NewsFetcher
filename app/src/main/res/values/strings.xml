@@ -18,4 +18,10 @@
     <string name="_2022">2022....</string>
     <string name="author_published">Автор статьи</string>
     <string name="input_key_word_for_search">введите слово для поиска</string>
+    <string name="search_setting_menu_title">Настройка поиска</string>
+    <string name="data_from">2022_11_16</string>
+    <string name="data_to">2022_12_25</string>
+    <string name="DataToText">До</string>
+    <string name="DataFromText">От</string>
+    <string name="search_period">Период выборки</string>
 </resources>

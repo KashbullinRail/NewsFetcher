@@ -7,7 +7,7 @@ import com.example.newsfetcher.feature.search_setting_screen.data.model.DataStor
 enum class State {
     Load,
     Content,
-    DetailLoad,
+    DataPickerLoad,
     Error
 }
 

@@ -20,6 +20,7 @@ import com.example.newsfetcher.feature.search_screen.data.SearchArticlesRemoteSo
 import com.example.newsfetcher.feature.search_setting_screen.presentation.SearchSettingScreenFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+private const val SHOW_SETTING = "SHOW_SETTING"
 
 class SearchScreenFragment : Fragment(R.layout.fragment_search_screen) {
 
@@ -60,7 +61,7 @@ class SearchScreenFragment : Fragment(R.layout.fragment_search_screen) {
 
             ivFilterSearch.setOnClickListener {
                 val showSettingScreen = SearchSettingScreenFragment()
-                showSettingScreen.show(requireActivity().supportFragmentManager, "showPopUp")
+                showSettingScreen.show(requireActivity().supportFragmentManager, SHOW_SETTING)
             }
 
             etTitleSearch.setOnEditorActionListener { _, actionId, _ ->
