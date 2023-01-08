@@ -3,6 +3,9 @@ package com.example.newsfetcher.base
 import android.app.Activity
 import android.content.Context
 import android.content.res.Configuration
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.util.Log
 import android.view.View
 import android.view.ViewTreeObserver
 import android.view.inputmethod.InputMethodManager
@@ -10,6 +13,7 @@ import android.widget.TextView
 import androidx.annotation.StyleRes
 import androidx.core.widget.TextViewCompat
 import com.example.newsfetcher.base.Either.*
+import com.example.newsfetcher.feature.search_screen.presentation.SearchScreenFragment
 
 
 inline fun <reified T> attempt(func: () -> T): Either<Throwable, T> = try {
@@ -63,4 +67,24 @@ fun View.focusAndShowKeyboard() {
             }
         )
     }
+}
+
+fun isOnline(context: Context): Boolean {
+    val connectivityManager =
+        context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    val capabilities =
+        connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
+    if (capabilities != null) {
+        if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)) {
+            Log.d("Internet1", "NetworkCapabilities.TRANSPORT_CELLULAR")
+            return true
+        } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
+            Log.d("Internet1", "NetworkCapabilities.TRANSPORT_WIFI")
+            return true
+        } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET)) {
+            Log.d("Internet1", "NetworkCapabilities.TRANSPORT_ETHERNET")
+            return true
+        }
+    }
+    return false
 }

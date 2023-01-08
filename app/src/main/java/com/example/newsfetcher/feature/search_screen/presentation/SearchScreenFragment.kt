@@ -13,11 +13,13 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.newsfetcher.R
 import com.example.newsfetcher.base.focusAndShowKeyboard
 import com.example.newsfetcher.base.hideKeyboard
+import com.example.newsfetcher.base.isOnline
 import com.example.newsfetcher.databinding.FragmentSearchScreenBinding
 import com.example.newsfetcher.feature.main_screen.news.presentation.MainArticleAdapter
 import com.example.newsfetcher.feature.main_screen.presentation.PUT_TO_DETAIL_FRAGMENT
 import com.example.newsfetcher.feature.search_screen.data.SearchArticlesRemoteSource
 import com.example.newsfetcher.feature.search_setting_screen.presentation.SearchSettingScreenFragment
+import com.google.android.material.snackbar.Snackbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 private const val SHOW_SETTING = "SHOW_SETTING"
@@ -84,6 +86,11 @@ class SearchScreenFragment : Fragment(R.layout.fragment_search_screen) {
 
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
             findNavController().navigate(R.id.bookmarksScreenFragment)
+        }
+
+        if (!isOnline(requireContext())){
+            Snackbar.make(view, requireActivity().getString(R.string.offInternet), Snackbar.LENGTH_LONG)
+                .show()
         }
 
     }
