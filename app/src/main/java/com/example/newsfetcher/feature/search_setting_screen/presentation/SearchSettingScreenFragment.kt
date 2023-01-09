@@ -47,6 +47,11 @@ class SearchSettingScreenFragment : DialogFragment(R.layout.fragment_search_sett
 
     }
 
+
+
+
+
+
     private fun render(viewState: ViewState) {
         when (viewState.state) {
             State.Load -> {
@@ -68,12 +73,14 @@ class SearchSettingScreenFragment : DialogFragment(R.layout.fragment_search_sett
                 val date = result.toString().removeRange(0..index).removeSuffix("}]")
                 Log.d("TAGG", "dateSet when 1 = $date")
                 binding.tvDataFrom.text = date
+                viewModel.processUIEvent(UIEvent.OnDataFromClicked(date))
             }
             REQUEST_DATE_TO -> {
                 val index = result.toString().indexOf("=")
                 val date = result.toString().removeRange(0..index).removeSuffix("}]")
                 Log.d("TAGG", "dateSet when 2 = $date")
                 binding.tvDataTo.text = date
+                viewModel.processUIEvent(UIEvent.OnDataToClicked(date))
             }
         }
     }

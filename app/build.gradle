@@ -74,6 +74,8 @@ dependencies {
     kapt "com.github.bumptech.glide:compiler:$glide_version"
     //SplashScreen API
     implementation "androidx.core:core-splashscreen:$splash_screen_version"
+    //DataStore
+    implementation "androidx.datastore:datastore-preferences:$data_store_version"
     // Tested libs
     testImplementation "junit:junit:$junit_version"
     androidTestImplementation "androidx.test.ext:junit:$ext_junit_version"

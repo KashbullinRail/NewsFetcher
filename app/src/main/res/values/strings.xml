@@ -33,23 +33,15 @@
     <string name="DataToText">До</string>
     <string name="DataFromText">От</string>
     <string name="search_period">За какой период</string>
-    <string name="russia">Russia</string>
-    <string name="turkey">Turkey</string>
-    <string name="united_states">USA</string>
-    <string name="source_news">Откуда новость</string>
     <string name="search_in">Как искать</string>
     <string name="in_titles">в заголовках статей</string>
     <string name="in_descriptions">в содержании статей</string>
-    <string name="in_what_language">На каком языке</string>
-    <string name="how_to_sort">Как сортировать</string>
-    <string name="ru">RU</string>
-    <string name="tr">TR</string>
-    <string name="en">EN</string>
     <string name="search_in_all_content">искать по всему содержимому</string>
+    <string name="how_to_sort">Как сортировать</string>
     <string name="relevancy">по релевантности</string>
     <string name="popularity">по популярности</string>
     <string name="publishedAt">по дате</string>
-    <string name="cancel">Отмена</string>
-    <string name="save">Сохранить</string>
+    <string name="save_current_search">Использовать</string>
+    <string name="save_for_long_time">Сохранить настройки</string>
 
 </resources>

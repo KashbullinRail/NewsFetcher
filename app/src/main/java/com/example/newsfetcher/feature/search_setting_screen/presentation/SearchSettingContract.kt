@@ -17,15 +17,17 @@ data class ViewState(
 )
 
 sealed class UIEvent : Event {
-
-
-    data class OnArticleClicked(val index: Int, val type: String) : UIEvent()
-    data class OnSearchButtonClicked(val searchText: String) : UIEvent()
+    object OnTitleSearchInClicked: UIEvent()
+    object OnDescriptionSearchInClicked: UIEvent()
+    object OnAllSearchInClicked: UIEvent()
+    object OnRelevancyClicked: UIEvent()
+    object OnPublishedAtClicked: UIEvent()
+    object OnPopularityClicked: UIEvent()
+    data class OnDataFromClicked(val dateFrom: String) : UIEvent()
+    data class OnDataToClicked(val dateTo: String) : UIEvent()
 }
 
 sealed class DateEvent : Event {
-
-
     data class LoadArticles(val searchText: String) : DateEvent()
     data class OnLoadArticlesSucceed(val searchSetting: DataStoreSettingModel) : DateEvent()
 }
