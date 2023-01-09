@@ -20,7 +20,7 @@ class SearchScreenViewModel(
 ) : BaseViewModel<ViewState>() {
 
     init {
-        processDataEvent(DateEvent.LoadArticles(""))
+        processDataEvent(DateEvent.LoadArticles)
     }
 
     override fun initialViewState() = ViewState(

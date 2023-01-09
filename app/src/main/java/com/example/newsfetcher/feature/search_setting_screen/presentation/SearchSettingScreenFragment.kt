@@ -3,6 +3,11 @@ package com.example.newsfetcher.feature.search_setting_screen.presentation
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.core.graphics.alpha
+import androidx.core.graphics.green
+import androidx.core.graphics.red
+import androidx.core.graphics.toColor
+import androidx.core.view.isVisible
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentResultListener
 import androidx.navigation.fragment.findNavController
@@ -40,13 +45,13 @@ class SearchSettingScreenFragment : DialogFragment(R.layout.fragment_search_sett
                 openDatePickerTo()
             }
             tvTitleSearchIn.setOnClickListener {
-
+                viewModel.processUIEvent(UIEvent.OnTitleSearchInClicked)
             }
             tvDescriptionSearchIn.setOnClickListener {
-
+                viewModel.processUIEvent(UIEvent.OnDescriptionSearchInClicked)
             }
             tvAllSearchIn.setOnClickListener {
-
+                viewModel.processUIEvent(UIEvent.OnAllSearchInClicked)
             }
             tvRelevancy.setOnClickListener {
 
@@ -68,6 +73,24 @@ class SearchSettingScreenFragment : DialogFragment(R.layout.fragment_search_sett
             State.Load -> {
             }
             State.Content -> {
+                with(binding) {
+                    if (viewState.titleSearchIn) {
+                        tvTitleSearchIn.setBackgroundColor(R.color.colorPrimary.toInt())
+                        tvDescriptionSearchIn.setBackgroundColor(R.color.white_100.alpha)
+                       tvAllSearchIn.setBackgroundColor(R.color.white_100.alpha)
+                    }
+                    if (viewState.descriptionSearchIn) {
+                        tvDescriptionSearchIn.setBackgroundColor(R.color.colorPrimary.toInt())
+                        tvTitleSearchIn.setBackgroundColor(R.color.white_100.alpha)
+                       tvAllSearchIn.setBackgroundColor(R.color.white_100.alpha)
+                    }
+                    if (viewState.allSearchIn) {
+                       tvAllSearchIn.setBackgroundColor(R.color.colorPrimary.toInt())
+                        tvDescriptionSearchIn.setBackgroundColor(R.color.white_100.alpha)
+                        tvTitleSearchIn.setBackgroundColor(R.color.white_100.alpha)
+                    }
+                }
+                
             }
             State.Error -> {
             }

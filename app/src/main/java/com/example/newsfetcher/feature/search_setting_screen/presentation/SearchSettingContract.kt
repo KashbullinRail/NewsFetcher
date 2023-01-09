@@ -13,16 +13,23 @@ enum class State {
 
 data class ViewState(
     val state: State,
-    val searchSetting: DataStoreSettingModel
+    val titleSearchIn: Boolean,
+    val descriptionSearchIn: Boolean,
+    val allSearchIn: Boolean,
+    val relevancy: Boolean,
+    val publishedAt: Boolean,
+    val popularity: Boolean,
+    val dataFrom: String,
+    val dataTo: String
 )
 
 sealed class UIEvent : Event {
-    object OnTitleSearchInClicked: UIEvent()
-    object OnDescriptionSearchInClicked: UIEvent()
-    object OnAllSearchInClicked: UIEvent()
-    object OnRelevancyClicked: UIEvent()
-    object OnPublishedAtClicked: UIEvent()
-    object OnPopularityClicked: UIEvent()
+    object OnTitleSearchInClicked : UIEvent()
+    object OnDescriptionSearchInClicked : UIEvent()
+    object OnAllSearchInClicked : UIEvent()
+    object OnRelevancyClicked : UIEvent()
+    object OnPublishedAtClicked : UIEvent()
+    object OnPopularityClicked : UIEvent()
     data class OnDataFromClicked(val dateFrom: String) : UIEvent()
     data class OnDataToClicked(val dateTo: String) : UIEvent()
 }
@@ -30,4 +37,10 @@ sealed class UIEvent : Event {
 sealed class DateEvent : Event {
     data class LoadArticles(val searchText: String) : DateEvent()
     data class OnLoadArticlesSucceed(val searchSetting: DataStoreSettingModel) : DateEvent()
+}
+
+enum class SearchIn {
+    TitleSearch,
+    DescriptionSearch,
+    AllSearch
 }

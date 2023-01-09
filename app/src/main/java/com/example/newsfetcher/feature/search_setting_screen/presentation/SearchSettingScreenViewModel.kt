@@ -13,15 +13,46 @@ class SearchSettingScreenViewModel() : BaseViewModel<ViewState>() {
 
     override fun initialViewState() = ViewState(
         state = State.Load,
-        searchSetting = DataStoreSettingModel(
-            true, true, true, true,
-            true, true, "", ""
-        )
+        titleSearchIn = false,
+        descriptionSearchIn = false,
+        allSearchIn = true,
+        relevancy = false,
+        publishedAt = true,
+        popularity = false,
+        dataFrom = "",
+        dataTo = ""
     )
 
     override fun reduce(event: Event, previousState: ViewState): ViewState? {
 
-        return null
+        when (event) {
+            is UIEvent.OnTitleSearchInClicked -> {
+                return previousState.copy(
+                    titleSearchIn = true,
+                    descriptionSearchIn = false,
+                    allSearchIn = false,
+                    state = State.Content
+                )
+            }
+            is UIEvent.OnDescriptionSearchInClicked -> {
+                return previousState.copy(
+                    titleSearchIn = false,
+                    descriptionSearchIn = true,
+                    allSearchIn = false,
+                    state = State.Content
+                )
+            }
+            is UIEvent.OnAllSearchInClicked -> {
+                return previousState.copy(
+                    titleSearchIn = false,
+                    descriptionSearchIn = false,
+                    allSearchIn = true,
+                    state = State.Content
+                )
+            }
+            else -> return null
+        }
+
     }
 
 }
