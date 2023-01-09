@@ -17,7 +17,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
 
 
-class SearchSettingScreenFragment : DialogFragment(R.layout.fragment_search_setting_screen), FragmentResultListener {
+class SearchSettingScreenFragment : DialogFragment(R.layout.fragment_search_setting_screen),
+    FragmentResultListener {
 
     private val binding by viewBinding(FragmentSearchSettingScreenBinding::bind)
 
@@ -31,27 +32,37 @@ class SearchSettingScreenFragment : DialogFragment(R.layout.fragment_search_sett
 
         dateSet = Date()
 
-        binding.tvDataFrom.setOnClickListener {
-            childFragmentManager.setFragmentResultListener(REQUEST_DATE_FROM, viewLifecycleOwner,this)
-            DateFromSetFragment
-                .newInstance(dateSet, REQUEST_DATE_FROM.toInt())
-                .show(childFragmentManager, REQUEST_DATE_FROM)
+        with(binding) {
+            tvDataFrom.setOnClickListener {
+                openDatePickerFrom()
+            }
+            tvDataTo.setOnClickListener {
+                openDatePickerTo()
+            }
+            tvTitleSearchIn.setOnClickListener {
+
+            }
+            tvDescriptionSearchIn.setOnClickListener {
+
+            }
+            tvAllSearchIn.setOnClickListener {
+
+            }
+            tvRelevancy.setOnClickListener {
+
+            }
+            tvPublishedAt.setOnClickListener {
+
+            }
+            tvPopularity.setOnClickListener {
+
+            }
         }
 
-        binding.tvDataTo.setOnClickListener {
-            childFragmentManager.setFragmentResultListener(REQUEST_DATE_TO, viewLifecycleOwner, this)
-            DateToSetFragment
-                .newInstance(dateSet, REQUEST_DATE_TO.toInt())
-                .show(childFragmentManager, REQUEST_DATE_TO)
-        }
 
     }
 
-
-
-
-
-
+    //update UI
     private fun render(viewState: ViewState) {
         when (viewState.state) {
             State.Load -> {
@@ -61,13 +72,13 @@ class SearchSettingScreenFragment : DialogFragment(R.layout.fragment_search_sett
             State.Error -> {
             }
             State.DataPickerLoad -> {
-                findNavController().navigate(R.id.detailFragment)
             }
         }
     }
 
+    //Function to get selected date from date picker
     override fun onFragmentResult(requestCode: String, result: Bundle) {
-        when(requestCode) {
+        when (requestCode) {
             REQUEST_DATE_FROM -> {
                 val index = result.toString().indexOf("=")
                 val date = result.toString().removeRange(0..index).removeSuffix("}]")
@@ -83,6 +94,26 @@ class SearchSettingScreenFragment : DialogFragment(R.layout.fragment_search_sett
                 viewModel.processUIEvent(UIEvent.OnDataToClicked(date))
             }
         }
+    }
+
+    //Date picker function from...
+    private fun openDatePickerFrom() {
+        childFragmentManager.setFragmentResultListener(
+            REQUEST_DATE_FROM, viewLifecycleOwner, this@SearchSettingScreenFragment
+        )
+        DateFromSetFragment
+            .newInstance(dateSet, REQUEST_DATE_FROM.toInt())
+            .show(childFragmentManager, REQUEST_DATE_FROM)
+    }
+
+    //Date picker function to...
+    private fun openDatePickerTo() {
+        childFragmentManager.setFragmentResultListener(
+            REQUEST_DATE_TO, viewLifecycleOwner, this@SearchSettingScreenFragment
+        )
+        DateToSetFragment
+            .newInstance(dateSet, REQUEST_DATE_TO.toInt())
+            .show(childFragmentManager, REQUEST_DATE_TO)
     }
 
 }

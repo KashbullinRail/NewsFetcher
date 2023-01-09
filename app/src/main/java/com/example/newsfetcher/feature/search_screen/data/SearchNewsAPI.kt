@@ -8,7 +8,7 @@ interface SearchNewsAPI {
 
     @GET("v2/everything")
     suspend fun getArticles(
-        @Query("q") query: String = "",
+        @Query("q") query: String,
 //        @Query("searchIn") searchIn: String = "title,description,content", // title, description, content
 //        @Query("sources") sources: String = "ru",  // tr, us
 //        @Query("domains") domain: String = "", //eg bbc.co.uk,

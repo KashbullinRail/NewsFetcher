@@ -14,8 +14,8 @@ class SearchSettingScreenViewModel() : BaseViewModel<ViewState>() {
     override fun initialViewState() = ViewState(
         state = State.Load,
         searchSetting = DataStoreSettingModel(
-            "", "", "", "",
-            "", "", ""
+            true, true, true, true,
+            true, true, "", ""
         )
     )
 

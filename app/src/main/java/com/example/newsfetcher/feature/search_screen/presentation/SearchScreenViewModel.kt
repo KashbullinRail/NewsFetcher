@@ -34,6 +34,8 @@ class SearchScreenViewModel(
         searchText = ""
     )
 
+
+
     override fun reduce(event: Event, previousState: ViewState): ViewState? {
 
         when (event) {
