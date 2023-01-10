@@ -1,7 +1,10 @@
 package com.example.newsfetcher.feature.search_screen.presentation
 
+import android.app.Activity
 import android.os.Bundle
 import android.util.Log
+import android.view.GestureDetector
+import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import androidx.activity.addCallback
@@ -22,7 +25,9 @@ import com.example.newsfetcher.feature.search_setting_screen.presentation.Search
 import com.google.android.material.snackbar.Snackbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+
 private const val SHOW_SETTING = "SHOW_SETTING"
+
 
 class SearchScreenFragment : Fragment(R.layout.fragment_search_screen) {
 
@@ -42,9 +47,7 @@ class SearchScreenFragment : Fragment(R.layout.fragment_search_screen) {
         viewModel.viewState.observe(viewLifecycleOwner, ::render)
 
         with(binding) {
-
             etTitleSearch.focusAndShowKeyboard()
-
             rvArticlesSearch.adapter = adapter
 
             bnvBarSearch.setOnItemSelectedListener {
@@ -88,9 +91,10 @@ class SearchScreenFragment : Fragment(R.layout.fragment_search_screen) {
             findNavController().navigate(R.id.bookmarksScreenFragment)
         }
 
-        if (!isOnline(requireContext())){
-            Snackbar.make(view, requireActivity().getString(R.string.offInternet), Snackbar.LENGTH_LONG)
-                .show()
+        if (!isOnline(requireContext())) {
+            Snackbar.make(
+                view, requireActivity().getString(R.string.offInternet), Snackbar.LENGTH_LONG
+            ).show()
         }
 
     }

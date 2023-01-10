@@ -6,8 +6,8 @@ import com.example.newsfetcher.feature.search_setting_screen.data.model.DataStor
 
 enum class State {
     Load,
-    Content,
-    DataPickerLoad,
+    ContentSearchIn,
+    ContentSortBy,
     Error
 }
 
@@ -36,7 +36,6 @@ sealed class UIEvent : Event {
 
 sealed class DateEvent : Event {
     data class LoadArticles(val searchText: String) : DateEvent()
-    data class OnLoadArticlesSucceed(val searchSetting: DataStoreSettingModel) : DateEvent()
 }
 
 enum class SearchIn {

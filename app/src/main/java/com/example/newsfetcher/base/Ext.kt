@@ -22,7 +22,6 @@ inline fun <reified T> attempt(func: () -> T): Either<Throwable, T> = try {
     Left(e)
 }
 
-
 fun TextView.setTextAppearanceCompat(@StyleRes styleRes: Int) {
     TextViewCompat.setTextAppearance(this, styleRes)
 }
@@ -33,7 +32,6 @@ fun Context.isDarkModeEnabled(): Boolean {
     return themeNight
 }
 
-
 //keybord hide feature
 fun Activity.hideKeyboard() {
     inputMethodManager.hideSoftInputFromWindow(window.decorView.windowToken, 0)
@@ -41,7 +39,6 @@ fun Activity.hideKeyboard() {
 
 val Context.inputMethodManager: InputMethodManager
     get() = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-
 
 // Using focus on the input field and calling the keyboard
 fun View.focusAndShowKeyboard() {
@@ -68,7 +65,6 @@ fun View.focusAndShowKeyboard() {
         )
     }
 }
-
 
 //funtion to check internet conection
 fun isOnline(context: Context): Boolean {

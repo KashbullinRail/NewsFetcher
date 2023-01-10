@@ -2,7 +2,6 @@ package com.example.newsfetcher.feature.search_setting_screen.presentation
 
 import com.example.newsfetcher.base.BaseViewModel
 import com.example.newsfetcher.base.Event
-import com.example.newsfetcher.feature.search_setting_screen.data.model.DataStoreSettingModel
 
 
 class SearchSettingScreenViewModel() : BaseViewModel<ViewState>() {
@@ -31,7 +30,7 @@ class SearchSettingScreenViewModel() : BaseViewModel<ViewState>() {
                     titleSearchIn = true,
                     descriptionSearchIn = false,
                     allSearchIn = false,
-                    state = State.Content
+                    state = State.ContentSearchIn
                 )
             }
             is UIEvent.OnDescriptionSearchInClicked -> {
@@ -39,7 +38,7 @@ class SearchSettingScreenViewModel() : BaseViewModel<ViewState>() {
                     titleSearchIn = false,
                     descriptionSearchIn = true,
                     allSearchIn = false,
-                    state = State.Content
+                    state = State.ContentSearchIn
                 )
             }
             is UIEvent.OnAllSearchInClicked -> {
@@ -47,7 +46,31 @@ class SearchSettingScreenViewModel() : BaseViewModel<ViewState>() {
                     titleSearchIn = false,
                     descriptionSearchIn = false,
                     allSearchIn = true,
-                    state = State.Content
+                    state = State.ContentSearchIn
+                )
+            }
+            is UIEvent.OnPopularityClicked -> {
+                return previousState.copy(
+                    popularity = true,
+                    relevancy = false,
+                    publishedAt = false,
+                    state = State.ContentSortBy
+                )
+            }
+            is UIEvent.OnRelevancyClicked -> {
+                return previousState.copy(
+                    popularity = false,
+                    relevancy = true,
+                    publishedAt = false,
+                    state = State.ContentSortBy
+                )
+            }
+            is UIEvent.OnPublishedAtClicked -> {
+                return previousState.copy(
+                    popularity = false,
+                    relevancy = false,
+                    publishedAt = true,
+                    state = State.ContentSortBy
                 )
             }
             else -> return null

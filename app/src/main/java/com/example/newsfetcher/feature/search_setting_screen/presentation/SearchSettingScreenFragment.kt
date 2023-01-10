@@ -2,15 +2,12 @@ package com.example.newsfetcher.feature.search_setting_screen.presentation
 
 import android.os.Bundle
 import android.util.Log
+import android.view.GestureDetector
+import android.view.MotionEvent
 import android.view.View
 import androidx.core.graphics.alpha
-import androidx.core.graphics.green
-import androidx.core.graphics.red
-import androidx.core.graphics.toColor
-import androidx.core.view.isVisible
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentResultListener
-import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.newsfetcher.R
 import com.example.newsfetcher.databinding.FragmentSearchSettingScreenBinding
@@ -54,16 +51,16 @@ class SearchSettingScreenFragment : DialogFragment(R.layout.fragment_search_sett
                 viewModel.processUIEvent(UIEvent.OnAllSearchInClicked)
             }
             tvRelevancy.setOnClickListener {
+                viewModel.processUIEvent(UIEvent.OnRelevancyClicked)
 
             }
             tvPublishedAt.setOnClickListener {
-
+                viewModel.processUIEvent(UIEvent.OnPublishedAtClicked)
             }
             tvPopularity.setOnClickListener {
-
+                viewModel.processUIEvent(UIEvent.OnPopularityClicked)
             }
         }
-
 
     }
 
@@ -71,8 +68,9 @@ class SearchSettingScreenFragment : DialogFragment(R.layout.fragment_search_sett
     private fun render(viewState: ViewState) {
         when (viewState.state) {
             State.Load -> {
+                //currently not processed, for the future expanded
             }
-            State.Content -> {
+            State.ContentSearchIn -> {
                 with(binding) {
                     if (viewState.titleSearchIn) {
                         tvTitleSearchIn.setBackgroundColor(R.color.colorPrimary.toInt())
@@ -92,9 +90,27 @@ class SearchSettingScreenFragment : DialogFragment(R.layout.fragment_search_sett
                 }
                 
             }
-            State.Error -> {
+            State.ContentSortBy -> {
+                with(binding) {
+                    if (viewState.popularity) {
+                        tvPopularity.setBackgroundColor(R.color.colorPrimary.toInt())
+                        tvRelevancy.setBackgroundColor(R.color.white_100.alpha)
+                        tvPublishedAt.setBackgroundColor(R.color.white_100.alpha)
+                    }
+                    if (viewState.relevancy) {
+                        tvPopularity.setBackgroundColor(R.color.white_100.alpha)
+                        tvRelevancy.setBackgroundColor(R.color.colorPrimary.toInt())
+                        tvPublishedAt.setBackgroundColor(R.color.white_100.alpha)
+                    }
+                    if (viewState.publishedAt) {
+                        tvPopularity.setBackgroundColor(R.color.white_100.alpha)
+                        tvRelevancy.setBackgroundColor(R.color.white_100.alpha)
+                        tvPublishedAt.setBackgroundColor(R.color.colorPrimary.toInt())
+                    }
+                }
             }
-            State.DataPickerLoad -> {
+            State.Error -> {
+                //currently not processed, for the future expanded
             }
         }
     }

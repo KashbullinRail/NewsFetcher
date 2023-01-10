@@ -1,4 +1,4 @@
-package com.example.newsfetcher.canbedeleted
+package com.example.newsfetcher.can_be_deleted
 
 class JsonModel : ArrayList<JsonModel.JsonModelItem>() {
 
