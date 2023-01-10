@@ -8,7 +8,7 @@
         android:icon="@drawable/ic_bnvbar_bookmark"
         android:title="@string/favorite"/>
     <item android:id="@+id/itemSearch"
-        android:icon="@drawable/ic_bnvbar_cloud"
-        android:title="@string/weather"/>
+        android:icon="@drawable/ic_bnvbar_search"
+        android:title="@string/search"/>
 
 </menu>

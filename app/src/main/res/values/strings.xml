@@ -5,7 +5,7 @@
 <!--    For bottom navigation bar-->
     <string name="main">Главная</string>
     <string name="favorite">Избранное</string>
-    <string name="weather">Weather</string>
+    <string name="search">Search</string>
 
 <!--    For webview screen-->
     <string name="loadSite">Сайт загружается</string>
