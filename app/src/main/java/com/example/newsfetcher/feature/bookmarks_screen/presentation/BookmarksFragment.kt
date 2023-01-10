@@ -10,8 +10,10 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.newsfetcher.R
+import com.example.newsfetcher.base.isOnline
 import com.example.newsfetcher.databinding.FragmentBookmarksBinding
 import com.example.newsfetcher.feature.main_screen.presentation.PUT_TO_DETAIL_FRAGMENT
+import com.google.android.material.snackbar.Snackbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 

@@ -29,12 +29,13 @@
     <color name="grey_800">#ACAAB2</color>
     <color name="grey_700">#A5AEB8</color>
     <color name="grey_600">#CBC9D1</color>
-    <color name="grey_500">#C2CED1</color>
+    <color name="grey_500">#E9EEEF</color>
     <color name="grey_400">#F2F2F2</color>
     <color name="grey_300">#F4F5F6</color>
     <color name="grey_200">#F7F7F7</color>
 
     <color name="green_500">#4CAF50</color>
+    <color name="green_700">#005D57</color>
     <color name="red_900">#B71C1C</color>
     <color name="yellow_900">#FFEB3B</color>
 

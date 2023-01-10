@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.newsfetcher.R
+import com.example.newsfetcher.base.isOnline
 import com.example.newsfetcher.databinding.FragmentWebviewScreenBinding
 import com.example.newsfetcher.feature.main_screen.presentation.PUT_TO_WEBVIEW_FRAGMENT
 import com.google.android.material.snackbar.Snackbar
@@ -31,11 +32,15 @@ class WebViewScreenFragment : Fragment(R.layout.fragment_webview_screen) {
                 .show()
         }
 
+        if (!isOnline(requireContext())){
+            Snackbar.make(view, requireActivity().getString(R.string.offInternet), Snackbar.LENGTH_LONG)
+                .show()
+        }
+
         with(binding) {
             fabWebViewGoBack.setOnClickListener {
                 wvWeb.goBack()
             }
-
             fabWebViewGoDetail.setOnClickListener {
                 findNavController().navigate(R.id.mainScreenFragment)
             }
@@ -43,19 +48,36 @@ class WebViewScreenFragment : Fragment(R.layout.fragment_webview_screen) {
 
     }
 
+//    fun isOnline(context: Context): Boolean {
+//        val connectivityManager =
+//            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+//        val capabilities =
+//            connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
+//        if (capabilities != null) {
+//            if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)) {
+//                Log.d("Internet1", "NetworkCapabilities.TRANSPORT_CELLULAR")
+//                return true
+//            } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
+//                Log.d("Internet1", "NetworkCapabilities.TRANSPORT_WIFI")
+//                return true
+//            } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET)) {
+//                Log.d("Internet1", "NetworkCapabilities.TRANSPORT_ETHERNET")
+//                return true
+//            }
+//        }
+//        return false
+//    }
+
     @SuppressLint("SetJavaScriptEnabled")
     fun webViewStart(url: String) {
-
         with(binding) {
             wvWeb.webViewClient = WebViewClient()
-
             wvWeb.apply {
                 loadUrl(url)
                 settings.javaScriptEnabled = true
                 settings.loadWithOverviewMode = true
             }
         }
-
     }
 
 }

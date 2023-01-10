@@ -25,6 +25,6 @@ sealed class UIEvent : Event {
 }
 
 sealed class DateEvent : Event {
-    data class LoadArticles(val searchText: String) : DateEvent()
+    object LoadArticles : DateEvent()
     data class OnLoadArticlesSucceed(val articlesSearched: List<ArticleModel>) : DateEvent()
 }

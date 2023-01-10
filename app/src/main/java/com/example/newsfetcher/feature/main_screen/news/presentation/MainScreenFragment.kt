@@ -10,8 +10,10 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.newsfetcher.R
+import com.example.newsfetcher.base.isOnline
 import com.example.newsfetcher.databinding.FragmentMainScreenBinding
 import com.example.newsfetcher.feature.main_screen.presentation.PUT_TO_DETAIL_FRAGMENT
+import com.google.android.material.snackbar.Snackbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -39,7 +41,7 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
             bnvBarMain.setOnItemSelectedListener {
                 when (it.itemId) {
                     R.id.itemBookmarks -> {
-                        findNavController().navigate(R.id.bookmarksFragment)
+                        findNavController().navigate(R.id.bookmarksScreenFragment)
                     }
                     R.id.itemSearch -> {
                         findNavController().navigate(R.id.searchScreenFragment)
@@ -54,7 +56,12 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
         }
 
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
-            findNavController().navigate(R.id.bookmarksFragment)
+            findNavController().navigate(R.id.bookmarksScreenFragment)
+        }
+
+        if (!isOnline(requireContext())){
+            Snackbar.make(view, requireActivity().getString(R.string.offInternet), Snackbar.LENGTH_LONG)
+                .show()
         }
 
     }

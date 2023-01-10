@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/popupLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/tvTitleSearchSetting"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/search_setting_menu_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivSeparatorLineSearchSetting"
+        android:layout_width="300dp"
+        android:layout_height="3dp"
+        android:layout_marginTop="20dp"
+        android:background="?attr/colorPrimary"
+        app:layout_constraintEnd_toEndOf="@+id/tvSearchIn"
+        app:layout_constraintStart_toStartOf="@+id/tvSearchIn"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleSearchSetting" />
+
+
+    <TextView
+        android:id="@+id/tvSearchIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/search_in"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivSeparatorLineSearchSetting" />
+
+    <TextView
+        android:id="@+id/tvTitleSearchIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorSurface"
+        android:padding="3dp"
+        android:text="@string/in_titles"
+        app:layout_constraintBottom_toBottomOf="@+id/tvDescriptionSearchIn"
+        app:layout_constraintEnd_toStartOf="@+id/tvDescriptionSearchIn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvDescriptionSearchIn" />
+
+    <TextView
+        android:id="@+id/tvDescriptionSearchIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorSurface"
+        android:padding="3dp"
+        android:text="@string/in_descriptions"
+        app:layout_constraintStart_toEndOf="@+id/tvTitleSearchIn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvSearchIn" />
+
+    <TextView
+        android:id="@+id/tvAllSearchIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorSurface"
+        android:padding="3dp"
+        android:layout_marginTop="3dp"
+        android:text="@string/search_in_all_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDescriptionSearchIn" />
+
+    <ImageView
+        android:id="@+id/ivSeparatorLineSearchSetting3"
+        android:layout_width="300dp"
+        android:layout_height="3dp"
+        android:layout_marginTop="20dp"
+        android:background="?attr/colorPrimary"
+        app:layout_constraintEnd_toEndOf="@+id/tvTitleDatePeriod"
+        app:layout_constraintStart_toStartOf="@+id/tvTitleDatePeriod"
+        app:layout_constraintTop_toBottomOf="@+id/tvAllSearchIn" />
+
+    <TextView
+        android:id="@+id/tvTitleDatePeriod"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/search_period"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivSeparatorLineSearchSetting3" />
+
+    <TextView
+        android:id="@+id/tvFromDataText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/DataFromText"
+        app:layout_constraintBottom_toBottomOf="@+id/tvDataFrom"
+        app:layout_constraintEnd_toStartOf="@+id/tvDataFrom"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvDataFrom"/>
+
+    <TextView
+        android:id="@+id/tvDataFrom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="3dp"
+        android:background="?attr/colorSurface"
+        android:text="@string/data_from"
+        app:layout_constraintEnd_toStartOf="@+id/tvDataToText"
+        app:layout_constraintStart_toEndOf="@+id/tvFromDataText"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleDatePeriod"/>
+
+    <TextView
+        android:id="@+id/tvDataToText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="@string/DataToText"
+        app:layout_constraintBottom_toBottomOf="@+id/tvDataTo"
+        app:layout_constraintEnd_toStartOf="@+id/tvDataTo"
+        app:layout_constraintStart_toEndOf="@+id/tvDataFrom"
+        app:layout_constraintTop_toTopOf="@+id/tvDataTo" />
+
+    <TextView
+        android:id="@+id/tvDataTo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorSurface"
+        android:padding="3dp"
+        android:text="@string/data_to"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvDataToText"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleDatePeriod" />
+
+    <ImageView
+        android:id="@+id/ivSeparatorLineSearchSetting5"
+        android:layout_width="300dp"
+        android:layout_height="3dp"
+        android:layout_marginTop="20dp"
+        android:background="?attr/colorPrimary"
+        app:layout_constraintEnd_toEndOf="@+id/tvSortBy"
+        app:layout_constraintStart_toStartOf="@+id/tvSortBy"
+        app:layout_constraintTop_toBottomOf="@+id/tvDataToText" />
+
+    <TextView
+        android:id="@+id/tvSortBy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/how_to_sort"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivSeparatorLineSearchSetting5" />
+
+    <TextView
+        android:id="@+id/tvRelevancy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:padding="3dp"
+        android:background="?attr/colorSurface"
+        android:text="@string/relevancy"
+        app:layout_constraintBottom_toBottomOf="@+id/tvPublishedAt"
+        app:layout_constraintEnd_toStartOf="@+id/tvPublishedAt"
+        app:layout_constraintTop_toTopOf="@+id/tvPublishedAt"/>
+
+    <TextView
+        android:id="@+id/tvPopularity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:padding="3dp"
+        android:background="?attr/colorSurface"
+        android:text="@string/popularity"
+        app:layout_constraintBottom_toBottomOf="@+id/tvPublishedAt"
+        app:layout_constraintStart_toEndOf="@+id/tvPublishedAt"
+        app:layout_constraintTop_toTopOf="@+id/tvPublishedAt"/>
+
+    <TextView
+        android:id="@+id/tvPublishedAt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="3dp"
+        android:background="?attr/colorSurface"
+        android:text="@string/publishedAt"
+        app:layout_constraintEnd_toEndOf="@+id/tvSortBy"
+        app:layout_constraintStart_toStartOf="@+id/tvSortBy"
+        app:layout_constraintTop_toBottomOf="@+id/tvSortBy" />
+
+    <Button
+        android:id="@+id/btnSaveForLongTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="10sp"
+        android:layout_marginTop="50dp"
+        android:text="@string/save_for_long_time"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnSaveCurrentSearch"
+        app:layout_constraintTop_toBottomOf="@+id/tvPublishedAt" />
+
+    <Button
+        android:id="@+id/btnSaveCurrentSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="10sp"
+        android:text="@string/save_current_search"
+        app:layout_constraintEnd_toStartOf="@+id/btnSaveForLongTime"
+        app:layout_constraintBottom_toBottomOf="@+id/btnSaveForLongTime"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnSaveForLongTime"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

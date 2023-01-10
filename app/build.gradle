@@ -7,17 +7,14 @@ plugins {
 
 android {
     compileSdk 33
-
     defaultConfig {
         applicationId "com.example.newsfetcher"
-        minSdk 23
+        minSdk 25
         targetSdk 33
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-
     buildTypes {
         release {
             minifyEnabled false
@@ -37,33 +34,10 @@ android {
 }
 
 dependencies {
-    def lifecycle_ktx_version = "2.6.0-alpha01"
-    def retrofit_version = "2.9.0"
-    def coroutines_version = "1.6.4"
-    def OkHttpClient_version = '5.0.0-alpha.10'
-    def GSON_version = "2.9.1"
-    def koin_version= "3.2.0"
-    def logging_interceptor_version = "4.10.0"
-    def room_ktx_version = "2.4.3"
-    def navigation_ktx_version = "2.5.3"
-    def glide_version = "4.14.2"
-    def activity_ktx_version = "1.6.1"
-    def fragment_ktx_version = "1.5.5"
-    def core_ktx_version = "1.9.0"
-    def appcompat_version = "1.5.1"
-    def material_version = "1.7.0"
-    def constraint_layout_version = "2.1.4"
-    def junit_version = "4.13.2"
-    def ext_junit_version = "1.1.4"
-    def espresso_core_version = "3.5.0"
-    def viewbinding_propertydelegate = "1.5.6"
-    def splash_screen_version = "1.0.0"
-
-
     implementation "androidx.appcompat:appcompat:$appcompat_version"
     implementation "com.google.android.material:material:$material_version"
     implementation "androidx.constraintlayout:constraintlayout:$constraint_layout_version"
-    //KTX
+    //KTX core, fragment, activity
     implementation "androidx.activity:activity-ktx:$activity_ktx_version"
     implementation "androidx.fragment:fragment-ktx:$fragment_ktx_version"
     implementation "androidx.core:core-ktx:$core_ktx_version"
@@ -86,7 +60,7 @@ dependencies {
     // Koin main features for Android
     implementation "io.insert-koin:koin-android:$koin_version"
     //Logging_Interceptor
-    implementation"com.squareup.okhttp3:logging-interceptor:$logging_interceptor_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$logging_interceptor_version"
     // Room
     implementation "androidx.room:room-runtime:$room_ktx_version"
     kapt "androidx.room:room-compiler:$room_ktx_version"
@@ -100,9 +74,10 @@ dependencies {
     kapt "com.github.bumptech.glide:compiler:$glide_version"
     //SplashScreen API
     implementation "androidx.core:core-splashscreen:$splash_screen_version"
+    //DataStore
+    implementation "androidx.datastore:datastore-preferences:$data_store_version"
     // Tested libs
     testImplementation "junit:junit:$junit_version"
     androidTestImplementation "androidx.test.ext:junit:$ext_junit_version"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_core_version"
-
 }

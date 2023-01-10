@@ -1,13 +1,18 @@
 <resources>
+
     <string name="app_name">NewsFetcher</string>
+
+<!--    For bottom navigation bar-->
     <string name="main">Главная</string>
     <string name="favorite">Избранное</string>
+    <string name="weather">Weather</string>
 
+<!--    For webview screen-->
     <string name="loadSite">Сайт загружается</string>
     <string name="failUrl">Загрузка сайта невозможна</string>
+    <string name="offInternet">Нет доступа в интернет</string>
 
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="weather">Weather</string>
+<!--    For detail screen-->
     <string name="loading">Loading</string>
     <string name="loadloadload">LoadLoadLoad</string>
     <string name="non_text">non text</string>
@@ -17,5 +22,26 @@
     <string name="link_to_source_Detail">http//........</string>
     <string name="_2022">2022....</string>
     <string name="author_published">Автор статьи</string>
+
+<!--    For search screen-->
     <string name="input_key_word_for_search">введите слово для поиска</string>
+
+<!--    For setting dialog fragment-->
+    <string name="search_setting_menu_title">Настройки фильтра для поиска</string>
+    <string name="data_from">2022_11_16</string>
+    <string name="data_to">2022_12_25</string>
+    <string name="DataToText">До</string>
+    <string name="DataFromText">От</string>
+    <string name="search_period">За какой период</string>
+    <string name="search_in">Как искать</string>
+    <string name="in_titles">в заголовках статей</string>
+    <string name="in_descriptions">в содержании статей</string>
+    <string name="search_in_all_content">искать по всему содержимому</string>
+    <string name="how_to_sort">Как сортировать</string>
+    <string name="relevancy">по релевантности</string>
+    <string name="popularity">по популярности</string>
+    <string name="publishedAt">по дате</string>
+    <string name="save_current_search">Использовать</string>
+    <string name="save_for_long_time">Сохранить настройки</string>
+
 </resources>

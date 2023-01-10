@@ -7,6 +7,7 @@ import com.example.newsfetcher.feature.bookmarks_screen.di.bookmarksScreenModule
 import com.example.newsfetcher.feature.detail_screen.di.detailScreenModule
 import com.example.newsfetcher.feature.main_screen.news.di.mainScreenModule
 import com.example.newsfetcher.feature.search_screen.di.searchScreenModule
+import com.example.newsfetcher.feature.search_setting_screen.di.searchSettingScreenModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -25,7 +26,8 @@ class App : Application() {
                 bookmarksScreenModule,
                 databaseModule,
                 detailScreenModule,
-                searchScreenModule
+                searchScreenModule,
+                searchSettingScreenModule
             )
         }
 
