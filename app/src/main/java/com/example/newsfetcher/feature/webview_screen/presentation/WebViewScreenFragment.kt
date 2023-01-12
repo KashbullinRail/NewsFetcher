@@ -39,34 +39,15 @@ class WebViewScreenFragment : Fragment(R.layout.fragment_webview_screen) {
 
         with(binding) {
             fabWebViewGoBack.setOnClickListener {
-                wvWeb.goBack()
-            }
-            fabWebViewGoDetail.setOnClickListener {
-                findNavController().navigate(R.id.mainScreenFragment)
+                if (wvWeb.canGoBack()) {
+                    wvWeb.goBack()
+                } else {
+                    findNavController().popBackStack()
+                }
             }
         }
 
     }
-
-//    fun isOnline(context: Context): Boolean {
-//        val connectivityManager =
-//            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-//        val capabilities =
-//            connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
-//        if (capabilities != null) {
-//            if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)) {
-//                Log.d("Internet1", "NetworkCapabilities.TRANSPORT_CELLULAR")
-//                return true
-//            } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
-//                Log.d("Internet1", "NetworkCapabilities.TRANSPORT_WIFI")
-//                return true
-//            } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET)) {
-//                Log.d("Internet1", "NetworkCapabilities.TRANSPORT_ETHERNET")
-//                return true
-//            }
-//        }
-//        return false
-//    }
 
     @SuppressLint("SetJavaScriptEnabled")
     fun webViewStart(url: String) {
