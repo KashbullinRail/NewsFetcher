@@ -6,7 +6,17 @@ plugins {
 }
 
 android {
+
+    signingConfigs {
+        release {
+            keyAlias 'newskey'
+            storeFile file('D:\\android\\Project\\from_C_disk\\NewsFetcher\\newskey.jks')
+            storePassword 'freefgewFEFWESFf43#%@f445'
+            keyPassword 'freefgewFEFWESFf43#%@f445'
+        }
+    }
     compileSdk 33
+
     defaultConfig {
         applicationId "com.example.newsfetcher"
         minSdk 25
@@ -15,10 +25,97 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
+        def mySetting1 = true
+        def mySetting2 = false
+        def encrypt_prefs_name = "SOULD_ENCRYPT_NAME"
+
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            manifestPlaceholders = [
+                    crashlyticsCollectionEnabled: "true",
+                    applicationIdSuffix: "",
+                    someProperty1: mySetting1,
+                    someProperty2: mySetting2
+            ]
+            buildConfigField "String", "APPLICATION_ID_SUFFIX", "\"\""
+            buildConfigField "boolean", "IS_ANALYTICS_ENABLED", "true"
+            buildConfigField "boolean", encrypt_prefs_name, "true"
+            signingConfig signingConfigs.release
+            multiDexEnabled true
+        }
+        preview {
+            debuggable true
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            manifestPlaceholders = [
+                    crashlyticsCollectionEnabled: "false",
+                    applicationIdSuffix: ".preview",
+                    someProperty1: mySetting1,
+                    someProperty2: mySetting2
+            ]
+            applicationIdSuffix ".preview"
+            versionNameSuffix '-preview'
+            buildConfigField "String", "APPLICATION_ID_SUFFIX", "\".preview\""
+            buildConfigField "boolean", "IS_ANALYTICS_ENABLED", "true"
+            buildConfigField "boolean", encrypt_prefs_name, "true"
+        }
+        debug {
+            debuggable true
+            manifestPlaceholders = [
+                    crashlyticsCollectionEnabled: "false",
+                    applicationIdSuffix: ".debug",
+                    someProperty1: mySetting1,
+                    someProperty2: mySetting2
+            ]
+            applicationIdSuffix ".debug"
+            versionNameSuffix '-debug'
+            buildConfigField "String", "APPLICATION_ID_SUFFIX", "\".debug\""
+            buildConfigField "boolean", "IS_ANALYTICS_ENABLED", "true"
+            buildConfigField "boolean", encrypt_prefs_name, "false"
+            signingConfig signingConfigs.release
+        }
+
+    }
+
+    sourceSets {
+        release {
+            java.srcDirs = ['src/release/java']
+            res.srcDirs = ['src/release/res']
+        }
+        preview {
+            manifest.srcFile 'src/debug/AndroidManifest.xml'
+            java.srcDirs = ['src/debug/java']
+            res.srcDirs = ['src/debug/res']
+        }
+        debug {
+            manifest.srcFile 'src/debug/AndroidManifest.xml'
+            java.srcDirs = ['src/debug/java']
+            res.srcDirs = ['src/debug/res']
+        }
+    }
+
+    flavorDimensions 'api', 'version'
+
+    productFlavors {
+        demo {
+            dimension 'version'
+        }
+        full {
+            dimension 'version'
+        }
+        minApi23 {
+            dimension 'api'
+            minSdkVersion '23'
+            versionNameSuffix "-minApi23"
+        }
+        minApi29 {
+            dimension 'api'
+            minSdkVersion '29'
+            versionNameSuffix "-minApi29"
         }
     }
     compileOptions {
@@ -26,22 +123,28 @@ android {
         targetCompatibility JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = JavaVersion.VERSION_11.toString()
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError true
     }
     buildFeatures {
         viewBinding true
     }
+
 }
 
 dependencies {
+    // Custom lib
     implementation "androidx.appcompat:appcompat:$appcompat_version"
     implementation "com.google.android.material:material:$material_version"
     implementation "androidx.constraintlayout:constraintlayout:$constraint_layout_version"
-    //KTX core, fragment, activity
+    // KTX core, fragment, activity
     implementation "androidx.activity:activity-ktx:$activity_ktx_version"
     implementation "androidx.fragment:fragment-ktx:$fragment_ktx_version"
     implementation "androidx.core:core-ktx:$core_ktx_version"
-    // reflection-free flavor
+    // Reflection-free flavor
     implementation "com.github.kirich1409:viewbindingpropertydelegate-noreflection:$viewbinding_propertydelegate"
     // ViewModel
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_ktx_version"
@@ -59,22 +162,22 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
     // Koin main features for Android
     implementation "io.insert-koin:koin-android:$koin_version"
-    //Logging_Interceptor
+    // Logging_Interceptor
     implementation "com.squareup.okhttp3:logging-interceptor:$logging_interceptor_version"
     // Room
     implementation "androidx.room:room-runtime:$room_ktx_version"
     kapt "androidx.room:room-compiler:$room_ktx_version"
     implementation "androidx.room:room-ktx:$room_ktx_version"
-    //Navigation_Comp
+    // Navigation_Comp
     implementation "androidx.navigation:navigation-runtime-ktx:$navigation_ktx_version"
     implementation "androidx.navigation:navigation-fragment-ktx:$navigation_ktx_version"
     implementation "androidx.navigation:navigation-ui-ktx:$navigation_ktx_version"
     // Glide
     implementation "com.github.bumptech.glide:glide:$glide_version"
     kapt "com.github.bumptech.glide:compiler:$glide_version"
-    //SplashScreen API
+    // SplashScreen API
     implementation "androidx.core:core-splashscreen:$splash_screen_version"
-    //DataStore
+    // DataStore
     implementation "androidx.datastore:datastore-preferences:$data_store_version"
     // Tested libs
     testImplementation "junit:junit:$junit_version"
