@@ -5,6 +5,7 @@ You can also save your favorite news.
 When you click on the news, a detailed description of the news opens, through which you can go to the source site.
 
 The working version of the application can be downloaded from the link below.
+https://apps.rustore.ru/app/com.example.newsfetcher
 
 
 Brief description of the technology stack:
