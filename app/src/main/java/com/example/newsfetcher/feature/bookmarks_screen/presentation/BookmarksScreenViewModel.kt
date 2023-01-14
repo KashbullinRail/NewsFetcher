@@ -6,6 +6,7 @@ import com.example.newsfetcher.base.BaseViewModel
 import com.example.newsfetcher.base.Event
 import com.example.newsfetcher.feature.bookmarks_screen.domian.BookmarksInteractor
 import com.example.newsfetcher.feature.main_screen.news.domian.ArticleModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 
@@ -62,6 +63,7 @@ class BookmarksScreenViewModel(
                             bookmarksInteractor.delete(previousState.bookmarksArticle[event.index])
                         }
                         viewModelScope.launch {
+                            delay(500)
                             bookmarksInteractor.read().fold(
                                 onError = {
                                     Log.e("ERROR", it.localizedMessage)
