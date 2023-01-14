@@ -107,15 +107,20 @@ android {
         full {
             dimension 'version'
         }
-        minApi23 {
+        minApi25 {
             dimension 'api'
-            minSdkVersion '23'
-            versionNameSuffix "-minApi23"
+            minSdkVersion '25'
+            versionNameSuffix "-minApi25"
         }
         minApi29 {
             dimension 'api'
             minSdkVersion '29'
             versionNameSuffix "-minApi29"
+        }
+        minApi32 {
+            dimension 'api'
+            minSdkVersion '32'
+            versionNameSuffix "-minApi32"
         }
     }
     compileOptions {
