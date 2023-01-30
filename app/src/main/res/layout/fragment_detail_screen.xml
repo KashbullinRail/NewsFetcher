@@ -72,6 +72,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
+            android:textColor="@color/blue_700"
             android:hint="@string/name_source"
             android:text="@string/link_to_source_Detail" />
 

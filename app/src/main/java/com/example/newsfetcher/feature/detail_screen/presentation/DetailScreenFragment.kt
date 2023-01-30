@@ -73,7 +73,7 @@ class DetailScreenFragment : Fragment(R.layout.fragment_detail_screen) {
     private fun render(viewState: ViewState) {
 
         when (viewState.state) {
-            State.Load -> {}
+            State.Load -> {} //TODO
             State.Content -> {
                 with(binding) {
                     tvTitleDetail.text = viewState.detailArticle.title
@@ -101,7 +101,7 @@ class DetailScreenFragment : Fragment(R.layout.fragment_detail_screen) {
                 }
 
             }
-            State.Error -> {}
+            State.Error -> {} //TODO
         }
 
     }
