@@ -14,7 +14,7 @@ import kotlinx.coroutines.launch
 class MainScreenViewModel(
     private val articleInteractor: ArticlesInteractor,
     private val bookmarksInteractor: BookmarksInteractor,
-    private val weatherInteractor: WeatherInteractor
+//    private val weatherInteractor: WeatherInteractor
 ) : BaseViewModel<ViewState>() {
 
     init {

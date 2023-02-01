@@ -30,8 +30,8 @@ class App : Application() {
                 detailScreenModule,
                 searchScreenModule,
                 searchSettingScreenModule,
-                weatherInfoModule,
-                weatherInfoNetworkModule
+//                weatherInfoModule,
+//                weatherInfoNetworkModule
             )
         }
     }

@@ -30,7 +30,7 @@ val mainScreenModule = module {
     }
 
     viewModel {
-        MainScreenViewModel(articleInteractor = get(), bookmarksInteractor = get(), weatherInteractor = get())
+        MainScreenViewModel(articleInteractor = get(), bookmarksInteractor = get())
     }
 
 }

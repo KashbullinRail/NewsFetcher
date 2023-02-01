@@ -4,7 +4,7 @@ import com.example.newsfetcher.feature.weather_III_finishInTheFuture_III.data.mo
 
 
 fun WeathersRemoteModel.toDomian() = WeatherModel(
-    temperature = this.main.temperature,
-    pressure = this.main.pressure,
-    humidity = this.main.humidity
+    temperature = main.temperature ?: "",
+    pressure = main.pressure ?: "",
+    humidity = main.humidity ?: ""
 )

@@ -3,6 +3,7 @@ package com.example.newsfetcher.di
 import android.util.Log
 import com.example.newsfetcher.feature.main_screen.di.BASE_URL_NEWS_API
 import com.example.newsfetcher.feature.main_screen.di.HeaderIntercepter
+import com.example.newsfetcher.feature.weather_III_finishInTheFuture_III.di.BASE_URL_WEATHER
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
@@ -31,7 +32,7 @@ val networkModule = module {
 
     single<Retrofit> {
         Retrofit.Builder()
-            .baseUrl(BASE_URL_NEWS_API)
+            .baseUrl(BASE_URL_WEATHER)
             .addConverterFactory(GsonConverterFactory.create())
             .client(get<OkHttpClient>())
             .build()
