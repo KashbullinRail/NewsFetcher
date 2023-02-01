@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="270dp"
-    android:layout_marginTop="10dp"
+    android:layout_height="240dp"
+    android:layout_marginTop="5dp"
     android:backgroundTint="?attr/colorSurfaceVariant"
     android:orientation="vertical">
 
@@ -46,20 +46,22 @@
     <ImageView
         android:id="@+id/iv_bookmarks_full"
         android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_height="40dp"
         android:layout_gravity="end"
         android:layout_marginEnd="5dp"
-        android:padding="15dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
         android:src="@drawable/ic_bookmark"
         android:visibility="gone" />
 
     <ImageView
         android:id="@+id/iv_bookmarks_empty"
         android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_height="40dp"
         android:layout_gravity="end"
         android:layout_marginEnd="5dp"
-        android:padding="15dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
         android:src="@drawable/ic_bookmark_border" />
 
 </LinearLayout>
