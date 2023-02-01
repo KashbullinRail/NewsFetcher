@@ -10,7 +10,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.example.newsfetcher.R
 import com.example.newsfetcher.databinding.ItemBookmarkAdapterBinding
-import com.example.newsfetcher.feature.main_screen.news.domian.ArticleModel
+import com.example.newsfetcher.feature.main_screen.domian.ArticleModel
 
 
 const val BOOKMARK_DELETE = "BOOKMARK_DELETE"

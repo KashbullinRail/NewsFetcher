@@ -19,7 +19,7 @@
     </fragment>
     <fragment
         android:id="@+id/mainScreenFragment"
-        android:name="com.example.newsfetcher.feature.main_screen.news.presentation.MainScreenFragment"
+        android:name="com.example.newsfetcher.feature.main_screen.presentation.MainScreenFragment"
         android:label="MainScreenFragment"
         tools:layout="@layout/fragment_main_screen" >
         <action
