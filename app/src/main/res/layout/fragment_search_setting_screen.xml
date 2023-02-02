@@ -204,7 +204,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="10sp"
-        android:text="@string/save_current_search"
+        android:text="@string/cancel_current_search"
         app:layout_constraintEnd_toStartOf="@+id/btnSaveForLongTime"
         app:layout_constraintBottom_toBottomOf="@+id/btnSaveForLongTime"
         app:layout_constraintStart_toStartOf="parent"
