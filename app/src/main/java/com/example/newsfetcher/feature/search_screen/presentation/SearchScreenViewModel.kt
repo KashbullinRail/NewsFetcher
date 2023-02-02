@@ -89,8 +89,8 @@ class SearchScreenViewModel(
                 return null
             }
             is UIEvent.OnSearchButtonClicked -> {
+                searchInteractor.setSearchText(searchSettingModel = event.searchText)
                 viewModelScope.launch {
-                    searchInteractor.searchSetting(searchSettingModel = event.searchText)
                     searchInteractor.getArticles().fold(
                         onError = {
                             Log.e("ERROR", it.localizedMessage)
