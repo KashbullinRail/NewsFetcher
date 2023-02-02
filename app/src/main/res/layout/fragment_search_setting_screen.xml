@@ -12,6 +12,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:textStyle="bold"
         android:text="@string/search_setting_menu_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -189,25 +190,15 @@
         app:layout_constraintTop_toBottomOf="@+id/tvSortBy" />
 
     <Button
-        android:id="@+id/btnSaveForLongTime"
+        android:id="@+id/btnSaveSearchSetting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="10sp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:text="@string/save_for_long_time"
+        android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnSaveCurrentSearch"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvPublishedAt" />
 
-    <Button
-        android:id="@+id/btnSaveCurrentSearch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="10sp"
-        android:text="@string/cancel_current_search"
-        app:layout_constraintEnd_toStartOf="@+id/btnSaveForLongTime"
-        app:layout_constraintBottom_toBottomOf="@+id/btnSaveForLongTime"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btnSaveForLongTime"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

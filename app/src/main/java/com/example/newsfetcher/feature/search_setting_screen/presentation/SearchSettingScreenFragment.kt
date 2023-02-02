@@ -8,6 +8,7 @@ import android.view.View
 import androidx.core.graphics.alpha
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentResultListener
+import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.newsfetcher.R
 import com.example.newsfetcher.databinding.FragmentSearchSettingScreenBinding
@@ -35,6 +36,7 @@ class SearchSettingScreenFragment : DialogFragment(R.layout.fragment_search_sett
         dateSet = Date()
 
         with(binding) {
+
             tvDataFrom.setOnClickListener {
                 openDatePickerFrom()
             }
@@ -52,7 +54,6 @@ class SearchSettingScreenFragment : DialogFragment(R.layout.fragment_search_sett
             }
             tvRelevancy.setOnClickListener {
                 viewModel.processUIEvent(UIEvent.OnRelevancyClicked)
-
             }
             tvPublishedAt.setOnClickListener {
                 viewModel.processUIEvent(UIEvent.OnPublishedAtClicked)
@@ -60,6 +61,11 @@ class SearchSettingScreenFragment : DialogFragment(R.layout.fragment_search_sett
             tvPopularity.setOnClickListener {
                 viewModel.processUIEvent(UIEvent.OnPopularityClicked)
             }
+
+            btnSaveSearchSetting.setOnClickListener {
+                viewModel.processUIEvent(UIEvent.OnSetSearchSettingClicked)
+            }
+
         }
 
     }
@@ -75,20 +81,19 @@ class SearchSettingScreenFragment : DialogFragment(R.layout.fragment_search_sett
                     if (viewState.titleSearchIn) {
                         tvTitleSearchIn.setBackgroundColor(R.color.colorPrimary.toInt())
                         tvDescriptionSearchIn.setBackgroundColor(R.color.white_100.alpha)
-                       tvAllSearchIn.setBackgroundColor(R.color.white_100.alpha)
+                        tvAllSearchIn.setBackgroundColor(R.color.white_100.alpha)
                     }
                     if (viewState.descriptionSearchIn) {
                         tvDescriptionSearchIn.setBackgroundColor(R.color.colorPrimary.toInt())
                         tvTitleSearchIn.setBackgroundColor(R.color.white_100.alpha)
-                       tvAllSearchIn.setBackgroundColor(R.color.white_100.alpha)
+                        tvAllSearchIn.setBackgroundColor(R.color.white_100.alpha)
                     }
                     if (viewState.allSearchIn) {
-                       tvAllSearchIn.setBackgroundColor(R.color.colorPrimary.toInt())
+                        tvAllSearchIn.setBackgroundColor(R.color.colorPrimary.toInt())
                         tvDescriptionSearchIn.setBackgroundColor(R.color.white_100.alpha)
                         tvTitleSearchIn.setBackgroundColor(R.color.white_100.alpha)
                     }
                 }
-                
             }
             State.ContentSortBy -> {
                 with(binding) {
@@ -109,6 +114,12 @@ class SearchSettingScreenFragment : DialogFragment(R.layout.fragment_search_sett
                     }
                 }
             }
+            State.ContentDateFrom -> {
+                binding.tvDataFrom.text = viewState.dataFrom
+            }
+            State.ContentDateTo -> {
+                binding.tvDataTo.text = viewState.dataTo
+            }
             State.Error -> {
                 //currently not processed, for the future expanded
             }
@@ -122,14 +133,14 @@ class SearchSettingScreenFragment : DialogFragment(R.layout.fragment_search_sett
                 val index = result.toString().indexOf("=")
                 val date = result.toString().removeRange(0..index).removeSuffix("}]")
                 Log.d("TAGG", "dateSet when 1 = $date")
-                binding.tvDataFrom.text = date
+//                binding.tvDataFrom.text = date
                 viewModel.processUIEvent(UIEvent.OnDataFromClicked(date))
             }
             REQUEST_DATE_TO -> {
                 val index = result.toString().indexOf("=")
                 val date = result.toString().removeRange(0..index).removeSuffix("}]")
                 Log.d("TAGG", "dateSet when 2 = $date")
-                binding.tvDataTo.text = date
+//                binding.tvDataTo.text = date
                 viewModel.processUIEvent(UIEvent.OnDataToClicked(date))
             }
         }

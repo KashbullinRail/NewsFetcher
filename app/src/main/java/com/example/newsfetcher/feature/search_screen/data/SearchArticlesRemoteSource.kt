@@ -15,7 +15,13 @@ class SearchArticlesRemoteSource(private val api: SearchNewsAPI) {
     }
 
     suspend fun getArticles(): ArticlesRemoteModel {
-        return api.getArticles(query = searchText)
+        return api.getArticles(
+            query = searchText,
+            searchIn = searchIn,
+            sortBy = sortBy,
+            from = dateFrom,
+            to = dateTo,
+        )
     }
 
     fun setSearchText(searchSettingModel: String){
