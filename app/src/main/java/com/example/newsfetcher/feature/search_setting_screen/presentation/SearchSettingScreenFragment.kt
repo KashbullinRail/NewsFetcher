@@ -2,8 +2,6 @@ package com.example.newsfetcher.feature.search_setting_screen.presentation
 
 import android.os.Bundle
 import android.util.Log
-import android.view.GestureDetector
-import android.view.MotionEvent
 import android.view.View
 import androidx.core.graphics.alpha
 import androidx.fragment.app.DialogFragment
@@ -64,6 +62,7 @@ class SearchSettingScreenFragment : DialogFragment(R.layout.fragment_search_sett
 
             btnSaveSearchSetting.setOnClickListener {
                 viewModel.processUIEvent(UIEvent.OnSetSearchSettingClicked)
+                dialog?.dismiss()
             }
 
         }
@@ -133,14 +132,12 @@ class SearchSettingScreenFragment : DialogFragment(R.layout.fragment_search_sett
                 val index = result.toString().indexOf("=")
                 val date = result.toString().removeRange(0..index).removeSuffix("}]")
                 Log.d("TAGG", "dateSet when 1 = $date")
-//                binding.tvDataFrom.text = date
                 viewModel.processUIEvent(UIEvent.OnDataFromClicked(date))
             }
             REQUEST_DATE_TO -> {
                 val index = result.toString().indexOf("=")
                 val date = result.toString().removeRange(0..index).removeSuffix("}]")
                 Log.d("TAGG", "dateSet when 2 = $date")
-//                binding.tvDataTo.text = date
                 viewModel.processUIEvent(UIEvent.OnDataToClicked(date))
             }
         }

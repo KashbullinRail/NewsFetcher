@@ -1,10 +1,13 @@
 package com.example.newsfetcher.feature.search_setting_screen.presentation
 
+import android.util.Log
+import androidx.lifecycle.viewModelScope
 import com.example.newsfetcher.base.BaseViewModel
 import com.example.newsfetcher.base.Event
 import com.example.newsfetcher.feature.search_screen.domain.SearchInteractor
+import com.example.newsfetcher.feature.search_screen.presentation.DateEvent
 import com.example.newsfetcher.feature.search_setting_screen.presentation.date_set_screen.model.SearchSettingModel
-
+import kotlinx.coroutines.launch
 
 
 class SearchSettingScreenViewModel(

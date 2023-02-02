@@ -100,7 +100,6 @@ class SearchScreenViewModel(
                         }
                     )
                 }
-                State.Content
                 return previousState.copy(searchText = event.searchText)
             }
             else -> return null
