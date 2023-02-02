@@ -10,24 +10,24 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 val weatherInfoNetworkModule = module{
 
-    single<OkHttpClient> {
-        OkHttpClient
-            .Builder()
-            .build()
-    }
-
-    single<Retrofit> {
-        Retrofit.Builder()
-            .baseUrl(BASE_URL_WEATHER)
-            .addConverterFactory(GsonConverterFactory.create())
-            .client(get<OkHttpClient>())
-            .build()
-    }
-
-    single<WeatherAPI> {
-        get<Retrofit>()
-            .create(WeatherAPI::class.java)
-    }
+//    single<OkHttpClient> {
+//        OkHttpClient
+//            .Builder()
+//            .build()
+//    }
+//
+//    single<Retrofit> {
+//        Retrofit.Builder()
+//            .baseUrl(BASE_URL_WEATHER)
+//            .addConverterFactory(GsonConverterFactory.create())
+//            .client(get<OkHttpClient>())
+//            .build()
+//    }
+//
+//    single<WeatherAPI> {
+//        get<Retrofit>()
+//            .create(WeatherAPI::class.java)
+//    }
 
 }
 

@@ -2,6 +2,7 @@ package com.example.newsfetcher.feature.search_screen.di
 
 import com.example.newsfetcher.feature.search_screen.data.*
 import com.example.newsfetcher.feature.search_screen.data.model.ArticlesSearchRemoteRepositoryImpl
+import com.example.newsfetcher.feature.search_screen.domain.ArticlesSearchRepository
 import com.example.newsfetcher.feature.search_screen.domain.SearchInteractor
 import com.example.newsfetcher.feature.search_screen.presentation.SearchScreenViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel

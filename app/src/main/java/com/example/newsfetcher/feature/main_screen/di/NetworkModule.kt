@@ -32,7 +32,7 @@ val networkModule = module {
 
     single<Retrofit> {
         Retrofit.Builder()
-            .baseUrl(BASE_URL_WEATHER)
+            .baseUrl(BASE_URL_NEWS_API)
             .addConverterFactory(GsonConverterFactory.create())
             .client(get<OkHttpClient>())
             .build()

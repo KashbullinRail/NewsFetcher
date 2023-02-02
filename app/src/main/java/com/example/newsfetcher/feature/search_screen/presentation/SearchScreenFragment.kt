@@ -21,6 +21,7 @@ import com.example.newsfetcher.databinding.FragmentSearchScreenBinding
 import com.example.newsfetcher.feature.main_screen.presentation.MainArticleAdapter
 import com.example.newsfetcher.feature.main_screen.presentation.PUT_TO_DETAIL_FRAGMENT
 import com.example.newsfetcher.feature.search_screen.data.SearchArticlesRemoteSource
+import com.example.newsfetcher.feature.search_screen.domain.SearchSettingModel
 import com.example.newsfetcher.feature.search_setting_screen.presentation.SearchSettingScreenFragment
 import com.google.android.material.snackbar.Snackbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -73,7 +74,7 @@ class SearchScreenFragment : Fragment(R.layout.fragment_search_screen) {
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
                     requireActivity().hideKeyboard()
                     val text = etTitleSearch.text.toString().trim()
-                    SearchArticlesRemoteSource.qqq = text //TODO implement via interface
+//                    SearchArticlesRemoteSource.qqq = text //TODO implement via interface
                     viewModel.processUIEvent(UIEvent.OnSearchButtonClicked(text))
                 }
                 true
@@ -82,7 +83,7 @@ class SearchScreenFragment : Fragment(R.layout.fragment_search_screen) {
             ivSearchBotton.setOnClickListener {
                 requireActivity().hideKeyboard()
                 val text = etTitleSearch.text.toString().trim()
-                SearchArticlesRemoteSource.qqq = text //TODO implement via interface
+//                SearchArticlesRemoteSource.qqq = text //TODO implement via interface
                 viewModel.processUIEvent(UIEvent.OnSearchButtonClicked(text))
             }
         }

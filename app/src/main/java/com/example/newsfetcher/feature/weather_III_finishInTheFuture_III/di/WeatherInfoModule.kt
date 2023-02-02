@@ -10,12 +10,12 @@ import org.koin.dsl.module
 
 val weatherInfoModule = module {
 
-    single<WeathersRemoteSource> { WeathersRemoteSource(get<WeatherAPI>()) }
-
-    single<WeathersRepository> { WeathersRepositoryImpl(get<WeathersRemoteSource>()) }
-
-    single<WeatherInteractor> { WeatherInteractor(get<WeathersRepository>()) }
-
-//    viewModel { WeatherScreenViewModel(get<WeatherInteractor>()) }
+//    single<WeathersRemoteSource> { WeathersRemoteSource(get<WeatherAPI>()) }
+//
+//    single<WeathersRepository> { WeathersRepositoryImpl(get<WeathersRemoteSource>()) }
+//
+//    single<WeatherInteractor> { WeatherInteractor(get<WeathersRepository>()) }
+//
+////    viewModel { WeatherScreenViewModel(get<WeatherInteractor>()) }
 
 }

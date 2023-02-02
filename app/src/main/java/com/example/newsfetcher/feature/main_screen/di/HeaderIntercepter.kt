@@ -10,7 +10,7 @@ class HeaderIntercepter : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val request = chain.request()
         val builder = request.newBuilder()
-        builder.addHeader("x-api-key", API_KEY_WEATHER)
+        builder.addHeader("x-api-key", API_KEY_TO_NEWS_API)
         return chain.proceed(builder.build())
     }
 

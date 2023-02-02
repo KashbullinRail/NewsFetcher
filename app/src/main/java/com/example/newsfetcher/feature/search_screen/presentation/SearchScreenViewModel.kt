@@ -9,14 +9,13 @@ import com.example.newsfetcher.feature.main_screen.domian.ArticleModel
 import com.example.newsfetcher.feature.main_screen.presentation.ARTICLE_ITEM
 import com.example.newsfetcher.feature.main_screen.presentation.BOOKMARK_EMPTY
 import com.example.newsfetcher.feature.main_screen.presentation.BOOKMARK_FULL
-import com.example.newsfetcher.feature.search_screen.data.SearchArticlesRemoteSource
 import com.example.newsfetcher.feature.search_screen.domain.SearchInteractor
 import kotlinx.coroutines.launch
 
 
 class SearchScreenViewModel(
     private val searchInteractor: SearchInteractor,
-    private val bookmarksInteractor: BookmarksInteractor
+    private val bookmarksInteractor: BookmarksInteractor,
 ) : BaseViewModel<ViewState>() {
 
     init {
@@ -33,7 +32,6 @@ class SearchScreenViewModel(
         ),
         searchText = ""
     )
-
 
 
     override fun reduce(event: Event, previousState: ViewState): ViewState? {
@@ -91,8 +89,8 @@ class SearchScreenViewModel(
                 return null
             }
             is UIEvent.OnSearchButtonClicked -> {
-                SearchArticlesRemoteSource.qqq = event.searchText //TODO implement via interface
                 viewModelScope.launch {
+                    searchInteractor.searchSetting(searchSettingModel = event.searchText)
                     searchInteractor.getArticles().fold(
                         onError = {
                             Log.e("ERROR", it.localizedMessage)
