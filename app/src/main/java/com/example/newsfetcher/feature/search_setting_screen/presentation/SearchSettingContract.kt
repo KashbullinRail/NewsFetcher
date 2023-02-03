@@ -1,16 +1,14 @@
 package com.example.newsfetcher.feature.search_setting_screen.presentation
 
 import com.example.newsfetcher.base.Event
-import com.example.newsfetcher.feature.search_setting_screen.data.model.DataStoreSettingModel
-import com.example.newsfetcher.feature.search_setting_screen.presentation.date_set_screen.model.SearchSettingModel
 
 
 enum class State {
     Load,
     ContentSearchIn,
-    ContentSortBy,
-    ContentDateFrom,
-    ContentDateTo,
+//    ContentSortBy,
+//    ContentDateFrom,
+//    ContentDateTo,
     Error
 }
 
@@ -30,12 +28,20 @@ enum class SortBy(
     PUBLISHEDAT("publishedAt")
 }
 
+enum class DateType(
+    val str: String
+){
+    DATE_FROM("date_from"),
+    DATE_TO("date_to")
+}
+
 data class ViewState(
     val state: State,
     val dataFrom: String,
     val dataTo: String,
     val searchIn: String,
-    val sortBy: String
+    val sortBy: String,
+    val dataType: String
 )
 
 sealed class UIEvent : Event {
@@ -51,5 +57,5 @@ sealed class UIEvent : Event {
 }
 
 sealed class DateEvent : Event {
-    // TODO implement state loading in the dialog box in the future
+    object LoadSearchSetting: DateEvent()
 }

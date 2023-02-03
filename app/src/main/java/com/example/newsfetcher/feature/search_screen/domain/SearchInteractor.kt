@@ -1,7 +1,7 @@
 package com.example.newsfetcher.feature.search_screen.domain
 
 import com.example.newsfetcher.base.attempt
-import com.example.newsfetcher.feature.search_setting_screen.presentation.date_set_screen.model.SearchSettingModel
+import com.example.newsfetcher.feature.search_screen.data.model.SearchSettingModel
 
 
 class SearchInteractor(private val repository: ArticlesSearchRepository) {
@@ -16,6 +16,10 @@ class SearchInteractor(private val repository: ArticlesSearchRepository) {
 
     fun setSearchSetting(searchSettingModel: SearchSettingModel) {
         attempt { repository.setSearchSetting(searchSettingModel) }
+    }
+
+    fun getSearchSetting():SearchSettingModel {
+       return repository.getSearchSetting()
     }
 
 }

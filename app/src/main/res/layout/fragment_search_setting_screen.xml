@@ -110,7 +110,6 @@
         android:layout_height="wrap_content"
         android:padding="3dp"
         android:background="?attr/colorSurface"
-        android:text="@string/data_from"
         app:layout_constraintEnd_toStartOf="@+id/tvDataToText"
         app:layout_constraintStart_toEndOf="@+id/tvFromDataText"
         app:layout_constraintTop_toBottomOf="@+id/tvTitleDatePeriod"/>
@@ -132,7 +131,6 @@
         android:layout_height="wrap_content"
         android:background="?attr/colorSurface"
         android:padding="3dp"
-        android:text="@string/data_to"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tvDataToText"
         app:layout_constraintTop_toBottomOf="@+id/tvTitleDatePeriod" />

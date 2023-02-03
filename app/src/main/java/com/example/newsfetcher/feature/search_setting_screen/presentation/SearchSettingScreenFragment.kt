@@ -9,10 +9,10 @@ import androidx.fragment.app.FragmentResultListener
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.newsfetcher.R
 import com.example.newsfetcher.databinding.FragmentSearchSettingScreenBinding
-import com.example.newsfetcher.feature.search_setting_screen.presentation.date_set_screen.DateFromSetFragment
-import com.example.newsfetcher.feature.search_setting_screen.presentation.date_set_screen.DateToSetFragment
-import com.example.newsfetcher.feature.search_setting_screen.presentation.date_set_screen.REQUEST_DATE_FROM
-import com.example.newsfetcher.feature.search_setting_screen.presentation.date_set_screen.REQUEST_DATE_TO
+import com.example.newsfetcher.feature.search_setting_screen.presentation.date_picker_screen.DateFromSetFragment
+import com.example.newsfetcher.feature.search_setting_screen.presentation.date_picker_screen.DateToSetFragment
+import com.example.newsfetcher.feature.search_setting_screen.presentation.date_picker_screen.REQUEST_DATE_FROM
+import com.example.newsfetcher.feature.search_setting_screen.presentation.date_picker_screen.REQUEST_DATE_TO
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
 
@@ -73,50 +73,52 @@ class SearchSettingScreenFragment : DialogFragment(R.layout.fragment_search_sett
             State.ContentSearchIn -> {
                 with(binding) {
                     when(viewState.searchIn){
-                        SearchIn.TITLE.toString() -> {
+                        SearchIn.TITLE.str -> {
                             tvTitleSearchIn.setBackgroundColor(R.color.colorPrimary.toInt())
                             tvDescriptionSearchIn.setBackgroundColor(R.color.white_100.alpha)
                             tvAllSearchIn.setBackgroundColor(R.color.white_100.alpha)
                         }
-                        SearchIn.DISCRIPTION.toString() -> {
+                        SearchIn.DISCRIPTION.str -> {
                             tvDescriptionSearchIn.setBackgroundColor(R.color.colorPrimary.toInt())
                             tvTitleSearchIn.setBackgroundColor(R.color.white_100.alpha)
                             tvAllSearchIn.setBackgroundColor(R.color.white_100.alpha)
                         }
-                        SearchIn.ALL_IN.toString() -> {
+                        SearchIn.ALL_IN.str -> {
                             tvAllSearchIn.setBackgroundColor(R.color.colorPrimary.toInt())
                             tvDescriptionSearchIn.setBackgroundColor(R.color.white_100.alpha)
                             tvTitleSearchIn.setBackgroundColor(R.color.white_100.alpha)
                         }
                     }
-                }
-            }
-            State.ContentSortBy -> {
-                with(binding) {
+//                }
+//            }
+//            State.ContentSortBy -> {
+//                with(binding) {
                     when(viewState.sortBy) {
-                        SortBy.POPULARITY.toString() -> {
+                        SortBy.POPULARITY.str -> {
                             tvPopularity.setBackgroundColor(R.color.colorPrimary.toInt())
                             tvRelevancy.setBackgroundColor(R.color.white_100.alpha)
                             tvPublishedAt.setBackgroundColor(R.color.white_100.alpha)
                         }
-                        SortBy.RELEVANCY.toString() -> {
+                        SortBy.RELEVANCY.str -> {
                             tvPopularity.setBackgroundColor(R.color.white_100.alpha)
                             tvRelevancy.setBackgroundColor(R.color.colorPrimary.toInt())
                             tvPublishedAt.setBackgroundColor(R.color.white_100.alpha)
                         }
-                        SortBy.PUBLISHEDAT.toString() -> {
+                        SortBy.PUBLISHEDAT.str -> {
                             tvPopularity.setBackgroundColor(R.color.white_100.alpha)
                             tvRelevancy.setBackgroundColor(R.color.white_100.alpha)
                             tvPublishedAt.setBackgroundColor(R.color.colorPrimary.toInt())
                         }
                     }
+                    when(viewState.dataType){
+                        DateType.DATE_FROM.str -> {
+                            binding.tvDataFrom.text = viewState.dataFrom
+                        }
+                        DateType.DATE_TO.str -> {
+                            binding.tvDataTo.text = viewState.dataTo
+                        }
+                    }
                 }
-            }
-            State.ContentDateFrom -> {
-                binding.tvDataFrom.text = viewState.dataFrom
-            }
-            State.ContentDateTo -> {
-                binding.tvDataTo.text = viewState.dataTo
             }
             State.Error -> {
                 //currently not processed, for the future expanded

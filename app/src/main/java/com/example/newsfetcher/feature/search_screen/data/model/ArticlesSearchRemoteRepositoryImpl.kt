@@ -4,7 +4,6 @@ import com.example.newsfetcher.feature.main_screen.data.toDomian
 import com.example.newsfetcher.feature.main_screen.domian.ArticleModel
 import com.example.newsfetcher.feature.search_screen.data.SearchArticlesRemoteSource
 import com.example.newsfetcher.feature.search_screen.domain.ArticlesSearchRepository
-import com.example.newsfetcher.feature.search_setting_screen.presentation.date_set_screen.model.SearchSettingModel
 
 
 class ArticlesSearchRemoteRepositoryImpl(private val source: SearchArticlesRemoteSource) :
@@ -21,8 +20,16 @@ class ArticlesSearchRemoteRepositoryImpl(private val source: SearchArticlesRemot
     }
 
     override fun setSearchSetting(searchSettingModel: SearchSettingModel) {
-       source.setSearchSetting(searchSettingModel)
+        source.setSearchSetting(searchSettingModel)
     }
 
+    override fun getSearchSetting(): SearchSettingModel {
+        return SearchSettingModel(
+            searchIn = source.getSearchSetting().searchIn,
+            dateTo = source.getSearchSetting().dateTo,
+            dateFrom = source.getSearchSetting().dateFrom,
+            sortBy = source.getSearchSetting().sortBy
+        )
+    }
 
 }
