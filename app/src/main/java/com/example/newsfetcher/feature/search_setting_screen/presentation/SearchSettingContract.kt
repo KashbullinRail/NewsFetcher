@@ -5,10 +5,7 @@ import com.example.newsfetcher.base.Event
 
 enum class State {
     Load,
-    ContentSearchIn,
-//    ContentSortBy,
-//    ContentDateFrom,
-//    ContentDateTo,
+    Content,
     Error
 }
 
@@ -32,7 +29,8 @@ enum class DateType(
     val str: String
 ){
     DATE_FROM("date_from"),
-    DATE_TO("date_to")
+    DATE_TO("date_to"),
+    DATE_ALL("all_in")
 }
 
 data class ViewState(

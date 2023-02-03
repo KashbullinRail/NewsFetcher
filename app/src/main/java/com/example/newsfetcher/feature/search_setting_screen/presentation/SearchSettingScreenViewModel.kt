@@ -29,13 +29,13 @@ class SearchSettingScreenViewModel(
 
             is DateEvent.LoadSearchSetting -> {
                 val set = searchInteractor.getSearchSetting()
-
                 return previousState.copy(
                     searchIn = set.searchIn,
-                    dataTo = set.dateTo,
+                    dataTo = set.dateTo ,
                     dataFrom = set.dateFrom,
                     sortBy = set.sortBy,
-                    state = State.ContentSearchIn
+                    dataType = DateType.DATE_ALL.str,
+                    state = State.Content
                 )
             }
             is UIEvent.OnSetSearchSettingClicked -> {
@@ -51,51 +51,51 @@ class SearchSettingScreenViewModel(
             is UIEvent.OnTitleSearchInClicked -> {
                 return previousState.copy(
                     searchIn = SearchIn.TITLE.str,
-                    state = State.ContentSearchIn
+                    state = State.Content
                 )
             }
             is UIEvent.OnDescriptionSearchInClicked -> {
                 return previousState.copy(
                     searchIn = SearchIn.DISCRIPTION.str,
-                    state = State.ContentSearchIn
+                    state = State.Content
                 )
             }
             is UIEvent.OnAllSearchInClicked -> {
                 return previousState.copy(
                     searchIn = SearchIn.ALL_IN.str,
-                    state = State.ContentSearchIn
+                    state = State.Content
                 )
             }
             is UIEvent.OnPopularityClicked -> {
                 return previousState.copy(
                     sortBy = SortBy.POPULARITY.str,
-                    state = State.ContentSearchIn
+                    state = State.Content
                 )
             }
             is UIEvent.OnRelevancyClicked -> {
                 return previousState.copy(
                     sortBy = SortBy.RELEVANCY.str,
-                    state = State.ContentSearchIn
+                    state = State.Content
                 )
             }
             is UIEvent.OnPublishedAtClicked -> {
                 return previousState.copy(
                     sortBy = SortBy.PUBLISHEDAT.str,
-                    state = State.ContentSearchIn
+                    state = State.Content
                 )
             }
             is UIEvent.OnDataFromClicked -> {
                 return previousState.copy(
                     dataFrom = event.dateFrom,
                     dataType = DateType.DATE_FROM.str,
-                    state = State.ContentSearchIn,
+                    state = State.Content,
                 )
             }
             is UIEvent.OnDataToClicked -> {
                 return previousState.copy(
                     dataTo = event.dateTo,
                     dataType = DateType.DATE_TO.str,
-                    state = State.ContentSearchIn,
+                    state = State.Content,
                 )
             }
 
