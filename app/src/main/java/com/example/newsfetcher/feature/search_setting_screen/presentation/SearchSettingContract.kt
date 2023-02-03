@@ -14,14 +14,24 @@ enum class State {
     Error
 }
 
+enum class SearchIn(
+    val str: String
+) {
+    TITLE("title"),
+    DISCRIPTION("description"),
+    ALL_IN("title,description,content")
+}
+
+enum class SortBy(
+    val str: String
+){
+    RELEVANCY("relevancy"),
+    POPULARITY("popularity"),
+    PUBLISHEDAT("publishedAt")
+}
+
 data class ViewState(
     val state: State,
-    val titleSearchIn: Boolean,
-    val descriptionSearchIn: Boolean,
-    val allSearchIn: Boolean,
-    val relevancy: Boolean,
-    val publishedAt: Boolean,
-    val popularity: Boolean,
     val dataFrom: String,
     val dataTo: String,
     val searchIn: String,

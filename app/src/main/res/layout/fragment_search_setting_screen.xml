@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/popupLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -28,7 +29,6 @@
         app:layout_constraintStart_toStartOf="@+id/tvSearchIn"
         app:layout_constraintTop_toBottomOf="@+id/tvTitleSearchSetting" />
 
-
     <TextView
         android:id="@+id/tvSearchIn"
         android:layout_width="wrap_content"
@@ -49,6 +49,8 @@
         app:layout_constraintEnd_toStartOf="@+id/tvDescriptionSearchIn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tvDescriptionSearchIn" />
+
+
 
     <TextView
         android:id="@+id/tvDescriptionSearchIn"
@@ -190,6 +192,17 @@
         app:layout_constraintTop_toBottomOf="@+id/tvSortBy" />
 
     <Button
+        android:id="@+id/btnCancelSearchSetting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/cancel"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnSaveSearchSetting"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnSaveSearchSetting"
+        app:layout_constraintEnd_toStartOf="@+id/btnSaveSearchSetting"/>
+
+    <Button
         android:id="@+id/btnSaveSearchSetting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -197,7 +210,7 @@
         android:text="@string/save_for_long_time"
         android:textSize="10sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnCancelSearchSetting"
         app:layout_constraintTop_toBottomOf="@+id/tvPublishedAt" />
 
 

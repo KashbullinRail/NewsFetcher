@@ -43,5 +43,6 @@
     <string name="publishedAt">по дате</string>
     <string name="cancel_current_search">Отмена</string>
     <string name="save_for_long_time">Применить настройки</string>
+    <string name="cancel">Отмена</string>
 
 </resources>

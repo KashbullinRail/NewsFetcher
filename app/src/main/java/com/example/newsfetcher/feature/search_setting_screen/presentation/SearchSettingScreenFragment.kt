@@ -6,7 +6,6 @@ import android.view.View
 import androidx.core.graphics.alpha
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentResultListener
-import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.newsfetcher.R
 import com.example.newsfetcher.databinding.FragmentSearchSettingScreenBinding
@@ -22,7 +21,6 @@ class SearchSettingScreenFragment : DialogFragment(R.layout.fragment_search_sett
     FragmentResultListener {
 
     private val binding by viewBinding(FragmentSearchSettingScreenBinding::bind)
-
     private val viewModel: SearchSettingScreenViewModel by viewModel()
     private lateinit var dateSet: Date
 
@@ -30,17 +28,12 @@ class SearchSettingScreenFragment : DialogFragment(R.layout.fragment_search_sett
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.viewState.observe(viewLifecycleOwner, ::render)
-
         dateSet = Date()
 
         with(binding) {
+            tvDataFrom.setOnClickListener { openDatePickerFrom() }
+            tvDataTo.setOnClickListener { openDatePickerTo() }
 
-            tvDataFrom.setOnClickListener {
-                openDatePickerFrom()
-            }
-            tvDataTo.setOnClickListener {
-                openDatePickerTo()
-            }
             tvTitleSearchIn.setOnClickListener {
                 viewModel.processUIEvent(UIEvent.OnTitleSearchInClicked)
             }
@@ -64,7 +57,9 @@ class SearchSettingScreenFragment : DialogFragment(R.layout.fragment_search_sett
                 viewModel.processUIEvent(UIEvent.OnSetSearchSettingClicked)
                 dialog?.dismiss()
             }
-
+            btnCancelSearchSetting.setOnClickListener {
+                dialog?.dismiss()
+            }
         }
 
     }
@@ -77,39 +72,43 @@ class SearchSettingScreenFragment : DialogFragment(R.layout.fragment_search_sett
             }
             State.ContentSearchIn -> {
                 with(binding) {
-                    if (viewState.titleSearchIn) {
-                        tvTitleSearchIn.setBackgroundColor(R.color.colorPrimary.toInt())
-                        tvDescriptionSearchIn.setBackgroundColor(R.color.white_100.alpha)
-                        tvAllSearchIn.setBackgroundColor(R.color.white_100.alpha)
-                    }
-                    if (viewState.descriptionSearchIn) {
-                        tvDescriptionSearchIn.setBackgroundColor(R.color.colorPrimary.toInt())
-                        tvTitleSearchIn.setBackgroundColor(R.color.white_100.alpha)
-                        tvAllSearchIn.setBackgroundColor(R.color.white_100.alpha)
-                    }
-                    if (viewState.allSearchIn) {
-                        tvAllSearchIn.setBackgroundColor(R.color.colorPrimary.toInt())
-                        tvDescriptionSearchIn.setBackgroundColor(R.color.white_100.alpha)
-                        tvTitleSearchIn.setBackgroundColor(R.color.white_100.alpha)
+                    when(viewState.searchIn){
+                        SearchIn.TITLE.toString() -> {
+                            tvTitleSearchIn.setBackgroundColor(R.color.colorPrimary.toInt())
+                            tvDescriptionSearchIn.setBackgroundColor(R.color.white_100.alpha)
+                            tvAllSearchIn.setBackgroundColor(R.color.white_100.alpha)
+                        }
+                        SearchIn.DISCRIPTION.toString() -> {
+                            tvDescriptionSearchIn.setBackgroundColor(R.color.colorPrimary.toInt())
+                            tvTitleSearchIn.setBackgroundColor(R.color.white_100.alpha)
+                            tvAllSearchIn.setBackgroundColor(R.color.white_100.alpha)
+                        }
+                        SearchIn.ALL_IN.toString() -> {
+                            tvAllSearchIn.setBackgroundColor(R.color.colorPrimary.toInt())
+                            tvDescriptionSearchIn.setBackgroundColor(R.color.white_100.alpha)
+                            tvTitleSearchIn.setBackgroundColor(R.color.white_100.alpha)
+                        }
                     }
                 }
             }
             State.ContentSortBy -> {
                 with(binding) {
-                    if (viewState.popularity) {
-                        tvPopularity.setBackgroundColor(R.color.colorPrimary.toInt())
-                        tvRelevancy.setBackgroundColor(R.color.white_100.alpha)
-                        tvPublishedAt.setBackgroundColor(R.color.white_100.alpha)
-                    }
-                    if (viewState.relevancy) {
-                        tvPopularity.setBackgroundColor(R.color.white_100.alpha)
-                        tvRelevancy.setBackgroundColor(R.color.colorPrimary.toInt())
-                        tvPublishedAt.setBackgroundColor(R.color.white_100.alpha)
-                    }
-                    if (viewState.publishedAt) {
-                        tvPopularity.setBackgroundColor(R.color.white_100.alpha)
-                        tvRelevancy.setBackgroundColor(R.color.white_100.alpha)
-                        tvPublishedAt.setBackgroundColor(R.color.colorPrimary.toInt())
+                    when(viewState.sortBy) {
+                        SortBy.POPULARITY.toString() -> {
+                            tvPopularity.setBackgroundColor(R.color.colorPrimary.toInt())
+                            tvRelevancy.setBackgroundColor(R.color.white_100.alpha)
+                            tvPublishedAt.setBackgroundColor(R.color.white_100.alpha)
+                        }
+                        SortBy.RELEVANCY.toString() -> {
+                            tvPopularity.setBackgroundColor(R.color.white_100.alpha)
+                            tvRelevancy.setBackgroundColor(R.color.colorPrimary.toInt())
+                            tvPublishedAt.setBackgroundColor(R.color.white_100.alpha)
+                        }
+                        SortBy.PUBLISHEDAT.toString() -> {
+                            tvPopularity.setBackgroundColor(R.color.white_100.alpha)
+                            tvRelevancy.setBackgroundColor(R.color.white_100.alpha)
+                            tvPublishedAt.setBackgroundColor(R.color.colorPrimary.toInt())
+                        }
                     }
                 }
             }
