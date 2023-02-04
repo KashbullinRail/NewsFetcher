@@ -1,26 +1,45 @@
 package com.example.newsfetcher.feature.search_setting_screen.presentation
 
 import com.example.newsfetcher.base.Event
-import com.example.newsfetcher.feature.search_setting_screen.data.model.DataStoreSettingModel
 
 
 enum class State {
     Load,
-    ContentSearchIn,
-    ContentSortBy,
+    Content,
     Error
+}
+
+enum class SearchIn(
+    val str: String
+) {
+    TITLE("title"),
+    DISCRIPTION("description"),
+    ALL_IN("title,description,content")
+}
+
+enum class SortBy(
+    val str: String
+){
+    RELEVANCY("relevancy"),
+    POPULARITY("popularity"),
+    PUBLISHEDAT("publishedAt")
+}
+
+enum class DateType(
+    val str: String
+){
+    DATE_FROM("date_from"),
+    DATE_TO("date_to"),
+    DATE_ALL("all_in")
 }
 
 data class ViewState(
     val state: State,
-    val titleSearchIn: Boolean,
-    val descriptionSearchIn: Boolean,
-    val allSearchIn: Boolean,
-    val relevancy: Boolean,
-    val publishedAt: Boolean,
-    val popularity: Boolean,
     val dataFrom: String,
-    val dataTo: String
+    val dataTo: String,
+    val searchIn: String,
+    val sortBy: String,
+    val dataType: String
 )
 
 sealed class UIEvent : Event {
@@ -32,14 +51,9 @@ sealed class UIEvent : Event {
     object OnPopularityClicked : UIEvent()
     data class OnDataFromClicked(val dateFrom: String) : UIEvent()
     data class OnDataToClicked(val dateTo: String) : UIEvent()
+    object OnSetSearchSettingClicked: UIEvent()
 }
 
 sealed class DateEvent : Event {
-    data class LoadArticles(val searchText: String) : DateEvent()
-}
-
-enum class SearchIn {
-    TitleSearch,
-    DescriptionSearch,
-    AllSearch
+    object LoadSearchSetting: DateEvent()
 }

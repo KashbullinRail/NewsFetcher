@@ -41,7 +41,8 @@
     <string name="relevancy">по релевантности</string>
     <string name="popularity">по популярности</string>
     <string name="publishedAt">по дате</string>
-    <string name="save_current_search">Использовать</string>
-    <string name="save_for_long_time">Сохранить настройки</string>
+    <string name="cancel_current_search">Отмена</string>
+    <string name="save_for_long_time">Применить настройки</string>
+    <string name="cancel">Отмена</string>
 
 </resources>

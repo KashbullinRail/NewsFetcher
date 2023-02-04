@@ -5,18 +5,18 @@ import androidx.lifecycle.viewModelScope
 import com.example.newsfetcher.base.BaseViewModel
 import com.example.newsfetcher.base.Event
 import com.example.newsfetcher.feature.bookmarks_screen.domian.BookmarksInteractor
-import com.example.newsfetcher.feature.main_screen.news.domian.ArticleModel
-import com.example.newsfetcher.feature.main_screen.news.presentation.ARTICLE_ITEM
-import com.example.newsfetcher.feature.main_screen.news.presentation.BOOKMARK_EMPTY
-import com.example.newsfetcher.feature.main_screen.news.presentation.BOOKMARK_FULL
-import com.example.newsfetcher.feature.search_screen.data.SearchArticlesRemoteSource
+import com.example.newsfetcher.feature.main_screen.di.setUrl
+import com.example.newsfetcher.feature.main_screen.domian.ArticleModel
+import com.example.newsfetcher.feature.main_screen.presentation.ARTICLE_ITEM
+import com.example.newsfetcher.feature.main_screen.presentation.BOOKMARK_EMPTY
+import com.example.newsfetcher.feature.main_screen.presentation.BOOKMARK_FULL
 import com.example.newsfetcher.feature.search_screen.domain.SearchInteractor
 import kotlinx.coroutines.launch
 
 
 class SearchScreenViewModel(
     private val searchInteractor: SearchInteractor,
-    private val bookmarksInteractor: BookmarksInteractor
+    private val bookmarksInteractor: BookmarksInteractor,
 ) : BaseViewModel<ViewState>() {
 
     init {
@@ -33,7 +33,6 @@ class SearchScreenViewModel(
         ),
         searchText = ""
     )
-
 
 
     override fun reduce(event: Event, previousState: ViewState): ViewState? {
@@ -91,7 +90,7 @@ class SearchScreenViewModel(
                 return null
             }
             is UIEvent.OnSearchButtonClicked -> {
-                SearchArticlesRemoteSource.qqq = event.searchText //TODO implement via interface
+                searchInteractor.setSearchText(searchTextSet = event.searchText)
                 viewModelScope.launch {
                     searchInteractor.getArticles().fold(
                         onError = {
@@ -102,7 +101,6 @@ class SearchScreenViewModel(
                         }
                     )
                 }
-                State.Content
                 return previousState.copy(searchText = event.searchText)
             }
             else -> return null

@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/popupLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,6 +13,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
+        android:textStyle="bold"
         android:text="@string/search_setting_menu_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,7 +28,6 @@
         app:layout_constraintEnd_toEndOf="@+id/tvSearchIn"
         app:layout_constraintStart_toStartOf="@+id/tvSearchIn"
         app:layout_constraintTop_toBottomOf="@+id/tvTitleSearchSetting" />
-
 
     <TextView
         android:id="@+id/tvSearchIn"
@@ -48,6 +49,8 @@
         app:layout_constraintEnd_toStartOf="@+id/tvDescriptionSearchIn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tvDescriptionSearchIn" />
+
+
 
     <TextView
         android:id="@+id/tvDescriptionSearchIn"
@@ -96,18 +99,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/DataFromText"
-        app:layout_constraintBottom_toBottomOf="@+id/tvDataFrom"
-        app:layout_constraintEnd_toStartOf="@+id/tvDataFrom"
+        app:layout_constraintBottom_toBottomOf="@+id/tvDataTo"
+        app:layout_constraintEnd_toStartOf="@+id/tvDataTo"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvDataFrom"/>
+        app:layout_constraintTop_toTopOf="@+id/tvDataTo"/>
 
     <TextView
-        android:id="@+id/tvDataFrom"
+        android:id="@+id/tvDataTo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="3dp"
         android:background="?attr/colorSurface"
-        android:text="@string/data_from"
         app:layout_constraintEnd_toStartOf="@+id/tvDataToText"
         app:layout_constraintStart_toEndOf="@+id/tvFromDataText"
         app:layout_constraintTop_toBottomOf="@+id/tvTitleDatePeriod"/>
@@ -118,18 +120,17 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:text="@string/DataToText"
-        app:layout_constraintBottom_toBottomOf="@+id/tvDataTo"
-        app:layout_constraintEnd_toStartOf="@+id/tvDataTo"
-        app:layout_constraintStart_toEndOf="@+id/tvDataFrom"
-        app:layout_constraintTop_toTopOf="@+id/tvDataTo" />
+        app:layout_constraintBottom_toBottomOf="@+id/tvDataFrom"
+        app:layout_constraintEnd_toStartOf="@+id/tvDataFrom"
+        app:layout_constraintStart_toEndOf="@+id/tvDataTo"
+        app:layout_constraintTop_toTopOf="@+id/tvDataFrom" />
 
     <TextView
-        android:id="@+id/tvDataTo"
+        android:id="@+id/tvDataFrom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="?attr/colorSurface"
         android:padding="3dp"
-        android:text="@string/data_to"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tvDataToText"
         app:layout_constraintTop_toBottomOf="@+id/tvTitleDatePeriod" />
@@ -189,25 +190,26 @@
         app:layout_constraintTop_toBottomOf="@+id/tvSortBy" />
 
     <Button
-        android:id="@+id/btnSaveForLongTime"
+        android:id="@+id/btnCancelSearchSetting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="@string/cancel"
         android:textSize="10sp"
-        android:layout_marginTop="50dp"
-        android:text="@string/save_for_long_time"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnSaveCurrentSearch"
-        app:layout_constraintTop_toBottomOf="@+id/tvPublishedAt" />
+        app:layout_constraintBottom_toBottomOf="@+id/btnSaveSearchSetting"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnSaveSearchSetting"
+        app:layout_constraintEnd_toStartOf="@+id/btnSaveSearchSetting"/>
 
     <Button
-        android:id="@+id/btnSaveCurrentSearch"
+        android:id="@+id/btnSaveSearchSetting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="@string/save_for_long_time"
         android:textSize="10sp"
-        android:text="@string/save_current_search"
-        app:layout_constraintEnd_toStartOf="@+id/btnSaveForLongTime"
-        app:layout_constraintBottom_toBottomOf="@+id/btnSaveForLongTime"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btnSaveForLongTime"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnCancelSearchSetting"
+        app:layout_constraintTop_toBottomOf="@+id/tvPublishedAt" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

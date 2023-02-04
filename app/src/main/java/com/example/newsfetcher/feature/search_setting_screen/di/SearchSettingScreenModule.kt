@@ -8,7 +8,7 @@ import org.koin.dsl.module
 val searchSettingScreenModule = module {
 
     viewModel {
-        SearchSettingScreenViewModel()
+        SearchSettingScreenViewModel(searchInteractor = get())
     }
 
 }

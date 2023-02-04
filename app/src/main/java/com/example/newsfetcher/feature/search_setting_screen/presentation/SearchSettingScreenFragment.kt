@@ -2,8 +2,6 @@ package com.example.newsfetcher.feature.search_setting_screen.presentation
 
 import android.os.Bundle
 import android.util.Log
-import android.view.GestureDetector
-import android.view.MotionEvent
 import android.view.View
 import androidx.core.graphics.alpha
 import androidx.fragment.app.DialogFragment
@@ -11,10 +9,10 @@ import androidx.fragment.app.FragmentResultListener
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.newsfetcher.R
 import com.example.newsfetcher.databinding.FragmentSearchSettingScreenBinding
-import com.example.newsfetcher.feature.search_setting_screen.presentation.date_set_screen.DateFromSetFragment
-import com.example.newsfetcher.feature.search_setting_screen.presentation.date_set_screen.DateToSetFragment
-import com.example.newsfetcher.feature.search_setting_screen.presentation.date_set_screen.REQUEST_DATE_FROM
-import com.example.newsfetcher.feature.search_setting_screen.presentation.date_set_screen.REQUEST_DATE_TO
+import com.example.newsfetcher.feature.search_setting_screen.presentation.date_picker_screen.DateFromSetFragment
+import com.example.newsfetcher.feature.search_setting_screen.presentation.date_picker_screen.DateToSetFragment
+import com.example.newsfetcher.feature.search_setting_screen.presentation.date_picker_screen.REQUEST_DATE_FROM
+import com.example.newsfetcher.feature.search_setting_screen.presentation.date_picker_screen.REQUEST_DATE_TO
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
 
@@ -23,7 +21,6 @@ class SearchSettingScreenFragment : DialogFragment(R.layout.fragment_search_sett
     FragmentResultListener {
 
     private val binding by viewBinding(FragmentSearchSettingScreenBinding::bind)
-
     private val viewModel: SearchSettingScreenViewModel by viewModel()
     private lateinit var dateSet: Date
 
@@ -31,16 +28,12 @@ class SearchSettingScreenFragment : DialogFragment(R.layout.fragment_search_sett
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.viewState.observe(viewLifecycleOwner, ::render)
-
         dateSet = Date()
 
         with(binding) {
-            tvDataFrom.setOnClickListener {
-                openDatePickerFrom()
-            }
-            tvDataTo.setOnClickListener {
-                openDatePickerTo()
-            }
+            tvDataFrom.setOnClickListener { openDatePickerFrom() }
+            tvDataTo.setOnClickListener { openDatePickerTo() }
+
             tvTitleSearchIn.setOnClickListener {
                 viewModel.processUIEvent(UIEvent.OnTitleSearchInClicked)
             }
@@ -52,13 +45,20 @@ class SearchSettingScreenFragment : DialogFragment(R.layout.fragment_search_sett
             }
             tvRelevancy.setOnClickListener {
                 viewModel.processUIEvent(UIEvent.OnRelevancyClicked)
-
             }
             tvPublishedAt.setOnClickListener {
                 viewModel.processUIEvent(UIEvent.OnPublishedAtClicked)
             }
             tvPopularity.setOnClickListener {
                 viewModel.processUIEvent(UIEvent.OnPopularityClicked)
+            }
+
+            btnSaveSearchSetting.setOnClickListener {
+                viewModel.processUIEvent(UIEvent.OnSetSearchSettingClicked)
+                dialog?.dismiss()
+            }
+            btnCancelSearchSetting.setOnClickListener {
+                dialog?.dismiss()
             }
         }
 
@@ -70,42 +70,53 @@ class SearchSettingScreenFragment : DialogFragment(R.layout.fragment_search_sett
             State.Load -> {
                 //currently not processed, for the future expanded
             }
-            State.ContentSearchIn -> {
+            State.Content -> {
                 with(binding) {
-                    if (viewState.titleSearchIn) {
-                        tvTitleSearchIn.setBackgroundColor(R.color.colorPrimary.toInt())
-                        tvDescriptionSearchIn.setBackgroundColor(R.color.white_100.alpha)
-                       tvAllSearchIn.setBackgroundColor(R.color.white_100.alpha)
+                    when (viewState.searchIn) {
+                        SearchIn.TITLE.str -> {
+                            tvTitleSearchIn.setBackgroundColor(R.color.colorPrimary.toInt())
+                            tvDescriptionSearchIn.setBackgroundColor(R.color.white_100.alpha)
+                            tvAllSearchIn.setBackgroundColor(R.color.white_100.alpha)
+                        }
+                        SearchIn.DISCRIPTION.str -> {
+                            tvDescriptionSearchIn.setBackgroundColor(R.color.colorPrimary.toInt())
+                            tvTitleSearchIn.setBackgroundColor(R.color.white_100.alpha)
+                            tvAllSearchIn.setBackgroundColor(R.color.white_100.alpha)
+                        }
+                        SearchIn.ALL_IN.str -> {
+                            tvAllSearchIn.setBackgroundColor(R.color.colorPrimary.toInt())
+                            tvDescriptionSearchIn.setBackgroundColor(R.color.white_100.alpha)
+                            tvTitleSearchIn.setBackgroundColor(R.color.white_100.alpha)
+                        }
                     }
-                    if (viewState.descriptionSearchIn) {
-                        tvDescriptionSearchIn.setBackgroundColor(R.color.colorPrimary.toInt())
-                        tvTitleSearchIn.setBackgroundColor(R.color.white_100.alpha)
-                       tvAllSearchIn.setBackgroundColor(R.color.white_100.alpha)
+                    when (viewState.sortBy) {
+                        SortBy.POPULARITY.str -> {
+                            tvPopularity.setBackgroundColor(R.color.colorPrimary.toInt())
+                            tvRelevancy.setBackgroundColor(R.color.white_100.alpha)
+                            tvPublishedAt.setBackgroundColor(R.color.white_100.alpha)
+                        }
+                        SortBy.RELEVANCY.str -> {
+                            tvPopularity.setBackgroundColor(R.color.white_100.alpha)
+                            tvRelevancy.setBackgroundColor(R.color.colorPrimary.toInt())
+                            tvPublishedAt.setBackgroundColor(R.color.white_100.alpha)
+                        }
+                        SortBy.PUBLISHEDAT.str -> {
+                            tvPopularity.setBackgroundColor(R.color.white_100.alpha)
+                            tvRelevancy.setBackgroundColor(R.color.white_100.alpha)
+                            tvPublishedAt.setBackgroundColor(R.color.colorPrimary.toInt())
+                        }
                     }
-                    if (viewState.allSearchIn) {
-                       tvAllSearchIn.setBackgroundColor(R.color.colorPrimary.toInt())
-                        tvDescriptionSearchIn.setBackgroundColor(R.color.white_100.alpha)
-                        tvTitleSearchIn.setBackgroundColor(R.color.white_100.alpha)
-                    }
-                }
-                
-            }
-            State.ContentSortBy -> {
-                with(binding) {
-                    if (viewState.popularity) {
-                        tvPopularity.setBackgroundColor(R.color.colorPrimary.toInt())
-                        tvRelevancy.setBackgroundColor(R.color.white_100.alpha)
-                        tvPublishedAt.setBackgroundColor(R.color.white_100.alpha)
-                    }
-                    if (viewState.relevancy) {
-                        tvPopularity.setBackgroundColor(R.color.white_100.alpha)
-                        tvRelevancy.setBackgroundColor(R.color.colorPrimary.toInt())
-                        tvPublishedAt.setBackgroundColor(R.color.white_100.alpha)
-                    }
-                    if (viewState.publishedAt) {
-                        tvPopularity.setBackgroundColor(R.color.white_100.alpha)
-                        tvRelevancy.setBackgroundColor(R.color.white_100.alpha)
-                        tvPublishedAt.setBackgroundColor(R.color.colorPrimary.toInt())
+                    when (viewState.dataType) {
+                        DateType.DATE_FROM.str -> {
+                            binding.tvDataFrom.text = viewState.dataFrom
+                        }
+                        DateType.DATE_TO.str -> {
+                            binding.tvDataTo.text = viewState.dataTo
+                        }
+                        DateType.DATE_ALL.str -> {
+                            binding.tvDataFrom.text = viewState.dataFrom
+                            binding.tvDataTo.text = viewState.dataTo
+                        }
                     }
                 }
             }
@@ -122,14 +133,12 @@ class SearchSettingScreenFragment : DialogFragment(R.layout.fragment_search_sett
                 val index = result.toString().indexOf("=")
                 val date = result.toString().removeRange(0..index).removeSuffix("}]")
                 Log.d("TAGG", "dateSet when 1 = $date")
-                binding.tvDataFrom.text = date
                 viewModel.processUIEvent(UIEvent.OnDataFromClicked(date))
             }
             REQUEST_DATE_TO -> {
                 val index = result.toString().indexOf("=")
                 val date = result.toString().removeRange(0..index).removeSuffix("}]")
                 Log.d("TAGG", "dateSet when 2 = $date")
-                binding.tvDataTo.text = date
                 viewModel.processUIEvent(UIEvent.OnDataToClicked(date))
             }
         }
