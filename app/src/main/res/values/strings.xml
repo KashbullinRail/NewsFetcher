@@ -2,17 +2,17 @@
 
     <string name="app_name">NewsFetcher</string>
 
-<!--    For bottom navigation bar-->
+    <!--    For bottom navigation bar-->
     <string name="main">Главная</string>
     <string name="favorite">Избранное</string>
     <string name="search">Поиск</string>
 
-<!--    For webview screen-->
+    <!--    For webview screen-->
     <string name="loadSite">Сайт загружается</string>
     <string name="failUrl">Загрузка сайта невозможна</string>
     <string name="offInternet">Нет доступа в интернет</string>
 
-<!--    For detail screen-->
+    <!--    For detail screen-->
     <string name="loading">Loading</string>
     <string name="loadloadload">LoadLoadLoad</string>
     <string name="non_text">non text</string>
@@ -23,10 +23,10 @@
     <string name="_2022">2022....</string>
     <string name="author_published">Автор статьи</string>
 
-<!--    For search screen-->
+    <!--    For search screen-->
     <string name="input_key_word_for_search">введите слово для поиска</string>
 
-<!--    For setting dialog fragment-->
+    <!--    For setting dialog fragment-->
     <string name="search_setting_menu_title">Настройки фильтра для поиска</string>
     <string name="data_from">2022_11_16</string>
     <string name="data_to">2022_12_25</string>
@@ -44,5 +44,7 @@
     <string name="cancel_current_search">Отмена</string>
     <string name="save_for_long_time">Применить настройки</string>
     <string name="cancel">Отмена</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
