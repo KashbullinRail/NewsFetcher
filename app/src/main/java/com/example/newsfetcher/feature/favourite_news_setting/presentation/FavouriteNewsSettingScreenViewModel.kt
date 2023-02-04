@@ -11,111 +11,76 @@ class FavouriteNewsSettingScreenViewModel(
 ) : BaseViewModel<ViewState>() {
 
     init {
-        processDataEvent(DateEvent.LoadSearchSetting)
+        processDataEvent(DateEvent.LoadFavouriteNewsSetting)
     }
 
     override fun initialViewState() = ViewState(
         state = State.Load,
-        dataFrom = "",
-        dataTo = "",
-        searchIn = "",
-        sortBy = "",
-        dataType = ""
+        business = false,
+        entertainment = false,
+        general = false,
+        health = false,
+        science = false,
+        sports = false,
+        technology = false,
     )
 
     override fun reduce(event: Event, previousState: ViewState): ViewState? {
 
         when (event) {
-            is DateEvent.LoadSearchSetting -> {
-//                val set = articlesInteractor.getSearchSetting()
-                if (set.dateFrom.equals("")) {
-                    return previousState.copy(
-                        searchIn = SearchIn.ALL_IN.str,
-                        dataTo = prevDayOfMonth,
-                        dataFrom = dayOfMonth,
-                        sortBy = SortBy.PUBLISHEDAT.str,
-                        dataType = DateType.DATE_ALL.str,
-                        state = State.Content
-                    )
-                } else {
-                    return previousState.copy(
-                        searchIn = set.searchIn,
-                        dataTo = set.dateTo,
-                        dataFrom = set.dateFrom,
-                        sortBy = set.sortBy,
-                        dataType = DateType.DATE_ALL.str,
-                        state = State.Content
-                    )
-                }
-            }
-            is UIEvent.OnSetSearchSettingClicked -> {
-                val setSearchSetting = SearchSettingModel(
-                    searchIn = previousState.searchIn,
-                    sortBy = previousState.sortBy,
-                    dateFrom = previousState.dataFrom,
-                    dateTo = previousState.dataTo,
-                )
-                searchInteractor.setSearchSetting(setSearchSetting)
+            is DateEvent.LoadFavouriteNewsSetting -> {
+
                 return null
             }
-            is UIEvent.OnTitleSearchInClicked -> {
+            is UIEvent.OnSetFavouriteNewsSettingClicked -> {
+//                val setFavouriteNews = FavouriteNewsSettingModel(
+//
+//                )
+//                searchInteractor.setSearchSetting(setSearchSetting)
+                return null
+            }
+            is UIEvent.OnBusinessClicked -> {
                 return previousState.copy(
-                    searchIn = SearchIn.TITLE.str,
+
                     state = State.Content
                 )
             }
-            is UIEvent.OnDescriptionSearchInClicked -> {
+            is UIEvent.OnEntertainmentClicked -> {
                 return previousState.copy(
-                    searchIn = SearchIn.DISCRIPTION.str,
+
                     state = State.Content
                 )
             }
-            is UIEvent.OnAllSearchInClicked -> {
+            is UIEvent.OnGeneralClicked -> {
                 return previousState.copy(
-                    searchIn = SearchIn.ALL_IN.str,
+
                     state = State.Content
                 )
             }
-            is UIEvent.OnPopularityClicked -> {
+            is UIEvent.OnHealthClicked -> {
                 return previousState.copy(
-                    sortBy = SortBy.POPULARITY.str,
+
                     state = State.Content
                 )
             }
-            is UIEvent.OnRelevancyClicked -> {
+            is UIEvent.OnScienceClicked -> {
                 return previousState.copy(
-                    sortBy = SortBy.RELEVANCY.str,
                     state = State.Content
                 )
             }
-            is UIEvent.OnPublishedAtClicked -> {
+            is UIEvent.OnSportsClicked -> {
                 return previousState.copy(
-                    sortBy = SortBy.PUBLISHEDAT.str,
+
                     state = State.Content
                 )
             }
-            is UIEvent.OnDataFromClicked -> {
-                if (!(event.dateFrom == "") && !(event.dateFrom < prevDayOfMonth)) {
-                    return previousState.copy(
-                        dataFrom = event.dateFrom,
-                        dataType = DateType.DATE_FROM.str,
-                        state = State.Content,
-                    )
-                } else {
-                    return previousState.copy(
-                        dataFrom = prevDayOfMonth,
-                        dataType = DateType.DATE_FROM.str,
-                        state = State.Content,
-                    )
-                }
-            }
-            is UIEvent.OnDataToClicked -> {
+            is UIEvent.OnTechnologyClicked -> {
                 return previousState.copy(
-                    dataTo = event.dateTo,
-                    dataType = DateType.DATE_TO.str,
-                    state = State.Content,
+
+                    state = State.Content
                 )
             }
+
             else -> return null
         }
 
