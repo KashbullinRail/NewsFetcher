@@ -22,28 +22,13 @@ class SearchSettingScreenFragment : DialogFragment(R.layout.fragment_search_sett
 
     private val binding by viewBinding(FragmentSearchSettingScreenBinding::bind)
     private val viewModel: SearchSettingScreenViewModel by viewModel()
-    private lateinit var prevDayOfMonth: String
-    private lateinit var dayOfMonth: String
-
+    private lateinit var dateSet: Date
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         viewModel.viewState.observe(viewLifecycleOwner, ::render)
-
-
-        val init = Calendar.getInstance()
-        val year = init.get(Calendar.YEAR)
-        val month = init.get(Calendar.MONTH+1)
-        val prevMonth = init.get(Calendar.MONTH)
-        val day = init.get(Calendar.DAY_OF_MONTH)
-        dayOfMonth = "$year-$month-$day"
-        prevDayOfMonth = "$year-$prevMonth-$day"
-
-        if (dayOfMonth < "2023-2-1") println("fuck")
-
-        println("GH=  $dayOfMonth  dataset=$prevDayOfMonth   setset=")
-
+        dateSet = Date()
 
         with(binding) {
             tvDataFrom.setOnClickListener { openDatePickerFrom() }
@@ -83,13 +68,11 @@ class SearchSettingScreenFragment : DialogFragment(R.layout.fragment_search_sett
     private fun render(viewState: ViewState) {
         when (viewState.state) {
             State.Load -> {
-                viewModel.processUIEvent(UIEvent.OnDataFromClicked(prevDayOfMonth))
-                viewModel.processUIEvent(UIEvent.OnDataToClicked(dayOfMonth))
                 //currently not processed, for the future expanded
             }
             State.Content -> {
                 with(binding) {
-                    when(viewState.searchIn){
+                    when (viewState.searchIn) {
                         SearchIn.TITLE.str -> {
                             tvTitleSearchIn.setBackgroundColor(R.color.colorPrimary.toInt())
                             tvDescriptionSearchIn.setBackgroundColor(R.color.white_100.alpha)
@@ -106,7 +89,7 @@ class SearchSettingScreenFragment : DialogFragment(R.layout.fragment_search_sett
                             tvTitleSearchIn.setBackgroundColor(R.color.white_100.alpha)
                         }
                     }
-                    when(viewState.sortBy) {
+                    when (viewState.sortBy) {
                         SortBy.POPULARITY.str -> {
                             tvPopularity.setBackgroundColor(R.color.colorPrimary.toInt())
                             tvRelevancy.setBackgroundColor(R.color.white_100.alpha)
@@ -123,7 +106,7 @@ class SearchSettingScreenFragment : DialogFragment(R.layout.fragment_search_sett
                             tvPublishedAt.setBackgroundColor(R.color.colorPrimary.toInt())
                         }
                     }
-                    when(viewState.dataType){
+                    when (viewState.dataType) {
                         DateType.DATE_FROM.str -> {
                             binding.tvDataFrom.text = viewState.dataFrom
                         }
@@ -167,7 +150,7 @@ class SearchSettingScreenFragment : DialogFragment(R.layout.fragment_search_sett
             REQUEST_DATE_FROM, viewLifecycleOwner, this@SearchSettingScreenFragment
         )
         DateFromSetFragment
-            .newInstance(dayOfMonth, REQUEST_DATE_FROM.toInt())
+            .newInstance(dateSet, REQUEST_DATE_FROM.toInt())
             .show(childFragmentManager, REQUEST_DATE_FROM)
     }
 
@@ -177,7 +160,7 @@ class SearchSettingScreenFragment : DialogFragment(R.layout.fragment_search_sett
             REQUEST_DATE_TO, viewLifecycleOwner, this@SearchSettingScreenFragment
         )
         DateToSetFragment
-            .newInstance(dayOfMonth, REQUEST_DATE_TO.toInt())
+            .newInstance(dateSet, REQUEST_DATE_TO.toInt())
             .show(childFragmentManager, REQUEST_DATE_TO)
     }
 

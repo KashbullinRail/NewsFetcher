@@ -8,7 +8,7 @@ interface ArticlesSearchRepository {
 
     suspend fun getArticles(): List<ArticleModel>
 
-    fun setSearchText(searchText: String)
+    fun setSearchText(searchTextSet: String)
 
     fun setSearchSetting(searchSettingModel: SearchSettingModel)
 

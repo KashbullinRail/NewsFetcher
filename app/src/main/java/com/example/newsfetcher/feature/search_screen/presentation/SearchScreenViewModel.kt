@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.newsfetcher.base.BaseViewModel
 import com.example.newsfetcher.base.Event
 import com.example.newsfetcher.feature.bookmarks_screen.domian.BookmarksInteractor
+import com.example.newsfetcher.feature.main_screen.di.setUrl
 import com.example.newsfetcher.feature.main_screen.domian.ArticleModel
 import com.example.newsfetcher.feature.main_screen.presentation.ARTICLE_ITEM
 import com.example.newsfetcher.feature.main_screen.presentation.BOOKMARK_EMPTY
@@ -89,7 +90,7 @@ class SearchScreenViewModel(
                 return null
             }
             is UIEvent.OnSearchButtonClicked -> {
-                searchInteractor.setSearchText(searchSettingModel = event.searchText)
+                searchInteractor.setSearchText(searchTextSet = event.searchText)
                 viewModelScope.launch {
                     searchInteractor.getArticles().fold(
                         onError = {

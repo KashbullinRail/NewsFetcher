@@ -37,7 +37,7 @@ class DateFromSetFragment : DialogFragment() {
     }
 
     companion object {
-        fun newInstance(date: String, requestKey: Int): DateFromSetFragment {
+        fun newInstance(date: Date, requestKey: Int): DateFromSetFragment {
             val args = Bundle().apply {
                 putSerializable(ARG_DATE, date)
                 putSerializable(ARG_REQUEST_CODE, requestKey)

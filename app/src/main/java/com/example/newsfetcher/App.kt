@@ -8,8 +8,8 @@ import com.example.newsfetcher.feature.detail_screen.di.detailScreenModule
 import com.example.newsfetcher.feature.main_screen.di.mainScreenModule
 import com.example.newsfetcher.feature.search_screen.di.searchScreenModule
 import com.example.newsfetcher.feature.search_setting_screen.di.searchSettingScreenModule
-import com.example.newsfetcher.feature.weather_III_finishInTheFuture_III.di.weatherInfoModule
-import com.example.newsfetcher.feature.weather_III_finishInTheFuture_III.di.weatherInfoNetworkModule
+import com.example.newsfetcher.feature.weather.di.weatherInfoModule
+import com.example.newsfetcher.feature.weather.di.weatherInfoNetworkModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin

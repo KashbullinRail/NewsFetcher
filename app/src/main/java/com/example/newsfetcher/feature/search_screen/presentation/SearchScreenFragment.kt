@@ -1,8 +1,11 @@
 package com.example.newsfetcher.feature.search_screen.presentation
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import androidx.activity.addCallback
 import androidx.core.os.bundleOf
@@ -15,6 +18,7 @@ import com.example.newsfetcher.base.focusAndShowKeyboard
 import com.example.newsfetcher.base.hideKeyboard
 import com.example.newsfetcher.base.isOnline
 import com.example.newsfetcher.databinding.FragmentSearchScreenBinding
+import com.example.newsfetcher.feature.main_screen.di.setUrl
 import com.example.newsfetcher.feature.main_screen.presentation.MainArticleAdapter
 import com.example.newsfetcher.feature.main_screen.presentation.PUT_TO_DETAIL_FRAGMENT
 import com.example.newsfetcher.feature.search_setting_screen.presentation.SearchSettingScreenFragment
@@ -39,6 +43,8 @@ class SearchScreenFragment : Fragment(R.layout.fragment_search_screen) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        setUrl("2")
 
         viewModel.viewState.observe(viewLifecycleOwner, ::render)
 

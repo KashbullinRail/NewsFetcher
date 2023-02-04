@@ -7,6 +7,4 @@ data class SearchSettingModel(
     val sortBy: String
 )
 
-data class SearchSettingMapModel(
-    val searchSettingMapModel: SearchSettingMapModel
-)
+

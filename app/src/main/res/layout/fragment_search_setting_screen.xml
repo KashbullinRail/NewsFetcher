@@ -99,13 +99,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/DataFromText"
-        app:layout_constraintBottom_toBottomOf="@+id/tvDataFrom"
-        app:layout_constraintEnd_toStartOf="@+id/tvDataFrom"
+        app:layout_constraintBottom_toBottomOf="@+id/tvDataTo"
+        app:layout_constraintEnd_toStartOf="@+id/tvDataTo"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/tvDataFrom"/>
+        app:layout_constraintTop_toTopOf="@+id/tvDataTo"/>
 
     <TextView
-        android:id="@+id/tvDataFrom"
+        android:id="@+id/tvDataTo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="3dp"
@@ -120,13 +120,13 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:text="@string/DataToText"
-        app:layout_constraintBottom_toBottomOf="@+id/tvDataTo"
-        app:layout_constraintEnd_toStartOf="@+id/tvDataTo"
-        app:layout_constraintStart_toEndOf="@+id/tvDataFrom"
-        app:layout_constraintTop_toTopOf="@+id/tvDataTo" />
+        app:layout_constraintBottom_toBottomOf="@+id/tvDataFrom"
+        app:layout_constraintEnd_toStartOf="@+id/tvDataFrom"
+        app:layout_constraintStart_toEndOf="@+id/tvDataTo"
+        app:layout_constraintTop_toTopOf="@+id/tvDataFrom" />
 
     <TextView
-        android:id="@+id/tvDataTo"
+        android:id="@+id/tvDataFrom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="?attr/colorSurface"

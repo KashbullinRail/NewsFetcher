@@ -15,8 +15,8 @@ class ArticlesSearchRemoteRepositoryImpl(private val source: SearchArticlesRemot
         }
     }
 
-    override fun setSearchText(searchSettingModel: String) {
-        source.setSearchText(searchSettingModel)
+    override fun setSearchText(searchTextSet: String) {
+        source.setSearchText(searchTextSet)
     }
 
     override fun setSearchSetting(searchSettingModel: SearchSettingModel) {

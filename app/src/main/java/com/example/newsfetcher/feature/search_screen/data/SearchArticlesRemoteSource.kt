@@ -1,6 +1,7 @@
 package com.example.newsfetcher.feature.search_screen.data
 
 import com.example.newsfetcher.feature.main_screen.data.model.ArticlesRemoteModel
+import com.example.newsfetcher.feature.main_screen.di.setUrl
 import com.example.newsfetcher.feature.search_screen.data.model.SearchSettingModel
 
 
@@ -24,8 +25,8 @@ class SearchArticlesRemoteSource(private val api: SearchNewsAPI) {
         )
     }
 
-    fun setSearchText(searchSettingModel: String) {
-        searchText = searchSettingModel
+    fun setSearchText(searchTextSet: String) {
+        searchText = searchTextSet
     }
 
     fun setSearchSetting(searchSettingModel: SearchSettingModel) {

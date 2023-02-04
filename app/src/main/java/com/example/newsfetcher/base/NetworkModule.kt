@@ -1,9 +1,8 @@
 package com.example.newsfetcher.di
 
 import android.util.Log
+import com.example.newsfetcher.base.HeaderIntercepter
 import com.example.newsfetcher.feature.main_screen.di.BASE_URL_NEWS_API
-import com.example.newsfetcher.feature.main_screen.di.HeaderIntercepter
-import com.example.newsfetcher.feature.weather_III_finishInTheFuture_III.di.BASE_URL_WEATHER
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module

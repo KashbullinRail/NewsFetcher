@@ -1,4 +1,4 @@
-package com.example.newsfetcher.feature.weather_III_finishInTheFuture_III.data
+package com.example.newsfetcher.feature.weather.data
 
 
 

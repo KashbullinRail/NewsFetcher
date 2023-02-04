@@ -10,8 +10,8 @@ class SearchInteractor(private val repository: ArticlesSearchRepository) {
         repository.getArticles()
     }
 
-    fun setSearchText(searchSettingModel: String) {
-        attempt { repository.setSearchText(searchSettingModel) }
+    fun setSearchText(searchTextSet: String) {
+        attempt { repository.setSearchText(searchTextSet) }
     }
 
     fun setSearchSetting(searchSettingModel: SearchSettingModel) {
