@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.core.graphics.alpha
+import androidx.core.graphics.green
+import androidx.core.graphics.red
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentResultListener
 import by.kirich1409.viewbindingdelegate.viewBinding

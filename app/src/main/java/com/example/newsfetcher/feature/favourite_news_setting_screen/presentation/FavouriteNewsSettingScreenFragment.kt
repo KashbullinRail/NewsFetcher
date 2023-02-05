@@ -2,6 +2,7 @@ package com.example.newsfetcher.feature.favourite_news_setting_screen.presentati
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.graphics.alpha
 import androidx.fragment.app.DialogFragment
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.newsfetcher.R
@@ -54,14 +55,50 @@ class FavouriteNewsSettingScreenFragment :
     }
 
     //update UI
-    private fun render(viewState: ViewState){
+    private fun render(viewState: ViewState) {
 
-        when(viewState.state){
+        when (viewState.state) {
             State.Load -> {
 
             }
             State.Content -> {
-
+                with(binding) {
+                    if (viewState.business) {
+                        tvBusinessFavourite.setBackgroundColor(R.color.colorPrimary.toInt())
+                    } else {
+                        tvBusinessFavourite.setBackgroundColor(R.color.white_100.alpha)
+                    }
+                    if (viewState.entertainment) {
+                        tvEntertainmentFavourite.setBackgroundColor(R.color.colorPrimary.toInt())
+                    } else {
+                        tvEntertainmentFavourite.setBackgroundColor(R.color.white_100.alpha)
+                    }
+                    if (viewState.general) {
+                        tvGeneralFavourite.setBackgroundColor(R.color.colorPrimary.toInt())
+                    } else {
+                        tvGeneralFavourite.setBackgroundColor(R.color.white_100.alpha)
+                    }
+                    if (viewState.health) {
+                        tvHealthFavourite.setBackgroundColor(R.color.colorPrimary.toInt())
+                    } else {
+                        tvHealthFavourite.setBackgroundColor(R.color.white_100.alpha)
+                    }
+                    if (viewState.science) {
+                        tvScienceFavourite.setBackgroundColor(R.color.colorPrimary.toInt())
+                    } else {
+                        tvScienceFavourite.setBackgroundColor(R.color.white_100.alpha)
+                    }
+                    if (viewState.sports) {
+                        tvSportsFavourite.setBackgroundColor(R.color.colorPrimary.toInt())
+                    } else {
+                        tvSportsFavourite.setBackgroundColor(R.color.white_100.alpha)
+                    }
+                    if (viewState.technology) {
+                        tvTechnologyFavourite.setBackgroundColor(R.color.colorPrimary.toInt())
+                    } else {
+                        tvTechnologyFavourite.setBackgroundColor(R.color.white_100.alpha)
+                    }
+                }
             }
             State.Error -> {
 
