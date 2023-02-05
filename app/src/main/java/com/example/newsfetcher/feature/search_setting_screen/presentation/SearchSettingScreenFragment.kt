@@ -52,7 +52,6 @@ class SearchSettingScreenFragment : DialogFragment(R.layout.fragment_search_sett
             tvPopularity.setOnClickListener {
                 viewModel.processUIEvent(UIEvent.OnPopularityClicked)
             }
-
             btnSaveSearchSetting.setOnClickListener {
                 viewModel.processUIEvent(UIEvent.OnSetSearchSettingClicked)
                 dialog?.dismiss()

@@ -1,4 +1,4 @@
-package com.example.newsfetcher.feature.favourite_news_setting.presentation
+package com.example.newsfetcher.feature.favourite_news_setting_screen.presentation
 
 data class FavouriteNewsSettingModel(
     val business: String,

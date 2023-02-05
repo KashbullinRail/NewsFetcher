@@ -1,4 +1,4 @@
-package com.example.newsfetcher.base
+package com.example.newsfetcher.base.network
 
 import com.example.newsfetcher.feature.main_screen.di.API_KEY_TO_NEWS_API
 import com.example.newsfetcher.feature.main_screen.di.setApiKey

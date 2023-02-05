@@ -12,11 +12,14 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.newsfetcher.R
 import com.example.newsfetcher.base.isOnline
 import com.example.newsfetcher.databinding.FragmentMainScreenBinding
+import com.example.newsfetcher.feature.favourite_news_setting_screen.presentation.FavouriteNewsSettingScreenFragment
 import com.example.newsfetcher.feature.main_screen.di.setUrl
 import com.example.newsfetcher.feature.main_screen.presentation.PUT_TO_DETAIL_FRAGMENT
 import com.google.android.material.snackbar.Snackbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+
+private const val SHOW_FAVOURITE_SETTING = "SHOW_FAVOURITE_SETTING"
 
 class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
 
@@ -38,7 +41,6 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
         viewModel.viewState.observe(viewLifecycleOwner, ::render)
 
         with(binding) {
-
             rvArticlesMain.adapter = adapter
 
             bnvBarMain.setOnItemSelectedListener {
@@ -56,6 +58,10 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
             bnvBarMain.selectedItemId = R.id.itemMain
             bnvBarMain.selectedItemId = R.id.itemMain
 
+            fabOpenFavouriteSettingScreen.setOnClickListener {
+                val showFavouriteNews = FavouriteNewsSettingScreenFragment()
+               showFavouriteNews.show(requireActivity().supportFragmentManager, SHOW_FAVOURITE_SETTING)
+            }
         }
 
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {

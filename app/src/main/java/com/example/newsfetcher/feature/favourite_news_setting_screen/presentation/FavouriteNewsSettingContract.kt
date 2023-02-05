@@ -1,4 +1,4 @@
-package com.example.newsfetcher.feature.favourite_news_setting.presentation
+package com.example.newsfetcher.feature.favourite_news_setting_screen.presentation
 
 import com.example.newsfetcher.base.Event
 
@@ -22,7 +22,6 @@ data class ViewState(
 )
 
 sealed class UIEvent : Event {
-    object OnSetFavouriteNewsSettingClicked: UIEvent()
     object OnBusinessClicked : UIEvent()
     object OnEntertainmentClicked : UIEvent()
     object OnGeneralClicked : UIEvent()
@@ -30,6 +29,7 @@ sealed class UIEvent : Event {
     object OnScienceClicked : UIEvent()
     object OnSportsClicked : UIEvent()
     object OnTechnologyClicked: UIEvent()
+    object OnSetFavouriteNewsSettingClicked: UIEvent()
 }
 
 sealed class DateEvent : Event {
