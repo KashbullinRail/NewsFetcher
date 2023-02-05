@@ -1,7 +1,6 @@
 package com.example.newsfetcher.feature.favourite_news_setting_screen.presentation
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.View
 import androidx.fragment.app.DialogFragment
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -57,7 +56,18 @@ class FavouriteNewsSettingScreenFragment :
     //update UI
     private fun render(viewState: ViewState){
 
-    }
+        when(viewState.state){
+            State.Load -> {
 
+            }
+            State.Content -> {
+
+            }
+            State.Error -> {
+
+            }
+        }
+
+    }
 
 }

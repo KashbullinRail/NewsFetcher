@@ -33,6 +33,7 @@ class FavouriteNewsSettingScreenViewModel(
             }
             is UIEvent.OnSetFavouriteNewsSettingClicked -> {
 //                val setFavouriteNews = FavouriteNewsSettingModel(
+//                    business = previousState.business,
 //
 //                )
 //                searchInteractor.setSearchSetting(setSearchSetting)
@@ -40,42 +41,43 @@ class FavouriteNewsSettingScreenViewModel(
             }
             is UIEvent.OnBusinessClicked -> {
                 return previousState.copy(
-
+                    business = !previousState.business,
                     state = State.Content
                 )
             }
             is UIEvent.OnEntertainmentClicked -> {
                 return previousState.copy(
-
+                    entertainment = !previousState.entertainment,
                     state = State.Content
                 )
             }
             is UIEvent.OnGeneralClicked -> {
                 return previousState.copy(
-
+                    general = !previousState.general,
                     state = State.Content
                 )
             }
             is UIEvent.OnHealthClicked -> {
                 return previousState.copy(
-
+                    health = !previousState.health,
                     state = State.Content
                 )
             }
             is UIEvent.OnScienceClicked -> {
                 return previousState.copy(
+                    science = !previousState.science,
                     state = State.Content
                 )
             }
             is UIEvent.OnSportsClicked -> {
                 return previousState.copy(
-
+                    sports = !previousState.sports,
                     state = State.Content
                 )
             }
             is UIEvent.OnTechnologyClicked -> {
                 return previousState.copy(
-
+                    technology = !previousState.technology,
                     state = State.Content
                 )
             }

@@ -42,7 +42,7 @@
     <string name="popularity">по популярности</string>
     <string name="publishedAt">по дате</string>
     <string name="cancel_current_search">Отмена</string>
-    <string name="save">Применить настройки</string>
+    <string name="save">Сохранить</string>
     <string name="cancel">Отмена</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

@@ -14,7 +14,7 @@
        android:id="@+id/tvTitleFavourite"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
-       android:background="?attr/colorPrimary"
+       android:textStyle="bold"
        android:text="@string/favourite_type_news"
        app:layout_constraintEnd_toEndOf="parent"
        app:layout_constraintStart_toStartOf="parent"
@@ -22,10 +22,10 @@
 
    <ImageView
        android:id="@+id/ivSeparatorLineFavouriteSetting"
-       android:layout_width="match_parent"
+       android:layout_width="300dp"
        android:layout_height="3dp"
-       android:layout_marginTop="5dp"
-       android:backgroundTint="?attr/colorPrimary"
+       android:layout_marginTop="25dp"
+       android:background="?attr/colorPrimary"
        app:layout_constraintEnd_toEndOf="@+id/tvTitleFavourite"
        app:layout_constraintStart_toStartOf="@+id/tvTitleFavourite"
        app:layout_constraintTop_toBottomOf="@+id/tvTitleFavourite" />
@@ -34,85 +34,84 @@
        android:id="@+id/tvBusinessFavourite"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
-       android:layout_marginTop="10dp"
-       android:background="?attr/colorPrimary"
+       android:layout_marginEnd="20dp"
+       android:background="?attr/colorSurface"
        android:text="@string/business"
-       app:layout_constraintEnd_toEndOf="parent"
-       app:layout_constraintHorizontal_bias="0.494"
-       app:layout_constraintStart_toStartOf="parent"
-       app:layout_constraintTop_toBottomOf="@+id/ivSeparatorLineFavouriteSetting" />
+       app:layout_constraintBottom_toBottomOf="@+id/tvEntertainmentFavourite"
+       app:layout_constraintEnd_toStartOf="@+id/tvEntertainmentFavourite"
+       app:layout_constraintTop_toTopOf="@+id/tvEntertainmentFavourite" />
 
    <TextView
        android:id="@+id/tvEntertainmentFavourite"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
        android:layout_marginTop="10dp"
-       android:background="?attr/colorPrimary"
+       android:background="?attr/colorSurface"
        android:text="@string/entertainment"
-       app:layout_constraintEnd_toEndOf="@+id/tvBusinessFavourite"
-       app:layout_constraintStart_toStartOf="@+id/tvBusinessFavourite"
-       app:layout_constraintTop_toBottomOf="@+id/tvBusinessFavourite" />
+       app:layout_constraintEnd_toEndOf="@+id/ivSeparatorLineFavouriteSetting"
+       app:layout_constraintStart_toStartOf="@+id/ivSeparatorLineFavouriteSetting"
+       app:layout_constraintTop_toBottomOf="@+id/ivSeparatorLineFavouriteSetting" />
 
    <TextView
        android:id="@+id/tvGeneralFavourite"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
-       android:layout_marginTop="10dp"
-       android:background="?attr/colorPrimary"
+       android:layout_marginStart="20dp"
+       android:background="?attr/colorSurface"
        android:text="@string/general"
-       app:layout_constraintEnd_toEndOf="@+id/tvEntertainmentFavourite"
-       app:layout_constraintStart_toStartOf="@+id/tvEntertainmentFavourite"
-       app:layout_constraintTop_toBottomOf="@+id/tvEntertainmentFavourite" />
+       app:layout_constraintBottom_toBottomOf="@+id/tvEntertainmentFavourite"
+       app:layout_constraintStart_toEndOf="@+id/tvEntertainmentFavourite"
+       app:layout_constraintTop_toTopOf="@+id/tvEntertainmentFavourite" />
 
    <TextView
        android:id="@+id/tvHealthFavourite"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
-       android:layout_marginTop="10dp"
-       android:background="?attr/colorPrimary"
+       android:layout_marginTop="15dp"
+       android:background="?attr/colorSurface"
        android:text="@string/health"
-       app:layout_constraintEnd_toEndOf="@+id/tvGeneralFavourite"
-       app:layout_constraintStart_toStartOf="@+id/tvGeneralFavourite"
-       app:layout_constraintTop_toBottomOf="@+id/tvGeneralFavourite" />
+       app:layout_constraintEnd_toEndOf="@+id/tvEntertainmentFavourite"
+       app:layout_constraintStart_toStartOf="@+id/tvEntertainmentFavourite"
+       app:layout_constraintTop_toBottomOf="@+id/tvEntertainmentFavourite" />
 
    <TextView
        android:id="@+id/tvScienceFavourite"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
-       android:layout_marginTop="10dp"
-       android:background="?attr/colorPrimary"
+       android:layout_marginEnd="20dp"
+       android:background="?attr/colorSurface"
        android:text="@string/science"
-       app:layout_constraintEnd_toEndOf="@+id/tvHealthFavourite"
-       app:layout_constraintStart_toStartOf="@+id/tvHealthFavourite"
-       app:layout_constraintTop_toBottomOf="@+id/tvHealthFavourite" />
+       app:layout_constraintBottom_toBottomOf="@+id/tvHealthFavourite"
+       app:layout_constraintEnd_toStartOf="@+id/tvHealthFavourite"
+       app:layout_constraintTop_toTopOf="@+id/tvHealthFavourite"/>
 
    <TextView
        android:id="@+id/tvSportsFavourite"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
-       android:layout_marginTop="10dp"
-       android:background="?attr/colorPrimary"
+       android:layout_marginStart="20dp"
+       android:background="?attr/colorSurface"
        android:text="@string/sports"
-       app:layout_constraintEnd_toEndOf="@+id/tvScienceFavourite"
-       app:layout_constraintStart_toStartOf="@+id/tvScienceFavourite"
-       app:layout_constraintTop_toBottomOf="@+id/tvScienceFavourite" />
+       app:layout_constraintBottom_toBottomOf="@+id/tvHealthFavourite"
+       app:layout_constraintStart_toEndOf="@+id/tvHealthFavourite"
+       app:layout_constraintTop_toTopOf="@+id/tvHealthFavourite"/>
 
    <TextView
        android:id="@+id/tvTechnologyFavourite"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
-       android:layout_marginTop="10dp"
-       android:background="?attr/colorPrimary"
+       android:layout_marginTop="15dp"
+       android:background="?attr/colorSurface"
        android:text="@string/technology"
-       app:layout_constraintEnd_toEndOf="@+id/tvSportsFavourite"
-       app:layout_constraintStart_toStartOf="@+id/tvSportsFavourite"
-       app:layout_constraintTop_toBottomOf="@+id/tvSportsFavourite" />
+       app:layout_constraintEnd_toEndOf="@+id/tvHealthFavourite"
+       app:layout_constraintStart_toStartOf="@+id/tvHealthFavourite"
+       app:layout_constraintTop_toBottomOf="@+id/tvHealthFavourite" />
 
    <Button
        android:id="@+id/btnCancelFavouriteSetting"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
-       android:textSize="11sp"
+       android:textSize="10sp"
        android:text="@string/cancel"
        app:layout_constraintBottom_toBottomOf="@+id/btnSaveFavouriteSetting"
        app:layout_constraintEnd_toStartOf="@id/btnSaveFavouriteSetting"
@@ -123,8 +122,8 @@
        android:id="@+id/btnSaveFavouriteSetting"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
-       android:layout_marginTop="20dp"
-       android:textSize="11sp"
+       android:layout_marginTop="40dp"
+       android:textSize="10sp"
        android:text="@string/save"
        app:layout_constraintEnd_toEndOf="parent"
        app:layout_constraintStart_toEndOf="@+id/btnCancelFavouriteSetting"
