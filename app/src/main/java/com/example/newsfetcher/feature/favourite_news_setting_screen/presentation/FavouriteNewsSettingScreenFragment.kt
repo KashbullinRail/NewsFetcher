@@ -66,6 +66,7 @@ class FavouriteNewsSettingScreenFragment :
             }
             State.Content -> {
                 with(binding) {
+                    pbFavouriteNewsSettingMenu.isVisible = false
                     if (viewState.favouriteNews.equals(FavouriteNews.business.str)) {
                         tvBusinessFavourite.setBackgroundColor(R.color.colorPrimary.toInt())
                     } else {

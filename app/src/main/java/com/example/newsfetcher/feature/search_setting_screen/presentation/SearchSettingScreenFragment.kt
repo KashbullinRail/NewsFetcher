@@ -76,6 +76,7 @@ class SearchSettingScreenFragment : DialogFragment(R.layout.fragment_search_sett
             }
             State.Content -> {
                 with(binding) {
+                    pbSearchSettingScreen.isVisible = false
                     when (viewState.searchIn) {
                         SearchIn.TITLE.str -> {
                             tvTitleSearchIn.setBackgroundColor(R.color.colorPrimary.toInt())

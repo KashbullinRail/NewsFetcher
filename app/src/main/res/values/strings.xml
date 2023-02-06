@@ -14,14 +14,16 @@
 
     <!--    For detail screen-->
     <string name="loading">Loading</string>
-    <string name="loadloadload">LoadLoadLoad</string>
+    <string name="TitleLoad">TitleLoad</string>
     <string name="non_text">non text</string>
     <string name="popularity_title">Самые популярные заголовки</string>
     <string name="name_source">Name source</string>
     <string name="title_link_to_source_Detail">Ссылка на источник</string>
     <string name="link_to_source_Detail">http//........</string>
-    <string name="_2022">2022....</string>
+    <string name="date_for_detail">2022_12_12</string>
     <string name="author_published">Автор статьи</string>
+    <string name="descriptionload">DescriptionLoad</string>
+    <string name="noname">не известен</string>
 
     <!--    For search screen-->
     <string name="input_key_word_for_search">введите слово для поиска</string>
@@ -44,8 +46,10 @@
     <string name="cancel_current_search">Отмена</string>
     <string name="save">Сохранить</string>
     <string name="cancel">Отмена</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+<!--    For Favourite Dialog Screen-->
     <string name="business">Бизнес</string>
     <string name="entertainment">Развлечения</string>
     <string name="general">Главные</string>
@@ -54,5 +58,7 @@
     <string name="sports">Спорт</string>
     <string name="technology">Технологии</string>
     <string name="favourite_type_news">Тип предпочитаемых новостей</string>
+    <string name="author">author</string>
+
 
 </resources>
