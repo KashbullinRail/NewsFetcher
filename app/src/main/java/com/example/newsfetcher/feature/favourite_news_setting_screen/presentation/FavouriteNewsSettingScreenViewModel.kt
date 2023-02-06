@@ -15,31 +15,30 @@ class FavouriteNewsSettingScreenViewModel(
 
     override fun initialViewState() = ViewState(
         state = State.Load,
-        favouriteNews = "general",
-//        business = false,
-//        entertainment = false,
-//        general = false,
-//        health = false,
-//        science = false,
-//        sports = false,
-//        technology = false,
+        favouriteNews = FavouriteNews.general.str,
     )
 
     override fun reduce(event: Event, previousState: ViewState): ViewState? {
 
         when (event) {
             is DateEvent.LoadFavouriteNewsSetting -> {
-                return previousState.copy(
-
-                    state = State.Content
-                )
+                if (articlesInteractor.getFavouriteNews().favouriteNews.equals("")) {
+                   return previousState.copy(
+                        favouriteNews = FavouriteNews.general.str,
+                        state = State.Content,
+                    )
+                } else {
+                   return previousState.copy(
+                        favouriteNews = articlesInteractor.getFavouriteNews().favouriteNews,
+                        state = State.Content
+                    )
+                }
             }
             is UIEvent.OnSetFavouriteNewsSettingClicked -> {
-                val setFavouriteNews = FavouriteNewsSettingModel(
+                val setFavouriteNews = SetFavouriteNewsSettingModel(
                     favouriteNews = previousState.favouriteNews,
-
                 )
-//                searchInteractor.setSearchSetting(setSearchSetting)
+                articlesInteractor.setFavouriteNews(setFavouriteNews)
                 return null
             }
             is UIEvent.OnBusinessClicked -> {
@@ -50,7 +49,7 @@ class FavouriteNewsSettingScreenViewModel(
             }
             is UIEvent.OnEntertainmentClicked -> {
                 return previousState.copy(
-                   favouriteNews = FavouriteNews.entertaiment.str,
+                    favouriteNews = FavouriteNews.entertaiment.str,
                     state = State.Content
                 )
             }
