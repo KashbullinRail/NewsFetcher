@@ -1,6 +1,6 @@
-package com.example.newsfetcher.feature.weather.di
+package com.example.newsfetcher.feature.weather_frag.di
 
-import com.example.newsfetcher.feature.weather.data.WeatherAPI
+import com.example.newsfetcher.feature.weather_frag.data.WeatherAPI
 import okhttp3.OkHttpClient
 import org.koin.dsl.module
 import retrofit2.Retrofit

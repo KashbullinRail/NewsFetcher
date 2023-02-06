@@ -220,5 +220,14 @@
         app:layout_constraintStart_toEndOf="@+id/btnCancelSearchSetting"
         app:layout_constraintTop_toBottomOf="@+id/tvPublishedAt" />
 
+    <androidx.core.widget.ContentLoadingProgressBar
+        android:id="@+id/pbSearchSettingScreen"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="@+id/tvTitleSearchSetting"
+        app:layout_constraintBottom_toBottomOf="@+id/btnSaveSearchSetting"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

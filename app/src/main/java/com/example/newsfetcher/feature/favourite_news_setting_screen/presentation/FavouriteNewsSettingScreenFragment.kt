@@ -3,6 +3,7 @@ package com.example.newsfetcher.feature.favourite_news_setting_screen.presentati
 import android.os.Bundle
 import android.view.View
 import androidx.core.graphics.alpha
+import androidx.core.view.isVisible
 import androidx.fragment.app.DialogFragment
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.newsfetcher.R
@@ -59,41 +60,41 @@ class FavouriteNewsSettingScreenFragment :
 
         when (viewState.state) {
             State.Load -> {
-
+                binding.pbFavouriteNewsSettingMenu.isVisible = true
             }
             State.Content -> {
                 with(binding) {
-                    if (viewState.business) {
+                    if (viewState.favouriteNews.equals(FavouriteNews.business.str)) {
                         tvBusinessFavourite.setBackgroundColor(R.color.colorPrimary.toInt())
                     } else {
                         tvBusinessFavourite.setBackgroundColor(R.color.white_100.alpha)
                     }
-                    if (viewState.entertainment) {
+                    if (viewState.favouriteNews.equals(FavouriteNews.entertaiment.str)) {
                         tvEntertainmentFavourite.setBackgroundColor(R.color.colorPrimary.toInt())
                     } else {
                         tvEntertainmentFavourite.setBackgroundColor(R.color.white_100.alpha)
                     }
-                    if (viewState.general) {
+                    if (viewState.favouriteNews.equals(FavouriteNews.general.str)) {
                         tvGeneralFavourite.setBackgroundColor(R.color.colorPrimary.toInt())
                     } else {
                         tvGeneralFavourite.setBackgroundColor(R.color.white_100.alpha)
                     }
-                    if (viewState.health) {
+                    if (viewState.favouriteNews.equals(FavouriteNews.health.str)) {
                         tvHealthFavourite.setBackgroundColor(R.color.colorPrimary.toInt())
                     } else {
                         tvHealthFavourite.setBackgroundColor(R.color.white_100.alpha)
                     }
-                    if (viewState.science) {
+                    if (viewState.favouriteNews.equals(FavouriteNews.science.str)) {
                         tvScienceFavourite.setBackgroundColor(R.color.colorPrimary.toInt())
                     } else {
                         tvScienceFavourite.setBackgroundColor(R.color.white_100.alpha)
                     }
-                    if (viewState.sports) {
+                    if (viewState.favouriteNews.equals(FavouriteNews.sports.str)) {
                         tvSportsFavourite.setBackgroundColor(R.color.colorPrimary.toInt())
                     } else {
                         tvSportsFavourite.setBackgroundColor(R.color.white_100.alpha)
                     }
-                    if (viewState.technology) {
+                    if (viewState.favouriteNews.equals(FavouriteNews.technology.str)) {
                         tvTechnologyFavourite.setBackgroundColor(R.color.colorPrimary.toInt())
                     } else {
                         tvTechnologyFavourite.setBackgroundColor(R.color.white_100.alpha)

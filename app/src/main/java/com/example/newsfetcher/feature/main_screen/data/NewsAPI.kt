@@ -10,7 +10,7 @@ interface NewsAPI {
     suspend fun getArticles(
         @Query("country") country: String = "ru",
 //        @Query("language") language: String = "ru",
-//        @Query("category") category: String = "general", // business, entertainment, general, health, science, sports, technology
+        @Query("category") category: String = "", // business, entertainment, general, health, science, sports, technology
 //        @Query("sources") sources: String = "",
 //        @Query("q") query: String = "Путин",
 //        @Query("pageSize") pageSize: String = "100", // 1..100

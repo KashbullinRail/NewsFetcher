@@ -16,4 +16,12 @@ class ArticlesRemoteRepositoryImpl(private val source: ArticlesRemoteSource) : A
         }
     }
 
+    override fun setFavouriteNews(setFavouriteNews: String) {
+       source.setFavouriteNews(setFavouriteNews)
+    }
+
+    override fun getFavouriteNews(): String {
+       return source.getFavouriteNews()
+    }
+
 }

@@ -9,16 +9,29 @@ enum class State {
     Error
 }
 
+enum class FavouriteNews(
+    val str: String
+) {
+    business("business"),
+    entertaiment("entertaiment"),
+    general("general"),
+    health("health"),
+    science("science"),
+    sports("sports"),
+    technology("technology")
+}
+
 
 data class ViewState(
     val state: State,
-    val business: Boolean,
-    val entertainment: Boolean,
-    val general: Boolean,
-    val health: Boolean,
-    val science: Boolean,
-    val sports: Boolean,
-    val technology: Boolean
+    val favouriteNews: String
+//    val business: Boolean,
+//    val entertainment: Boolean,
+//    val general: Boolean,
+//    val health: Boolean,
+//    val science: Boolean,
+//    val sports: Boolean,
+//    val technology: Boolean
 )
 
 sealed class UIEvent : Event {
@@ -28,10 +41,10 @@ sealed class UIEvent : Event {
     object OnHealthClicked : UIEvent()
     object OnScienceClicked : UIEvent()
     object OnSportsClicked : UIEvent()
-    object OnTechnologyClicked: UIEvent()
-    object OnSetFavouriteNewsSettingClicked: UIEvent()
+    object OnTechnologyClicked : UIEvent()
+    object OnSetFavouriteNewsSettingClicked : UIEvent()
 }
 
 sealed class DateEvent : Event {
-    object LoadFavouriteNewsSetting: DateEvent()
+    object LoadFavouriteNewsSetting : DateEvent()
 }

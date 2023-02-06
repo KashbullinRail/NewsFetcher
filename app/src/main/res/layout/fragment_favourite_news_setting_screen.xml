@@ -137,5 +137,14 @@
        app:layout_constraintStart_toEndOf="@+id/btnCancelFavouriteSetting"
        app:layout_constraintTop_toBottomOf="@+id/tvTechnologyFavourite" />
 
+   <androidx.core.widget.ContentLoadingProgressBar
+       android:id="@+id/pbFavouriteNewsSettingMenu"
+       android:layout_width="70dp"
+       android:layout_height="70dp"
+       android:visibility="gone"
+       app:layout_constraintBottom_toBottomOf="@+id/btnCancelFavouriteSetting"
+       app:layout_constraintEnd_toEndOf="@+id/ivSeparatorLineFavouriteSetting"
+       app:layout_constraintStart_toStartOf="@+id/ivSeparatorLineFavouriteSetting"
+       app:layout_constraintTop_toTopOf="@+id/tvTitleFavourite" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

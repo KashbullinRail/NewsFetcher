@@ -6,6 +6,7 @@ import android.view.View
 import androidx.core.graphics.alpha
 import androidx.core.graphics.green
 import androidx.core.graphics.red
+import androidx.core.view.isVisible
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentResultListener
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -69,7 +70,7 @@ class SearchSettingScreenFragment : DialogFragment(R.layout.fragment_search_sett
     private fun render(viewState: ViewState) {
         when (viewState.state) {
             State.Load -> {
-                //currently not processed, for the future expanded
+                binding.pbSearchSettingScreen.isVisible = true
             }
             State.Content -> {
                 with(binding) {

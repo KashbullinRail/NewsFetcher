@@ -7,4 +7,8 @@ interface ArticlesRepository {
 
     suspend fun getArticles(): List<ArticleModel>
 
+    fun setFavouriteNews(setFavouriteNews: String)
+
+    fun getFavouriteNews(): String
+
 }

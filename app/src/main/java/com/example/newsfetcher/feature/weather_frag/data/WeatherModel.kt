@@ -1,4 +1,4 @@
-package com.example.newsfetcher.feature.weather.data
+package com.example.newsfetcher.feature.weather_frag.data
 
 
 data class WeatherModel(

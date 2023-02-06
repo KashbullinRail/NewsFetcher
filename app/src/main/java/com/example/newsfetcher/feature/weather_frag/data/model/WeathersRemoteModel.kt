@@ -1,4 +1,4 @@
-package com.example.newsfetcher.feature.weather.data.model
+package com.example.newsfetcher.feature.weather_frag.data.model
 
 import com.google.gson.annotations.SerializedName
 

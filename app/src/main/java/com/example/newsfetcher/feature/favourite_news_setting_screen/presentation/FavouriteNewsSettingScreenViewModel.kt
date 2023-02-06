@@ -15,69 +15,72 @@ class FavouriteNewsSettingScreenViewModel(
 
     override fun initialViewState() = ViewState(
         state = State.Load,
-        business = false,
-        entertainment = false,
-        general = false,
-        health = false,
-        science = false,
-        sports = false,
-        technology = false,
+        favouriteNews = "general",
+//        business = false,
+//        entertainment = false,
+//        general = false,
+//        health = false,
+//        science = false,
+//        sports = false,
+//        technology = false,
     )
 
     override fun reduce(event: Event, previousState: ViewState): ViewState? {
 
         when (event) {
             is DateEvent.LoadFavouriteNewsSetting -> {
+                return previousState.copy(
 
-                return null
+                    state = State.Content
+                )
             }
             is UIEvent.OnSetFavouriteNewsSettingClicked -> {
-//                val setFavouriteNews = FavouriteNewsSettingModel(
-//                    business = previousState.business,
-//
-//                )
+                val setFavouriteNews = FavouriteNewsSettingModel(
+                    favouriteNews = previousState.favouriteNews,
+
+                )
 //                searchInteractor.setSearchSetting(setSearchSetting)
                 return null
             }
             is UIEvent.OnBusinessClicked -> {
                 return previousState.copy(
-                    business = !previousState.business,
+                    favouriteNews = FavouriteNews.business.str,
                     state = State.Content
                 )
             }
             is UIEvent.OnEntertainmentClicked -> {
                 return previousState.copy(
-                    entertainment = !previousState.entertainment,
+                   favouriteNews = FavouriteNews.entertaiment.str,
                     state = State.Content
                 )
             }
             is UIEvent.OnGeneralClicked -> {
                 return previousState.copy(
-                    general = !previousState.general,
+                    favouriteNews = FavouriteNews.general.str,
                     state = State.Content
                 )
             }
             is UIEvent.OnHealthClicked -> {
                 return previousState.copy(
-                    health = !previousState.health,
+                    favouriteNews = FavouriteNews.health.str,
                     state = State.Content
                 )
             }
             is UIEvent.OnScienceClicked -> {
                 return previousState.copy(
-                    science = !previousState.science,
+                    favouriteNews = FavouriteNews.science.str,
                     state = State.Content
                 )
             }
             is UIEvent.OnSportsClicked -> {
                 return previousState.copy(
-                    sports = !previousState.sports,
+                    favouriteNews = FavouriteNews.sports.str,
                     state = State.Content
                 )
             }
             is UIEvent.OnTechnologyClicked -> {
                 return previousState.copy(
-                    technology = !previousState.technology,
+                    favouriteNews = FavouriteNews.technology.str,
                     state = State.Content
                 )
             }
