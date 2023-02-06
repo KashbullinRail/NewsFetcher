@@ -21,17 +21,9 @@ enum class FavouriteNews(
     technology("technology")
 }
 
-
 data class ViewState(
     val state: State,
     val favouriteNews: String
-//    val business: Boolean,
-//    val entertainment: Boolean,
-//    val general: Boolean,
-//    val health: Boolean,
-//    val science: Boolean,
-//    val sports: Boolean,
-//    val technology: Boolean
 )
 
 sealed class UIEvent : Event {

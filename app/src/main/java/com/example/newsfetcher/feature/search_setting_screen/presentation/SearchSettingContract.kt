@@ -12,25 +12,25 @@ enum class State {
 enum class SearchIn(
     val str: String
 ) {
-    TITLE("title"),
-    DISCRIPTION("description"),
-    ALL_IN("title,description,content")
+    Title("title"),
+    Discription("description"),
+    All_In("title,description,content")
 }
 
 enum class SortBy(
     val str: String
 ){
-    RELEVANCY("relevancy"),
-    POPULARITY("popularity"),
-    PUBLISHEDAT("publishedAt")
+    Relevancy("relevancy"),
+    Popularity("popularity"),
+    PublishedAt("publishedAt")
 }
 
 enum class DateType(
     val str: String
 ){
-    DATE_FROM("date_from"),
-    DATE_TO("date_to"),
-    DATE_ALL("all_in")
+    Date_From("date_from"),
+    Date_To("date_to"),
+    Date_All("all_in")
 }
 
 data class ViewState(

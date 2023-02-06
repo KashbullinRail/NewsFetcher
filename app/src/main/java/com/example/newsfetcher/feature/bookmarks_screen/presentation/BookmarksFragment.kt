@@ -77,6 +77,7 @@ class BookmarksFragment : Fragment(R.layout.fragment_bookmarks) {
                 Log.d("TAGG", "Detail BookmarksFragment = ${viewState.articleDetail}")
                 //TODO redirect data transfer to safeArgs
                 val bundle = bundleOf(PUT_TO_DETAIL_FRAGMENT to articleDetail)
+
                 findNavController().navigate(R.id.detailFragment, bundle)
             }
         }

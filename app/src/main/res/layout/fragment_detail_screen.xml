@@ -110,16 +110,6 @@
         app:layout_constraintStart_toStartOf="@+id/ivNewsDetail"
         app:layout_constraintTop_toTopOf="@+id/ivNewsDetail" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fabGoBackFromDetailScreen"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginBottom="15dp"
-        android:src="@drawable/ic_arrow_back"
-        app:layout_constraintBottom_toTopOf="@+id/bnvBarDetail"
-        app:layout_constraintStart_toStartOf="parent" />
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bnvBarDetail"
         android:layout_width="0dp"
