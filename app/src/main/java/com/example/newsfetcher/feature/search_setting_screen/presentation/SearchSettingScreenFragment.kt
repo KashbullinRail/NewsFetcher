@@ -9,6 +9,7 @@ import androidx.core.graphics.red
 import androidx.core.view.isVisible
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentResultListener
+import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.newsfetcher.R
 import com.example.newsfetcher.databinding.FragmentSearchSettingScreenBinding
@@ -57,6 +58,7 @@ class SearchSettingScreenFragment : DialogFragment(R.layout.fragment_search_sett
             }
             btnSaveSearchSetting.setOnClickListener {
                 viewModel.processUIEvent(UIEvent.OnSetSearchSettingClicked)
+                findNavController().navigate(R.id.searchScreenFragment)
                 dialog?.dismiss()
             }
             btnCancelSearchSetting.setOnClickListener {

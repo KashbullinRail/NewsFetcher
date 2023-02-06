@@ -5,6 +5,7 @@ import android.view.View
 import androidx.core.graphics.alpha
 import androidx.core.view.isVisible
 import androidx.fragment.app.DialogFragment
+import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.newsfetcher.R
 import com.example.newsfetcher.databinding.FragmentFavouriteNewsSettingScreenBinding
@@ -49,6 +50,7 @@ class FavouriteNewsSettingScreenFragment :
             }
             btnSaveFavouriteSetting.setOnClickListener {
                 viewModel.processUIEvent(UIEvent.OnSetFavouriteNewsSettingClicked)
+                findNavController().navigate(R.id.mainScreenFragment)
                 dialog?.dismiss()
             }
         }
