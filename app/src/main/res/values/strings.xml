@@ -6,6 +6,7 @@
     <string name="main">Главная</string>
     <string name="favorite">Избранное</string>
     <string name="search">Поиск</string>
+    <string name="sources">Источники</string>
 
     <!--    For webview screen-->
     <string name="loadSite">Сайт загружается</string>
@@ -59,7 +60,6 @@
     <string name="technology">Технологии</string>
     <string name="favourite_type_news">Тип предпочитаемых новостей</string>
     <string name="author">author</string>
-
 
 
 
