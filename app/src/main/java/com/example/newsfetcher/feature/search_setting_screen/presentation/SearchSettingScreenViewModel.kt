@@ -38,11 +38,11 @@ class SearchSettingScreenViewModel(
                 val set = searchInteractor.getSearchSetting()
                 if (set.dateFrom.equals("")) {
                     return previousState.copy(
-                        searchIn = SearchIn.ALL_IN.str,
+                        searchIn = SearchIn.All_In.str,
                         dataTo = prevDayOfMonth,
                         dataFrom = dayOfMonth,
-                        sortBy = SortBy.PUBLISHEDAT.str,
-                        dataType = DateType.DATE_ALL.str,
+                        sortBy = SortBy.PublishedAt.str,
+                        dataType = DateType.Date_All.str,
                         state = State.Content
                     )
                 } else {
@@ -51,7 +51,7 @@ class SearchSettingScreenViewModel(
                         dataTo = set.dateTo,
                         dataFrom = set.dateFrom,
                         sortBy = set.sortBy,
-                        dataType = DateType.DATE_ALL.str,
+                        dataType = DateType.Date_All.str,
                         state = State.Content
                     )
                 }
@@ -68,37 +68,37 @@ class SearchSettingScreenViewModel(
             }
             is UIEvent.OnTitleSearchInClicked -> {
                 return previousState.copy(
-                    searchIn = SearchIn.TITLE.str,
+                    searchIn = SearchIn.Title.str,
                     state = State.Content
                 )
             }
             is UIEvent.OnDescriptionSearchInClicked -> {
                 return previousState.copy(
-                    searchIn = SearchIn.DISCRIPTION.str,
+                    searchIn = SearchIn.Discription.str,
                     state = State.Content
                 )
             }
             is UIEvent.OnAllSearchInClicked -> {
                 return previousState.copy(
-                    searchIn = SearchIn.ALL_IN.str,
+                    searchIn = SearchIn.All_In.str,
                     state = State.Content
                 )
             }
             is UIEvent.OnPopularityClicked -> {
                 return previousState.copy(
-                    sortBy = SortBy.POPULARITY.str,
+                    sortBy = SortBy.Popularity.str,
                     state = State.Content
                 )
             }
             is UIEvent.OnRelevancyClicked -> {
                 return previousState.copy(
-                    sortBy = SortBy.RELEVANCY.str,
+                    sortBy = SortBy.Relevancy.str,
                     state = State.Content
                 )
             }
             is UIEvent.OnPublishedAtClicked -> {
                 return previousState.copy(
-                    sortBy = SortBy.PUBLISHEDAT.str,
+                    sortBy = SortBy.PublishedAt.str,
                     state = State.Content
                 )
             }
@@ -106,13 +106,13 @@ class SearchSettingScreenViewModel(
                 if (!(event.dateFrom == "") && !(event.dateFrom < prevDayOfMonth)) {
                     return previousState.copy(
                         dataFrom = event.dateFrom,
-                        dataType = DateType.DATE_FROM.str,
+                        dataType = DateType.Date_From.str,
                         state = State.Content,
                     )
                 } else {
                     return previousState.copy(
                         dataFrom = prevDayOfMonth,
-                        dataType = DateType.DATE_FROM.str,
+                        dataType = DateType.Date_From.str,
                         state = State.Content,
                     )
                 }
@@ -120,7 +120,7 @@ class SearchSettingScreenViewModel(
             is UIEvent.OnDataToClicked -> {
                 return previousState.copy(
                     dataTo = event.dateTo,
-                    dataType = DateType.DATE_TO.str,
+                    dataType = DateType.Date_To.str,
                     state = State.Content,
                 )
             }

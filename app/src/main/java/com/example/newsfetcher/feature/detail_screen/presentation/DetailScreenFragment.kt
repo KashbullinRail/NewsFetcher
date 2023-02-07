@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.addCallback
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -73,12 +74,19 @@ class DetailScreenFragment : Fragment(R.layout.fragment_detail_screen) {
     private fun render(viewState: ViewState) {
 
         when (viewState.state) {
-            State.Load -> {} //TODO
+            State.Load -> {
+                binding.pbDetailScreen.isVisible = true
+            }
             State.Content -> {
                 with(binding) {
+                    pbDetailScreen.isVisible = false
                     tvTitleDetail.text = viewState.detailArticle.title
                     tvDescriptionDetail.text = viewState.detailArticle.description
-                    tvAuthorDetail.text = viewState.detailArticle.author
+                    if(viewState.detailArticle.author.isEmpty()) {
+                        tvAuthorDetail.setText(R.string.noname)
+                    } else {
+                        tvAuthorDetail.text =  viewState.detailArticle.author
+                    }
                     tvNameDetail.text = viewState.detailArticle.name
                     tvDataDetail.text = viewState.detailArticle.publishedAt
                     tvLinkToSourceDetail.text = viewState.detailArticle.url
@@ -93,13 +101,13 @@ class DetailScreenFragment : Fragment(R.layout.fragment_detail_screen) {
                 }
             }
             State.LoadWebView -> {
+                binding.pbDetailScreen.isVisible = false
                 val webViewLink = viewState.webViewLink
                 if (!webViewLink.isBlank()) {
                     //TODO redirect data transfer to safeArgs
                     val bundle = bundleOf(PUT_TO_WEBVIEW_FRAGMENT to webViewLink)
                     findNavController().navigate(R.id.webViewFragment, bundle)
                 }
-
             }
             State.Error -> {} //TODO
         }

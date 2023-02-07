@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.core.graphics.alpha
+import androidx.core.view.isVisible
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentResultListener
+import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.newsfetcher.R
 import com.example.newsfetcher.databinding.FragmentSearchSettingScreenBinding
@@ -52,9 +54,9 @@ class SearchSettingScreenFragment : DialogFragment(R.layout.fragment_search_sett
             tvPopularity.setOnClickListener {
                 viewModel.processUIEvent(UIEvent.OnPopularityClicked)
             }
-
             btnSaveSearchSetting.setOnClickListener {
                 viewModel.processUIEvent(UIEvent.OnSetSearchSettingClicked)
+                findNavController().navigate(R.id.searchScreenFragment)
                 dialog?.dismiss()
             }
             btnCancelSearchSetting.setOnClickListener {
@@ -68,52 +70,53 @@ class SearchSettingScreenFragment : DialogFragment(R.layout.fragment_search_sett
     private fun render(viewState: ViewState) {
         when (viewState.state) {
             State.Load -> {
-                //currently not processed, for the future expanded
+                binding.pbSearchSettingScreen.isVisible = true
             }
             State.Content -> {
                 with(binding) {
+                    pbSearchSettingScreen.isVisible = false
                     when (viewState.searchIn) {
-                        SearchIn.TITLE.str -> {
+                        SearchIn.Title.str -> {
                             tvTitleSearchIn.setBackgroundColor(R.color.colorPrimary.toInt())
                             tvDescriptionSearchIn.setBackgroundColor(R.color.white_100.alpha)
                             tvAllSearchIn.setBackgroundColor(R.color.white_100.alpha)
                         }
-                        SearchIn.DISCRIPTION.str -> {
+                        SearchIn.Discription.str -> {
                             tvDescriptionSearchIn.setBackgroundColor(R.color.colorPrimary.toInt())
                             tvTitleSearchIn.setBackgroundColor(R.color.white_100.alpha)
                             tvAllSearchIn.setBackgroundColor(R.color.white_100.alpha)
                         }
-                        SearchIn.ALL_IN.str -> {
+                        SearchIn.All_In.str -> {
                             tvAllSearchIn.setBackgroundColor(R.color.colorPrimary.toInt())
                             tvDescriptionSearchIn.setBackgroundColor(R.color.white_100.alpha)
                             tvTitleSearchIn.setBackgroundColor(R.color.white_100.alpha)
                         }
                     }
                     when (viewState.sortBy) {
-                        SortBy.POPULARITY.str -> {
+                        SortBy.Popularity.str -> {
                             tvPopularity.setBackgroundColor(R.color.colorPrimary.toInt())
                             tvRelevancy.setBackgroundColor(R.color.white_100.alpha)
                             tvPublishedAt.setBackgroundColor(R.color.white_100.alpha)
                         }
-                        SortBy.RELEVANCY.str -> {
+                        SortBy.Relevancy.str -> {
                             tvPopularity.setBackgroundColor(R.color.white_100.alpha)
                             tvRelevancy.setBackgroundColor(R.color.colorPrimary.toInt())
                             tvPublishedAt.setBackgroundColor(R.color.white_100.alpha)
                         }
-                        SortBy.PUBLISHEDAT.str -> {
+                        SortBy.PublishedAt.str -> {
                             tvPopularity.setBackgroundColor(R.color.white_100.alpha)
                             tvRelevancy.setBackgroundColor(R.color.white_100.alpha)
                             tvPublishedAt.setBackgroundColor(R.color.colorPrimary.toInt())
                         }
                     }
                     when (viewState.dataType) {
-                        DateType.DATE_FROM.str -> {
+                        DateType.Date_From.str -> {
                             binding.tvDataFrom.text = viewState.dataFrom
                         }
-                        DateType.DATE_TO.str -> {
+                        DateType.Date_To.str -> {
                             binding.tvDataTo.text = viewState.dataTo
                         }
-                        DateType.DATE_ALL.str -> {
+                        DateType.Date_All.str -> {
                             binding.tvDataFrom.text = viewState.dataFrom
                             binding.tvDataTo.text = viewState.dataTo
                         }

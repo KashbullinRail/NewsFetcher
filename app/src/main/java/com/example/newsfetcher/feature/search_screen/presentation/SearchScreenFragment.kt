@@ -1,11 +1,8 @@
 package com.example.newsfetcher.feature.search_screen.presentation
 
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import androidx.activity.addCallback
 import androidx.core.os.bundleOf

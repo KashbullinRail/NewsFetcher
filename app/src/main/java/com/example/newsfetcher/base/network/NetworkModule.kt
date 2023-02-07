@@ -1,7 +1,7 @@
 package com.example.newsfetcher.di
 
 import android.util.Log
-import com.example.newsfetcher.base.HeaderIntercepter
+import com.example.newsfetcher.base.network.HeaderIntercepter
 import com.example.newsfetcher.feature.main_screen.di.BASE_URL_NEWS_API
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
