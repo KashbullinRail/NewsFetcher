@@ -50,7 +50,7 @@
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-<!--    For Favourite Dialog Screen-->
+    <!--    For Favourite Dialog Screen-->
     <string name="business">Бизнес</string>
     <string name="entertainment">Развлечения</string>
     <string name="general">Главные</string>
@@ -60,7 +60,6 @@
     <string name="technology">Технологии</string>
     <string name="favourite_type_news">Тип предпочитаемых новостей</string>
     <string name="author">author</string>
-
 
 
 </resources>
