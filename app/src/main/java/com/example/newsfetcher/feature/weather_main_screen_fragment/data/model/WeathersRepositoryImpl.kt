@@ -1,9 +1,9 @@
-package com.example.newsfetcher.feature.weather_frag.data.model
+package com.example.newsfetcher.feature.weather_main_screen_fragment.data.model
 
-import com.example.newsfetcher.feature.weather_frag.data.WeatherModel
-import com.example.newsfetcher.feature.weather_frag.data.WeathersRemoteSource
-import com.example.newsfetcher.feature.weather_frag.data.WeathersRepository
-import com.example.newsfetcher.feature.weather_frag.data.toDomian
+import com.example.newsfetcher.feature.weather_main_screen_fragment.data.WeatherModel
+import com.example.newsfetcher.feature.weather_main_screen_fragment.data.WeathersRemoteSource
+import com.example.newsfetcher.feature.weather_main_screen_fragment.data.WeathersRepository
+import com.example.newsfetcher.feature.weather_main_screen_fragment.data.toDomian
 
 
 class WeathersRepositoryImpl(private val weatherRemoteSource: WeathersRemoteSource) :

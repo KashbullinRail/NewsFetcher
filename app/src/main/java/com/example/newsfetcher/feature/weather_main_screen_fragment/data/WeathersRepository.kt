@@ -1,4 +1,4 @@
-package com.example.newsfetcher.feature.weather_frag.data
+package com.example.newsfetcher.feature.weather_main_screen_fragment.data
 
 
 

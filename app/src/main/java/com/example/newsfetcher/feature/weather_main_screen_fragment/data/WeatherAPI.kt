@@ -1,7 +1,7 @@
-package com.example.newsfetcher.feature.weather_frag.data
+package com.example.newsfetcher.feature.weather_main_screen_fragment.data
 
-import com.example.newsfetcher.feature.weather_frag.data.model.WeathersRemoteModel
-import com.example.newsfetcher.feature.weather_frag.di.API_KEY_WEATHER
+import com.example.newsfetcher.feature.weather_main_screen_fragment.data.model.WeathersRemoteModel
+import com.example.newsfetcher.feature.weather_main_screen_fragment.di.API_KEY_WEATHER
 import retrofit2.http.GET
 import retrofit2.http.Query
 
