@@ -2,7 +2,9 @@ package com.example.newsfetcher.feature.news_source_screen.presentation
 
 import android.os.Bundle
 import android.view.View
+import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.newsfetcher.R
 import com.example.newsfetcher.databinding.FragmentNewsSourceScreenBinding
@@ -14,6 +16,11 @@ class NewsSourceScreenFragment : Fragment(R.layout.fragment_news_source_screen) 
 
     private val binding by viewBinding(FragmentNewsSourceScreenBinding::bind)
     private val viewModel: NewsSourceScreenViewModel by viewModel()
+    private val adapter: NewsSourceAdapter by lazy {
+        NewsSourceAdapter {index, type ->
+            viewModel
+        }
+    }
 
 
 
@@ -22,6 +29,33 @@ class NewsSourceScreenFragment : Fragment(R.layout.fragment_news_source_screen) 
 
         viewModel.viewState.observe(viewLifecycleOwner, ::render)
 
+        with(binding) {
+            rvNewsSourceScreen.adapter = adapter
+
+            bnvBarNewsSource.setOnItemSelectedListener {
+                when (it.itemId) {
+                    R.id.itemBookmarks -> {
+                        findNavController().navigate(R.id.bookmarksScreenFragment)
+                    }
+                    R.id.itemSearch -> {
+                        findNavController().navigate(R.id.searchScreenFragment)
+                    }
+                    R.id.itemMain -> {
+                        findNavController().navigate(R.id.mainScreenFragment)
+                    }
+                    else -> {}
+                }
+                true
+            }
+
+
+
+
+        }
+
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            findNavController().navigate(R.id.searchScreenFragment)
+        }
 
     }
 

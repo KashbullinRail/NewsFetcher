@@ -36,7 +36,7 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setUrl("1")
+//        setUrl("1")
 
         viewModel.viewState.observe(viewLifecycleOwner, ::render)
 
@@ -65,7 +65,7 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
         }
 
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
-            findNavController().navigate(R.id.bookmarksScreenFragment)
+            findNavController().navigate(R.id.)
         }
 
         if (!isOnline(requireContext())){

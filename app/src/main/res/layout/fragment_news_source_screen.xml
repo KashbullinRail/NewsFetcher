@@ -2,13 +2,12 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/newsSourceScreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".feature.news_source_screen.presentation.NewsSourceScreenFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/rvNewsSourceScreen"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/bnvBarNewsSource"
@@ -44,7 +43,7 @@
         android:layout_marginStart="15dp"
         android:layout_marginBottom="15dp"
         android:src="@drawable/ic_searchmenu_filter"
-        app:layout_constraintBottom_toBottomOf="@+id/recyclerView"
-        app:layout_constraintStart_toStartOf="@+id/recyclerView" />
+        app:layout_constraintBottom_toBottomOf="@+id/rvNewsSourceScreen"
+        app:layout_constraintStart_toStartOf="@+id/rvNewsSourceScreen" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

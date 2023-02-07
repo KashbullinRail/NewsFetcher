@@ -7,16 +7,13 @@ import android.view.animation.AnimationSet
 import android.view.animation.ScaleAnimation
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.example.newsfetcher.R
-import com.example.newsfetcher.databinding.ItemArticleAdapterBinding
-import com.example.newsfetcher.feature.main_screen.domian.ArticleModel
+import com.example.newsfetcher.databinding.ItemNewsSourceAdapterBinding
+import com.example.newsfetcher.feature.news_source_screen.domain.SourceModel
 
-const val BOOKMARK_EMPTY = "BOOKMARK_EMPTY"
-const val BOOKMARK_FULL = "BOOKMARK_FULL"
-const val ARTICLE_ITEM = "ARTICLE_ITEM"
+
+const val STAR_EMPTY = "STAR_EMPTY"
+const val STAR_FULL = "STAR_FULL"
+const val SOURCE_ITEM = "SOURCE_ITEM"
 
 
 class NewsSourceAdapter(
@@ -24,20 +21,20 @@ class NewsSourceAdapter(
     ) : RecyclerView.Adapter<NewsSourceAdapter.NewsSourceViewHolder>() {
 
         class NewsSourceViewHolder(
-            val binding: ItemArticleAdapterBinding
+            val binding: ItemNewsSourceAdapterBinding
         ) : RecyclerView.ViewHolder(binding.root)
 
-        var articles: List<ArticleModel> = emptyList()
+        var sources: List<SourceModel> = emptyList()
             set(newValue) {
                 field = newValue
                 notifyDataSetChanged()
             }
 
-        override fun getItemCount(): Int = articles.size
+        override fun getItemCount(): Int = sources.size
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsSourceViewHolder {
             val inflater = LayoutInflater.from(parent.context)
-            val binding = ItemArticleAdapterBinding.inflate(inflater, parent, false)
+            val binding = ItemNewsSourceAdapterBinding.inflate(inflater, parent, false)
             return NewsSourceViewHolder(binding)
         }
 
@@ -45,10 +42,10 @@ class NewsSourceAdapter(
 
             //handle pressing the open detail item
             holder.itemView.setOnClickListener {
-                onItemClicked.invoke(position, ARTICLE_ITEM)
+                onItemClicked.invoke(position, SOURCE_ITEM)
             }
 
-            val article = articles[position]
+            val source = sources[position]
             with(holder.binding) {
 
                 //bookmark click animation
@@ -70,39 +67,29 @@ class NewsSourceAdapter(
 
                 //handle pressing the delete item
                 ivBookmarksEmpty.setOnClickListener {
-                    val select = articles[position].selectedBookmark
-                    articles[position].selectedBookmark = !select
+                    val select = sources[position].selectSource
+                    sources[position].selectSource = !select
                     ivBookmarksEmpty.isVisible = select
                     ivBookmarksFull.isVisible = !select
                     ivBookmarksFull.startAnimation(animationBookmark)
-                    onItemClicked.invoke(position, BOOKMARK_EMPTY)
+                    onItemClicked.invoke(position, STAR_EMPTY)
                 }
 
                 //handle pressing the add bookmark item
                 ivBookmarksFull.setOnClickListener {
-                    val select = articles[position].selectedBookmark
-                    articles[position].selectedBookmark = !select
+                    val select = sources[position].selectSource
+                    sources[position].selectSource = !select
                     ivBookmarksEmpty.isVisible = select
                     ivBookmarksFull.isVisible = !select
-                    onItemClicked.invoke(position, BOOKMARK_FULL)
+                    onItemClicked.invoke(position, STAR_FULL)
                 }
 
                 //setting variables
-                holder.itemView.tag = article
-                tvNameMain.text = article.name
-                tvTitleMain.text = article.title
-                tvDataMain.text = article.publishedAt
-                ivBookmarksEmpty.isVisible = !articles[position].selectedBookmark
-                ivBookmarksFull.isVisible = articles[position].selectedBookmark
-                Glide
-                    .with(ivNewsImageMain.context)
-                    .load(article.urlToImage)
-                    .placeholder(R.drawable.ic_image)
-                    .error(R.drawable.ic_image_not_supported)
-                    .transition(DrawableTransitionOptions.withCrossFade())
-                    .diskCacheStrategy(DiskCacheStrategy.DATA)
-                    .centerCrop()
-                    .into(ivNewsImageMain)
+                holder.itemView.tag = source
+                tvNameSource.text = source.name
+                tvDescriptionSource.text = source.description
+                ivBookmarksEmpty.isVisible = !sources[position].selectSource
+                ivBookmarksFull.isVisible = sources[position].selectSource
 
             }
 
@@ -110,8 +97,8 @@ class NewsSourceAdapter(
 
         //redrawing UI
         @SuppressLint("NotifyDataSetChanged")
-        fun setData(articles: List<ArticleModel>) {
-            this.articles = articles
+        fun setData(sources: List<SourceModel>) {
+            this.sources = sources
             notifyDataSetChanged()
         }
 

@@ -7,4 +7,5 @@ data class SourceModel(
     val name: String,
     val description: String,
     val url: String,
+    var selectSource: Boolean
 ): Serializable
