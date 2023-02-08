@@ -1,14 +1,17 @@
 package com.example.newsfetcher.feature.news_source_screen.presentation
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.activity.addCallback
+import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.newsfetcher.R
 import com.example.newsfetcher.databinding.FragmentNewsSourceScreenBinding
-import com.example.newsfetcher.feature.detail_screen.presentation.ViewState
+import com.example.newsfetcher.feature.main_screen.presentation.PUT_TO_WEBVIEW_FRAGMENT
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -18,7 +21,7 @@ class NewsSourceScreenFragment : Fragment(R.layout.fragment_news_source_screen) 
     private val viewModel: NewsSourceScreenViewModel by viewModel()
     private val adapter: NewsSourceAdapter by lazy {
         NewsSourceAdapter {index, type ->
-            viewModel
+            viewModel.processUIEvent(UIEvent.OnSourcesClicked(index, type))
         }
     }
 
@@ -43,13 +46,13 @@ class NewsSourceScreenFragment : Fragment(R.layout.fragment_news_source_screen) 
                     R.id.itemMain -> {
                         findNavController().navigate(R.id.mainScreenFragment)
                     }
+                    R.id.itemLikeSources -> {
+                        findNavController().navigate(R.id.starNewsSourcesScreenFragment)
+                    }
                     else -> {}
                 }
                 true
             }
-
-
-
 
         }
 
@@ -60,7 +63,28 @@ class NewsSourceScreenFragment : Fragment(R.layout.fragment_news_source_screen) 
     }
 
 
-    fun render(viewState: ViewState){
+    private fun render(viewState: ViewState){
+
+        when (viewState.state) {
+            State.Load -> {
+                binding.pbNewsSource.isVisible = true
+            }
+            State.Content -> {
+                binding.pbNewsSource.isVisible = false
+                adapter.setData(viewState.sourceListShown)
+            }
+            State.Error -> {
+            }
+            State.LoadWebView -> {
+                binding.pbNewsSource.isVisible = false
+                val webViewLink = viewState.webViewLink
+                if (!webViewLink.isBlank()) {
+                    //TODO redirect data transfer to safeArgs
+                    val bundle = bundleOf(PUT_TO_WEBVIEW_FRAGMENT to webViewLink)
+                    findNavController().navigate(R.id.webViewFragment, bundle)
+                }
+            }
+        }
 
     }
 

@@ -7,7 +7,7 @@ import com.example.newsfetcher.feature.detail_screen.presentation.ViewState
 class NewsSourceScreenViewModel(): BaseViewModel<ViewState>() {
 
    init {
-
+       DateEvent.LoadSources
    }
 
 

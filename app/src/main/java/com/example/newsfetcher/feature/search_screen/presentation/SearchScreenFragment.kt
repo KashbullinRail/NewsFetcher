@@ -41,7 +41,7 @@ class SearchScreenFragment : Fragment(R.layout.fragment_search_screen) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setUrl("2")
+//        setUrl("2")
 
         viewModel.viewState.observe(viewLifecycleOwner, ::render)
 
@@ -56,6 +56,12 @@ class SearchScreenFragment : Fragment(R.layout.fragment_search_screen) {
                     }
                     R.id.itemMain -> {
                         findNavController().navigate(R.id.mainScreenFragment)
+                    }
+                    R.id.itemSource -> {
+                        findNavController().navigate(R.id.newsSourceScreenFragment)
+                    }
+                    R.id.itemLikeSources -> {
+                        findNavController().navigate(R.id.starNewsSourcesScreenFragment)
                     }
                     else -> {}
                 }

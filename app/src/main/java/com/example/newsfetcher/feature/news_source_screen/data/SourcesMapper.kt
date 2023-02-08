@@ -7,5 +7,6 @@ fun SourceRemoteModel.toDomain() = SourceModel(
     id = id.hashCode().toString(),
     name = name ?: "",
     description = description ?: "",
-    url = url ?: ""
+    url = url ?: "",
+    selectSource = false,
 )
