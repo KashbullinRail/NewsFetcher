@@ -12,3 +12,10 @@ class WeatherInteractor(private val weatherRepo: WeathersRepository) {
         return attempt { weatherRepo.getTemperature() }
     }
 }
+
+//TODO -> JSON converter
+//                var gson = Gson()
+//                var json = gson.toJson(ModelT())
+//                println("json= $json")
+//                var fromJson = gson.fromJson(json, ModelT::class.java)
+//                println("fromJson=$fromJson      ${fromJson.age}    ${fromJson.title}   ${fromJson.yes}")

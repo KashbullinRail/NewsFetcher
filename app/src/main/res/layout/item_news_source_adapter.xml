@@ -30,7 +30,7 @@
         tools:text="@tools:sample/lorem/random" />
 
     <ImageView
-        android:id="@+id/iv_bookmarks_full"
+        android:id="@+id/iv_star_full"
         android:layout_width="70dp"
         android:layout_height="40dp"
         android:layout_gravity="end"
@@ -41,7 +41,7 @@
         android:visibility="gone" />
 
     <ImageView
-        android:id="@+id/iv_bookmarks_empty"
+        android:id="@+id/iv_star_empty"
         android:layout_width="70dp"
         android:layout_height="40dp"
         android:layout_gravity="end"

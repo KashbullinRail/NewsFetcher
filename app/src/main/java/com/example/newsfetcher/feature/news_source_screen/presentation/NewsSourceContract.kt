@@ -14,6 +14,8 @@ enum class State {
 data class ViewState(
     val state: State,
     val sourceListShown: List<SourceModel>,
+    val sourceList: List<SourceModel>,
+    val sourceDetail: SourceModel,
     val webViewLink: String
 )
 

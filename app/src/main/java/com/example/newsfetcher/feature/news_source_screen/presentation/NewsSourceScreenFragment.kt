@@ -1,7 +1,6 @@
 package com.example.newsfetcher.feature.news_source_screen.presentation
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.activity.addCallback
 import androidx.core.os.bundleOf
@@ -24,8 +23,6 @@ class NewsSourceScreenFragment : Fragment(R.layout.fragment_news_source_screen) 
             viewModel.processUIEvent(UIEvent.OnSourcesClicked(index, type))
         }
     }
-
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

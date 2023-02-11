@@ -7,6 +7,10 @@ import android.view.animation.AnimationSet
 import android.view.animation.ScaleAnimation
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.example.newsfetcher.R
 import com.example.newsfetcher.databinding.ItemNewsSourceAdapterBinding
 import com.example.newsfetcher.feature.news_source_screen.domain.SourceModel
 
@@ -47,7 +51,6 @@ class NewsSourceAdapter(
 
             val source = sources[position]
             with(holder.binding) {
-
                 //bookmark click animation
                 val animationBookmark by lazy(LazyThreadSafetyMode.NONE) {
                     val toSmall = ScaleAnimation(1f, 0.75f, 1f, 0.75f)
@@ -64,32 +67,29 @@ class NewsSourceAdapter(
                     }
                     anim
                 }
-
                 //handle pressing the delete item
-                ivBookmarksEmpty.setOnClickListener {
+                ivStarEmpty.setOnClickListener {
                     val select = sources[position].selectSource
                     sources[position].selectSource = !select
-                    ivBookmarksEmpty.isVisible = select
-                    ivBookmarksFull.isVisible = !select
-                    ivBookmarksFull.startAnimation(animationBookmark)
+                    ivStarEmpty.isVisible = select
+                    ivStarFull.isVisible = !select
+                    ivStarFull.startAnimation(animationBookmark)
                     onItemClicked.invoke(position, STAR_EMPTY)
                 }
-
                 //handle pressing the add bookmark item
-                ivBookmarksFull.setOnClickListener {
+                ivStarFull.setOnClickListener {
                     val select = sources[position].selectSource
                     sources[position].selectSource = !select
-                    ivBookmarksEmpty.isVisible = select
-                    ivBookmarksFull.isVisible = !select
+                    ivStarEmpty.isVisible = select
+                    ivStarFull.isVisible = !select
                     onItemClicked.invoke(position, STAR_FULL)
                 }
-
                 //setting variables
                 holder.itemView.tag = source
                 tvNameSource.text = source.name
                 tvDescriptionSource.text = source.description
-                ivBookmarksEmpty.isVisible = !sources[position].selectSource
-                ivBookmarksFull.isVisible = sources[position].selectSource
+                ivStarEmpty.isVisible = !sources[position].selectSource
+                ivStarFull.isVisible = sources[position].selectSource
 
             }
 

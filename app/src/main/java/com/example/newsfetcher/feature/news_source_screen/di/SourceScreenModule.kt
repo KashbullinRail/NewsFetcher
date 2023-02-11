@@ -5,8 +5,11 @@ import com.example.newsfetcher.feature.news_source_screen.data.SourcesRemoteSour
 import com.example.newsfetcher.feature.news_source_screen.data.model.SourcesRemoteRepositoryImp
 import com.example.newsfetcher.feature.news_source_screen.domain.SourcesInteractor
 import com.example.newsfetcher.feature.news_source_screen.domain.SourcesRepository
+import com.example.newsfetcher.feature.news_source_screen.presentation.NewsSourceScreenViewModel
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
+
 
 val sourceScreenModule = module {
 
@@ -26,5 +29,8 @@ val sourceScreenModule = module {
         SourcesInteractor(sourcesRepository = get())
     }
 
+    viewModel {
+        NewsSourceScreenViewModel(sourcesInteractor = get())
+    }
 
 }
