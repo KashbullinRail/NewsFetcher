@@ -3,6 +3,7 @@ package com.example.newsfetcher
 import android.app.Application
 import com.example.newsfetcher.di.databaseModule
 import com.example.newsfetcher.di.networkModule
+import com.example.newsfetcher.di.sourceDatabaseModule
 import com.example.newsfetcher.feature.bookmarks_screen.di.bookmarksScreenModule
 import com.example.newsfetcher.feature.detail_screen.di.detailScreenModule
 import com.example.newsfetcher.feature.favourite_news_setting_screen.di.favouriteNewsSettingScreenModule
@@ -33,7 +34,8 @@ class App : Application() {
                 searchSettingScreenModule,
                 favouriteNewsSettingScreenModule,
                 sourceScreenModule,
-                sourceNewsSettingScreenModule
+                sourceNewsSettingScreenModule,
+                sourceDatabaseModule
 //                weatherInfoModule,
 //                weatherInfoNetworkModule
             )
