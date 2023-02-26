@@ -182,7 +182,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvRUSourceSetting" />
 
     <androidx.core.widget.ContentLoadingProgressBar
-        android:id="@+id/pbFavouriteNewsSettingMenu"
+        android:id="@+id/pbSourceNewsSettingMenu"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:visibility="gone"

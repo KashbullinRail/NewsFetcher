@@ -3,6 +3,7 @@ package com.example.newsfetcher.feature.news_source_screen.data
 import com.example.newsfetcher.feature.news_source_screen.data.model.SourcesRemoteModel
 import com.example.newsfetcher.feature.source_setting_screen.presentation.model.SetSourceSettingModel
 
+
 class SourcesRemoteSource(private val api: SourceAPI) {
 
     companion object {
@@ -11,7 +12,10 @@ class SourcesRemoteSource(private val api: SourceAPI) {
     }
 
     suspend fun getSources(): SourcesRemoteModel {
-       return api.getArticles()
+       return api.getArticles(
+           category = setTypeNews,
+           language = setLanguage
+       )
     }
 
     fun setSourceSetting(setSourceSettingModel: SetSourceSettingModel) {

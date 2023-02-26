@@ -55,8 +55,8 @@ class NewsSourceScreenFragment : Fragment(R.layout.fragment_news_source_screen) 
             }
 
             fabOpenNewsSourceTypeSelect.setOnClickListener {
-                val showSourceNews = SourceSettingScreenFragment()
-                showSourceNews.show(requireActivity().supportFragmentManager, SHOW_SOURCE_SETTING)
+                val showSettingSourceNews = SourceSettingScreenFragment()
+                showSettingSourceNews.show(requireActivity().supportFragmentManager, SHOW_SOURCE_SETTING)
             }
 
         }
