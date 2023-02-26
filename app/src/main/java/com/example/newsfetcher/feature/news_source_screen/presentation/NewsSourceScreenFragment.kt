@@ -11,7 +11,10 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.newsfetcher.R
 import com.example.newsfetcher.databinding.FragmentNewsSourceScreenBinding
 import com.example.newsfetcher.feature.main_screen.presentation.PUT_TO_WEBVIEW_FRAGMENT
+import com.example.newsfetcher.feature.source_setting_screen.presentation.SourceSettingScreenFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
+
+private const val SHOW_SOURCE_SETTING = "SHOW_SOURCE_SETTING"
 
 
 class NewsSourceScreenFragment : Fragment(R.layout.fragment_news_source_screen) {
@@ -51,6 +54,11 @@ class NewsSourceScreenFragment : Fragment(R.layout.fragment_news_source_screen) 
                 true
             }
 
+            fabOpenNewsSourceTypeSelect.setOnLongClickListener {
+                val showSourceNews = SourceSettingScreenFragment()
+                showSourceNews.show(requireActivity().supportFragmentManager, SHOW_SOURCE_SETTING)
+            }
+
         }
 
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
@@ -74,10 +82,11 @@ class NewsSourceScreenFragment : Fragment(R.layout.fragment_news_source_screen) 
             }
             State.LoadWebView -> {
                 binding.pbNewsSource.isVisible = false
-                val webViewLink = viewState.webViewLink
+                val webViewLink = viewState.sourceDetail.url
                 if (!webViewLink.isBlank()) {
                     //TODO redirect data transfer to safeArgs
                     val bundle = bundleOf(PUT_TO_WEBVIEW_FRAGMENT to webViewLink)
+                   findNavController().saveState()
                     findNavController().navigate(R.id.webViewFragment, bundle)
                 }
             }

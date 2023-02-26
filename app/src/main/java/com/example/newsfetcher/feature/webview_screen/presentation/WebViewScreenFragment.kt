@@ -45,6 +45,11 @@ class WebViewScreenFragment : Fragment(R.layout.fragment_webview_screen) {
                     findNavController().popBackStack()
                 }
             }
+            fabWebViewGoBack.setOnLongClickListener {
+                findNavController().navigate(R.id.mainScreenFragment)
+                return@setOnLongClickListener true
+            }
+
         }
 
     }

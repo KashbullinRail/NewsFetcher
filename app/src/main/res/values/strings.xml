@@ -61,7 +61,10 @@
     <string name="technology">Технологии</string>
     <string name="favourite_type_news">Тип предпочитаемых новостей</string>
     <string name="author">author</string>
-    
+    <string name="english">английский</string>
+    <string name="russia">русский</string>
+    <string name="source_language">Язык печати издания</string>
+    <string name="news_source_type">Тип новостного издания</string>
 
 
 </resources>

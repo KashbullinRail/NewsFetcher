@@ -9,7 +9,7 @@ interface SourceAPI {
     @GET("v2/top-headlines/sources")
     suspend fun getArticles(
         @Query("category") category: String = "", // business, entertainment, general, health, science, sports, technology
-        @Query("language") language: String = "",   //ru, en
+        @Query("language") language: String = "ru",   //ru, en
 //        @Query("country") country: String = "ru"
     ): SourcesRemoteModel
 

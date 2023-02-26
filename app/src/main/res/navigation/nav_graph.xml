@@ -86,18 +86,32 @@
         <action
             android:id="@+id/action_newsSourceScreenFragment_to_starNewsSourcesScreenFragment"
             app:destination="@id/starNewsSourcesScreenFragment" />
+        <action
+            android:id="@+id/action_newsSourceScreenFragment_to_webViewFragment"
+            app:destination="@id/webViewFragment" />
+        <action
+            android:id="@+id/action_newsSourceScreenFragment_to_sourceSettingScreenFragment"
+            app:destination="@id/sourceSettingScreenFragment" />
     </fragment>
     <fragment
         android:id="@+id/starNewsSourcesScreenFragment"
-        android:name="com.example.newsfetcher.feature.starNewsSourcesScreen.presentation.StarNewsSourcesScreenFragment"
+        android:name="com.example.newsfetcher.feature.star_news_sources_screen.presentation.StarNewsSourcesScreenFragment"
         android:label="fragment_star_news_sources_screen"
         tools:layout="@layout/fragment_star_news_sources_screen" >
         <action
             android:id="@+id/action_starNewsSourcesScreenFragment_to_newsSourceScreenFragment"
             app:destination="@id/newsSourceScreenFragment" />
+        <action
+            android:id="@+id/action_starNewsSourcesScreenFragment_to_webViewFragment"
+            app:destination="@id/webViewFragment" />
     </fragment>
     <dialog
         android:id="@+id/favouriteNewsSettingScreenFragment"
         android:name="com.example.newsfetcher.feature.favourite_news_setting_screen.presentation.FavouriteNewsSettingScreenFragment"
         android:label="FavouriteNewsSettingScreenFragment" />
+    <fragment
+        android:id="@+id/sourceSettingScreenFragment"
+        android:name="com.example.newsfetcher.SourceSettingScreenFragment"
+        android:label="fragment_source_setting_screen"
+        tools:layout="@layout/fragment_source_setting_screen" />
 </navigation>

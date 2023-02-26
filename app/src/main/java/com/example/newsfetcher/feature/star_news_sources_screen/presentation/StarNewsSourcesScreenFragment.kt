@@ -1,4 +1,4 @@
-package com.example.newsfetcher.feature.starNewsSourcesScreen.presentation
+package com.example.newsfetcher.feature.star_news_sources_screen.presentation
 
 import android.os.Bundle
 import android.view.View

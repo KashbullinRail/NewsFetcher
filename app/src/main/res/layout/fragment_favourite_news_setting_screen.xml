@@ -6,7 +6,6 @@
     android:id="@+id/popupFavouriteNewsSettingLayout"
     android:padding="20dp"
     android:gravity="center"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="feature.favourite_news_setting_screen.presentation.FavouriteNewsSettingScreenFragment">

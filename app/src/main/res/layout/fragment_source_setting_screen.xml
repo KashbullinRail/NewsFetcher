@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/popupFavouriteNewsSettingLayout"
+    android:padding="20dp"
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SourceSettingScreenFragment">
+
+    <TextView
+        android:id="@+id/tvTitleSourceSetting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/news_source_type"
+        android:textColor="@color/black_70"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivSeparatorLineSourceSetting1" />
+
+    <ImageView
+        android:id="@+id/ivSeparatorLineSourceSetting1"
+        android:layout_width="300dp"
+        android:layout_height="3dp"
+        android:background="?attr/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvBusinessSourceSetting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:padding="3dp"
+        android:textColor="?attr/colorPrimary"
+        android:text="@string/business"
+        app:layout_constraintBottom_toBottomOf="@+id/tvEntertainmentSourceSetting"
+        app:layout_constraintEnd_toStartOf="@+id/tvEntertainmentSourceSetting"
+        app:layout_constraintTop_toTopOf="@+id/tvEntertainmentSourceSetting" />
+
+    <TextView
+        android:id="@+id/tvEntertainmentSourceSetting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:padding="3dp"
+        android:text="@string/entertainment"
+        android:textColor="?attr/colorPrimary"
+        app:layout_constraintEnd_toEndOf="@+id/ivSeparatorLineSourceSetting1"
+        app:layout_constraintStart_toStartOf="@+id/ivSeparatorLineSourceSetting1"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleSourceSetting" />
+
+    <TextView
+        android:id="@+id/tvGeneralSourceSetting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:padding="3dp"
+        android:textColor="?attr/colorPrimary"
+        android:text="@string/general"
+        app:layout_constraintBottom_toBottomOf="@+id/tvEntertainmentSourceSetting"
+        app:layout_constraintStart_toEndOf="@+id/tvEntertainmentSourceSetting"
+        app:layout_constraintTop_toTopOf="@+id/tvEntertainmentSourceSetting" />
+
+    <TextView
+        android:id="@+id/tvHealthSourceSetting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:padding="3dp"
+        android:textColor="?attr/colorPrimary"
+        android:text="@string/health"
+        app:layout_constraintEnd_toEndOf="@+id/tvEntertainmentSourceSetting"
+        app:layout_constraintStart_toStartOf="@+id/tvEntertainmentSourceSetting"
+        app:layout_constraintTop_toBottomOf="@+id/tvEntertainmentSourceSetting" />
+
+    <TextView
+        android:id="@+id/tvScienceSourceSetting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+        android:padding="3dp"
+        android:textColor="?attr/colorPrimary"
+        android:text="@string/science"
+        app:layout_constraintBottom_toBottomOf="@+id/tvHealthSourceSetting"
+        app:layout_constraintEnd_toStartOf="@+id/tvHealthSourceSetting"
+        app:layout_constraintTop_toTopOf="@+id/tvHealthSourceSetting"/>
+
+    <TextView
+        android:id="@+id/tvSportsSourceSetting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:padding="3dp"
+        android:textColor="?attr/colorPrimary"
+        android:text="@string/sports"
+        app:layout_constraintBottom_toBottomOf="@+id/tvHealthSourceSetting"
+        app:layout_constraintStart_toEndOf="@+id/tvHealthSourceSetting"
+        app:layout_constraintTop_toTopOf="@+id/tvHealthSourceSetting"/>
+
+    <TextView
+        android:id="@+id/tvTechnologySourceSetting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:padding="3dp"
+        android:textColor="?attr/colorPrimary"
+        android:text="@string/technology"
+        app:layout_constraintEnd_toEndOf="@+id/tvHealthSourceSetting"
+        app:layout_constraintStart_toStartOf="@+id/tvHealthSourceSetting"
+        app:layout_constraintTop_toBottomOf="@+id/tvHealthSourceSetting" />
+
+    <ImageView
+        android:id="@+id/ivSeparatorLineSourceSetting2"
+        android:layout_width="300dp"
+        android:layout_height="3dp"
+        android:layout_marginTop="25dp"
+        android:background="?attr/colorPrimary"
+        app:layout_constraintEnd_toEndOf="@+id/tvTitleSourceSetting"
+        app:layout_constraintStart_toStartOf="@+id/tvTitleSourceSetting"
+        app:layout_constraintTop_toBottomOf="@+id/tvTechnologySourceSetting" />
+
+    <TextView
+        android:id="@+id/tvTitleLanguageSourceSetting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/source_language"
+        android:textColor="@color/black_70"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/ivSeparatorLineSourceSetting2"
+        app:layout_constraintStart_toStartOf="@+id/ivSeparatorLineSourceSetting2"
+        app:layout_constraintTop_toBottomOf="@+id/ivSeparatorLineSourceSetting2" />
+
+    <TextView
+        android:id="@+id/tvENSourceSetting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="3dp"
+        android:text="@string/english"
+        android:textColor="?attr/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="@+id/tvRUSourceSetting"
+        app:layout_constraintEnd_toStartOf="@+id/tvRUSourceSetting"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvRUSourceSetting" />
+
+    <TextView
+        android:id="@+id/tvRUSourceSetting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:padding="3dp"
+        android:text="@string/russia"
+        android:textColor="?attr/colorPrimary"
+        app:layout_constraintStart_toEndOf="@+id/tvENSourceSetting"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitleLanguageSourceSetting" />
+
+    <Button
+        android:id="@+id/btnCancelSourceSetting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="10sp"
+        android:text="@string/cancel"
+        app:layout_constraintBottom_toBottomOf="@+id/btnSaveSourceSetting"
+        app:layout_constraintEnd_toStartOf="@id/btnSaveSourceSetting"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnSaveSourceSetting" />
+
+    <Button
+        android:id="@+id/btnSaveSourceSetting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:textSize="10sp"
+        android:text="@string/save"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnCancelSourceSetting"
+        app:layout_constraintTop_toBottomOf="@+id/tvRUSourceSetting" />
+
+    <androidx.core.widget.ContentLoadingProgressBar
+        android:id="@+id/pbFavouriteNewsSettingMenu"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/btnCancelSourceSetting"
+        app:layout_constraintEnd_toEndOf="@+id/ivSeparatorLineSourceSetting1"
+        app:layout_constraintStart_toStartOf="@+id/ivSeparatorLineSourceSetting1"
+        app:layout_constraintTop_toTopOf="@+id/tvTitleSourceSetting" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
