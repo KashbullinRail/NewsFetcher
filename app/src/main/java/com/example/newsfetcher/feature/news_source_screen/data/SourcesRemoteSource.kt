@@ -8,7 +8,7 @@ class SourcesRemoteSource(private val api: SourceAPI) {
 
     companion object {
        private var setTypeNews = ""
-       private var setLanguage = ""
+       private var setLanguage = "ru"
     }
 
     suspend fun getSources(): SourcesRemoteModel {

@@ -53,7 +53,7 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
                         findNavController().navigate(R.id.newsSourceScreenFragment)
                     }
                     R.id.itemLikeSources -> {
-                        findNavController().navigate(R.id.starNewsSourcesScreenFragment)
+                        findNavController().navigate(R.id.sourcesBookmarksScreenFragment)
                     }
                     else -> {}
                 }
@@ -69,7 +69,7 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
         }
 
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
-            findNavController().navigate(R.id.starNewsSourcesScreenFragment)
+            findNavController().navigate(R.id.sourcesBookmarksScreenFragment)
         }
 
         if (!isOnline(requireContext())){

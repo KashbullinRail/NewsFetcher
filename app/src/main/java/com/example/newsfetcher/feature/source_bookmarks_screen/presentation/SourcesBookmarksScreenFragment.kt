@@ -1,8 +1,7 @@
-package com.example.newsfetcher.feature.news_source_screen.presentation
+package com.example.newsfetcher.feature.source_bookmarks_screen.presentation
 
 import android.os.Bundle
 import android.view.View
-import androidx.activity.addCallback
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -10,23 +9,19 @@ import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.newsfetcher.R
 import com.example.newsfetcher.base.isOnline
-import com.example.newsfetcher.databinding.FragmentNewsSourceScreenBinding
+import com.example.newsfetcher.databinding.FragmentSourcesBookmarksScreenBinding
 import com.example.newsfetcher.feature.main_screen.presentation.PUT_TO_WEBVIEW_FRAGMENT
-import com.example.newsfetcher.feature.source_setting_screen.presentation.SourceSettingScreenFragment
 import com.google.android.material.snackbar.Snackbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-private const val SHOW_SOURCE_SETTING = "SHOW_SOURCE_SETTING"
+class SourcesBookmarksScreenFragment : Fragment(R.layout.fragment_sources_bookmarks_screen) {
 
-
-class NewsSourceScreenFragment : Fragment(R.layout.fragment_news_source_screen) {
-
-    private val binding by viewBinding(FragmentNewsSourceScreenBinding::bind)
-    private val viewModel: NewsSourceScreenViewModel by viewModel()
-    private val adapter: NewsSourceAdapter by lazy {
-        NewsSourceAdapter { index, type ->
-            viewModel.processUIEvent(UIEvent.OnSourcesClicked(index, type))
+    private val binding by viewBinding(FragmentSourcesBookmarksScreenBinding::bind)
+    private val viewModel: SourceBookmarksScreenViewModel by viewModel()
+    private val adapter: SourceBookmarksAdapter by lazy {
+        SourceBookmarksAdapter { index, type ->
+            viewModel.processUIEvent(UIEvent.OnSourceClicked(index, type))
         }
     }
 
@@ -36,9 +31,8 @@ class NewsSourceScreenFragment : Fragment(R.layout.fragment_news_source_screen) 
         viewModel.viewState.observe(viewLifecycleOwner, ::render)
 
         with(binding) {
-            rvNewsSourceScreen.adapter = adapter
-
-            bnvBarNewsSource.setOnItemSelectedListener {
+            rvSourceBookmarkArticles.adapter = adapter
+            bnvSourceBarBookmarks.setOnItemSelectedListener {
                 when (it.itemId) {
                     R.id.itemBookmarks -> {
                         findNavController().navigate(R.id.bookmarksScreenFragment)
@@ -49,23 +43,14 @@ class NewsSourceScreenFragment : Fragment(R.layout.fragment_news_source_screen) 
                     R.id.itemMain -> {
                         findNavController().navigate(R.id.mainScreenFragment)
                     }
-                    R.id.itemLikeSources -> {
-                        findNavController().navigate(R.id.sourcesBookmarksScreenFragment)
+                    R.id.itemSource -> {
+                        findNavController().navigate(R.id.newsSourceScreenFragment)
                     }
                     else -> {}
                 }
                 true
             }
-            bnvBarNewsSource.selectedItemId = R.id.itemSource
-
-            fabOpenNewsSourceTypeSelect.setOnClickListener {
-                val showSettingSourceNews = SourceSettingScreenFragment()
-                showSettingSourceNews.show(
-                    requireActivity().supportFragmentManager,
-                    SHOW_SOURCE_SETTING
-                )
-            }
-
+            bnvSourceBarBookmarks.selectedItemId = R.id.itemLikeSources
         }
 
         if (!isOnline(requireContext())) {
@@ -74,26 +59,22 @@ class NewsSourceScreenFragment : Fragment(R.layout.fragment_news_source_screen) 
             ).show()
         }
 
-        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
-            findNavController().navigate(R.id.searchScreenFragment)
-        }
-
     }
 
     private fun render(viewState: ViewState) {
         when (viewState.state) {
             State.Load -> {
-                binding.pbNewsSource.isVisible = true
+                binding.pbSourceBookmarksScreen.isVisible = true
             }
             State.Content -> {
-                binding.pbNewsSource.isVisible = false
-                adapter.setData(viewState.sourceListShown)
+                binding.pbSourceBookmarksScreen.isVisible = false
+                adapter.setData(viewState.bookmarksSource)
             }
             State.Error -> {
             }
             State.LoadWebView -> {
-                binding.pbNewsSource.isVisible = false
-                val webViewLink = viewState.sourceDetail.url
+                binding.pbSourceBookmarksScreen.isVisible = false
+                val webViewLink = viewState.sourceInfo.url
                 if (!webViewLink.isBlank()) {
                     //TODO redirect data transfer to safeArgs
                     val bundle = bundleOf(PUT_TO_WEBVIEW_FRAGMENT to webViewLink)

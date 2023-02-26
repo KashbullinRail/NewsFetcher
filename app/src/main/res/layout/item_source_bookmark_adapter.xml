@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="125dp"
+    android:layout_marginTop="5dp"
+    android:orientation="vertical"
+    android:backgroundTint="?attr/colorSurfaceVariant">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="?attr/colorPrimary"/>
+
+    <TextView
+        android:id="@+id/tvNameSourceBookmark"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black_100"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:hint="@string/name_source"/>
+
+    <TextView
+        android:id="@+id/tvTitleSourceBookmark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="3"
+        android:ellipsize="end"
+        android:textColor="?attr/colorAccented"
+        tools:text="@tools:sample/lorem/random" />
+
+    <ImageView
+        android:id="@+id/ivSourceBookmarksDelete"
+        android:layout_width="70dp"
+        android:layout_height="45dp"
+        android:layout_gravity="end"
+        android:paddingEnd="10dp"
+        android:paddingStart="10dp"
+        android:paddingBottom="5dp"
+        android:layout_marginEnd="10dp"
+        android:src="@drawable/ic_delete"/>
+
+</LinearLayout>

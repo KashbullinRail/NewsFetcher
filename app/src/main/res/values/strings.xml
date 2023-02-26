@@ -7,7 +7,7 @@
     <string name="favorite">Избранное</string>
     <string name="search">Поиск</string>
     <string name="sources">Источники</string>
-    <string name="like_sources">Любимые издания</string>
+    <string name="like_sources">Любимые</string>
 
     <!--    For webview screen-->
     <string name="loadSite">Сайт загружается</string>
@@ -51,7 +51,7 @@
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <!--    For Favourite Dialog Screen-->
+    <!--    For Dialog Screen-->
     <string name="business">Бизнес</string>
     <string name="entertainment">Развлечения</string>
     <string name="general">Главные</string>

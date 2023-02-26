@@ -39,7 +39,7 @@
             app:destination="@id/newsSourceScreenFragment" />
         <action
             android:id="@+id/action_mainScreenFragment_to_starNewsSourcesScreenFragment"
-            app:destination="@id/starNewsSourcesScreenFragment" />
+            app:destination="@id/sourcesBookmarksScreenFragment" />
     </fragment>
     <fragment
         android:id="@+id/searchScreenFragment"
@@ -85,7 +85,7 @@
         tools:layout="@layout/fragment_news_source_screen" >
         <action
             android:id="@+id/action_newsSourceScreenFragment_to_starNewsSourcesScreenFragment"
-            app:destination="@id/starNewsSourcesScreenFragment" />
+            app:destination="@id/sourcesBookmarksScreenFragment" />
         <action
             android:id="@+id/action_newsSourceScreenFragment_to_webViewFragment"
             app:destination="@id/webViewFragment" />
@@ -94,10 +94,10 @@
             app:destination="@id/sourceSettingScreenFragment" />
     </fragment>
     <fragment
-        android:id="@+id/starNewsSourcesScreenFragment"
-        android:name="com.example.newsfetcher.feature.star_news_sources_screen.presentation.StarNewsSourcesScreenFragment"
+        android:id="@+id/sourcesBookmarksScreenFragment"
+        android:name="com.example.newsfetcher.feature.source_bookmarks_screen.presentation.SourcesBookmarksScreenFragment"
         android:label="fragment_star_news_sources_screen"
-        tools:layout="@layout/fragment_star_news_sources_screen" >
+        tools:layout="@layout/fragment_sources_bookmarks_screen" >
         <action
             android:id="@+id/action_starNewsSourcesScreenFragment_to_newsSourceScreenFragment"
             app:destination="@id/newsSourceScreenFragment" />
@@ -111,7 +111,7 @@
         android:label="FavouriteNewsSettingScreenFragment" />
     <fragment
         android:id="@+id/sourceSettingScreenFragment"
-        android:name="com.example.newsfetcher.SourceSettingScreenFragment"
+        android:name="com.example.newsfetcher.feature.source_setting_screen.presentation.SourceSettingScreenFragment"
         android:label="fragment_source_setting_screen"
         tools:layout="@layout/fragment_source_setting_screen" />
 </navigation>

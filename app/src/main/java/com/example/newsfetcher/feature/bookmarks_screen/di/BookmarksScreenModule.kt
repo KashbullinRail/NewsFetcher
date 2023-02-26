@@ -1,7 +1,7 @@
 package com.example.newsfetcher.feature.bookmarks_screen.di
 
 import com.example.newsfetcher.feature.bookmarks_screen.data.BookmarksLocalSource
-import com.example.newsfetcher.feature.bookmarks_screen.data.BookmarksRepository
+import com.example.newsfetcher.feature.bookmarks_screen.domian.BookmarksRepository
 import com.example.newsfetcher.feature.bookmarks_screen.data.model.BookmarksRepositoryImpl
 import com.example.newsfetcher.feature.bookmarks_screen.domian.BookmarksInteractor
 import com.example.newsfetcher.feature.bookmarks_screen.presentation.BookmarksScreenViewModel
