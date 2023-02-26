@@ -15,7 +15,6 @@ import com.example.newsfetcher.base.focusAndShowKeyboard
 import com.example.newsfetcher.base.hideKeyboard
 import com.example.newsfetcher.base.isOnline
 import com.example.newsfetcher.databinding.FragmentSearchScreenBinding
-import com.example.newsfetcher.feature.main_screen.di.setUrl
 import com.example.newsfetcher.feature.main_screen.presentation.MainArticleAdapter
 import com.example.newsfetcher.feature.main_screen.presentation.PUT_TO_DETAIL_FRAGMENT
 import com.example.newsfetcher.feature.search_setting_screen.presentation.SearchSettingScreenFragment
@@ -61,7 +60,7 @@ class SearchScreenFragment : Fragment(R.layout.fragment_search_screen) {
                         findNavController().navigate(R.id.newsSourceScreenFragment)
                     }
                     R.id.itemLikeSources -> {
-                        findNavController().navigate(R.id.starNewsSourcesScreenFragment)
+                        findNavController().navigate(R.id.sourcesBookmarksScreenFragment)
                     }
                     else -> {}
                 }

@@ -47,7 +47,7 @@ class NewsSourceScreenFragment : Fragment(R.layout.fragment_news_source_screen) 
                         findNavController().navigate(R.id.mainScreenFragment)
                     }
                     R.id.itemLikeSources -> {
-                        findNavController().navigate(R.id.starNewsSourcesScreenFragment)
+                        findNavController().navigate(R.id.sourcesBookmarksScreenFragment)
                     }
                     else -> {}
                 }
