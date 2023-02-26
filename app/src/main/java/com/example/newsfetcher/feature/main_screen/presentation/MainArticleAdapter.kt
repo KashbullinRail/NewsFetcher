@@ -102,7 +102,7 @@ class MainArticleAdapter(
                 .placeholder(R.drawable.ic_image)
                 .error(R.drawable.ic_image_not_supported)
                 .transition(DrawableTransitionOptions.withCrossFade())
-                .diskCacheStrategy(DiskCacheStrategy.DATA)
+                .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
                 .centerCrop()
                 .into(ivNewsImageMain)
 

@@ -10,5 +10,11 @@
     <item android:id="@+id/itemSearch"
         android:icon="@drawable/ic_bnvbar_search"
         android:title="@string/search"/>
+    <item android:id="@+id/itemSource"
+        android:icon="@drawable/ic_bnvbar_newspaper"
+        android:title="@string/sources"/>
+    <item android:id="@+id/itemLikeSources"
+        android:icon="@drawable/ic_star_24"
+        android:title="@string/like_sources"/>
 
 </menu>

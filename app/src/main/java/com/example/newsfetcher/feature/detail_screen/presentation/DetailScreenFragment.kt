@@ -49,6 +49,12 @@ class DetailScreenFragment : Fragment(R.layout.fragment_detail_screen) {
                     R.id.itemSearch -> {
                         findNavController().navigate(R.id.searchScreenFragment)
                     }
+                    R.id.itemSource -> {
+                        findNavController().navigate(R.id.newsSourceScreenFragment)
+                    }
+                    R.id.itemLikeSources -> {
+                        findNavController().navigate(R.id.starNewsSourcesScreenFragment)
+                    }
                     else -> {}
                 }
                 true

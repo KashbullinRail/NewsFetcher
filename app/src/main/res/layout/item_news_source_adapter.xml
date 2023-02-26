@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="115dp"
+    android:layout_marginTop="5dp"
+    android:backgroundTint="?attr/colorSurfaceVariant"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="?attr/colorPrimary" />
+
+    <TextView
+        android:id="@+id/tvNameSource"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/name_source"
+        android:textSize="20sp"
+        android:textColor="@color/black_100"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvDescriptionSource"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="3"
+        android:textColor="?attr/colorAccented"
+        tools:text="@tools:sample/lorem/random" />
+
+    <ImageView
+        android:id="@+id/iv_star_full"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+        android:layout_gravity="end"
+        android:layout_marginEnd="5dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:src="@drawable/ic_star_24"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/iv_star_empty"
+        android:layout_width="70dp"
+        android:layout_height="40dp"
+        android:layout_gravity="end"
+        android:layout_marginEnd="5dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:src="@drawable/ic_star_border" />
+
+</LinearLayout>

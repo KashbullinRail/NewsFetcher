@@ -13,8 +13,6 @@ import com.example.newsfetcher.R
 import com.example.newsfetcher.base.isOnline
 import com.example.newsfetcher.databinding.FragmentMainScreenBinding
 import com.example.newsfetcher.feature.favourite_news_setting_screen.presentation.FavouriteNewsSettingScreenFragment
-import com.example.newsfetcher.feature.main_screen.di.setUrl
-import com.example.newsfetcher.feature.main_screen.presentation.PUT_TO_DETAIL_FRAGMENT
 import com.google.android.material.snackbar.Snackbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -36,7 +34,7 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setUrl("1")
+//        setUrl("1")
 
         viewModel.viewState.observe(viewLifecycleOwner, ::render)
 
@@ -50,6 +48,12 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
                     }
                     R.id.itemSearch -> {
                         findNavController().navigate(R.id.searchScreenFragment)
+                    }
+                    R.id.itemSource -> {
+                        findNavController().navigate(R.id.newsSourceScreenFragment)
+                    }
+                    R.id.itemLikeSources -> {
+                        findNavController().navigate(R.id.starNewsSourcesScreenFragment)
                     }
                     else -> {}
                 }
@@ -65,7 +69,7 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
         }
 
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
-            findNavController().navigate(R.id.bookmarksScreenFragment)
+            findNavController().navigate(R.id.starNewsSourcesScreenFragment)
         }
 
         if (!isOnline(requireContext())){
@@ -76,7 +80,6 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
     }
 
     private fun render(viewState: ViewState) {
-
         when (viewState.state) {
             State.Load -> {
                 binding.pbMainScreen.isVisible = true
@@ -96,8 +99,6 @@ class MainScreenFragment : Fragment(R.layout.fragment_main_screen) {
                 findNavController().navigate(R.id.detailFragment, bundle)
             }
         }
-
     }
-
 
 }
