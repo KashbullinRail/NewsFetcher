@@ -8,8 +8,10 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.newsfetcher.R
+import com.example.newsfetcher.base.isOnline
 import com.example.newsfetcher.databinding.FragmentSourcesBookmarksScreenBinding
 import com.example.newsfetcher.feature.main_screen.presentation.PUT_TO_WEBVIEW_FRAGMENT
+import com.google.android.material.snackbar.Snackbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -35,24 +37,31 @@ class SourcesBookmarksScreenFragment : Fragment(R.layout.fragment_sources_bookma
                     R.id.itemBookmarks -> {
                         findNavController().navigate(R.id.bookmarksScreenFragment)
                     }
-                   R.id.itemSearch -> {
+                    R.id.itemSearch -> {
                         findNavController().navigate(R.id.searchScreenFragment)
                     }
                     R.id.itemMain -> {
                         findNavController().navigate(R.id.mainScreenFragment)
                     }
-                    R.id.itemLikeSources -> {
+                    R.id.itemSource -> {
                         findNavController().navigate(R.id.newsSourceScreenFragment)
                     }
                     else -> {}
                 }
                 true
             }
+            bnvSourceBarBookmarks.selectedItemId = R.id.itemLikeSources
+        }
+
+        if (!isOnline(requireContext())) {
+            Snackbar.make(
+                view, requireActivity().getString(R.string.offInternet), Snackbar.LENGTH_LONG
+            ).show()
         }
 
     }
 
-    private fun render(viewState: ViewState){
+    private fun render(viewState: ViewState) {
         when (viewState.state) {
             State.Load -> {
                 binding.pbSourceBookmarksScreen.isVisible = true

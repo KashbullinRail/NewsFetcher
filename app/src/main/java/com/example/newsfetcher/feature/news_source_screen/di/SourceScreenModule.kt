@@ -30,7 +30,7 @@ val sourceScreenModule = module {
     }
 
     viewModel {
-        NewsSourceScreenViewModel(sourcesInteractor = get())
+        NewsSourceScreenViewModel(sourceBookmarksInteractor = get(), sourcesInteractor = get())
     }
 
 }

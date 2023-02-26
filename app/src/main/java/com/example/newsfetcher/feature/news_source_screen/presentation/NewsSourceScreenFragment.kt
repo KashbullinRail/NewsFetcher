@@ -9,10 +9,13 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.newsfetcher.R
+import com.example.newsfetcher.base.isOnline
 import com.example.newsfetcher.databinding.FragmentNewsSourceScreenBinding
 import com.example.newsfetcher.feature.main_screen.presentation.PUT_TO_WEBVIEW_FRAGMENT
 import com.example.newsfetcher.feature.source_setting_screen.presentation.SourceSettingScreenFragment
+import com.google.android.material.snackbar.Snackbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 private const val SHOW_SOURCE_SETTING = "SHOW_SOURCE_SETTING"
 
@@ -22,7 +25,7 @@ class NewsSourceScreenFragment : Fragment(R.layout.fragment_news_source_screen) 
     private val binding by viewBinding(FragmentNewsSourceScreenBinding::bind)
     private val viewModel: NewsSourceScreenViewModel by viewModel()
     private val adapter: NewsSourceAdapter by lazy {
-        NewsSourceAdapter {index, type ->
+        NewsSourceAdapter { index, type ->
             viewModel.processUIEvent(UIEvent.OnSourcesClicked(index, type))
         }
     }
@@ -53,12 +56,22 @@ class NewsSourceScreenFragment : Fragment(R.layout.fragment_news_source_screen) 
                 }
                 true
             }
+            bnvBarNewsSource.selectedItemId = R.id.itemSource
 
             fabOpenNewsSourceTypeSelect.setOnClickListener {
                 val showSettingSourceNews = SourceSettingScreenFragment()
-                showSettingSourceNews.show(requireActivity().supportFragmentManager, SHOW_SOURCE_SETTING)
+                showSettingSourceNews.show(
+                    requireActivity().supportFragmentManager,
+                    SHOW_SOURCE_SETTING
+                )
             }
 
+        }
+
+        if (!isOnline(requireContext())) {
+            Snackbar.make(
+                view, requireActivity().getString(R.string.offInternet), Snackbar.LENGTH_LONG
+            ).show()
         }
 
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
@@ -67,9 +80,7 @@ class NewsSourceScreenFragment : Fragment(R.layout.fragment_news_source_screen) 
 
     }
 
-
-    private fun render(viewState: ViewState){
-
+    private fun render(viewState: ViewState) {
         when (viewState.state) {
             State.Load -> {
                 binding.pbNewsSource.isVisible = true
@@ -86,21 +97,11 @@ class NewsSourceScreenFragment : Fragment(R.layout.fragment_news_source_screen) 
                 if (!webViewLink.isBlank()) {
                     //TODO redirect data transfer to safeArgs
                     val bundle = bundleOf(PUT_TO_WEBVIEW_FRAGMENT to webViewLink)
-                   findNavController().saveState()
+                    findNavController().saveState()
                     findNavController().navigate(R.id.webViewFragment, bundle)
                 }
             }
         }
-
     }
-
-
-
-
-
-
-
-
-
 
 }

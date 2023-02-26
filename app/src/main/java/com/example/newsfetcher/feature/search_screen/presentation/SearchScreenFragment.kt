@@ -40,8 +40,6 @@ class SearchScreenFragment : Fragment(R.layout.fragment_search_screen) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        setUrl("2")
-
         viewModel.viewState.observe(viewLifecycleOwner, ::render)
 
         with(binding) {

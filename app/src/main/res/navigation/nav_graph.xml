@@ -111,7 +111,7 @@
         android:label="FavouriteNewsSettingScreenFragment" />
     <fragment
         android:id="@+id/sourceSettingScreenFragment"
-        android:name="com.example.newsfetcher.SourceSettingScreenFragment"
+        android:name="com.example.newsfetcher.feature.source_setting_screen.presentation.SourceSettingScreenFragment"
         android:label="fragment_source_setting_screen"
         tools:layout="@layout/fragment_source_setting_screen" />
 </navigation>
