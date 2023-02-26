@@ -7,14 +7,14 @@ import com.example.newsfetcher.feature.news_source_screen.domain.SourceModel
 enum class State {
     Load,
     Content,
-    DetailLoad,
+    LoadWebView,
     Error
 }
 
 data class ViewState(
     val state: State,
-    val bookmarksArticle: List<SourceModel>,
-    val articleDetail: SourceModel,
+    val bookmarksSource: List<SourceModel>,
+    val sourceInfo: SourceModel,
 )
 
 sealed class UIEvent: Event {

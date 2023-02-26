@@ -2,11 +2,14 @@ package com.example.newsfetcher.feature.source_bookmarks_screen.presentation
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.example.newsfetcher.R
 import com.example.newsfetcher.databinding.FragmentSourcesBookmarksScreenBinding
+import com.example.newsfetcher.feature.main_screen.presentation.PUT_TO_WEBVIEW_FRAGMENT
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -20,13 +23,13 @@ class SourcesBookmarksScreenFragment : Fragment(R.layout.fragment_sources_bookma
         }
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        viewModel.viewState.observe(viewLifecycleOwner, ::render)
+
         with(binding) {
             rvSourceBookmarkArticles.adapter = adapter
-
             bnvSourceBarBookmarks.setOnItemSelectedListener {
                 when (it.itemId) {
                     R.id.itemBookmarks -> {
@@ -45,11 +48,32 @@ class SourcesBookmarksScreenFragment : Fragment(R.layout.fragment_sources_bookma
                 }
                 true
             }
-
         }
-
 
     }
 
+    private fun render(viewState: ViewState){
+        when (viewState.state) {
+            State.Load -> {
+                binding.pbSourceBookmarksScreen.isVisible = true
+            }
+            State.Content -> {
+                binding.pbSourceBookmarksScreen.isVisible = false
+                adapter.setData(viewState.bookmarksSource)
+            }
+            State.Error -> {
+            }
+            State.LoadWebView -> {
+                binding.pbSourceBookmarksScreen.isVisible = false
+                val webViewLink = viewState.sourceInfo.url
+                if (!webViewLink.isBlank()) {
+                    //TODO redirect data transfer to safeArgs
+                    val bundle = bundleOf(PUT_TO_WEBVIEW_FRAGMENT to webViewLink)
+                    findNavController().saveState()
+                    findNavController().navigate(R.id.webViewFragment, bundle)
+                }
+            }
+        }
+    }
 
 }

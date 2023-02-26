@@ -6,13 +6,14 @@ import com.example.newsfetcher.base.BaseViewModel
 import com.example.newsfetcher.base.Event
 import com.example.newsfetcher.feature.news_source_screen.domain.SourceModel
 import com.example.newsfetcher.feature.news_source_screen.domain.SourcesInteractor
+import com.example.newsfetcher.feature.source_bookmarks_screen.domain.SourceBookmarksInteractor
 import kotlinx.coroutines.launch
 
 
 class NewsSourceScreenViewModel(
-    private val sourcesInteractor: SourcesInteractor
-): BaseViewModel<ViewState>() {
-
+    private val sourcesInteractor: SourcesInteractor,
+    private val sourceBookmarksInteractor: SourceBookmarksInteractor
+) : BaseViewModel<ViewState>() {
 
     init {
         processDataEvent(DateEvent.LoadSources)
@@ -60,9 +61,10 @@ class NewsSourceScreenViewModel(
                     }
                     STAR_EMPTY -> {
                         event.type
-//                        viewModelScope.launch {
-//                            sourcesInteractor.create(previousState.articlesShown[event.index])
-//                        }
+                        viewModelScope.launch {
+                            sourceBookmarksInteractor
+                                .create(previousState.sourceListShown[event.index])
+                        }
                         return previousState.copy(
                             sourceList = previousState.sourceList,
                             sourceListShown = previousState.sourceListShown,
@@ -70,9 +72,10 @@ class NewsSourceScreenViewModel(
                         )
                     }
                     STAR_FULL -> {
-//                        viewModelScope.launch {
-//                            bookmarksInteractor.delete(previousState.articlesShown[event.index])
-//                        }
+                        viewModelScope.launch {
+                            sourceBookmarksInteractor
+                                .delete(previousState.sourceListShown[event.index])
+                        }
                         return previousState.copy(
                             sourceList = previousState.sourceList,
                             sourceListShown = previousState.sourceListShown,
@@ -85,8 +88,5 @@ class NewsSourceScreenViewModel(
             else -> return null
         }
     }
-
-
-
 
 }

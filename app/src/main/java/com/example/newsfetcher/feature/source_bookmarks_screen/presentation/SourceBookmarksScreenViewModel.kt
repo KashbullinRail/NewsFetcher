@@ -21,8 +21,8 @@ class SourceBookmarksScreenViewModel(
     override fun initialViewState(): ViewState =
         ViewState(
             state = State.Load,
-            bookmarksArticle = emptyList(),
-            articleDetail = SourceModel(
+            bookmarksSource = emptyList(),
+            sourceInfo = SourceModel(
                 "", "", "", "", false
             ),
         )
@@ -45,22 +45,22 @@ class SourceBookmarksScreenViewModel(
             }
             is DataEvent.OnSuccessSourceBookmarksLoaded -> {
                 return previousState.copy(
-                    bookmarksArticle = event.bookmarksSource,
+                    bookmarksSource = event.bookmarksSource,
                     state = State.Content
                 )
             }
-            is UIEvent.OnArticleClicked -> {
+            is UIEvent.OnSourceClicked -> {
                 when (event.type) {
                     SOURCE_BOOKMARK_ITEM -> {
                         return previousState.copy(
-                            articleDetail = previousState.bookmarksArticle[event.index],
-                            state = State.DetailLoad
+                            sourceInfo = previousState.bookmarksSource[event.index],
+                            state = State.LoadWebView
                         )
                     }
                     SOURCE_BOOKMARK_DELETE -> {
                         viewModelScope.launch {
                             sourceBookmarksInteractor.delete(
-                                previousState.bookmarksArticle[event.index]
+                                previousState.bookmarksSource[event.index]
                             )
                         }
                         viewModelScope.launch {
