@@ -21,9 +21,17 @@ enum class SourceNews(
     technology("technology")
 }
 
+enum class LanguageNews(
+    val str: String
+) {
+    english("en"),
+    russia("ru")
+}
+
 data class ViewState(
     val state: State,
-    val favouriteNews: String
+    val sourceNews: String,
+    val languageNews: String
 )
 
 sealed class UIEvent : Event {
@@ -34,6 +42,8 @@ sealed class UIEvent : Event {
     object OnScienceClicked : UIEvent()
     object OnSportsClicked : UIEvent()
     object OnTechnologyClicked : UIEvent()
+    object OnEnglishLanguageClicked: UIEvent()
+    object OnRussiaLanguageClicked: UIEvent()
     object OnSetFavouriteNewsSettingClicked : UIEvent()
 }
 

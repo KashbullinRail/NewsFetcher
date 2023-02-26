@@ -1,6 +1,6 @@
 package com.example.newsfetcher.feature.main_screen.data.model
 
-import com.example.newsfetcher.feature.favourite_news_setting_screen.presentation.SetFavouriteNewsSettingModel
+import com.example.newsfetcher.feature.favourite_news_setting_screen.presentation.model.SetFavouriteNewsSettingModel
 import com.example.newsfetcher.feature.main_screen.data.ArticlesRemoteSource
 import com.example.newsfetcher.feature.main_screen.domian.ArticlesRepository
 import com.example.newsfetcher.feature.main_screen.data.toDomian

@@ -2,8 +2,8 @@ package com.example.newsfetcher.feature.source_setting_screen.presentation
 
 import com.example.newsfetcher.base.BaseViewModel
 import com.example.newsfetcher.base.Event
-import com.example.newsfetcher.feature.main_screen.domian.ArticlesInteractor
 import com.example.newsfetcher.feature.news_source_screen.domain.SourcesInteractor
+import com.example.newsfetcher.feature.source_setting_screen.presentation.model.SetSourceSettingModel
 
 
 class SourceNewsSettingScreenViewModel(
@@ -16,71 +16,87 @@ class SourceNewsSettingScreenViewModel(
 
     override fun initialViewState() = ViewState(
         state = State.Load,
-        favouriteNews = SourceNews.general.str,
+        sourceNews = SourceNews.general.str,
+        languageNews = LanguageNews.russia.str
     )
 
     override fun reduce(event: Event, previousState: ViewState): ViewState? {
 
         when (event) {
             is DateEvent.LoadFavouriteNewsSetting -> {
-                if (sourcesInteractor.getFavouriteNews().favouriteNews.equals("")) {
-                   return previousState.copy(
-                        favouriteNews = SourceNews.general.str,
+                if (sourcesInteractor.getSourceSetting().sourceNews.equals("")) {
+                    return previousState.copy(
+                        sourceNews = SourceNews.general.str,
+                        languageNews = LanguageNews.russia.str,
                         state = State.Content,
                     )
                 } else {
-                   return previousState.copy(
-                        favouriteNews = sourcesInteractor.getFavouriteNews().favouriteNews,
+                    return previousState.copy(
+                        sourceNews = sourcesInteractor.getSourceSetting().sourceNews,
+                        languageNews = sourcesInteractor.getSourceSetting().languageNews,
                         state = State.Content
                     )
                 }
             }
             is UIEvent.OnSetFavouriteNewsSettingClicked -> {
-                val setFavouriteNews = SetFavouriteNewsSettingModel(
-                    favouriteNews = previousState.favouriteNews,
+                val setSourceNews = SetSourceSettingModel(
+                    sourceNews = previousState.sourceNews,
+                    languageNews = previousState.languageNews
                 )
-                sourcesInteractor.setFavouriteNews(setFavouriteNews)
+                sourcesInteractor.setSourceSetting(setSourceNews)
                 return null
             }
             is UIEvent.OnBusinessClicked -> {
                 return previousState.copy(
-                    favouriteNews = SourceNews.business.str,
+                    sourceNews = SourceNews.business.str,
                     state = State.Content
                 )
             }
             is UIEvent.OnEntertainmentClicked -> {
                 return previousState.copy(
-                    favouriteNews = SourceNews.entertaiment.str,
+                    sourceNews = SourceNews.entertaiment.str,
                     state = State.Content
                 )
             }
             is UIEvent.OnGeneralClicked -> {
                 return previousState.copy(
-                    favouriteNews = SourceNews.general.str,
+                    sourceNews = SourceNews.general.str,
                     state = State.Content
                 )
             }
             is UIEvent.OnHealthClicked -> {
                 return previousState.copy(
-                    favouriteNews = SourceNews.health.str,
+                    sourceNews = SourceNews.health.str,
                     state = State.Content
                 )
             }
             is UIEvent.OnScienceClicked -> {
                 return previousState.copy(
-                    favouriteNews = SourceNews.science.str,
+                    sourceNews = SourceNews.science.str,
                     state = State.Content
                 )
             }
             is UIEvent.OnSportsClicked -> {
                 return previousState.copy(
-                    favouriteNews = SourceNews.sports.str,
+                    sourceNews = SourceNews.sports.str,
                     state = State.Content
                 )
             }
             is UIEvent.OnTechnologyClicked -> {
                 return previousState.copy(
-                    favouriteNews = SourceNews.technology.str,
+                    sourceNews = SourceNews.technology.str,
+                    state = State.Content
+                )
+            }
+            is UIEvent.OnEnglishLanguageClicked -> {
+                return previousState.copy(
+                    languageNews = LanguageNews.english.str,
+                    state = State.Content
+                )
+            }
+            is UIEvent.OnRussiaLanguageClicked -> {
+                return previousState.copy(
+                    languageNews = LanguageNews.russia.str,
                     state = State.Content
                 )
             }

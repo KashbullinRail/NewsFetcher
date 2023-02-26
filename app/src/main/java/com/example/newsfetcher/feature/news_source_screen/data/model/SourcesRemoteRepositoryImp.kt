@@ -4,6 +4,7 @@ import com.example.newsfetcher.feature.news_source_screen.data.SourcesRemoteSour
 import com.example.newsfetcher.feature.news_source_screen.data.toDomain
 import com.example.newsfetcher.feature.news_source_screen.domain.SourceModel
 import com.example.newsfetcher.feature.news_source_screen.domain.SourcesRepository
+import com.example.newsfetcher.feature.source_setting_screen.presentation.model.SetSourceSettingModel
 
 class SourcesRemoteRepositoryImp(private val source: SourcesRemoteSource): SourcesRepository {
 
@@ -12,5 +13,14 @@ class SourcesRemoteRepositoryImp(private val source: SourcesRemoteSource): Sourc
             it.toDomain()
         }
     }
+
+    override fun setSourceSetting(setSourceSettingModel: SetSourceSettingModel) {
+        source.setSourceSetting(setSourceSettingModel)
+    }
+
+    override fun getSourceSetting(): SetSourceSettingModel {
+       return source.getSourceSetting()
+    }
+
 
 }
